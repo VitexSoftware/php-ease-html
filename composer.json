@@ -1,0 +1,34 @@
+{
+    "name": "vitexsoftware/ease-html",
+    "description": "Set of HTML rendering objects",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vítězslav Vitex Dvořák",
+            "email": "info@vitexsoftware.cz"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.1",
+        "ext-curl": "*",
+        "vitexsoftware/ease-core": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ease\\Html\\": "src/Ease/Html/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\Ease\\": "vendor/vitexsoftware/ease-core/tests/src/Ease",
+            "Test\\Ease\\Html\\": "testing/src/Ease/Html/",
+            "Test\\": "testing/",
+            "Example\\Ease\\Html\\": "Examples"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=7"
+    }
+}
