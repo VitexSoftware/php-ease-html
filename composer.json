@@ -11,8 +11,6 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.1",
-        "ext-curl": "*",
         "vitexsoftware/ease-core": "dev-master"
     },
     "autoload": {
