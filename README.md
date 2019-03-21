@@ -1,9 +1,8 @@
-![EasePHP Framework Logo](https://raw.githubusercontent.com/VitexSoftware/ease-html/master/project-logo.svg "Project Logo")
+![EasePHP Framework HTML Logo](https://raw.githubusercontent.com/VitexSoftware/ease-html/master/project-logo.svg "Project Logo")
 
 Ease Framework Html 
 ===================
 
-[![Source Code](http://img.shields.io/badge/source-VitexSoftware/ease-html-blue.svg?style=flat-square)](https://github.com/VitexSoftware/ease-html)
 [![Latest Version](https://img.shields.io/github/release/VitexSoftware/ease-html.svg?style=flat-square)](https://github.com/VitexSoftware/ease-html/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/VitexSoftware/ease-html/blob/master/LICENSE)
 [![Build Status](https://img.shields.io/travis/VitexSoftware/ease-html/master.svg?style=flat-square)](https://travis-ci.org/vitexsoftware/ease-html)
@@ -29,8 +28,53 @@ $oPage = new \Ease\Html\HtmlTag([$head,$body]);
 echo $oPage;
 ```
 
-Supported tags:
----------------
+or use the **WebPage class**:
+
+
+Special Classess
+------------
+
+Main Glue of Ease\Html is 
+
+
+**Ease\Container**
+
+Container can contain simple text,  another object or mix od them.
+
+```php
+$group = [ new StrongTag('strong text'), 'simple text ', new DivTag( new HrTag() ) ];
+
+$heap = new Container();
+$heap->addItem('text to include');
+$heap->addItem( new H1Tag('heading) );
+$heap->addItem( $group );
+```
+
+**Ease\Page**
+
+Is smarter container able to hold Scripts and cascade styles
+
+```php
+$oPage = new Page();
+
+```
+
+and finally:
+
+**Ease\WebPage**
+
+Is Page that include Head and Body elements
+
+```php
+$oPage = new \Ease\WebPage('Page title');
+$oPage->addItem( new \Ease\Html\ImgTag( 'images/sun.png' );
+$oPagr->addJavaScript('alert("Let the sun shine in!")');
+echo $oPage;
+```
+
+
+Implemented HTML5 tags:
+-----------------------
 
  * [AddressTag](src/Ease/Html/AddressTag.php)
  * [ArticleTag](src/Ease/Html/ArticleTag.php)

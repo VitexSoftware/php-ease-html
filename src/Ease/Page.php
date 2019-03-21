@@ -42,13 +42,6 @@ class Page extends Container
     public $lastItem = null;
 
     /**
-     * Specifikuje preferovaný účel zobrazení například mail.
-     *
-     * @var string
-     */
-    public $outputFormat = null;
-
-    /**
      * Is page closed for adding new contents ?
      *
      * @var bool
@@ -381,27 +374,6 @@ class Page extends Container
     public static function isFormPosted()
     {
         return isset($_POST) && count($_POST);
-    }
-
-    /**
-     * Nastaví formát výstupu.
-     *
-     * @param string $outputFormat výstupní formát, např Mail nebo Print
-     */
-    public function setOutputFormat($outputFormat)
-    {
-        $this->outputFormat = $outputFormat;
-        foreach ($this->pageParts as $part) {
-            $this->raise($part, ['OutputFormat']);
-        }
-    }
-
-    /**
-     * Vrací formát výstupu.
-     */
-    public function getOutputFormat()
-    {
-        return $this->outputFormat;
     }
 
     /**
