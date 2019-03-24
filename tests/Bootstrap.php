@@ -19,6 +19,6 @@ if ((php_sapi_name() != 'cli') && (session_status() == 'PHP_SESSION_NONE')) {
 define('EASE_APPNAME', 'EaseHtmlUnitTest');
 define('EASE_LOGGER', 'syslog');
 
-\Ease\Shared::user(new \Ease\Anonym());
-\Ease\Shared::webPage(new \Ease\WebPage());
+//\Ease\Shared::user(new \Ease\Anonym());
+//\Ease\Shared::webPage(new \Ease\WebPage());
 
