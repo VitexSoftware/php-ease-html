@@ -8,7 +8,7 @@
 
 namespace Example\Ease\HTML;
 
-require_once __DIR__.'/../../vendor/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
 $form = new \Ease\Html\Form('h');
 

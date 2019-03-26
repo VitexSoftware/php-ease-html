@@ -8,7 +8,7 @@
 
 namespace Ease\Example\HTML;
 
-require_once __DIR__.'/../../vendor/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
 $head = new \Ease\Html\HeadTag( new \Ease\Html\TitleTag('Ease WebPage'));
 

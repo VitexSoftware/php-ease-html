@@ -10,9 +10,9 @@ Ease Framework Html
 [![Latest stable](https://img.shields.io/packagist/v/VitexSoftware/ease-html.svg?style=flat-square)](https://packagist.org/packages/vitexsoftware/ease-html)
 
 
-is my way how to assemble web page using PHP Objects.
+ "my way how to assemble web page using PHP Objects."
 
-Basic Example for HTML5 WebPage:
+Basic Example for [HTML5 WebPage](Examples/webpage.php):
 
 ```php
 $head = new \Ease\Html\HeadTag( new \Ease\Html\TitleTag('Ease WebPage'));
@@ -28,7 +28,21 @@ $oPage = new \Ease\Html\HtmlTag([$head,$body]);
 echo $oPage;
 ```
 
-or use the **WebPage class**:
+or use the **[WebPage class](Examples/webpageClass.php)**:
+
+```php
+$oPage = new \Ease\WebPage('Ease WebPage');
+
+$oPage->addItem(new \Ease\Html\HeaderTag(new \Ease\Html\H1Tag('Web Page')));
+
+$oPage->addItem(new \Ease\Html\ArticleTag('Example'));
+
+$oPage->addItem(new \Ease\Html\FooterTag(new \Ease\Html\SmallTag(new \Ease\Html\ATag('v.s.cz',
+                'Vitex Software'))));
+
+echo $oPage;
+
+```
 
 
 Special Classess
