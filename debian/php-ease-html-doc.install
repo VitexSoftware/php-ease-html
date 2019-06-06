@@ -1,0 +1,4 @@
+docs/*				usr/share/doc/ease-html/html
+docs/resources/*		usr/share/doc/ease-html/html/resources
+debian/ease-html-doc.conf	usr/share/doc/ease-html-doc/apache
+README.md			usr/share/doc/ease-html

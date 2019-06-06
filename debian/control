@@ -1,0 +1,18 @@
+Source: php-ease-html
+Build-Depends: debhelper (>= 7.0.50~)
+Section: web
+Standards-Version: 3.9.8
+Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
+Uploaders: Vitex <vitex@hippy.cz>
+Priority: optional
+Homepage: https://github.com/VitexSoftware/ease-html
+
+Package: php-ease-html
+Depends: ${misc:Depends},libjs-jquery (>= 1.4), php-mail, php-mail-mime, php-ease-core
+Architecture: all
+Conflicts: ease-framework
+Suggests: php-ease-twbootstrap
+Section: web
+Priority: optional
+Description: EasePHP Framework HTML support
+ HTML classes for Ease Framework. 

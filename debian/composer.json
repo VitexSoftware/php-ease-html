@@ -1,0 +1,36 @@
+{
+    "name": "deb/ease-html",
+    "description": "An Core of PHP Framework for Ease of writing Applications (debianized)",
+    "version": "0.5",
+    "authors": [
+        {
+            "name": "Vítězslav Dvořák",
+            "email": "info@vitexsoftware.cz",
+            "homepage": "http://v.s.cz/"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ease\\": ".",
+            "Ease\\Html\\": "Html"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "deb/ease-core": "*"
+    },
+
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/usr/share/php/Ease",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+
+    "type": "library",
+    "homepage": "http://v.s.cz/ease.php",
+    "license": "GPL-2.0+"
+}

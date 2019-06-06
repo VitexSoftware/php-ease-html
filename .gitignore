@@ -1,2 +1,3 @@
 /vendor/
 /composer.lock
+/debian/php-ease-html/

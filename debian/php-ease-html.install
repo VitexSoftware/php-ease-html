@@ -1,0 +1,2 @@
+src/Ease/*		usr/share/php/EaseHtml/
+debian/composer.json	usr/share/php/EaseHtml/
