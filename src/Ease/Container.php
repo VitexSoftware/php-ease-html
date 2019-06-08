@@ -318,7 +318,7 @@ class Container extends Sand
      */
     public function drawAllContents()
     {
-        if (count($this->pageParts)) {
+        if (!empty($this->pageParts)) {
             foreach ($this->pageParts as $part) {
                 if (is_object($part) && method_exists($part, 'draw')) {
                     $part->draw();

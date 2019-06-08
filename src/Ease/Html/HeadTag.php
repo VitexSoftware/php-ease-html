@@ -71,7 +71,7 @@ class HeadTag extends PairTag
     }
 
     /**
-     * Vloží do hlavíčky název stránky.
+     * hadle page title
      */
     public function finalize()
     {
@@ -109,16 +109,16 @@ class HeadTag extends PairTag
             }
         }
 
-        if ($scriptsIncluded) {
-            $scriptsIncluded .= $divider.implode($divider, $scriptsIncluded);
+        if (!empty($scriptsIncluded)) {
+            $scriptsRendered .= $divider.implode($divider, $scriptsIncluded);
         }
 
-        if ($scriptsInline) {
-            $scriptsIncluded .= $divider.self::jsEnclosure(implode($divider,
+        if (!empty($scriptsInline)) {
+            $scriptsRendered .= $divider.self::jsEnclosure(implode($divider,
                         $scriptsInline));
         }
 
-        if (count($ODRStack)) {
+        if (!empty($ODRStack)) {
             $scriptsRendered .= $divider.
                 self::jsEnclosure(
                     '$(document).ready(function () { '.implode($divider,
