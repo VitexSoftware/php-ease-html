@@ -1,3 +1,4 @@
 /vendor/
 /composer.lock
 /debian/php-ease-html/
+/nbproject/private/
