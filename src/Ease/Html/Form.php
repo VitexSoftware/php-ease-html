@@ -57,7 +57,7 @@ class Form extends PairTag
         if (isset($formContents)) {
             $this->addItem($formContents);
         }
-        if (count($tagProperties)) {
+        if (!empty($tagProperties)) {
             $this->setTagProperties($tagProperties);
         }
     }
