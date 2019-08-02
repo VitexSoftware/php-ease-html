@@ -46,10 +46,12 @@ class HeadTag extends PairTag
      * Change name directly to head.
      *
      * @param string $objectName jméno objektu
+     * 
+     * @return string final object name
      */
     public function setObjectName($objectName = null)
     {
-        parent::setObjectName('head');
+        return parent::setObjectName('head');
     }
 
     /**

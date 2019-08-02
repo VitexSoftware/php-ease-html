@@ -23,9 +23,11 @@ class HtmlTag extends PairTag
      * Nastaví jméno objektu na "html".
      *
      * @param string $ObjectName jméno objektu
+     * 
+     * @return string final object name
      */
     public function setObjectName($ObjectName = null)
     {
-        parent::setObjectName('html');
+        return parent::setObjectName('html');
     }
 }

@@ -27,7 +27,7 @@ class PairTag extends Tag
                                 $content = null)
     {
         parent::__construct($tagType, $tagProperties);
-        if (!empty($content)) {
+        if (empty($content) === false) {
             $this->addItem($content);
         }
     }

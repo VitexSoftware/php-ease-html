@@ -73,6 +73,7 @@ class Tag extends \Ease\Page
         if ($tagProperties) {
             $this->setTagProperties($tagProperties);
         }
+        $this->setObjectName();
     }
 
     /**
@@ -85,18 +86,20 @@ class Tag extends \Ease\Page
      */
     public function setObjectName($objectName = null)
     {
-        if (!is_null($objectName)) {
-            return parent::setObjectName($objectName);
-        }
-        if (!empty($this->tagName)) {
-            return parent::setObjectName(get_class($this).'@'.$this->tagName);
+        if (is_null($objectName) === false) {
+            $objName = parent::setObjectName($objectName);
         } else {
-            if (!empty($this->tagType)) {
-                return parent::setObjectName(get_class($this).'@'.$this->tagType);
+            if (empty($this->tagName) === false) {
+                $objName = parent::setObjectName(get_class($this).'@'.$this->tagName);
             } else {
-                return parent::setObjectName();
+                if (empty($this->tagType) === false) {
+                    $objName = parent::setObjectName(get_class($this).'@'.$this->tagType);
+                } else {
+                    $objName = parent::setObjectName();
+                }
             }
         }
+        return $objName;
     }
 
     /**
@@ -328,7 +331,7 @@ class Tag extends \Ease\Page
      */
     public function draw()
     {
-        echo '<' . trim($this->tagType.' '.$this->tagPropertiesToString());
+        echo '<'.trim($this->tagType.' '.$this->tagPropertiesToString());
         echo $this->trail.'>';
         $this->drawStatus = true;
     }
