@@ -13,19 +13,19 @@ namespace Ease;
  *
  * @author Vitex <vitex@hippy.cz>
  */
-class Page extends Container
+class Document extends Container
 {
     /**
      * Saves obejct instace (singleton...).
      */
-    private static $_instance = null;
+    private static $instance = null;
 
     /**
      * Odkaz na základní objekt stránky.
      *
      * @var EaseWebPage
      */
-    public $webPage = null;
+    public static $webPage = null;
 
     /**
      * Které objekty převzít od přebírajícího objektu.
@@ -46,27 +46,14 @@ class Page extends Container
      *
      * @var bool
      */
-    public $pageClosed = false;
+    public static $pageClosed = false;
 
     /**
-     * Pri vytvareni objektu pomoci funkce singleton (ma stejne parametry, jako konstruktor)
-     * se bude v ramci behu programu pouzivat pouze jedna jeho instance (ta prvni).
+     * Pole odkazů na všechny vložené objekty.
      *
-     * @param EaseUser $user objekt uživatele k přiřazení
-     *
-     * @link   http://docs.php.net/en/language.oop5.patterns.html Dokumentace a priklad
-     *
-     * @return EaseWebPage
+     * @var array pole odkazů
      */
-    public static function singleton($user = null)
-    {
-        if (!isset(self::$_instance)) {
-            $class           = __CLASS__;
-            self::$_instance = new $class($user);
-        }
-
-        return self::$_instance;
-    }
+    public static $allItems = [];
 
     /**
      * Vloží javascript do stránky.
@@ -218,7 +205,7 @@ class Page extends Container
                     'warning');
             }
             $this->redirect($loginPage);
-            $this->pageClosed = true;
+            self::$pageClosed = true;
         }
     }
 
@@ -233,7 +220,7 @@ class Page extends Container
     public function addItem($pageItem, $pageItemName = null)
     {
         $result = null;
-        if ($this->pageClosed === false) {
+        if (self::$pageClosed === false) {
             $result = parent::addItem($pageItem, $pageItemName);
         }
 
@@ -318,7 +305,7 @@ class Page extends Container
      *
      * @return mixed
      */
-    public static function getRequestValue($field, $sanitizeAs = null)
+    public function getRequestValue($field, $sanitizeAs = null)
     {
         $value = null;
         if (isset($_REQUEST[$field])) {
@@ -440,4 +427,47 @@ class Page extends Container
             return $baseUrl.'?'.http_build_query($params);
         }
     }
+
+    /**
+     * Zaregistruje položku k finalizaci.
+     *
+     * @param mixed $itemPointer
+     */
+    public static function registerItem(&$itemPointer)
+    {
+        self::$allItems[] = $itemPointer;
+    }
+
+    /**
+     * Vrací nebo registruje instanci webové stránky.
+     *
+     * @param WebPage $oPage objekt webstránky k zaregistrování
+     *
+     * @return WebPage
+     */
+    public static function &webPage($oPage = null)
+    {
+        if (is_object($oPage)) {
+            self::$webPage = &$oPage;
+        }
+        if (!is_object(self::$webPage)) {
+            self::$webPage = WebPage::singleton();
+        }
+        return self::$webPage;
+    }
+    
+    /**
+     * @return WebPage
+     */
+    public static function singleton()
+    {
+        if (!isset(self::$instance)) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
+    }
+
+    
+    
 }

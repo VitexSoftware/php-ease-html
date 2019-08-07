@@ -7,7 +7,7 @@ namespace Ease\Html;
  *
  * @author     Vitex <vitex@hippy.cz>
  */
-class Tag extends \Ease\Page
+class Tag extends \Ease\Document
 {
     /**
      * Jméno tagu - je použit i jako jméno objektu.

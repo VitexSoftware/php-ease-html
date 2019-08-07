@@ -42,13 +42,6 @@ class Container extends Sand
     public $raiseItems = [];
 
     /**
-     * Odkaz na webstránku.
-     *
-     * @var Page
-     */
-    public $webPage = null;
-
-    /**
      * Pointer to last item added
      * 
      * @var mixed 
@@ -62,7 +55,6 @@ class Container extends Sand
      */
     public function __construct($initialContent = null)
     {
-        parent::__construct();
         if (!empty($initialContent)) {
             $this->addItem($initialContent);
         }
@@ -147,8 +139,7 @@ class Container extends Sand
                 }
             }
         }
-        Shared::instanced()->registerItem($itemPointer);
-
+        Document::singleton()->registerItem($itemPointer);
         return $itemPointer;
     }
 
@@ -181,7 +172,8 @@ class Container extends Sand
         $swap            = is_array($this->pageParts) ? $this->pageParts : [];
         $this->emptyContents();
         $itemPointer     = $this->addItem($pageItem, $pageItemName);
-        $this->pageParts = array_merge( is_array($this->pageParts) ? $this->pageParts : [], $swap);
+        $this->pageParts = array_merge(is_array($this->pageParts) ? $this->pageParts
+                : [], $swap);
 
         return $itemPointer;
     }
@@ -303,17 +295,17 @@ class Container extends Sand
         $this->pageParts = null;
     }
 
-    
     /**
      * Contentets
      * 
      * @return mixed
      */
-    public function getContents(){
+    public function getContents()
+    {
         return $this->pageParts;
     }
 
-        /**
+    /**
      * Projde rekurzivně všechny vložené objekty a zavolá jeich draw().
      */
     public function drawAllContents()

@@ -13,20 +13,19 @@ namespace Ease;
  *
  * @author Vítězslav Dvořák <vitex@hippy.cz>
  */
-class WebPage extends Page
+class WebPage extends Document
 {
+    
+    /**
+     * Saves obejct instace (singleton...).
+     */
+    private static $instance = null;
+    
     /**
      * Where to look for jquery script
      * @var string path or url 
      */
     public $jqueryJavaScript = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js';
-
-    /**
-     * Položky předávané do vkládaného objektu.
-     *
-     * @var type
-     */
-    public $raiseItems = ['SetupWebPage' => 'webPage'];
 
     /**
      * Pole Javasriptu k vykresleni.
@@ -91,9 +90,9 @@ class WebPage extends Page
      */
     public function __construct($pageTitle = null, $toBody = null)
     {
-        Shared::webPage($this);
+        Document::webPage($this);
         if (!is_null($pageTitle)) {
-            $this->pageTitle = $pageTitle;
+            $this->setPageTitle($pageTitle);
         }
         parent::__construct();
 
@@ -109,6 +108,15 @@ class WebPage extends Page
 
         $this->javaScripts   = &$this->head->javaScripts;
         $this->cascadeStyles = &$this->head->cascadeStyles;
+    }
+    
+    /**
+     * 
+     * @return string
+     */
+    public function getPageTitle( )
+    {
+        return $this->pageTitle;
     }
 
     /**
@@ -145,7 +153,7 @@ class WebPage extends Page
      * @param mixed  $item         vkládaná položka
      * @param string $pageItemName Pod tímto jménem je objekt vkládán do stromu
      *
-     * @return Page poiner to object well included
+     * @return Document poiner to object well included
      */
     public function &addItem($item, $pageItemName = null)
     {
@@ -334,15 +342,14 @@ class WebPage extends Page
      */
     public function finalizeRegistred()
     {
-        $shared = \Ease\Shared::instanced();
         do {
-            foreach ($shared->allItems as $PartID => $part) {
+            foreach (self::$allItems as $PartID => $part) {
                 if (is_object($part) && method_exists($part, 'finalize')) {
                     $part->finalize();
                 }
-                unset($shared->allItems[$PartID]);
+                unset(self::$allItems[$PartID]);
             }
-        } while (count($shared->allItems));
+        } while (!empty(self::$allItems));
     }
 
     /**
@@ -396,4 +403,19 @@ class WebPage extends Page
     {
         $this->body->emptyContents();
     }
+    
+    /**
+     * @return WebPage
+     */
+    public static function singleton($pageTitle = null)
+    {
+        if (!isset(self::$instance)) {
+            self::$instance = new self($pageTitle);
+        }
+
+        return self::$instance;
+    }
+
+    
+    
 }

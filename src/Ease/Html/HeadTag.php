@@ -77,7 +77,7 @@ class HeadTag extends PairTag
      */
     public function finalize()
     {
-        $this->addItem('<title>'.\Ease\Shared::webPage()->pageTitle.'</title>');
+        $this->addItem('<title>'. \Ease\WebPage::singleton()->getPageTitle().'</title>');
     }
 
     /**

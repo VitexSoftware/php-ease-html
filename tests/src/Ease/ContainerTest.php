@@ -223,7 +223,7 @@ class ContainerTest extends SandTest
         $this->object->drawAllContents();
         switch (get_class($this->object)) {
             case 'Ease\Container':
-            case 'Ease\Page':
+            case 'Ease\Document':
                 $this->assertTrue(true);
                 break;
             default :
@@ -241,7 +241,7 @@ class ContainerTest extends SandTest
     {
         switch (get_class($this->object)) {
             case 'Ease\Container':
-            case 'Ease\Page':
+            case 'Ease\Document':
                 $this->assertEmpty($this->object->getRendered());
                 break;
             default :
@@ -309,7 +309,7 @@ class ContainerTest extends SandTest
         $this->object->draw();
         switch (get_class($this->object)) {
             case 'Ease\Container':
-            case 'Ease\Page':
+            case 'Ease\Document':
                 $this->assertTrue(true);
                 break;
             default :
@@ -331,7 +331,7 @@ class ContainerTest extends SandTest
         $result = $this->object->__toString();
         switch (get_class($this->object)) {
             case 'Ease\Container':
-            case 'Ease\Page':
+            case 'Ease\Document':
                 $this->assertTrue(true);
                 break;
             default :

@@ -7,7 +7,7 @@ namespace Ease;
  *
  * @author Vitex <vitex@hippy.cz>
  */
-class Part extends \Ease\Page
+class Part extends \Ease\Document
 {
     /**
      * Partname/Tag ID.
@@ -193,4 +193,5 @@ class Part extends \Ease\Page
             return $partProperties;
         }
     }
+    
 }

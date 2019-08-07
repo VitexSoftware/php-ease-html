@@ -64,7 +64,7 @@ $heap->addItem( new H1Tag('heading) );
 $heap->addItem( $group );
 ```
 
-**Ease\Page**
+**Ease\Document**
 
 Is smarter container able to hold Scripts and cascade styles
 

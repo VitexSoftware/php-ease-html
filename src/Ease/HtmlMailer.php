@@ -14,7 +14,7 @@ namespace Ease;
  *
  * @author Vitex <vitex@hippy.cz>
  */
-class HtmlMailer extends Page
+class HtmlMailer extends Document
 {
     /**
      * Objekt pro odesílání pošty.
