@@ -35,13 +35,6 @@ class Container extends Sand
     private $finalized = false;
 
     /**
-     * Které objekty převzít od přebírajícího objektu.
-     *
-     * @var array
-     */
-    public $raiseItems = [];
-
-    /**
      * Pointer to last item added
      * 
      * @var mixed 
@@ -57,33 +50,6 @@ class Container extends Sand
     {
         if (!empty($initialContent)) {
             $this->addItem($initialContent);
-        }
-    }
-
-    /**
-     * Projde $this->raiseItems (metoda_potomka=>proměnná_rodiče) a pokud v
-     * objektu najde metodu potomka, zavolá jí s parametrem
-     * $this->proměnná_rodiče.
-     *
-     * @param object $childObject  vkládaný objekt
-     * @param array  $itemsToRaise pole položek k "protlačení"
-     */
-    public function raise(&$childObject, $itemsToRaise = null)
-    {
-        if (!$itemsToRaise) {
-            $itemsToRaise = $childObject->raiseItems;
-        }
-
-        foreach ($itemsToRaise as $method => $property) {
-            if (method_exists($childObject, $method)) {
-                if (isset($this->$property)) {
-                    $childObject->$method($this->$property);
-                }
-            } else {
-                if (isset($this->$property)) {
-                    $childObject->$property = &$this->$property;
-                }
-            }
         }
     }
 
@@ -114,11 +80,6 @@ class Container extends Sand
                 $context->pageParts[$pageItemName]               = $pageItem;
                 $context->pageParts[$pageItemName]->parentObject = &$context;
 
-                if (isset($context->pageParts[$pageItemName]->raiseItems) && is_array($context->pageParts[$pageItemName]->raiseItems)
-                    && count($context->pageParts[$pageItemName]->raiseItems)
-                ) {
-                    $context->raise($context->pageParts[$pageItemName]);
-                }
                 if (method_exists($context->pageParts[$pageItemName], 'AfterAdd')) {
                     $context->pageParts[$pageItemName]->afterAdd($context);
                 }

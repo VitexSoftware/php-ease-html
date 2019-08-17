@@ -72,9 +72,9 @@ class Part extends \Ease\Document
      */
     public static function jQueryze()
     {
-        $webPage = \Ease\Shared::webPage();
-        $webPage->includeJavaScript($webPage->jqueryJavaScript, 0,
-            !strstr($webPage->jqueryJavaScript, '://'));
+        
+        \Ease\WebPage::singleton()->includeJavaScript(\Ease\WebPage::singleton()->jqueryJavaScript, 0,
+            !strstr(\Ease\WebPage::singleton()->jqueryJavaScript, '://'));
     }
 
     /**

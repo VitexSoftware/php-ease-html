@@ -14,14 +14,14 @@ class HeadTag extends PairTag
      *
      * @var array
      */
-    public $javaScripts = null;
+    public $javaScripts = [];
 
     /**
      * Css definitions.
      *
      * @var strig
      */
-    public $cascadeStyles = null;
+    public $cascadeStyles = [];
 
     /**
      * Content Charset
@@ -77,7 +77,7 @@ class HeadTag extends PairTag
      */
     public function finalize()
     {
-        $this->addItem('<title>'. \Ease\WebPage::singleton()->getPageTitle().'</title>');
+        $this->addItem('<title>'.\Ease\WebPage::singleton()->getPageTitle().'</title>');
     }
 
     /**
@@ -160,12 +160,8 @@ class HeadTag extends PairTag
      */
     public function draw()
     {
-        if (isset($this->easeShared->cascadeStyles) && !empty($this->easeShared->cascadeStyles)) {
-            $this->addItem(self::getStylesRendered($this->easeShared->cascadeStyles));
-        }
-        if (isset($this->easeShared->javaScripts) && !empty($this->easeShared->javaScripts)) {
-            $this->addItem(self::getScriptsRendered($this->easeShared->javaScripts));
-        }
+        $this->addItem(self::getStylesRendered(\Ease\WebPage::singleton()->cascadeStyles));
+        $this->addItem(self::getScriptsRendered(\Ease\WebPage::singleton()->javaScripts));
         parent::draw();
     }
 }

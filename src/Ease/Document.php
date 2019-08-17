@@ -67,7 +67,7 @@ class Document extends Container
     public function addJavaScript($javaScript, $position = null,
                                   $inDocumentReady = true)
     {
-        return \Ease\Shared::webPage()->addJavaScript($javaScript, $position,
+        return \Ease\WebPage::singleton()->addJavaScript($javaScript, $position,
                 $inDocumentReady);
     }
 
@@ -94,7 +94,7 @@ class Document extends Container
      */
     public function addCSS($css)
     {
-        return \Ease\Shared::webPage()->addCSS($css);
+        return \Ease\webPage::singleton()->addCSS($css);
     }
 
     /**
@@ -108,7 +108,7 @@ class Document extends Container
      */
     public function includeCss($cssFile, $fwPrefix = false, $media = 'screen')
     {
-        return \Ease\Shared::webPage()->includeCss($cssFile, $fwPrefix, $media);
+        return \Ease\WebPage::singleton()->includeCss($cssFile, $fwPrefix, $media);
     }
 
     /**

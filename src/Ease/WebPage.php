@@ -90,22 +90,17 @@ class WebPage extends Document
      */
     public function __construct($pageTitle = null, $toBody = null)
     {
-        Document::webPage($this);
         if (!is_null($pageTitle)) {
             $this->setPageTitle($pageTitle);
         }
         parent::__construct();
-
+        self::singleton($this);
         $this->pageParts['doctype'] = '<!DOCTYPE html>';
         parent::addItem(new Html\HtmlTag());
         $this->pageParts['html']->addItem(new Html\HeadTag());
         $this->pageParts['html']->addItem(new Html\BodyTag($toBody));
         $this->head                 = &$this->pageParts['html']->pageParts['head'];
-        $this->head->raise($this);
-
         $this->body = &$this->pageParts['html']->pageParts['body'];
-        $this->body->raise($this);
-
         $this->javaScripts   = &$this->head->javaScripts;
         $this->cascadeStyles = &$this->head->cascadeStyles;
     }
@@ -201,9 +196,9 @@ class WebPage extends Document
      */
     public function addToScriptsStack($code, $position = null)
     {
-        $javaScripts = &$this->easeShared->javaScripts;
+        $javaScripts = &$this->javaScripts;
         if (is_null($position)) {
-            if (is_array($javaScripts)) {
+            if (!empty($javaScripts)) {
                 $scriptFound = array_search($code, $javaScripts);
                 if (!$scriptFound && ($javaScripts[0] != $code)) {
                     $javaScripts[] = $code;
@@ -258,8 +253,7 @@ class WebPage extends Document
         if (is_array($css)) {
             $css = key($css).'{'.current($css).'}';
         }
-        $this->easeShared->cascadeStyles[md5($css)] = $css;
-
+        $this->cascadeStyles[md5($css)] = $css;
         return true;
     }
 
@@ -275,9 +269,9 @@ class WebPage extends Document
     public function includeCss($cssFile, $fwPrefix = false, $media = 'screen')
     {
         if ($fwPrefix) {
-            $this->easeShared->cascadeStyles[$this->cssPrefix.$cssFile] = $this->cssPrefix.$cssFile;
+            $this->cascadeStyles[$this->cssPrefix.$cssFile] = $this->cssPrefix.$cssFile;
         } else {
-            $this->easeShared->cascadeStyles[$cssFile] = $cssFile;
+            $this->cascadeStyles[$cssFile] = $cssFile;
         }
 
         return 1;
@@ -407,12 +401,11 @@ class WebPage extends Document
     /**
      * @return WebPage
      */
-    public static function singleton($pageTitle = null)
+    public static function singleton($webPage = null)
     {
         if (!isset(self::$instance)) {
-            self::$instance = new self($pageTitle);
+            self::$instance = is_object($webPage) ? $webPage : new self();
         }
-
         return self::$instance;
     }
 
