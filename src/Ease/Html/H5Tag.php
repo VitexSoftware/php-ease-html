@@ -3,11 +3,11 @@
 namespace Ease\Html;
 
 /**
- * HTML H4 tag.
+ * HTML H5 tag.
  *
  * @author Vitex <vitex@hippy.cz>
  */
-class H4Tag extends PairTag
+class H5Tag extends PairTag
 {
 
     /**
