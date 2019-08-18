@@ -16,7 +16,7 @@ class HtmlTag extends PairTag
      */
     public function __construct($content = null)
     {
-        parent::__construct('html', ['lang' => \Ease\Shared::locale()->get2Code()], $content);
+        parent::__construct('html', ['lang' => \Ease\Locale::singleton()->get2Code()], $content);
     }
 
     /**
