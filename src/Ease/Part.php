@@ -7,7 +7,7 @@ namespace Ease;
  *
  * @author Vitex <vitex@hippy.cz>
  */
-class Part extends \Ease\Document
+class Part extends Document
 {
     /**
      * Partname/Tag ID.
@@ -63,7 +63,7 @@ class Part extends \Ease\Document
     {
         $javaScript = $this->onDocumentReady();
         if ($javaScript) {
-            \Ease\Shared::webPage()->addJavaScript($javaScript, null, true);
+            WebPage::singleton()->addJavaScript($javaScript, null, true);
         }
     }
 
@@ -73,8 +73,8 @@ class Part extends \Ease\Document
     public static function jQueryze()
     {
         
-        \Ease\WebPage::singleton()->includeJavaScript(\Ease\WebPage::singleton()->jqueryJavaScript, 0,
-            !strstr(\Ease\WebPage::singleton()->jqueryJavaScript, '://'));
+        WebPage::singleton()->includeJavaScript(WebPage::singleton()->jqueryJavaScript, 0,
+            !strstr(WebPage::singleton()->jqueryJavaScript, '://'));
     }
 
     /**

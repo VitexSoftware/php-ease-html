@@ -19,7 +19,7 @@ class HeadTag extends PairTag
     /**
      * Css definitions.
      *
-     * @var strig
+     * @var array of strings
      */
     public $cascadeStyles = [];
 

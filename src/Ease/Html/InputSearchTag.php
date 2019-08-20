@@ -33,59 +33,7 @@ class InputSearchTag extends InputTag
         if ($name) {
             $properties['name'] = $name;
         }
-        if (!isset($properties['id'])) {
-            $this->setTagID($name.\Ease\Brick::randomString());
-        }
-        $this->setTagProperties($properties);
-        parent::__construct($name, $value);
+        parent::__construct($name, $value, $properties);
     }
 
-    /**
-     * Nastaví zdroj dat našeptávače.
-     *
-     * @param string $dataSourceURL url zdroje dat našeptávače ve formátu JSON
-     */
-    public function setDataSource($dataSourceURL)
-    {
-        $this->dataSourceURL = $dataSourceURL;
-    }
-
-    /**
-     * Vloží do stránky scripty pro hinter.
-     */
-    public function finalize()
-    {
-        if (!is_null($this->dataSourceURL)) {
-            \Ease\JQuery\UIPart::jQueryze();
-            $this->addCSS('.ui-autocomplete-loading { background: white url(\'Ease/css/images/ui-anim_basic_16x16.gif\') right center no-repeat; }');
-            $this->addJavaScript(
-                '
-    $( "#'.$this->getTagID().'" ).bind( "keydown", function (event) {
-            if ( event.keyCode === $.ui.keyCode.TAB &&
-                            $( this ).data( "autocomplete" ).menu.active ) {
-                    event.preventDefault();
-            }
-    })
-    .autocomplete({
-            source: function (request, response) {
-                    $.getJSON( "'.$this->dataSourceURL.'", { term: request.term }, response );
-            },
-            focus: function () {
-                    // prevent value inserted on focus
-                    return false;
-            },
-            open: function () {
-                    $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
-            },
-            close: function () {
-                    $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-            }
-    });
-
-
-
-            ', null, true
-            );
-        }
-    }
 }

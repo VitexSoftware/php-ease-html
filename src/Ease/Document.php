@@ -23,7 +23,7 @@ class Document extends Container
     /**
      * Odkaz na základní objekt stránky.
      *
-     * @var EaseWebPage
+     * @var WebPage
      */
     public static $webPage = null;
 
@@ -67,7 +67,7 @@ class Document extends Container
     public function addJavaScript($javaScript, $position = null,
                                   $inDocumentReady = true)
     {
-        return \Ease\WebPage::singleton()->addJavaScript($javaScript, $position,
+        return WebPage::singleton()->addJavaScript($javaScript, $position,
                 $inDocumentReady);
     }
 
@@ -81,7 +81,7 @@ class Document extends Container
      */
     public function includeJavaScript($javaScriptFile, $position = null)
     {
-        return \Ease\Shared::webPage()->includeJavaScript($javaScriptFile,
+        return WebPage::singleton()->includeJavaScript($javaScriptFile,
                 $position);
     }
 
@@ -108,7 +108,7 @@ class Document extends Container
      */
     public function includeCss($cssFile, $fwPrefix = false, $media = 'screen')
     {
-        return \Ease\WebPage::singleton()->includeCss($cssFile, $fwPrefix, $media);
+        return WebPage::singleton()->includeCss($cssFile, $fwPrefix, $media);
     }
 
     /**
@@ -184,11 +184,10 @@ class Document extends Container
             }
             $url = "$scheme://$host$path";
             if (!$dropqs) {
-                return "{$url}?{$qs}";
-            } else {
-                return $url;
+                $url = "{$url}?{$qs}";
             }
         }
+        return $url;
     }
 
     /**
@@ -198,10 +197,10 @@ class Document extends Container
      */
     public function onlyForLogged($loginPage = 'login.php', $message = null)
     {
-        $user = Shared::user();
-        if (!method_exists($user, 'isLogged') || !$user->isLogged()) {
+        
+        if (!method_exists(\Ease\User::singleton(), 'isLogged') || !$user->isLogged()) {
             if (!empty($message)) {
-                Shared::user()->addStatusMessage(_('Sign in first please'),
+                \Ease\User::singleton()->addStatusMessage(_('Sign in first please'),
                     'warning');
             }
             $this->redirect($loginPage);

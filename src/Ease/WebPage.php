@@ -180,7 +180,7 @@ class WebPage extends Document
      * @param string $position        končná pozice: '+','-','0','--',...
      * @param bool   $inDocumentReady vložit do DocumentReady bloku ?
      *
-     * @return string
+     * @return int
      */
     public function addJavaScript($javaScript, $position = null,
                                   $inDocumentReady = true)

@@ -20,7 +20,7 @@ class InputTag extends Tag
      * Obecný input TAG.
      *
      * @param string            $name       jméno tagu
-     * @param string|EaseObject $value      vracená hodnota
+     * @param string            $value      vracená hodnota
      * @param array             $properties vlastnosti tagu
      */
     public function __construct($name, $value = null, $properties = [])
@@ -31,10 +31,6 @@ class InputTag extends Tag
             $this->setTagProperties($properties);
         }
         if (!is_null($value)) {
-            //Pokud je hodnota EaseObjekt, vytáhne si hodnotu políčka z něj
-            if (is_object($value) && method_exists($value, 'getDataValue')) {
-                $value = $value->getDataValue($name);
-            }
             $this->setValue($value);
         }
     }

@@ -15,7 +15,7 @@ class Container extends Sand
      * Pole objektů a fragmentů k vykreslení.
      * Array of objects and fragments to draw
      *
-     * @var array|null
+     * @var array
      */
     public $pageParts = [];
 
@@ -60,7 +60,7 @@ class Container extends Sand
      * @param mixed  $context      Objekt do nějž jsou prvky/položky vkládány
      * @param string $pageItemName Pod tímto jménem je objekt vkládán do stromu
      *
-     * @return pointer Odkaz na vložený objekt
+     * @return mixed Odkaz na vložený objekt
      */
     public static function &addItemCustom($pageItem, $context,
                                           $pageItemName = null)
@@ -191,12 +191,11 @@ class Container extends Sand
     /**
      * Vrací odkaz na poslední vloženou položku.
      *
-     * @return EaseBrick|mixed
+     * @return Brick|mixed
      */
     public function &lastItem()
     {
-        $lastPart = end($this->pageParts);
-
+        $lastPart = empty($this->pageParts) ? null : end($this->pageParts);
         return $lastPart;
     }
 
@@ -344,7 +343,7 @@ class Container extends Sand
             $element = &$this;
         }
 
-        return !count($element->pageParts);
+        return empty($element->pageParts);
     }
 
     /**

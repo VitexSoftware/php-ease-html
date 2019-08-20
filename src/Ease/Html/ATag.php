@@ -19,13 +19,9 @@ class ATag extends PairTag
      */
     public function __construct($href, $contents = null, $properties = [])
     {
-        if (!is_array($properties)) {
-            $properties = [];
-        }
         if (!is_null($href)) {
             $properties['href'] = $href;
         }
         parent::__construct('a', $properties, $contents);
     }
-
 }

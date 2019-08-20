@@ -24,7 +24,7 @@ class SelectTag extends PairTag
     public $setName = true;
 
     /**
-     * @var pole hodnot k nabídnutí selectu
+     * @var array field values to use in select
      */
     public $items = [];
 
@@ -40,7 +40,7 @@ class SelectTag extends PairTag
      *
      * @param string $name         jmeno
      * @param array  $items        polozky
-     * @param mixed  $defaultValue id predvolene polozky
+     * @param string $defaultValue id predvolene polozky
      * @param array  $itemsIDs     id položek
      * @param array  $properties   tag properties
      */

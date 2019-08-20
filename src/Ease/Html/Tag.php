@@ -2,12 +2,15 @@
 
 namespace Ease\Html;
 
+use Ease\Document;
+use Ease\Functions;
+
 /**
  * Common HTML tag class.
  *
  * @author     Vitex <vitex@hippy.cz>
  */
-class Tag extends \Ease\Document
+class Tag extends Document
 {
     /**
      * Jméno tagu - je použit i jako jméno objektu.
@@ -64,11 +67,7 @@ class Tag extends \Ease\Document
      */
     public function __construct($tagType = null, $tagProperties = null)
     {
-        if (is_null($tagType)) {
-            $tagType = $this->tagType;
-        } else {
-            $this->setTagType($tagType);
-        }
+        $this->setTagType(is_null($tagType) ? $this->tagType : $tagType);
         parent::__construct();
         if ($tagProperties) {
             $this->setTagProperties($tagProperties);
@@ -193,7 +192,7 @@ class Tag extends \Ease\Document
     public function setTagID($tagID = null)
     {
         if (is_null($tagID)) {
-            $this->setTagProperties(['id' => \Ease\Functions::randomString()]);
+            $this->setTagProperties(['id' => Functions::randomString()]);
         } else {
             $this->setTagProperties(['id' => $tagID]);
         }
@@ -232,6 +231,8 @@ class Tag extends \Ease\Document
      * Nastaví paramatry tagu.
      *
      * @param mixed $tagProperties asociativní pole parametrů tagu
+     * 
+     * @return boolean operation success
      */
     public function setTagProperties(array $tagProperties)
     {
@@ -239,15 +240,16 @@ class Tag extends \Ease\Document
             $tagProperties['id'] = preg_replace('/[^A-Za-z0-9_\\-]/', '',
                 $tagProperties['id']);
         }
-        if (is_array($this->tagProperties)) {
+        if (empty($this->tagProperties)) {
+            $this->tagProperties = $tagProperties;
+        } else {
             $this->tagProperties = array_merge($this->tagProperties,
                 $tagProperties);
-        } else {
-            $this->tagProperties = $tagProperties;
         }
         if (isset($tagProperties['name'])) {
             $this->setTagName($tagProperties['name']);
         }
+        return true;
     }
 
     /**
@@ -305,13 +307,12 @@ class Tag extends \Ease\Document
      */
     public function cssPropertiesToString($cssProperties = null)
     {
-        $cssPropertiesString = '';
         if (!$cssProperties) {
             $cssProperties = $this->cssProperties;
         }
         $cssPropertiesString = ' ';
-        foreach ($cssProperties as $CssPropertyName => $CssPropertyValue) {
-            $cssPropertiesString .= $CssPropertyName.':'.$CssPropertyValue.';';
+        foreach ($cssProperties as $cssPropertyName => $cssPropertiesssPropertyValue) {
+            $cssPropertiesString .= $cssPropertyName.':'.$cssPropertiesssPropertyValue.';';
         }
         return trim($cssPropertiesString);
     }

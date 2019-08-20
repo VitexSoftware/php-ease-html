@@ -19,7 +19,7 @@ class TableTag extends PairTag
      * Table Body
      * @var Tbody
      */
-    public $tbody = null;
+    public $tBody = null;
 
     /**
      * Table Foot
@@ -130,7 +130,7 @@ class TableTag extends PairTag
      *
      * @param null $element je zde pouze z důvodu zpětné kompatibility
      *
-     * @return type
+     * @return booleanxc
      */
     public function isEmpty($element = null)
     {
