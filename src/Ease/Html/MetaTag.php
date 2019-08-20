@@ -7,17 +7,16 @@ namespace Ease\Html;
  *
  * @author Vitex <vitex@hippy.cz>
  */
-class MetaTag extends PairTag
+class MetaTag extends Tag
 {
 
     /**
      * Defines the main content of a document
      *
-     * @param mixed  $content    items included
      * @param array  $properties params array
      */
-    public function __construct($content = null, $properties = [])
+    public function __construct($properties = [])
     {
-        parent::__construct('meta', $properties, $content);
+        parent::__construct('meta', $properties);
     }
 }
