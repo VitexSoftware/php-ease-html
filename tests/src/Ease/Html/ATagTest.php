@@ -26,7 +26,7 @@ class ATagTest extends PairTagTest
      */
     protected function setUp(): void
     {
-        $this->object = new \Ease\Html\ATag('http://v.s.cz/', 'Vitex Software');
+        $this->object = new ATag('http://v.s.cz/', 'Vitex Software');
     }
 
     /**

@@ -38,23 +38,13 @@ class ContainerTest extends SandTest
         
     }
 
+    /**
+     * @covers Ease\Container::__construct
+     */
     public function testConstructor()
     {
-        parent::testConstructor();
         $tester = new \Ease\Container('test');
         $this->assertEquals('test', $tester->__toString());
-    }
-
-    /**
-     * @covers Ease\Container::raise
-     */
-    public function testRaise()
-    {
-        $div                   = new \Ease\Html\DivTag('TestDiv');
-        $this->object->webPage = new \Ease\WebPage('toRaise');
-        $this->object->raise($div);
-        $this->object->raise($div, ['webPage']);
-        $this->assertEquals($div->webPage, $this->object->webPage);
     }
 
     /**

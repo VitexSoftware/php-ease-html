@@ -17,7 +17,7 @@ class BodyTag extends PairTag
      * @param mixed  $content     items to be included
      * @param array  $properties  additional properties for tag
      */
-    public function __construct($content = null,$properties = null)
+    public function __construct($content = null, $properties = null)
     {
         parent::__construct('body', $properties, $content);
     }
@@ -30,5 +30,14 @@ class BodyTag extends PairTag
     public function setObjectName($objectName = null)
     {
         parent::setObjectName('body');
+    }
+
+    /**
+     * Vykreslí hlavičku HTML stránky.
+     */
+    public function draw()
+    {
+        $this->addItem(self::getScriptsRendered(\Ease\WebPage::singleton()->javaScripts));
+        parent::draw();
     }
 }

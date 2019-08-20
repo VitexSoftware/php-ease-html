@@ -130,6 +130,8 @@ class HeadTag extends PairTag
         return $scriptsRendered;
     }
 
+    
+    
     /**
      * Get included and inline Syles Fragment rendered
      * 
@@ -161,7 +163,6 @@ class HeadTag extends PairTag
     public function draw()
     {
         $this->addItem(self::getStylesRendered(\Ease\WebPage::singleton()->cascadeStyles));
-        $this->addItem(self::getScriptsRendered(\Ease\WebPage::singleton()->javaScripts));
         parent::draw();
     }
 }

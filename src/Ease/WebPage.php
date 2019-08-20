@@ -8,6 +8,10 @@
 
 namespace Ease;
 
+use Ease\Html\BodyTag;
+use Ease\Html\HeadTag;
+use Ease\Html\HtmlTag;
+
 /**
  * Common Web Page class
  *
@@ -15,12 +19,11 @@ namespace Ease;
  */
 class WebPage extends Document
 {
-    
     /**
      * Saves obejct instace (singleton...).
      */
     private static $instance = null;
-    
+
     /**
      * Where to look for jquery script
      * @var string path or url 
@@ -28,7 +31,7 @@ class WebPage extends Document
     public $jqueryJavaScript = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js';
 
     /**
-     * Pole Javasriptu k vykresleni.
+     * JavaScripts to be in page
      *
      * @var array
      */
@@ -51,14 +54,14 @@ class WebPage extends Document
     /**
      * head stránky.
      *
-     * @var Html\HeadTag
+     * @var HeadTag
      */
     public $head = null;
 
     /**
      * Objekt samotného těla stránky.
      *
-     * @var Html\BodyTag
+     * @var BodyTag
      */
     public $body = null;
 
@@ -96,20 +99,20 @@ class WebPage extends Document
         parent::__construct();
         self::singleton($this);
         $this->pageParts['doctype'] = '<!DOCTYPE html>';
-        parent::addItem(new Html\HtmlTag());
-        $this->pageParts['html']->addItem(new Html\HeadTag());
-        $this->pageParts['html']->addItem(new Html\BodyTag($toBody));
+        parent::addItem(new HtmlTag());
+        $this->pageParts['html']->addItem(new HeadTag());
+        $this->pageParts['html']->addItem(new BodyTag($toBody));
         $this->head                 = &$this->pageParts['html']->pageParts['head'];
-        $this->body = &$this->pageParts['html']->pageParts['body'];
-        $this->javaScripts   = &$this->head->javaScripts;
-        $this->cascadeStyles = &$this->head->cascadeStyles;
+        $this->body                 = &$this->pageParts['html']->pageParts['body'];
+        $this->javaScripts          = &$this->head->javaScripts;
+        $this->cascadeStyles        = &$this->head->cascadeStyles;
     }
-    
+
     /**
      * 
      * @return string
      */
-    public function getPageTitle( )
+    public function getPageTitle()
     {
         return $this->pageTitle;
     }
@@ -377,7 +380,7 @@ class WebPage extends Document
      * Je element prázdný ?
      * Is body element empty ?
      *
-     * @param Html\BodyTag $element Ease Html Element
+     * @param BodyTag $element Ease Html Element
      *
      * @return bool emptyness
      */
@@ -397,7 +400,7 @@ class WebPage extends Document
     {
         $this->body->emptyContents();
     }
-    
+
     /**
      * @return WebPage
      */
@@ -408,7 +411,4 @@ class WebPage extends Document
         }
         return self::$instance;
     }
-
-    
-    
 }
