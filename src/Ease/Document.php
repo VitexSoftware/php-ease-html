@@ -128,7 +128,7 @@ class Document extends Container
         } else {
             header('Location: '.$url);
         }
-        $this->pageClosed = true;
+        WebPage::$pageClosed = true;
     }
 
     /**
@@ -198,7 +198,7 @@ class Document extends Container
     public function onlyForLogged($loginPage = 'login.php', $message = null)
     {
         
-        if (!method_exists(\Ease\User::singleton(), 'isLogged') || !$user->isLogged()) {
+        if (!method_exists(\Ease\User::singleton(), 'isLogged') || !\Ease\User::singleton()->isLogged()) {
             if (!empty($message)) {
                 \Ease\User::singleton()->addStatusMessage(_('Sign in first please'),
                     'warning');

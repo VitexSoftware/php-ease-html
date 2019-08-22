@@ -1,7 +1,4 @@
 <?php
-
-use Ease\Html\PairTag;
-use Nette\Forms\Container;
 /**
  * Html form able to be recursive filled
  * Html formulář se schopností rekurzivne naplnit hodnotami vložené prvky.
@@ -128,9 +125,9 @@ class Form extends PairTag
      * Pokusí se najít ve vložených objektech tag zadaného jména.
      *
      * @param string        $searchFor jméno hledaného elementu
-     * @param EaseContainer $where     objekt v němž je hledáno
+     * @param Ease\Container $where     objekt v němž je hledáno
      *
-     * @return EaseContainer|class_with_method_that_declares_anonymous_class
+     * @return Ease\Container
      */
     public function &objectContentSearch($searchFor, $where = null)
     {
