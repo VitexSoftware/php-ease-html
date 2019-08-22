@@ -13,9 +13,9 @@ class ATag extends PairTag
     /**
      * zobrazí HTML odkaz.
      *
-     * @param string $href       url odkazu
-     * @param mixed  $contents   vkládaný obsah
-     * @param array  $properties parametry tagu
+     * @param string|null $href       url odkazu
+     * @param mixed       $contents   vkládaný obsah
+     * @param array       $properties parametry tagu
      */
     public function __construct($href, $contents = null, $properties = [])
     {

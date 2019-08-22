@@ -86,7 +86,7 @@ class Container extends Sand
                 $context->lastItem = &$context->pageParts[$pageItemName];
                 $itemPointer       = &$context->pageParts[$pageItemName];
             } else {
-                throw new Exception('Page Item object without draw() method: '.$pageItem);
+                throw new Exception('Page Item object without draw() method: '. print_r($pageItem,true));
             }
         } else {
             if (is_array($pageItem)) {
@@ -123,14 +123,14 @@ class Container extends Sand
      * @param mixed  $pageItem     hodnota nebo EaseObjekt s metodou draw()
      * @param string $pageItemName Pod tímto jménem je objekt vkládán do stromu
      *
-     * @return pointer Odkaz na vložený objekt
+     * @return mixed Odkaz na vložený objekt
      */
     public function &addAsFirst($pageItem, $pageItemName = null)
     {
         if (is_null($pageItemName)) {
             $pageItemName = '1st';
         }
-        $swap            = is_array($this->pageParts) ? $this->pageParts : [];
+        $swap            = $this->pageParts;
         $this->emptyContents();
         $itemPointer     = $this->addItem($pageItem, $pageItemName);
         $this->pageParts = array_merge(is_array($this->pageParts) ? $this->pageParts
