@@ -74,60 +74,12 @@ class Form extends PairTag
     }
 
     /**
-     * Změní jeden nebo více parametrů v ACTION url formuláře.
-     *
-     * @param array $parametersToChange pole parametrů
-     * @param bool  $replace            přepisovat již existující
-     */
-    public function changeActionParameter($parametersToChange, $replace = true)
-    {
-        if (is_array($parametersToChange) && count($parametersToChange)) {
-            foreach ($parametersToChange as $paramName => $paramValue) {
-                if ($paramValue === true) {
-                    unset($parametersToChange[$paramName]);
-                }
-            }
-            $targetParts        = explode('&',
-                str_replace('&&', '&', str_replace('?', '&', $this->formTarget)));
-            $formTargetComputed = '';
-            if (is_array($targetParts) && count($targetParts)) {
-                $targetPartsValues = [];
-                foreach ($targetParts as $targetPart) {
-                    if (!strstr($targetPart, '=')) {
-                        $formTargetComputed .= $targetPart;
-                        continue;
-                    }
-                    list($targetPartName, $targetPartValue) = explode('=',
-                        $targetPart);
-                    if ($targetPartValue === true) {
-                        continue;
-                    }
-                    $targetPartsValues[$targetPartName] = $targetPartValue;
-                }
-            }
-            if ($replace === true) {
-                $newTargPartVals = array_merge($targetPartsValues,
-                    $parametersToChange);
-            } else {
-                $newTargPartVals = array_merge($parametersToChange,
-                    $targetPartsValues);
-            }
-            $glueSign = '?';
-            foreach ($newTargPartVals as $newTargetPartsValName => $newTargetPartsValue) {
-                $formTargetComputed .= $glueSign.urlencode($newTargetPartsValName).'='.urlencode($newTargetPartsValue);
-                $glueSign           = '&';
-            }
-            $this->setFormTarget($formTargetComputed);
-        }
-    }
-
-    /**
      * Pokusí se najít ve vložených objektech tag zadaného jména.
      *
      * @param string        $searchFor jméno hledaného elementu
-     * @param Ease\Container $where     objekt v němž je hledáno
+     * @param \Ease\Container $where     objekt v němž je hledáno
      *
-     * @return Ease\Container
+     * @return \Ease\Container
      */
     public function &objectContentSearch($searchFor, $where = null)
     {

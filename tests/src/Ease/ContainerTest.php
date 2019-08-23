@@ -296,6 +296,7 @@ class ContainerTest extends SandTest
         ob_start();
         $this->object->emptyContents();
         $this->object->addItem(new \Ease\Html\SmallTag('test'));
+        $this->object->addItem('test2');
         $this->object->draw();
         switch (get_class($this->object)) {
             case 'Ease\Container':

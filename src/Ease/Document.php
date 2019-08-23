@@ -218,12 +218,7 @@ class Document extends Container
      */
     public function addItem($pageItem, $pageItemName = null)
     {
-        $result = null;
-        if (self::$pageClosed === false) {
-            $result = parent::addItem($pageItem, $pageItemName);
-        }
-
-        return $result;
+        return self::$pageClosed ? null : parent::addItem($pageItem, $pageItemName);
     }
 
     /**

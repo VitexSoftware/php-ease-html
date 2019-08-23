@@ -32,7 +32,7 @@ class OptionTag extends PairTag
     /**
      * Nastaví předvolenou položku.
      * 
-     * @return type
+     * @return boolean
      */
     public function setDefault()
     {

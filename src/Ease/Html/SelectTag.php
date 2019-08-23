@@ -12,7 +12,7 @@ class SelectTag extends PairTag
     /**
      * Předvolené položka #.
      *
-     * @var int
+     * @var string|int
      */
     public $defaultValue = null;
 
