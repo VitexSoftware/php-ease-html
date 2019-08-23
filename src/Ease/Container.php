@@ -9,7 +9,7 @@
 
 namespace Ease;
 
-class Container extends Sand
+class Container extends Sand implements Embedable  
 {
     /**
      * Pole objektů a fragmentů k vykreslení.
@@ -56,28 +56,21 @@ class Container extends Sand
     /**
      * Vloží další element do objektu.
      *
-     * @param mixed  $pageItem     hodnota nebo EaseObjekt s metodou draw()
-     * @param mixed  $context      Objekt do nějž jsou prvky/položky vkládány
-     * @param string $pageItemName Pod tímto jménem je objekt vkládán do stromu
+     * @param Embedable $pageItem     hodnota nebo EaseObjekt s metodou draw()
+     * @param Embedable $context      Objekt do nějž jsou prvky/položky vkládány
      *
      * @return mixed Odkaz na vložený objekt
      */
-    public static function &addItemCustom($pageItem, $context,
-                                          $pageItemName = null)
+    public static function &addItemCustom($pageItem, $context)
     {
         $itemPointer = null;
         if (is_object($pageItem)) {
             if (method_exists($pageItem, 'draw')) {
-                $duplicity = 1;
-                if (is_null($pageItemName) || !strlen($pageItemName)) {
-                    $pageItemName = $pageItem->getObjectName();
-                }
-
-                while (isset($context->pageParts[$pageItemName])) {
-                    $pageItemName = $pageItemName.$duplicity++;
-                }
-
-                $context->pageParts[$pageItemName]               = $pageItem;
+                
+                $context->pageParts[] = $pageItem;
+                
+                $pageItemName = key(array_slice($context->pageParts, -1, 1, true));
+                
                 $context->pageParts[$pageItemName]->parentObject = &$context;
 
                 if (method_exists($context->pageParts[$pageItemName], 'AfterAdd')) {
@@ -108,13 +101,12 @@ class Container extends Sand
      * Include next element into current object.
      *
      * @param mixed  $pageItem     value or EaseClass with draw() method
-     * @param string $pageItemName Custom 'storing' name
      *
      * @return mixed Pointer to included object
      */
-    public function addItem($pageItem, $pageItemName = null)
+    public function addItem($pageItem)
     {
-        return self::addItemCustom($pageItem, $this, $pageItemName);
+        return self::addItemCustom($pageItem, $this);
     }
 
     /**
@@ -199,14 +191,14 @@ class Container extends Sand
      *
      * @param object $pageItem hodnota nebo EaseObjekt s metodou draw()
      *
-     * @return bool success
+     * @return Container|null success
      */
     public function addToLastItem($pageItem)
     {
-        return $this->lastItem->addItem($pageItem);
+        return $this->isEmpty() ? $this->lastItem->addItem($pageItem) : null;
     }
 
-    /**
+    /**10.200.1.1
      * Vrací první vloženou položku.
      *
      * @param Container $pageItem kontext

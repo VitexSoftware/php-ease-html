@@ -24,7 +24,7 @@ class Tag extends Document
      *
      * @var string
      */
-    public $tagType = null;
+    private $tagType = null;
 
     /**
      * Pole vlastností tagu.
@@ -323,7 +323,7 @@ class Tag extends Document
     public function finalize()
     {
         if (!empty($this->cssProperties)) {
-            $this->tagProperties['style'] = $this->cssPropertiesToString();
+            $this->setTagProperties(['style' => $this->cssPropertiesToString()]);
         }
     }
 

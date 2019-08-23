@@ -99,11 +99,9 @@ class WebPage extends Document
         parent::__construct();
         self::singleton($this);
         $this->pageParts['doctype'] = '<!DOCTYPE html>';
-        parent::addItem(new HtmlTag());
-        $this->pageParts['html']->addItem(new HeadTag());
-        $this->pageParts['html']->addItem(new BodyTag($toBody));
-        $this->head                 = &$this->pageParts['html']->pageParts['head'];
-        $this->body                 = &$this->pageParts['html']->pageParts['body'];
+        $html = parent::addItem(new HtmlTag());
+        $this->head  = $html->addItem(new HeadTag());
+        $this->body  = $html->addItem(new BodyTag($toBody));
         $this->javaScripts          = &$this->head->javaScripts;
         $this->cascadeStyles        = &$this->head->cascadeStyles;
     }
@@ -199,7 +197,7 @@ class WebPage extends Document
      */
     public function addToScriptsStack($code, $position = null)
     {
-        $javaScripts = &$this->javaScripts;
+        $javaScripts = & \Ease\WebPage::singleton()->javaScripts;
         if (is_null($position)) {
             if (!empty($javaScripts)) {
                 $scriptFound = array_search($code, $javaScripts);

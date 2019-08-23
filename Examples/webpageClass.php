@@ -12,6 +12,8 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 $oPage = new \Ease\WebPage('Ease WebPage');
 
+$oPage->addJavaScript("alert('HI');",null,false);
+
 $oPage->addItem(new \Ease\Html\HeaderTag(new \Ease\Html\H1Tag('Web Page')));
 
 $oPage->addItem(new \Ease\Html\ArticleTag('Example'));
