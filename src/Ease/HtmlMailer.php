@@ -196,7 +196,6 @@ class HtmlMailer extends Document
                 $mailBody = $this->htmlBody->addItem($item, $pageItemName);
             } else {
                 $this->htmlDocument = new Html\HtmlTag(new Html\SimpleHeadTag(new Html\TitleTag($this->emailSubject)));
-                $this->htmlDocument->setOutputFormat($this->getOutputFormat());
                 $this->htmlBody     = $this->htmlDocument->addItem(new Html\BodyTag($item));
                 $mailBody           = $this->htmlDocument;
             }
