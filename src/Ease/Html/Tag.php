@@ -62,12 +62,12 @@ class Tag extends Document
     /**
      * Objekt pro vykreslení obecného nepárového html tagu.
      *
-     * @param string       $tagType       typ tagu
-     * @param array|string $tagProperties parametry tagu
+     * @param string  $tagType       typ tagu
+     * @param array   $tagProperties parametry tagu
      */
     public function __construct($tagType = null, $tagProperties = null)
     {
-        $this->setTagType(is_null($tagType) ? $this->tagType : $tagType);
+        $this->setTagType(is_null($tagType) ? $this->getTagType() : $tagType);
         parent::__construct();
         if ($tagProperties) {
             $this->setTagProperties($tagProperties);

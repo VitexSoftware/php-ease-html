@@ -23,4 +23,4 @@ $ar->addTagClass('cssclasname2');
 
 $ar->addItem([ new \Ease\Html\SpanTag(), ' &nbsp; ', new \Ease\Html\DivTag()  ]);
 
-echo $ar->draw();
+$ar->draw();

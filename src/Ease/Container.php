@@ -9,7 +9,7 @@
 
 namespace Ease;
 
-class Container extends Sand implements Embedable  
+class Container extends Sand /** implements Embedable  * */
 {
     /**
      * Pole objektů a fragmentů k vykreslení.
@@ -44,7 +44,7 @@ class Container extends Sand implements Embedable
     /**
      * Kontejner, který může obsahovat vložené objekty, které se vykreslí.
      *
-     * @param mixed $initialContent hodnota nebo EaseObjekt s metodou draw()
+     * @param Embedable|string $initialContent hodnota nebo EaseObjekt s metodou draw()
      */
     public function __construct($initialContent = null)
     {
@@ -56,8 +56,8 @@ class Container extends Sand implements Embedable
     /**
      * Vloží další element do objektu.
      *
-     * @param Embedable $pageItem     hodnota nebo EaseObjekt s metodou draw()
-     * @param Embedable $context      Objekt do nějž jsou prvky/položky vkládány
+     * @param Embedable|string $pageItem     hodnota nebo EaseObjekt s metodou draw()
+     * @param Embedable        $context      Objekt do nějž jsou prvky/položky vkládány
      *
      * @return mixed Odkaz na vložený objekt
      */
@@ -66,11 +66,11 @@ class Container extends Sand implements Embedable
         $itemPointer = null;
         if (is_object($pageItem)) {
             if (method_exists($pageItem, 'draw')) {
-                
+
                 $context->pageParts[] = $pageItem;
-                
+
                 $pageItemName = key(array_slice($context->pageParts, -1, 1, true));
-                
+
                 $context->pageParts[$pageItemName]->parentObject = &$context;
 
                 if (method_exists($context->pageParts[$pageItemName], 'AfterAdd')) {
@@ -79,7 +79,8 @@ class Container extends Sand implements Embedable
                 $context->lastItem = &$context->pageParts[$pageItemName];
                 $itemPointer       = &$context->pageParts[$pageItemName];
             } else {
-                throw new Exception('Page Item object without draw() method: '. print_r($pageItem,true));
+                throw new Exception('Page Item object without draw() method: '.print_r($pageItem,
+                        true));
             }
         } else {
             if (is_array($pageItem)) {
@@ -100,7 +101,7 @@ class Container extends Sand implements Embedable
     /**
      * Include next element into current object.
      *
-     * @param mixed  $pageItem     value or EaseClass with draw() method
+     * @param Embedable|string  $pageItem     value or EaseClass with draw() method
      *
      * @return mixed Pointer to included object
      */
@@ -119,9 +120,9 @@ class Container extends Sand implements Embedable
      */
     public function &addAsFirst($pageItem, $pageItemName = null)
     {
-        $swap            = $this->pageParts;
+        $swap        = $this->pageParts;
         $this->emptyContents();
-        $itemPointer     = $this->addItem($pageItem);
+        $itemPointer = $this->addItem($pageItem);
         $this->addItems($swap);
         return $itemPointer;
     }
@@ -198,10 +199,10 @@ class Container extends Sand implements Embedable
         return $this->isEmpty() ? $this->lastItem->addItem($pageItem) : null;
     }
 
-    /**10.200.1.1
+    /**
      * Vrací první vloženou položku.
      *
-     * @param Container $pageItem kontext
+     * @param Embedable $pageItem kontext
      */
     public function &getFirstPart($pageItem = null)
     {

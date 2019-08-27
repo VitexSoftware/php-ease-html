@@ -8,6 +8,13 @@
 
 namespace Ease;
 
+use Ease\Html\BodyTag;
+use Ease\Html\HtmlTag;
+use Ease\Html\SimpleHeadTag;
+use Ease\Html\TitleTag;
+use Mail;
+use Mail_mime;
+
 /**
  * Build & Send email
  * Sestaví a odešle mail.
@@ -69,14 +76,14 @@ class HtmlMailer extends Document
     /**
      * Objekt stránky pro rendrování do mailu.
      *
-     * @var Html\HtmlTag
+     * @var HtmlTag
      */
     public $htmlDocument = null;
 
     /**
      * Ukazatel na BODY html dokumentu.
      *
-     * @var Html\BodyTag
+     * @var BodyTag
      */
     public $htmlBody = null;
 
@@ -124,7 +131,7 @@ class HtmlMailer extends Document
             'eol' => $this->crLf,
         );
 
-        $this->mimer = new \Mail_mime($mimer_params);
+        $this->mimer = new Mail_mime($mimer_params);
 
         parent::__construct();
 
@@ -191,13 +198,12 @@ class HtmlMailer extends Document
         if (is_object($item)) {
             if (is_object($this->htmlDocument)) {
                 if (is_null($this->htmlBody)) {
-                    $this->htmlBody = new Html\BodyTag();
+                    $this->htmlBody = new BodyTag();
                 }
                 $mailBody = $this->htmlBody->addItem($item, $pageItemName);
             } else {
-                $this->htmlDocument = new Html\HtmlTag(new Html\SimpleHeadTag(new Html\TitleTag($this->emailSubject)));
-                $this->htmlDocument->setOutputFormat($this->getOutputFormat());
-                $this->htmlBody     = $this->htmlDocument->addItem(new Html\BodyTag($item));
+                $this->htmlDocument = new HtmlTag(new SimpleHeadTag(new TitleTag($this->emailSubject)));
+                $this->htmlBody     = $this->htmlDocument->addItem(new BodyTag($item));
                 $mailBody           = $this->htmlDocument;
             }
         } else {
@@ -301,7 +307,7 @@ class HtmlMailer extends Document
             $this->finalize();
         }
 
-        $oMail = new \Mail();
+        $oMail = new Mail();
         if (count($this->parameters)) {
             $this->mailer = $oMail->factory('smtp', $this->parameters);
         } else {
@@ -340,7 +346,7 @@ class HtmlMailer extends Document
      *
      * @param mixed $pageItem hodnota nebo EaseObjekt s metodou draw()
      *
-     * @return pointer Odkaz na vložený objekt
+     * @return Container Odkaz na vložený objekt
      */
     public function &addNextTo($pageItem)
     {

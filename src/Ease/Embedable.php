@@ -13,12 +13,18 @@ namespace Ease;
  */
 interface Embedable
 {
+
     /**
      * Include next element into current object.
      *
-     * @param mixed  $pageItem     value or EaseClass with draw() method
+     * @param Embedable|string  $pageItem     value or EaseClass with draw() method
      *
      * @return mixed Pointer to included object
      */
     public function addItem($pageItem);
+
+    /**
+     * Recursive draw object and its contents
+     */
+    public function draw();
 }

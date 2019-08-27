@@ -128,13 +128,13 @@ class TableTag extends PairTag
     /**
      * Is Table Empty ?
      *
-     * @param null $element je zde pouze z důvodu zpětné kompatibility
+     * @param Container|null $element je zde pouze z důvodu zpětné kompatibility
      *
-     * @return booleanxc
+     * @return boolean
      */
     public function isEmpty($element = null)
     {
-        return $this->tBody->isEmpty();
+        return $this->tBody->isEmpty($element);
     }
 
     /**

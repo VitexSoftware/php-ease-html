@@ -212,13 +212,12 @@ class Document extends Container
      * Include next element into current page (if not closed).
      *
      * @param mixed  $pageItem     value or EaseClass with draw() method
-     * @param string $pageItemName Custom 'storing' name
      *
      * @return mixed Pointer to included object
      */
-    public function addItem($pageItem, $pageItemName = null)
+    public function addItem($pageItem)
     {
-        return self::$pageClosed ? null : parent::addItem($pageItem, $pageItemName);
+        return self::$pageClosed ? null : parent::addItem($pageItem);
     }
 
     /**
