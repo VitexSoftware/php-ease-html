@@ -287,13 +287,10 @@ class WebPage extends Document
      */
     public function getStatusMessagesAsHtml($what = null)
     {
-        if (!count($this->easeShared->statusMessages)) {
-            return '';
-        }
         $htmlFargment = '';
 
         $allMessages = [];
-        foreach ($this->easeShared->statusMessages as $Quee => $messages) {
+        foreach (\Ease\Shared::singleton()->getStatusMessages() as $Quee => $messages) {
             foreach ($messages as $mesgID => $message) {
                 $allMessages[$mesgID][$Quee] = $message;
             }
