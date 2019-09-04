@@ -49,6 +49,9 @@ class TagTest extends DocumentTest
         $mock->__construct('Test');
 
         $mock->__construct('Tag', ['name' => 'Tag', 'id' => 'testing']);
+
+        $this->assertEquals('<Tag name="Tag" id="testing" />',
+            $mock->getRendered());
     }
 
     /**

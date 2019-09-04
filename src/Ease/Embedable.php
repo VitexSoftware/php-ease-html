@@ -33,6 +33,16 @@ interface Embedable
     public function setEmbedName($embedName);
 
     /**
+     * Method executed after adding object into new one
+     */
+    public function afterAdd();
+    
+    /**
+     * Method executed before rendering
+     */
+    public function finalize();
+
+    /**
      * Recursive draw object and its contents
      */
     public function draw();

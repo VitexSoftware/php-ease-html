@@ -35,13 +35,6 @@ class Container extends Sand implements Embedable
     private $finalized = false;
 
     /**
-     * Pointer to last item added
-     * 
-     * @var mixed 
-     */
-    public $lastItem = null;
-    
-    /**
      *
      * @var string|null 
      */
@@ -71,24 +64,15 @@ class Container extends Sand implements Embedable
     {
         $itemPointer = null;
         if (is_object($pageItem)) {
-            if (method_exists($pageItem, 'draw')) {
+            $context->pageParts[] = $pageItem;
 
-                $context->pageParts[] = $pageItem;
+            $pageItemName = key(array_slice($context->pageParts, -1, 1, true));
 
-                $pageItemName = key(array_slice($context->pageParts, -1, 1, true));
+            $context->pageParts[$pageItemName]->parentObject = &$context;
+            $context->pageParts[$pageItemName]->setEmbedName($pageItemName);
+            $context->pageParts[$pageItemName]->afterAdd($context);
 
-                $context->pageParts[$pageItemName]->parentObject = &$context;
-                $context->pageParts[$pageItemName]->setEmbedName($pageItemName);
-                
-                if (method_exists($context->pageParts[$pageItemName], 'AfterAdd')) {
-                    $context->pageParts[$pageItemName]->afterAdd($context);
-                }
-                $context->lastItem = &$context->pageParts[$pageItemName];
-                $itemPointer       = &$context->pageParts[$pageItemName];
-            } else {
-                throw new Exception('Page Item object without draw() method: '.print_r($pageItem,
-                        true));
-            }
+            $itemPointer = &$context->pageParts[$pageItemName];
         } else {
             if (is_array($pageItem)) {
                 $addedItemPointer = $context->addItems($pageItem);
@@ -112,12 +96,12 @@ class Container extends Sand implements Embedable
      *
      * @return boolean success
      */
-    public function setEmbedName($embedName){
-        $this->embedName  = $embedName;
+    public function setEmbedName($embedName)
+    {
+        $this->embedName = $embedName;
         return true;
     }
-    
-    
+
     /**
      * Include next element into current object.
      *
@@ -216,26 +200,15 @@ class Container extends Sand implements Embedable
      */
     public function addToLastItem($pageItem)
     {
-        return $this->isEmpty() ? $this->lastItem->addItem($pageItem) : null;
+        return $this->isEmpty() ? null : end($this->pageParts)->addItem($pageItem);
     }
 
     /**
      * Vrací první vloženou položku.
-     *
-     * @param Embedable $pageItem kontext
      */
-    public function &getFirstPart($pageItem = null)
+    public function getFirstPart()
     {
-        if (!$pageItem) {
-            $pageItem = &$this;
-        }
-        if (!empty($pageItem->pageParts) && is_array($pageItem->pageParts)) {
-            $firstPart = & $pageItem->pageParts[ count($pageItem->pageParts) ];
-        } else {
-            $firstPart = null;
-        }
-
-        return $firstPart;
+        return $this->isEmpty() ? null : reset($this->pageParts);
     }
 
     /**
@@ -260,7 +233,7 @@ class Container extends Sand implements Embedable
      */
     public function emptyContents()
     {
-        $this->pageParts = null;
+        $this->pageParts = [];
     }
 
     /**
@@ -341,17 +314,11 @@ class Container extends Sand implements Embedable
     /**
      * Je element prázdný ?
      *
-     * @param Container $element Ease Html Element
-     *
      * @return bool prázdnost
      */
-    public function isEmpty($element = null)
+    public function isEmpty()
     {
-        if (is_null($element)) {
-            $element = &$this;
-        }
-
-        return empty($element->pageParts);
+        return empty($this->pageParts);
     }
 
     /**
@@ -371,6 +338,22 @@ class Container extends Sand implements Embedable
             }
         }
         $this->drawStatus = true;
+    }
+
+    /**
+     * Method executed after adding object into new one
+     */
+    public function afterAdd()
+    {
+        
+    }
+
+    /**
+     * Method executed before rendering
+     */
+    public function finalize()
+    {
+        
     }
 
     /**
