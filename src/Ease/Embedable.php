@@ -22,6 +22,15 @@ interface Embedable
      * @return mixed Pointer to included object
      */
     public function addItem($pageItem);
+    
+    /**
+     * Notify component about its embed name
+     * 
+     * @param string  $embedName parent::$pageParts[$embedName] == self
+     *
+     * @return boolean success
+     */
+    public function setEmbedName($embedName);
 
     /**
      * Recursive draw object and its contents

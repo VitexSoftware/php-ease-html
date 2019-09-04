@@ -117,7 +117,9 @@ class DocumentTest extends ContainerTest
      */
     public function testGetRequestValues()
     {
-        $this->object->getRequestValues();
+        $_REQUEST = ['a' => 1,'b' => 2];
+        $this->assertEquals(['a' => 1, 'b' => 2],
+            $this->object->getRequestValues());
     }
 
     /**
@@ -190,19 +192,16 @@ class DocumentTest extends ContainerTest
     }
 
     /**
-     * @covers Ease\Document::takeStatusMessages
-     */
-    public function testTakeStatusMessages()
-    {
-        $this->object->takeStatusMessages(['info' => ['test', 'test2']]);
-    }
-
-    /**
      * @covers Ease\Document::arrayToUrlParams
      */
     public function testArrayToUrlParams()
     {
-        $this->object->arrayToUrlParams(['a' => 1, 'b' => 2], 'http://v.s.cz/');
+        $this->assertEquals('http://v.s.cz/?a=1&b=2',
+            $this->object->arrayToUrlParams(['a' => 1, 'b' => 2],
+                'http://v.s.cz/'));
+        $this->assertEquals('http://v.s.cz/?d=3&a=1&b=2',
+            $this->object->arrayToUrlParams(['a' => 1, 'b' => 2],
+                'http://v.s.cz/?d=3'));
     }
 
     /**

@@ -9,7 +9,7 @@
 
 namespace Ease;
 
-class Container extends Sand /** implements Embedable  * */
+class Container extends Sand implements Embedable
 {
     /**
      * Pole objektů a fragmentů k vykreslení.
@@ -40,6 +40,12 @@ class Container extends Sand /** implements Embedable  * */
      * @var mixed 
      */
     public $lastItem = null;
+    
+    /**
+     *
+     * @var string|null 
+     */
+    private $embedName = null;
 
     /**
      * Kontejner, který může obsahovat vložené objekty, které se vykreslí.
@@ -61,7 +67,7 @@ class Container extends Sand /** implements Embedable  * */
      *
      * @return mixed Odkaz na vložený objekt
      */
-    public static function &addItemCustom($pageItem, $context)
+    public static function &addItemCustom($pageItem, Embedable $context)
     {
         $itemPointer = null;
         if (is_object($pageItem)) {
@@ -72,7 +78,8 @@ class Container extends Sand /** implements Embedable  * */
                 $pageItemName = key(array_slice($context->pageParts, -1, 1, true));
 
                 $context->pageParts[$pageItemName]->parentObject = &$context;
-
+                $context->pageParts[$pageItemName]->setEmbedName($pageItemName);
+                
                 if (method_exists($context->pageParts[$pageItemName], 'AfterAdd')) {
                     $context->pageParts[$pageItemName]->afterAdd($context);
                 }
@@ -98,6 +105,19 @@ class Container extends Sand /** implements Embedable  * */
         return $itemPointer;
     }
 
+    /**
+     * Notify component about its embed name
+     * 
+     * @param string  $embedName parent::$pageParts[$embedName] == self
+     *
+     * @return boolean success
+     */
+    public function setEmbedName($embedName){
+        $this->embedName  = $embedName;
+        return true;
+    }
+    
+    
     /**
      * Include next element into current object.
      *
@@ -132,8 +152,8 @@ class Container extends Sand /** implements Embedable  * */
      */
     public function suicide()
     {
-        if (isset($this->parentObject) && isset($this->parentObject->pageParts[$this->getObjectName()])) {
-            unset($this->parentObject->pageParts[$this->getObjectName()]);
+        if (isset($this->parentObject) && isset($this->parentObject->pageParts[$this->embedName])) {
+            unset($this->parentObject->pageParts[$this->embedName]);
 
             return true;
         } else {
@@ -210,7 +230,7 @@ class Container extends Sand /** implements Embedable  * */
             $pageItem = &$this;
         }
         if (!empty($pageItem->pageParts) && is_array($pageItem->pageParts)) {
-            $firstPart = reset($pageItem->pageParts);
+            $firstPart = & $pageItem->pageParts[ count($pageItem->pageParts) ];
         } else {
             $firstPart = null;
         }

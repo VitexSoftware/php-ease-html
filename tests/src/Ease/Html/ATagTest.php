@@ -38,16 +38,25 @@ class ATagTest extends PairTagTest
         
     }
 
-    /**
-     * @covers Ease\Html\ATag::tagPropertiesToString
-     */
-    public function testTagPropertiesToString()
+    public function testConstructor()
     {
-        $this->object->setTagProperties(['id' => 'Test', 'name' => 'unit']);
-        $this->assertEquals('href="http://v.s.cz/" id="Test" name="unit"',
-            $this->object->tagPropertiesToString());
-        $this->assertEquals('id="Test2" name="unit2"',
-            $this->object->tagPropertiesToString(['id' => 'Test2', 'name' => 'unit2']));
+        $classname = get_class($this->object);
+
+        // Get mock, without the constructor being called
+        $mock = $this->getMockBuilder($classname)
+            ->disableOriginalConstructor()
+            ->getMockForAbstractClass();
+
+        $mock->__construct('#test');
+        $mock->__construct('http://v.s.cz/', 'Initial Content');
+        $mock->__construct('https://php.net', 'PHP', ['title' => 'test']);
     }
 
+    /**
+     * @covers Ease\ATag::drawIfNotDrawn
+     */
+    public function testDrawIfNotDrawn($canBeEmpty = false)
+    {
+        parent::testDrawIfNotDrawn($canBeEmpty);
+    }
 }

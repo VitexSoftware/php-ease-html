@@ -356,55 +356,6 @@ class Document extends Container
         return isset($_POST) && count($_POST);
     }
 
-    /**
-     * Převezme hlášky z pole nebo objektu.
-     *
-     * @param mixed $msgSource zdroj zpráv - pole nebo EaseObjekt
-     * @param array $denyQues  neprevezme tyto typy
-     *
-     * @return int počet převzatých hlášek
-     */
-    public function takeStatusMessages($msgSource, $denyQues = null)
-    {
-        if (is_array($msgSource) && count($msgSource)) {
-            $allMessages = [];
-            foreach ($msgSource as $quee => $messages) {
-                if (is_array($denyQues) && in_array($quee, $denyQues)) {
-                    continue;
-                }
-                foreach ($messages as $mesgID => $message) {
-                    $allMessages[$mesgID][$quee] = $message;
-                }
-            }
-            ksort($allMessages);
-            foreach ($allMessages as $message) {
-                $quee = key($message);
-                $this->addStatusMessage(reset($message), $quee);
-            }
-
-            return count($msgSource);
-        }
-        if (is_object($msgSource)) {
-            if (isset($msgSource->statusMessages) && count($msgSource->statusMessages)) {
-                $msgTaken = count($msgSource->statusMessages);
-                $this->addStatusMessages($msgSource->getStatusMessages(true));
-
-                return $msgTaken;
-            } else {
-                if (isset($msgSource->webPage) && isset($msgSource->webPage->statusMessages)
-                    && count($msgSource->webPage->statusMessages)) {
-                    $msgTaken                           = count($msgSource->webPage->statusMessages);
-                    $this->statusMessages               = array_merge($this->statusMessages,
-                        $msgSource->webPage->statusMessages);
-                    $msgSource->webPage->statusMessages = [];
-
-                    return $msgTaken;
-                }
-            }
-        }
-
-        return 0;
-    }
 
     /**
      * Vrací pole jako parametry URL.

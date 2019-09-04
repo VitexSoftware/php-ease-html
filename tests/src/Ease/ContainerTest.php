@@ -120,11 +120,10 @@ class ContainerTest extends SandTest
      */
     public function testAddNextTo()
     {
-        $testDiv                = $this->object->addItem(new \Ease\Html\DivTag());
+        $this->object->emptyContents();
+        $testDiv = $this->object->addItem(new \Ease\Html\DivTag());
         $testDiv->addNextTo(new \Ease\Html\SpanTag());
-        $testSpan               = new \Ease\Html\SpanTag();
-        $testSpan->parentObject = $this->object;
-        $this->assertEquals($testSpan, end($this->object->pageParts));
+        $this->assertEquals(2, $this->object->getItemsCount());
     }
 
     /**
@@ -135,9 +134,7 @@ class ContainerTest extends SandTest
         $this->object->addItem(new \Ease\Html\DivTag());
         $this->object->addItem(new \Ease\Html\ATag('', ''));
         $this->object->addItem(new \Ease\Html\PTag());
-        $testP               = new \Ease\Html\PTag();
-        $testP->parentObject = $this->object;
-        $this->assertEquals($testP, $this->object->lastItem());
+        $this->assertInstanceOf('\Ease\Html\PTag', $this->object->lastItem());
     }
 
     /**
@@ -147,11 +144,8 @@ class ContainerTest extends SandTest
     {
         $this->object->emptyContents();
         $this->object->addItem(new \Ease\Html\DivTag());
-
-        $testobj = new \Ease\Html\SpanTag('test');
-
-        $this->object->addToLastItem($testobj);
-        $this->assertEquals($testobj,
+        $this->object->addToLastItem(new \Ease\Html\PreTag());
+        $this->assertInstanceOf('\Ease\Html\PreTag',
             $this->object->getFirstPart()->getFirstPart());
     }
 
@@ -186,7 +180,7 @@ class ContainerTest extends SandTest
     public function testAddItems()
     {
         $this->object->emptyContents();
-        $this->object->addItems([new \Ease\Html\DivTag(), new \Ease\Html\Span()]);
+        $this->object->addItems([new \Ease\Html\DivTag(), new \Ease\Html\SpanTag()]);
         $this->assertEquals(2, $this->object->getItemsCount());
     }
 
