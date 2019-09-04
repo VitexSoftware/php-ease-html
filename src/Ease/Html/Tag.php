@@ -211,6 +211,19 @@ class Tag extends Document
     }
 
     /**
+     * Set Tag property to given value
+     * 
+     * @param string $name
+     * @param string $value
+     * 
+     * @return boolean
+     */
+    public function setTagProperty($name,$value){
+        $this->tagProperties[$name] = $value;
+        return true;
+    }
+    
+    /**
      * Returns property tag value.
      *
      * @param string $propertyName název vlastnosti tagu. např. "src" u obrázku
