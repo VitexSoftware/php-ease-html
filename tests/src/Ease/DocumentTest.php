@@ -51,8 +51,10 @@ class DocumentTest extends ContainerTest
      */
     public function testAddJavaScript()
     {
-        $this->object->addJavaScript('alert("hallo");');
-        $this->object->addJavaScript('alert("world");', false);
+        \Ease\WebPage::singleton()->javaScripts = [];
+        $this->assertEquals(0, $this->object->addJavaScript('alert("hallo");'));
+        $this->assertEquals(1,
+            $this->object->addJavaScript('alert("world");', false));
     }
 
     /**
@@ -60,7 +62,7 @@ class DocumentTest extends ContainerTest
      */
     public function testIncludeJavaScript()
     {
-        $this->object->includeJavaScript('test.js');
+        $this->assertEquals(0, $this->object->includeJavaScript('test.js'));
     }
 
     /**
@@ -68,7 +70,7 @@ class DocumentTest extends ContainerTest
      */
     public function testAddCSS()
     {
-        $this->object->addCSS('.test {color:red;}');
+        $this->assertTrue($this->object->addCSS('.test {color:red;}'));
     }
 
     /**
@@ -76,7 +78,7 @@ class DocumentTest extends ContainerTest
      */
     public function testIncludeCss()
     {
-        $this->object->includeCss('test.css');
+        $this->assertEquals(1, $this->object->includeCss('test.css'));
     }
 
     /**
@@ -84,7 +86,7 @@ class DocumentTest extends ContainerTest
      */
     public function testRedirect()
     {
-        $this->object->redirect('http://v.s.cz/');
+        $this->assertEquals(0, $this->object->redirect('http://v.s.cz/'));
     }
 
     /**
@@ -93,7 +95,7 @@ class DocumentTest extends ContainerTest
     public function testGetUri()
     {
         $_SERVER['REQUEST_URI'] = 'test';
-        Document::getUri();
+        $this->assertEquals('test', Document::getUri());
     }
 
     /**
@@ -109,7 +111,7 @@ class DocumentTest extends ContainerTest
      */
     public function testOnlyForLogged()
     {
-        $this->object->onlyForLogged();
+        $this->assertEquals(0, $this->object->onlyForLogged());
     }
 
     /**
@@ -117,7 +119,7 @@ class DocumentTest extends ContainerTest
      */
     public function testGetRequestValues()
     {
-        $_REQUEST = ['a' => 1,'b' => 2];
+        $_REQUEST = ['a' => 1, 'b' => 2];
         $this->assertEquals(['a' => 1, 'b' => 2],
             $this->object->getRequestValues());
     }
@@ -220,12 +222,12 @@ class DocumentTest extends ContainerTest
     }
 
     /**
-     * @covers Ease\Shared::registerItem
+     * @covers Ease\Document::registerItem
      */
     public function testRegisterItem()
     {
         $item = new ATag('#');
-        Shared::registerItem($item);
-        $this->assertInstanceOf(get_class($item), end($this->object->allItems));
+        Document::registerItem($item);
+        $this->assertInstanceOf(get_class($item), end(Document::$allItems));
     }
 }

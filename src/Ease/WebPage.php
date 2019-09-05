@@ -231,7 +231,7 @@ class WebPage extends Document
                     $javaScripts[$nextFreeID++] = $code;
                 }
 
-                return $position;
+                return $nextFreeID-1;
             } else { //Jeste je pozice volna
                 $javaScripts[] = $code;
 
@@ -265,7 +265,7 @@ class WebPage extends Document
      * @param bool   $fwPrefix Přidat cestu frameworku ? (obvykle /Ease/)
      * @param string $media    screen|printer|braile a podobně
      *
-     * @return int one
+     * @return boolean success
      */
     public function includeCss($cssFile, $fwPrefix = false, $media = 'screen')
     {
@@ -275,7 +275,7 @@ class WebPage extends Document
             $this->cascadeStyles[$cssFile] = $cssFile;
         }
 
-        return 1;
+        return true;
     }
 
     /**
@@ -336,7 +336,7 @@ class WebPage extends Document
     {
         do {
             foreach (self::$allItems as $PartID => $part) {
-                if (is_object($part) && method_exists($part, 'finalize')) {
+                if (is_object($part)) {
                     $part->finalize();
                 }
                 unset(self::$allItems[$PartID]);
