@@ -213,7 +213,7 @@ class Document extends Container
      *
      * @param mixed  $pageItem     value or EaseClass with draw() method
      *
-     * @return mixed Pointer to included object
+     * @return null|Embedable Pointer to included object
      */
     public function addItem($pageItem)
     {

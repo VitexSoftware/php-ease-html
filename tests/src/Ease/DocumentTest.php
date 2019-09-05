@@ -211,14 +211,11 @@ class DocumentTest extends ContainerTest
      */
     public function testAddItem()
     {
-        $items1                   = $this->object->getItemsCount();
-        $this->object->addItem(new DivTag('test'));
-        $items2                   = $this->object->getItemsCount();
-        $this->assertEquals($items1 + 1, $items2);
-        $this->object->pageClosed = true;
-        $this->object->addItem(new DivTag('test'));
-        $items3                   = $this->object->getItemsCount();
-        $this->assertEquals($items3, $items2);
+        Document::$pageClosed = false;
+        parent::testAddItem();
+        Document::$pageClosed = true;
+        $this->assertNull($this->object->addItem(new DivTag('test')));
+        Document::$pageClosed = false;
     }
 
     /**
