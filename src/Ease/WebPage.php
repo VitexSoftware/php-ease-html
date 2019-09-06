@@ -99,9 +99,9 @@ class WebPage extends Document
         parent::__construct();
         self::singleton($this);
         $this->pageParts['doctype'] = '<!DOCTYPE html>';
-        $html = parent::addItem(new HtmlTag());
-        $this->head  = $html->addItem(new HeadTag());
-        $this->body  = $html->addItem(new BodyTag($toBody));
+        $html                       = parent::addItem(new HtmlTag());
+        $this->head                 = $html->addItem(new HeadTag());
+        $this->body                 = $html->addItem(new BodyTag($toBody));
         $this->javaScripts          = &$this->head->javaScripts;
         $this->cascadeStyles        = &$this->head->cascadeStyles;
     }
@@ -127,10 +127,12 @@ class WebPage extends Document
 
     /**
      * Get ID for page body
+     * 
+     * @return string|null Page BODY ID
      */
     public function getTagID()
     {
-        $this->body->getTagID();
+        return $this->body->getTagID();
     }
 
     /**
@@ -231,7 +233,7 @@ class WebPage extends Document
                     $javaScripts[$nextFreeID++] = $code;
                 }
 
-                return $nextFreeID-1;
+                return $nextFreeID - 1;
             } else { //Jeste je pozice volna
                 $javaScripts[] = $code;
 

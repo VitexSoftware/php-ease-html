@@ -191,12 +191,7 @@ class Tag extends Document
      */
     public function setTagID($tagID = null)
     {
-        if (is_null($tagID)) {
-            $this->setTagProperties(['id' => Functions::randomString()]);
-        } else {
-            $this->setTagProperties(['id' => $tagID]);
-        }
-
+        $this->setTagProperties(['id' => is_null($tagID) ? Functions::randomString() : $tagID]);
         return $this->getTagID();
     }
 
@@ -232,12 +227,7 @@ class Tag extends Document
      */
     public function getTagProperty($propertyName)
     {
-        $property = null;
-        if (isset($this->tagProperties[$propertyName])) {
-            $property = $this->tagProperties[$propertyName];
-        }
-
-        return $property;
+        return array_key_exists($propertyName, $this->tagProperties) ? $this->tagProperties[$propertyName] : null;
     }
 
     /**
@@ -253,12 +243,9 @@ class Tag extends Document
             $tagProperties['id'] = preg_replace('/[^A-Za-z0-9_\\-]/', '',
                 $tagProperties['id']);
         }
-        if (empty($this->tagProperties)) {
-            $this->tagProperties = $tagProperties;
-        } else {
-            $this->tagProperties = array_merge($this->tagProperties,
+        $this->tagProperties = empty($this->tagProperties) ? $tagProperties : array_merge($this->tagProperties,
                 $tagProperties);
-        }
+        
         if (isset($tagProperties['name'])) {
             $this->setTagName($tagProperties['name']);
         }
