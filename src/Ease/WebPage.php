@@ -197,10 +197,10 @@ class WebPage extends Document
      *
      * @return int
      */
-    public function addToScriptsStack($code, $position = null)
+    public function addToScriptsStack($code, $position = 0)
     {
         $javaScripts = & \Ease\WebPage::singleton()->javaScripts;
-        if (is_null($position)) {
+        if ($position == 0) {
             if (!empty($javaScripts)) {
                 $scriptFound = array_search($code, $javaScripts);
                 if (!$scriptFound && ($javaScripts[0] != $code)) {
@@ -212,8 +212,6 @@ class WebPage extends Document
                 }
             } else {
                 $javaScripts[] = $code;
-
-                return 0;
             }
         } else { //Pozice urcena
             if (isset($javaScripts[$position])) { //Uz je obsazeno
@@ -360,33 +358,31 @@ class WebPage extends Document
      * Vrací počet vložených položek.
      * Obtain number of enclosed items in current page body or given object.
      *
-     * @param Container $object hodnota nebo EaseObjekt s polem ->pageParts
-     *
      * @return int nuber of parts enclosed
      */
-    public function getItemsCount($object = null)
+    public function getItemsCount()
     {
-        if (is_null($object)) {
-            $object = &$this->body;
-        }
-
-        return parent::getItemsCount($object);
+        return parent::getItemsCount($this->body);
     }
+    
+     /**
+     * Vrací první vloženou položku.
+     */
+    public function getFirstPart()
+    {
+        return $this->isEmpty() ? null : reset($this->body->pageParts);
+    }
+   
 
     /**
      * Je element prázdný ?
      * Is body element empty ?
      *
-     * @param BodyTag $element Ease Html Element
-     *
      * @return bool emptyness
      */
     public function isEmpty($element = null)
     {
-        if (is_null($element)) {
-            $element = &$this->body;
-        }
-        return parent::isEmpty($element);
+        return empty($this->body->pageParts);
     }
 
     /**

@@ -111,8 +111,6 @@ class ContainerTest extends SandTest
         $this->assertEquals(0, $this->object->getItemsCount());
         $this->object->addItem('@');
         $this->assertEquals(1, $this->object->getItemsCount());
-        $this->assertEquals(2,
-            $this->object->getItemsCount(new \Ease\Html\DivTag(['a', 'b'])));
     }
 
     /**

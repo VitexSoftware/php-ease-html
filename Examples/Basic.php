@@ -9,7 +9,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 echo new H1Tag('H1',['style'=>'color: red']);
 
-echo (new ATag('#','LINK'))->addItem(new PTag('Paragraph'));
+echo /** @scrutinizer ignore-type */  (new ATag('#','LINK'))->addItem(new PTag('Paragraph'));
 
 $ar = new Article( new \Ease\Html\HrTag() );
 //$ar->setTagType('Zeman');

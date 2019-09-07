@@ -149,21 +149,11 @@ class Container extends Sand implements Embedable
      * Vrací počet vložených položek.
      * Obtain number of enclosed items in current or given object.
      *
-     * @param Container $object hodnota nebo EaseObjekt s polem ->pageParts
-     *
      * @return int nuber of parts enclosed
      */
-    public function getItemsCount($object = null)
+    public function getItemsCount()
     {
-        $itemCount = 0;
-        if (is_null($object) && !empty($this->pageParts)) {
-            $itemCount = count($this->pageParts);
-        }
-        if (is_object($object) && isset($object->pageParts)) {
-            $itemCount = count($object->pageParts);
-        }
-
-        return $itemCount;
+        return count($this->pageParts);
     }
 
     /**
@@ -171,7 +161,7 @@ class Container extends Sand implements Embedable
      *
      * @param mixed $pageItem hodnota nebo EaseObjekt s metodou draw()
      *
-     * @return pointer Odkaz na vložený objekt
+     * @return Embedable|string Odkaz na vložený objekt
      */
     public function &addNextTo($pageItem)
     {

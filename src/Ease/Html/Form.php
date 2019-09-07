@@ -126,7 +126,7 @@ class Form extends PairTag
      * dat, nastaví se jim hodnota.
      *
      * @param array           $data asociativní pole dat
-     * @param Container|mixed $form formulář k naplnění
+     * @param \Ease\Container|mixed $form formulář k naplnění
      */
     public static function fillMeUp(&$data, &$form)
     {

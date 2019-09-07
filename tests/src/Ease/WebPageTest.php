@@ -13,7 +13,6 @@ class WebPageTest extends DocumentTest
      * @var WebPage
      */
     protected $object;
-
     public $rendered = '<!DOCTYPE html><html lang="cs-CZ"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title><link href="test.css" rel="stylesheet" type="text/css" media="screen" /><style>border: 1px solid red</style>
 <script>
 // <![CDATA[
@@ -35,7 +34,6 @@ $(document).ready(function () { alert("test") });
 </script>
 </head><body></body></html>';
 
-
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
@@ -51,6 +49,7 @@ $(document).ready(function () { alert("test") });
      */
     protected function tearDown(): void
     {
+        
     }
 
     /**
@@ -59,7 +58,7 @@ $(document).ready(function () { alert("test") });
     public function testSetTagID()
     {
         $this->object->setTagID('test');
-        $this->assertEquals('test', $this->object->getTagID() );
+        $this->assertEquals('test', $this->object->getTagID());
     }
 
     /**
@@ -69,8 +68,8 @@ $(document).ready(function () { alert("test") });
     {
         $this->object->emptyContents();
         $tester = new \Ease\Html\SpanTag();
-        $this->object->addItem( $tester );
-        $this->assertEquals($this->object->getFirstPart(),$tester);
+        $this->object->addItem($tester);
+        $this->assertEquals($this->object->getFirstPart(), $tester);
     }
 
     /**
@@ -79,7 +78,7 @@ $(document).ready(function () { alert("test") });
     public function testIncludeJavaScript()
     {
         $this->object->includeJavaScript('test.js');
-        $this->assertEquals( ['#test.js'], \Ease\Shared::instanced()->javaScripts );
+        $this->assertEquals(['#test.js'],            \Ease\WebPage::singleton()->javaScripts);
     }
 
     /**
@@ -87,7 +86,7 @@ $(document).ready(function () { alert("test") });
      */
     public function testAddJavaScript()
     {
-        $this->object->addJavaScript('alert("test")');
+        $this->assertEquals(0,$this->object->addJavaScript('alert("test")'));
     }
 
     /**
@@ -95,7 +94,7 @@ $(document).ready(function () { alert("test") });
      */
     public function testAddToScriptsStack()
     {
-        $this->object->addToScriptsStack('var test = 1;');
+        $this->assertEquals(0, $this->object->addToScriptsStack('var test = 1;'));
     }
 
     /**
@@ -103,7 +102,7 @@ $(document).ready(function () { alert("test") });
      */
     public function testAddCSS()
     {
-        $this->object->addCSS('border: 1px solid red');
+        $this->assertTrue($this->object->addCSS('border: 1px solid red'));
     }
 
     /**

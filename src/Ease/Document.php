@@ -104,7 +104,7 @@ class Document extends Container
      * @param bool   $fwPrefix přidat prefix frameworku (obvykle /Ease/) ?
      * @param string $media    médium screen|print|braile apod ...
      *
-     * @return int
+     * @return boolean
      */
     public function includeCss($cssFile, $fwPrefix = false, $media = 'screen')
     {
