@@ -53,7 +53,7 @@ class DocumentTest extends ContainerTest
     {
         \Ease\WebPage::singleton()->javaScripts = [];
         $this->assertEquals(0, $this->object->addJavaScript('alert("hallo");'));
-        $this->assertEquals(1,
+        $this->assertEquals(0,
             $this->object->addJavaScript('alert("world");', false));
     }
 

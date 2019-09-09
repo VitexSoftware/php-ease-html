@@ -77,8 +77,10 @@ $(document).ready(function () { alert("test") });
      */
     public function testIncludeJavaScript()
     {
+        \Ease\WebPage::singleton()->javaScripts = [];
         $this->object->includeJavaScript('test.js');
-        $this->assertEquals(['#test.js'],            \Ease\WebPage::singleton()->javaScripts);
+        $this->assertEquals(['#test.js'],
+            \Ease\WebPage::singleton()->javaScripts);
     }
 
     /**
@@ -86,7 +88,7 @@ $(document).ready(function () { alert("test") });
      */
     public function testAddJavaScript()
     {
-        $this->assertEquals(0,$this->object->addJavaScript('alert("test")'));
+        $this->assertEquals(0, $this->object->addJavaScript('alert("test")'));
     }
 
     /**
@@ -110,7 +112,7 @@ $(document).ready(function () { alert("test") });
      */
     public function testIncludeCss()
     {
-        $this->object->includeCss('test.css');
+        $this->assertTrue($this->object->includeCss('test.css'));
     }
 
     /**
@@ -118,7 +120,10 @@ $(document).ready(function () { alert("test") });
      */
     public function testGetStatusMessagesAsHtml()
     {
-        $this->object->getStatusMessagesAsHtml();
+        $this->assertEquals('<div class="MessageForUser">Status message add test</div>
+<div class="MessageForUser">Ok</div>
+<div class="MessageForUser">test msg 1</div>
+', $this->object->getStatusMessagesAsHtml());
     }
 
     /**

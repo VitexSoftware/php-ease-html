@@ -62,7 +62,7 @@ class PairTagTest extends TagTest
         $tagType = $this->object->getTagType();
         if (is_null($whatWant)) {
             if (is_null($this->rendered)) {
-                if (count($this->object->tagProperties)) {
+                if (!empty($this->object->tagProperties)) {
                     $whatWant = "<$tagType ".$this->object->tagPropertiesToString()."></$tagType>";
                 } else {
                     $whatWant = "<$tagType></$tagType>";
@@ -84,7 +84,7 @@ class PairTagTest extends TagTest
     public function testTagBegin($tagBegin = null)
     {
         $tagType = $this->object->getTagType();
-        if (count($this->object->tagProperties)) {
+        if (!empty($this->object->tagProperties)) {
             $tagBegin = "<".trim($tagType.' '.$this->object->tagPropertiesToString()).'>';
         } else {
             $tagBegin = "<$tagType>";

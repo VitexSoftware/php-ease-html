@@ -93,17 +93,16 @@ class WebPage extends Document
      */
     public function __construct($pageTitle = null, $toBody = null)
     {
-        if (!is_null($pageTitle)) {
-            $this->setPageTitle($pageTitle);
-        }
+        $this->setPageTitle($pageTitle);
+
         parent::__construct();
-        self::singleton($this);
-        $this->pageParts['doctype'] = '<!DOCTYPE html>';
+        parent::addItem('<!DOCTYPE html>');
         $html                       = parent::addItem(new HtmlTag());
         $this->head                 = $html->addItem(new HeadTag());
         $this->body                 = $html->addItem(new BodyTag($toBody));
         $this->javaScripts          = &$this->head->javaScripts;
         $this->cascadeStyles        = &$this->head->cascadeStyles;
+        self::singleton($this);
     }
 
     /**
