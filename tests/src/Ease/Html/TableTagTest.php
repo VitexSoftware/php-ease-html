@@ -11,7 +11,7 @@ class TableTagTest extends PairTagTest
      * @var TableTag
      */
     protected $object;
-    public $rendered = '<table><thead></thead><tbody></tbody></table>';
+    public $rendered = '<table><thead></thead><tbody></tbody><tfoot></tfoot></table>';
 
     /**
      * Sets up the fixture, for example, opens a network connection.

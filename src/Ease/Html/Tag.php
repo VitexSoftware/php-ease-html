@@ -31,7 +31,7 @@ class Tag extends Document
      *
      * @var array
      */
-    public $tagProperties = null;
+    public $tagProperties = [];
 
     /**
      * pole ze kterého se rendruje obsah STYLE tagu.
@@ -191,7 +191,8 @@ class Tag extends Document
      */
     public function setTagID($tagID = null)
     {
-        $this->setTagProperties(['id' => is_null($tagID) ? Functions::randomString() : $tagID]);
+        $this->setTagProperties(['id' => is_null($tagID) ? Functions::randomString()
+                    : $tagID]);
         return $this->getTagID();
     }
 
@@ -213,11 +214,12 @@ class Tag extends Document
      * 
      * @return boolean
      */
-    public function setTagProperty($name,$value){
+    public function setTagProperty($name, $value)
+    {
         $this->tagProperties[$name] = $value;
         return true;
     }
-    
+
     /**
      * Returns property tag value.
      *
@@ -227,7 +229,8 @@ class Tag extends Document
      */
     public function getTagProperty($propertyName)
     {
-        return array_key_exists($propertyName, $this->tagProperties) ? $this->tagProperties[$propertyName] : null;
+        return array_key_exists($propertyName, $this->tagProperties) ? $this->tagProperties[$propertyName]
+                : null;
     }
 
     /**
@@ -245,7 +248,7 @@ class Tag extends Document
         }
         $this->tagProperties = empty($this->tagProperties) ? $tagProperties : array_merge($this->tagProperties,
                 $tagProperties);
-        
+
         if (isset($tagProperties['name'])) {
             $this->setTagName($tagProperties['name']);
         }
@@ -255,36 +258,13 @@ class Tag extends Document
     /**
      * Vrátí parametry tagu jako řetězec.
      *
-     * @param mixed $tagProperties asociativní pole parametrú nebo řetězec
-     *
      * @return string
      */
-    public function tagPropertiesToString($tagProperties = null)
+    public function tagPropertiesToString()
     {
-        $tagPropertiesString = '';
-        if (!$tagProperties) {
-            $tagProperties = $this->tagProperties;
-        }
-        if (is_array($tagProperties)) {
-            $tagPropertiesString = ' ';
-            foreach ($tagProperties as $tagPropertyName => $tagPropertyValue) {
-                if ($tagPropertyName) {
-                    if (is_numeric($tagPropertyName)) {
-                        if (!strstr($tagPropertiesString,
-                                ' '.$tagPropertyValue.' ')) {
-                            $tagPropertiesString .= ' '.$tagPropertyValue.' ';
-                        }
-                    } else {
-                        $tagPropertiesString .= $tagPropertyName.'="'.$tagPropertyValue.'" ';
-                    }
-                } else {
-                    $tagPropertiesString .= $tagPropertyValue.' ';
-                }
-            }
-
-            $tagPropertiesString = trim($tagPropertiesString);
-        }
-        return $tagPropertiesString;
+        return empty($this->tagProperties) ? '' : str_replace("=", '="',
+                http_build_query($this->tagProperties, null, '" ',
+                    PHP_QUERY_RFC3986)).'"';
     }
 
     /**

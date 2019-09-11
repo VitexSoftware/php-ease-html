@@ -57,7 +57,7 @@ class ContainerTest extends SandTest
         $this->assertEquals("<div>*</div>", $context->getRendered());
 
         $context = new \Ease\Html\DivTag();
-        Container::addItemCustom(new \Ease\Html\ImgTag(null), $context);
+        Container::addItemCustom(new \Ease\Html\ImgTag(''), $context);
         $this->assertEquals("<div><img src=\"\" /></div>",
             $context->getRendered());
         $this->object->addItem([new \Ease\Html\ATag('#', 'TEST'), new \Ease\Html\ATag('#',

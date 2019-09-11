@@ -43,6 +43,8 @@ class DocumentTest extends ContainerTest
         if (get_class($this->object) == 'Ease\Document') {
             $this->assertInstanceOf(get_class($this->object),
                 Document::singleton());
+        } else {
+            $this->assertIsObject( Document::singleton());
         }
     }
 
@@ -227,4 +229,5 @@ class DocumentTest extends ContainerTest
         Document::registerItem($item);
         $this->assertInstanceOf(get_class($item), end(Document::$allItems));
     }
+    
 }

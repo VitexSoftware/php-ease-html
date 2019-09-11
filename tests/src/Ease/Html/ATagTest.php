@@ -50,6 +50,9 @@ class ATagTest extends PairTagTest
         $mock->__construct('#test');
         $mock->__construct('http://v.s.cz/', 'Initial Content');
         $mock->__construct('https://php.net', 'PHP', ['title' => 'test']);
+
+        $this->assertEquals('<a href="https://php.net" title="test">Initial ContentPHP</a>',
+            $mock->getRendered());
     }
 
     /**
