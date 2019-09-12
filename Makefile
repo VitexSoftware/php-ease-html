@@ -26,7 +26,7 @@ clean:
 	rm -rf debian/php-ease-html
 	rm -rf debian/php-ease-html-doc
 	rm -rf debian/*.log debian/tmp
-	rm -rf docs/* .phpunit.result.cache
+	rm -rf docs/* .phpunit.result.cache tests/*.xml
 
 apigen:
 	VERSION=`cat debian/composer.json | grep version | awk -F'"' '{print $4}'`; \
@@ -37,7 +37,7 @@ composer:
 	composer update
 
 phpunit:
-	vendor/bin/phpunit --bootstrap tests/Bootstrap.php --configuration phpunit.xml
+	vendor/bin/phpunit --bootstrap tests/Bootstrap.php --configuration phpunit.xml tests/src/
 
 deb:
 	dch -i "`git log -1 --pretty=%B`"

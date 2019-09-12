@@ -3,3 +3,5 @@
 /debian/php-ease-html/
 /nbproject/private/
 /.phpunit.result.cache
+/tests/nb-phpunit-coverage.xml
+/tests/nb-phpunit-log.xml

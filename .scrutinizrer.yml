@@ -1,0 +1,10 @@
+build:
+  nodes:
+    coverage:
+      tests:
+        override:
+          - command: vendor/bin/phpunit --bootstrap tests/Bootstrap.php --configuration phpunit.xml tests/src/
+            coverage:
+              file: tests/nb-phpunit-coverage.xml   # <- Set this to where we find the coverage data.
+                                          #    The path is relative to the current directory.
+              format: clover
