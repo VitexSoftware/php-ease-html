@@ -263,8 +263,7 @@ class Tag extends Document
     public function tagPropertiesToString()
     {
         return empty($this->tagProperties) ? '' : str_replace("=", '="',
-                http_build_query($this->tagProperties, null, '" ',
-                    PHP_QUERY_RFC3986)).'"';
+                urldecode(http_build_query($this->tagProperties, null, '" '))).'"';
     }
 
     /**

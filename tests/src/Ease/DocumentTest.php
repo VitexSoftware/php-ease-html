@@ -89,6 +89,8 @@ class DocumentTest extends ContainerTest
     public function testRedirect()
     {
         $this->assertEquals(0, $this->object->redirect('http://v.s.cz/'));
+        $this->assertTrue(\Ease\Document::$pageClosed);
+        \Ease\Document::$pageClosed = false;
     }
 
     /**
@@ -114,6 +116,8 @@ class DocumentTest extends ContainerTest
     public function testOnlyForLogged()
     {
         $this->assertEquals(0, $this->object->onlyForLogged());
+        $this->assertTrue(\Ease\Document::$pageClosed);
+        \Ease\Document::$pageClosed = false;
     }
 
     /**

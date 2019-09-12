@@ -88,10 +88,11 @@ class WebPage extends Document
 
     /**
      * Content to place inside of body
-     *
-     * @param $toBody
+     * 
+     * @param $pageTitle string 
+     * @param $toBody    mixed
      */
-    public function __construct($pageTitle = null, $toBody = null)
+    public function __construct($pageTitle = null, $toBody = [])
     {
         $this->setPageTitle($pageTitle);
 

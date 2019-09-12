@@ -2,3 +2,4 @@
 /composer.lock
 /debian/php-ease-html/
 /nbproject/private/
+/.phpunit.result.cache
