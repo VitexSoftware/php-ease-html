@@ -1,5 +1,16 @@
 build:
-  nodes:
+    nodes:
+        analysis:
+            project_setup:
+                override:
+                    - 'true'
+            tests:
+                override:
+                    - php-scrutinizer-run
+                    -
+                        command: phpcs-run
+                        use_website_config: true
+        tests: true
     coverage:
       tests:
         override:
@@ -8,3 +19,13 @@ build:
               file: tests/nb-phpunit-coverage.xml   # <- Set this to where we find the coverage data.
                                           #    The path is relative to the current directory.
               format: clover
+filter:
+    excluded_paths:
+        - 'vendor/*'
+        - 'tests/*'
+checks:
+    php: true
+coding_style:
+    php: {  }
+
+
