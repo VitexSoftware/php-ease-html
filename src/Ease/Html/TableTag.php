@@ -44,7 +44,7 @@ class TableTag extends PairTag
     /**
      * @param array $headerColumns položky záhlaví tabulky
      */
-    public function setHeader($headerColumns)
+    public function setHeader(array $headerColumns)
     {
         $this->tHead->emptyContents();
         $this->addRowHeaderColumns($headerColumns);

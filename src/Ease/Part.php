@@ -72,9 +72,9 @@ class Part extends Document
      */
     public static function jQueryze()
     {
-        
-        WebPage::singleton()->includeJavaScript(WebPage::singleton()->jqueryJavaScript, 0,
-            !strstr(WebPage::singleton()->jqueryJavaScript, '://'));
+
+        WebPage::singleton()->includeJavaScript(WebPage::singleton()->jqueryJavaScript,
+            0, !strstr(WebPage::singleton()->jqueryJavaScript, '://'));
     }
 
     /**
@@ -134,7 +134,7 @@ class Part extends Document
                         }
                     } else {
                         if (is_array($partPropertyValue)) {
-                            if (self::isAssoc($partPropertyValue)) {
+                            if (Functions::isAssoc($partPropertyValue)) {
                                 if ($partPropertyName) {
                                     $partsArray[] = $partPropertyName.': { '.self::partPropertiesToString($partPropertyValue).' } ';
                                 } else {
@@ -193,5 +193,4 @@ class Part extends Document
             return $partProperties;
         }
     }
-    
 }

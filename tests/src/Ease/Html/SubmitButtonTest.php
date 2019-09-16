@@ -42,6 +42,8 @@ class SubmitButtonTest extends InputTagTest
         $mock->__construct('Test');
 
         $mock->__construct('option', 'value');
+        
+        $this->assertEquals('<input type="submit" name="value" value="option" />', $mock->getRendered());
     }
 
     /**

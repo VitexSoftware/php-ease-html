@@ -40,19 +40,16 @@ class TextareaTagTest extends PairTagTest
             ->getMockForAbstractClass();
         $mock->__construct('Test');
         $mock->__construct('Textarea', 'Text');
+        $this->assertEquals('<textarea name="Textarea">Text</textarea>',$mock->getRendered());
     }
 
     /**
      * @covers Ease\Html\TextareaTag::setValue
-     *
-     * @todo   Implement testSetValue().
      */
     public function testSetValue()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->setValue('test');
+        $this->assertEquals('<textarea name="textarea">test</textarea>', $this->object->getRendered());
     }
 
     /**

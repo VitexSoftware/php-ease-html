@@ -28,71 +28,56 @@ class TableTagTest extends PairTagTest
      */
     protected function tearDown(): void
     {
+        
     }
 
     /**
      * @covers Ease\Html\TableTag::setHeader
-     *
-     * @todo   Implement testSetHeader().
      */
     public function testSetHeader()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->setHeader(['a', 'b']);
+        $this->assertEquals('<table><thead><tr><th>a</th><th>b</th></tr></thead><tbody></tbody><tfoot></tfoot></table>',
+            $this->object->getRendered());
     }
 
     /**
      * @covers Ease\Html\TableTag::addRowColumns
-     *
-     * @todo   Implement testAddRowColumns().
      */
     public function testAddRowColumns()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->addRowColumns(['x', 'y', 'z']);
+        $this->assertEquals('<table><thead></thead><tbody><tr><td>x</td><td>y</td><td>z</td></tr></tbody><tfoot></tfoot></table>',
+            $this->object->getRendered());
     }
 
     /**
      * @covers Ease\Html\TableTag::addRowHeaderColumns
-     *
-     * @todo   Implement testAddRowHeaderColumns().
      */
     public function testAddRowHeaderColumns()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->addRowHeaderColumns(['a', 'b', 'c']);
+        $this->assertEquals('<table><thead><tr><th>a</th><th>b</th><th>c</th></tr></thead><tbody></tbody><tfoot></tfoot></table>', $this->object->getRendered());
     }
 
     /**
      * @covers Ease\Html\TableTag::isEmpty
-     *
-     * @todo   Implement testIsEmpty().
      */
     public function testIsEmpty()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->addItem( new \Ease\Html\TrTag( new \Ease\Html\TdTag() ) );
+        $this->assertFalse($this->object->isEmpty());
+        $this->object->emptyContents();
+        $this->assertTrue($this->object->isEmpty());
     }
 
     /**
      * @covers Ease\Html\TableTag::populate
-     *
-     * @todo   Implement testPopulate().
      */
     public function testPopulate()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->populate([['a', 'b'], ['c', 'd']]);
+        $this->assertEquals('<table><thead></thead><tbody><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></tbody><tfoot></tfoot></table>',
+            $this->object->getRendered());
     }
-
 }

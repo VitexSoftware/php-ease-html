@@ -197,7 +197,7 @@ class Document extends Container
      */
     public function onlyForLogged($loginPage = 'login.php', $message = null)
     {
-        
+
         if (!method_exists(\Ease\User::singleton(), 'isLogged') || !\Ease\User::singleton()->isLogged()) {
             if (!empty($message)) {
                 \Ease\User::singleton()->addStatusMessage(_('Sign in first please'),
@@ -356,7 +356,6 @@ class Document extends Container
         return isset($_POST) && count($_POST);
     }
 
-
     /**
      * Vrací pole jako parametry URL.
      *
@@ -399,7 +398,7 @@ class Document extends Container
         }
         return self::$webPage;
     }
-    
+
     /**
      * @return WebPage
      */
@@ -411,7 +410,4 @@ class Document extends Container
 
         return self::$instance;
     }
-
-    
-    
 }
