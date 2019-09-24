@@ -98,11 +98,11 @@ class WebPage extends Document
 
         parent::__construct();
         parent::addItem('<!DOCTYPE html>');
-        $html                       = parent::addItem(new HtmlTag());
-        $this->head                 = $html->addItem(new HeadTag());
-        $this->body                 = $html->addItem(new BodyTag($toBody));
-        $this->javaScripts          = &$this->head->javaScripts;
-        $this->cascadeStyles        = &$this->head->cascadeStyles;
+        $html                = parent::addItem(new HtmlTag());
+        $this->head          = $html->addItem(new HeadTag());
+        $this->body          = $html->addItem(new BodyTag($toBody));
+        $this->javaScripts   = &$this->head->javaScripts;
+        $this->cascadeStyles = &$this->head->cascadeStyles;
         self::singleton($this);
     }
 
@@ -279,44 +279,19 @@ class WebPage extends Document
     }
 
     /**
-     * Vrací zprávy uživatele.
+     * Use this to show status messages on page
      *
-     * @param string $what info|warning|error|success
-     *
-     * @return string
+     * @return \Ease\Html\DivTag
      */
-    public function getStatusMessagesAsHtml($what = null)
+    public function getStatusMessagesAsHtml()
     {
-        $htmlFargment = '';
+        $htmlFargment = new Html\DivTag();
 
-        $allMessages = [];
-        foreach (\Ease\Shared::singleton()->getStatusMessages() as $Quee => $messages) {
-            foreach ($messages as $mesgID => $message) {
-                $allMessages[$mesgID][$Quee] = $message;
+        foreach (\Ease\Shared::singleton()->getStatusMessages() as $quee => $messages) {
+            foreach ($messages as $message) {
+                $htmlFargment->addItem(new Html\DivTag($message,['style'=> Logger\Regent::singleton()->logStyles[$quee] ]));
             }
         }
-        ksort($allMessages);
-        foreach ($allMessages as $message) {
-            $messageType = key($message);
-
-            if (is_array($what)) {
-                if (!in_array($messageType, $what)) {
-                    continue;
-                }
-            }
-
-            $message = reset($message);
-
-            if (is_object($this->logger)) {
-                if (!isset($this->logger->logStyles[$messageType])) {
-                    $messageType = 'notice';
-                }
-                $htmlFargment .= '<div class="MessageForUser" style="'.$this->logger->logStyles[$messageType].'" >'.$message.'</div>'."\n";
-            } else {
-                $htmlFargment .= '<div class="MessageForUser">'.$message.'</div>'."\n";
-            }
-        }
-
         return $htmlFargment;
     }
 
@@ -364,15 +339,14 @@ class WebPage extends Document
     {
         return parent::getItemsCount($this->body);
     }
-    
-     /**
+
+    /**
      * Vrací první vloženou položku.
      */
     public function getFirstPart()
     {
         return $this->isEmpty() ? null : reset($this->body->pageParts);
     }
-   
 
     /**
      * Je element prázdný ?
@@ -385,6 +359,20 @@ class WebPage extends Document
         return empty($this->body->pageParts);
     }
 
+    
+    /**
+     * Vloží jako první element do objektu.
+     *
+     * @param mixed  $pageItem     hodnota nebo EaseObjekt s metodou draw()
+     * @param string $pageItemName Pod tímto jménem je objekt vkládán do stromu
+     *
+     * @return mixed Odkaz na vložený objekt
+     */
+    public function &addAsFirst($pageItem, $pageItemName = null)
+    {
+       return $this->body->addAsFirst($pageItem, $pageItemName);
+    }
+    
     /**
      * Vyprázní obsah webstránky
      * Empty webpage contents

@@ -72,6 +72,7 @@ $(document).ready(function () { alert("test") });
         $this->assertEquals($this->object->getFirstPart(), $tester);
     }
 
+    
     /**
      * @covers Ease\WebPage::includeJavaScript
      */
@@ -120,23 +121,27 @@ $(document).ready(function () { alert("test") });
      */
     public function testGetStatusMessagesAsHtml()
     {
-        $this->assertEquals('<div class="MessageForUser">Status message add test</div>
-<div class="MessageForUser">Ok</div>
-<div class="MessageForUser">test msg 1</div>
-', $this->object->getStatusMessagesAsHtml());
+        \Ease\Shared::singleton()->cleanMessages();
+        \Ease\Shared::singleton()->addStatusMessage('success Status message for testGetStatusMessagesAsHtml',
+            'success');
+        \Ease\Shared::singleton()->addStatusMessage('warning Status message for testGetStatusMessagesAsHtml',
+            'warning');
+        \Ease\Shared::singleton()->addStatusMessage('error Status message for testGetStatusMessagesAsHtml',
+            'error');
+        $this->assertEquals('<div><div style="color: #2C5F23;">success Status message for testGetStatusMessagesAsHtml</div><div style="color: #AB250E;">warning Status message for testGetStatusMessagesAsHtml</div><div style="color: red;">error Status message for testGetStatusMessagesAsHtml</div></div>', $this->object->getStatusMessagesAsHtml()->__toString());
+        \Ease\Shared::singleton()->cleanMessages();
     }
 
     /**
      * @covers Ease\WebPage::draw
-     *
-     * @todo   Implement testDraw().
      */
     public function testDraw($whatWant = null)
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        ob_start();
+        $this->object->draw();
+        $this->assertEquals('<!DOCTYPE html><html lang="cs"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title>
+<style></style></head><body></body></html>', ob_get_contents());
+        ob_end_flush();
     }
 
     /**

@@ -32,80 +32,50 @@ class SelectTagTest extends PairTagTest
 
     /**
      * @covers Ease\Html\Select::addItems
-     *
-     * @todo   Implement testAddItems().
      */
     public function testAddItems()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->addItems( ['a'=>'b','c'=>'d'] );
     }
 
     /**
      * @covers Ease\Html\Select::addValue
-     *
-     * @todo   Implement testAddValue().
      */
     public function testAddValue()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->addValue('test');
     }
 
     /**
      * @covers Ease\Html\Select::loadItems
-     *
-     * @todo   Implement testLoadItems().
      */
     public function testLoadItems()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->loadItems();
     }
 
     /**
      * @covers Ease\Html\Select::setValue
-     *
-     * @todo   Implement testSetValue().
      */
     public function testSetValue()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->setValue();
     }
 
     /**
      * @covers Ease\Html\Select::finalize
-     *
-     * @todo   Implement testFinalize().
      */
     public function testFinalize()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->finalize();
     }
 
     /**
      * @covers Ease\Html\Select::delItem
-     *
-     * @todo   Implement testDelItem().
      */
     public function testDelItem()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->delItem();
     }
 
     /**

@@ -69,7 +69,7 @@ class SelectTag extends PairTag
                 $newItem->setTagID($this->getTagName().$itemName);
             }
             if ($this->defaultValue == $itemName) {
-                $this->lastItem->setDefault();
+                $this->lastItem()->setDefault();
             }
         }
     }

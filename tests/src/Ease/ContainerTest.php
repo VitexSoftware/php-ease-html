@@ -77,8 +77,6 @@ class ContainerTest extends SandTest
 
     /**
      * @covers Ease\Container::addAsFirst
-     *
-     * @todo   Implement testAddAsFirst().
      */
     public function testAddAsFirst()
     {
@@ -86,8 +84,9 @@ class ContainerTest extends SandTest
         $this->object->addItem(new \Ease\Html\DivTag());
         $this->object->addAsFirst(new \Ease\Html\SpanTag());
         $testSpan               = new \Ease\Html\SpanTag();
-        $testSpan->parentObject = $this->object;
-        $this->assertEquals($testSpan, current($this->object->getContents()));
+
+        $this->assertEquals(strval($testSpan),
+            strval(current($this->object->getContents())));
     }
 
     /**
