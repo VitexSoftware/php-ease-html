@@ -18,12 +18,12 @@ class CheckboxTag extends InputTag
      * @param string $value      vracená hodnota checkboxu
      * @param array  $properties parametry tagu
      */
-    public function __construct($name, $checked = false, $value = null,
+    public function __construct(string $name, bool $checked = false, string $value = null,
                                 $properties = [])
     {
         $properties['type'] = 'checkbox';
         if ($checked === true) {
-            $properties['checked'] = 'true';
+            $properties[] = 'checked';
         }
         if (!is_null($value)) {
             $properties['value'] = $value;

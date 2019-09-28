@@ -13,7 +13,7 @@ class CheckboxTagTest extends InputTagTest
      * @var CheckboxTag
      */
     protected $object;
-    public $rendered = '<input type="checkbox" name="test" />';
+    public $rendered = '<input type="checkbox" checked name="test" />';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -21,7 +21,7 @@ class CheckboxTagTest extends InputTagTest
      */
     protected function setUp(): void
     {
-        $this->object = new \Ease\Html\CheckboxTag('test');
+        $this->object = new \Ease\Html\CheckboxTag('test',true);
     }
 
     /**
@@ -53,6 +53,25 @@ class CheckboxTagTest extends InputTagTest
         $this->assertTrue($this->object->getValue());
         $this->object->setValue(false);
         $this->assertFalse($this->object->getValue());
+    }
+
+    /**
+     * 
+     * @covers Ease\Html\CheckboxTag::__construct
+     */
+    public function testConstructor()
+    {
+        $classname = get_class($this->object);
+
+        // Get mock, without the constructor being called
+        $mock = $this->getMockBuilder($classname)
+            ->disableOriginalConstructor()
+            ->getMockForAbstractClass();
+
+        $mock->__construct('Tag', true, 'value',  ['name' => 'Tag', 'id' => 'testing']);
+
+        $this->assertEquals('<input name="Tag" id="testing" type="checkbox" checked value="value" />',
+            $mock->getRendered());
     }
 
     /**

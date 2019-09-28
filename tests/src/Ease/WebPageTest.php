@@ -72,7 +72,6 @@ $(document).ready(function () { alert("test") });
         $this->assertEquals($this->object->getFirstPart(), $tester);
     }
 
-    
     /**
      * @covers Ease\WebPage::includeJavaScript
      */
@@ -128,7 +127,8 @@ $(document).ready(function () { alert("test") });
             'warning');
         \Ease\Shared::singleton()->addStatusMessage('error Status message for testGetStatusMessagesAsHtml',
             'error');
-        $this->assertEquals('<div><div style="color: #2C5F23;">success Status message for testGetStatusMessagesAsHtml</div><div style="color: #AB250E;">warning Status message for testGetStatusMessagesAsHtml</div><div style="color: red;">error Status message for testGetStatusMessagesAsHtml</div></div>', $this->object->getStatusMessagesAsHtml()->__toString());
+        $this->assertEquals('<div><div style="color: #2C5F23;">success Status message for testGetStatusMessagesAsHtml</div><div style="color: #AB250E;">warning Status message for testGetStatusMessagesAsHtml</div><div style="color: red;">error Status message for testGetStatusMessagesAsHtml</div></div>',
+            $this->object->getStatusMessagesAsHtml()->__toString());
         \Ease\Shared::singleton()->cleanMessages();
     }
 
@@ -139,30 +139,26 @@ $(document).ready(function () { alert("test") });
     {
         ob_start();
         $this->object->draw();
-        $this->assertEquals('<!DOCTYPE html><html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title><link href="test.css" rel="stylesheet" type="text/css" media="screen" />\n
-<style>.test {color:red;}</style></head><body>\n
-<script src="test.js"></script>\n
-\n
-<script>\n
-// <![CDATA[\n
-$(document).ready(function () { alert("test") });\n
-// ]]>\n
-</script>\n
+        $this->assertEquals('<!DOCTYPE html><html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title><link href="test.css" rel="stylesheet" type="text/css" media="screen" />
+<style>.test {color:red;}</style></head><body>
+<script src="test.js"></script>
+
+<script>
+// <![CDATA[
+$(document).ready(function () { alert("test") });
+// ]]>
+</script>
 </body></html>', ob_get_contents());
         ob_end_flush();
     }
 
     /**
      * @covers Ease\WebPage::finalizeRegistred
-     *
-     * @todo   Implement testFinalizeRegistred().
      */
     public function testFinalizeRegistred()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->finalizeRegistred();
+        $this->assertEmpty(WebPage::$allItems);
     }
 
     /**
