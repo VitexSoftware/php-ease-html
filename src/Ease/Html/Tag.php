@@ -262,8 +262,11 @@ class Tag extends Document
      */
     public function tagPropertiesToString()
     {
-        return empty($this->tagProperties) ? '' : str_replace("=", '="',
-                urldecode(http_build_query($this->tagProperties, null, '" '))).'"';
+        $props = [];
+        foreach ($this->tagProperties as $propName => $propValue) {
+            $props[] = is_string($propName) ? $propName.'="'.$propValue.'"' : $propValue;
+        }
+        return implode(' ', $props);
     }
 
     /**
