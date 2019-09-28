@@ -54,12 +54,4 @@ class ATagTest extends PairTagTest
         $this->assertEquals('<a href="https://php.net" title="test">Initial ContentPHP</a>',
             $mock->getRendered());
     }
-
-    /**
-     * @covers Ease\ATag::drawIfNotDrawn
-     */
-    public function testDrawIfNotDrawn($canBeEmpty = false)
-    {
-        parent::testDrawIfNotDrawn($canBeEmpty);
-    }
 }

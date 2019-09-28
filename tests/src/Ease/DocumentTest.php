@@ -146,16 +146,12 @@ class DocumentTest extends ContainerTest
      */
     public function testSanitizeAsType()
     {
-        $this->assertInternalType('string',
-            $this->object->sanitizeAsType('123', 'string'));
-        $this->assertInternalType('integer',
-            $this->object->sanitizeAsType('123', 'int'));
-        $this->assertInternalType('boolean',
-            $this->object->sanitizeAsType('0', 'boolean'));
+        $this->assertIsString($this->object->sanitizeAsType('123', 'string'));
+        $this->assertIsInt($this->object->sanitizeAsType('123', 'int'));
+        $this->assertIsBool($this->object->sanitizeAsType('0', 'boolean'));
         $this->assertFalse($this->object->sanitizeAsType('FALSE', 'boolean'));
         $this->assertTrue($this->object->sanitizeAsType('true', 'boolean'));
-        $this->assertInternalType('float',
-            $this->object->sanitizeAsType('1.45', 'float'));
+        $this->assertIsFloat($this->object->sanitizeAsType('1.45', 'float'));
         $this->assertNull($this->object->sanitizeAsType('', 'int'));
         $this->assertEquals('test',
             $this->object->sanitizeAsType('test', 'null'));

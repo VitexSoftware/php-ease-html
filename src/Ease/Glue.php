@@ -117,7 +117,7 @@ trait Glue
      */
     public function finalize()
     {
-        
+        $this->finalized = true;
     }
 
     /**
