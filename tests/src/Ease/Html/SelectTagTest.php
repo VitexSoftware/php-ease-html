@@ -11,7 +11,7 @@ class SelectTagTest extends PairTagTest
      * @var SelectTag
      */
     protected $object;
-    public $rendered = '<select name="test"></select>';
+    public $rendered = '<select name="test"><option value="a">A</option><option value="b">B</option></select>';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -19,7 +19,8 @@ class SelectTagTest extends PairTagTest
      */
     protected function setUp(): void
     {
-        $this->object = new \Ease\Html\SelectTag('test');
+        $this->object = new \Ease\Html\SelectTag('test',
+            ['a' => 'A', 'b' => 'B']);
     }
 
     /**
@@ -28,6 +29,7 @@ class SelectTagTest extends PairTagTest
      */
     protected function tearDown(): void
     {
+        
     }
 
     /**
@@ -35,7 +37,7 @@ class SelectTagTest extends PairTagTest
      */
     public function testAddItems()
     {
-        $this->object->addItems( ['a'=>'b','c'=>'d'] );
+        $this->object->addItems(['a' => 'b', 'c' => 'd']);
     }
 
     /**
@@ -59,7 +61,9 @@ class SelectTagTest extends PairTagTest
      */
     public function testSetValue()
     {
-        $this->object->setValue();
+        $this->object->setValue('b');
+        $this->assertEquals('<select name="test"><option value="a">A</option><option value="b" selected>B</option></select>',
+            $this->object->getRendered());
     }
 
     /**
