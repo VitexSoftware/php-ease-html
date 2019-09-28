@@ -236,7 +236,7 @@ class Tag extends Document
     /**
      * Nastaví paramatry tagu.
      *
-     * @param mixed $tagProperties asociativní pole parametrů tagu
+     * @param array $tagProperties asociativní pole parametrů tagu
      * 
      * @return boolean operation success
      */
