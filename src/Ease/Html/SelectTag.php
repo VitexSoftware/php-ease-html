@@ -75,17 +75,6 @@ class SelectTag extends PairTag
     }
 
     /**
-     * Vloží hodnotu.
-     *
-     * @param string $value   hodnota
-     * @param string $valueID id hodnoty
-     */
-    public function addValue($value, $valueID = 0)
-    {
-        $this->addItems([$valueID => $value]);
-    }
-
-    /**
      * Maketa načtení položek.
      *
      * @return array
@@ -136,6 +125,10 @@ class SelectTag extends PairTag
      */
     public function delItem($itemID)
     {
-        unset($this->pageParts['OptionTag@'.$itemID]);
+        foreach ($this->pageParts as $optionId => $option) {
+            if ($option->getValue() == $itemID) {
+                unset($this->pageParts[$optionId]);
+            }
+        }
     }
 }

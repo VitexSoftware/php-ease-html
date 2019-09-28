@@ -33,31 +33,25 @@ class SelectTagTest extends PairTagTest
     }
 
     /**
-     * @covers Ease\Html\Select::addItems
+     * @covers Ease\Html\SelectTag::addItems
      */
     public function testAddItems()
     {
         $this->object->addItems(['a' => 'b', 'c' => 'd']);
+        $this->assertEquals('<select name="test"><option value="a">A</option><option value="b">B</option><option value="a">b</option><option value="c">d</option></select>',
+            $this->object->getRendered());
     }
 
     /**
-     * @covers Ease\Html\Select::addValue
-     */
-    public function testAddValue()
-    {
-        $this->object->addValue('test');
-    }
-
-    /**
-     * @covers Ease\Html\Select::loadItems
+     * @covers Ease\Html\SelectTag::loadItems
      */
     public function testLoadItems()
     {
-        $this->object->loadItems();
+        $this->assertEquals([], $this->object->loadItems());
     }
 
     /**
-     * @covers Ease\Html\Select::setValue
+     * @covers Ease\Html\SelectTag::setValue
      */
     public function testSetValue()
     {
@@ -67,29 +61,44 @@ class SelectTagTest extends PairTagTest
     }
 
     /**
-     * @covers Ease\Html\Select::finalize
+     * @covers Ease\Html\SelectTag::finalize
      */
     public function testFinalize()
     {
+        $this->object->emptyContents();
         $this->object->finalize();
+        $this->assertEquals('<select name="test"></select>',
+            $this->object->getRendered());
     }
 
     /**
-     * @covers Ease\Html\Select::delItem
-     */
-    public function testDelItem()
-    {
-        $this->object->delItem();
-    }
-
-    /**
-     * @covers Ease\Html\InputTag::getTagName
+     * @covers Ease\Html\SelectTag::getTagName
      */
     public function testGetTagName()
     {
         $this->assertEquals('test', $this->object->getTagName());
-        $this->object->setName = true;
-        $this->object->setTagName('Test');
-        $this->assertEquals('Test', $this->object->getTagName());
+    }
+    
+    /**
+     * @covers Ease\Html\SelectTag::delItem
+     */
+    public function testDelItem()
+    {
+        $this->object->delItem('a');
+        $this->assertEquals('<select name="test"><option value="b">B</option></select>',
+            $this->object->getRendered());
+    }
+
+    /**
+     * @covers Ease\Container::addAsFirst
+     */
+    public function testAddAsFirst()
+    {
+        $this->object->emptyContents();
+
+        $this->object->addAsFirst(new \Ease\Html\OptionTag('test', 'x'));
+
+        $this->assertEquals('<option value="x">test</option>',
+            strval(current($this->object->getContents())));
     }
 }

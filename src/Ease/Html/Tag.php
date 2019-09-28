@@ -307,6 +307,7 @@ class Tag extends Document
         if (!empty($this->cssProperties)) {
             $this->setTagProperties(['style' => $this->cssPropertiesToString()]);
         }
+        parent::finalize();
     }
 
     /**
