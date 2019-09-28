@@ -13,6 +13,7 @@ class InputSearchTagTest extends InputTagTest
      * @var InputSearchTag
      */
     protected $object;
+    public $rendered = '<input name="test" type="search" value="query" />';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -20,8 +21,7 @@ class InputSearchTagTest extends InputTagTest
      */
     protected function setUp(): void
     {
-        $this->object   = new \Ease\Html\InputSearchTag('test');
-        $this->rendered = '<input id="'.$this->object->getTagID().'" type="search" name="test" />';
+        $this->object = new \Ease\Html\InputSearchTag('test', 'query');
     }
 
     /**
@@ -34,29 +34,22 @@ class InputSearchTagTest extends InputTagTest
     }
 
     /**
-     * @covers Ease\Html\InputSearchTag::setDataSource
-     *
-     * @todo   Implement testSetDataSource().
+     * 
+     * @covers Ease\Html\InputSearchTag::__construct
      */
-    public function testSetDataSource()
+    public function testConstructor()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
+        $classname = get_class($this->object);
 
-    /**
-     * @covers Ease\Html\InputSearchTag::finalize
-     *
-     * @todo   Implement testFinalize().
-     */
-    public function testFinalize()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        // Get mock, without the constructor being called
+        $mock = $this->getMockBuilder($classname)
+            ->disableOriginalConstructor()
+            ->getMockForAbstractClass();
+
+        $mock->__construct('Tag', 'query', ['name' => 'Tag', 'id' => 'testing']);
+
+        $this->assertEquals('<input name="Tag" id="testing" type="search" value="query" />',
+            $mock->getRendered());
     }
 
     /**

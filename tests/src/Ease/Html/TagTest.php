@@ -38,6 +38,9 @@ class TagTest extends DocumentTest
         
     }
 
+    /**
+     * @covers Ease\Html\Tag::__construct
+     */
     public function testConstructor()
     {
         $classname = get_class($this->object);

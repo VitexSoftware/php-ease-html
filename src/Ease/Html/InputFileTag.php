@@ -15,10 +15,12 @@ class InputFileTag extends InputTag
      *
      * @param string $name  jméno tagu
      * @param string $value předvolená hodnota
+     * @param array  $properties 
      */
-    public function __construct($name, $value = null)
+    public function __construct($name, $value = null, array $properties = [])
     {
         parent::__construct($name, $value);
-        $this->setTagProperties(['type' => 'file']);
+        $properties['type'] = 'file';
+        $this->setTagProperties($properties);
     }
 }

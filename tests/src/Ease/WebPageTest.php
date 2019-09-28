@@ -139,8 +139,16 @@ $(document).ready(function () { alert("test") });
     {
         ob_start();
         $this->object->draw();
-        $this->assertEquals('<!DOCTYPE html><html lang="cs"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title>
-<style></style></head><body></body></html>', ob_get_contents());
+        $this->assertEquals('<!DOCTYPE html><html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title><link href="test.css" rel="stylesheet" type="text/css" media="screen" />\n
+<style>.test {color:red;}</style></head><body>\n
+<script src="test.js"></script>\n
+\n
+<script>\n
+// <![CDATA[\n
+$(document).ready(function () { alert("test") });\n
+// ]]>\n
+</script>\n
+</body></html>', ob_get_contents());
         ob_end_flush();
     }
 

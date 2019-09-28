@@ -13,7 +13,7 @@ class InputRadioTagTest extends InputTagTest
      * @var InputRadioTag
      */
     protected $object;
-    public $rendered = '<input name="radio" type="radio" />';
+    public $rendered = '<input name="choose" value="test" type="radio" />';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -21,7 +21,7 @@ class InputRadioTagTest extends InputTagTest
      */
     protected function setUp(): void
     {
-        $this->object = new \Ease\Html\InputRadioTag('radio');
+        $this->object = new \Ease\Html\InputRadioTag('choose', 'test');
     }
 
     /**
@@ -30,6 +30,26 @@ class InputRadioTagTest extends InputTagTest
      */
     protected function tearDown(): void
     {
+        
+    }
+
+    /**
+     * 
+     * @covers Ease\Html\InputRadioTag::__construct
+     */
+    public function testConstructor()
+    {
+        $classname = get_class($this->object);
+
+        // Get mock, without the constructor being called
+        $mock = $this->getMockBuilder($classname)
+            ->disableOriginalConstructor()
+            ->getMockForAbstractClass();
+
+        $mock->__construct('Tag', 'test', ['name' => 'Tag', 'id' => 'testing']);
+
+        $this->assertEquals('<input name="Tag" value="test" id="testing" type="radio" />',
+            $mock->getRendered());
     }
 
     /**
@@ -39,21 +59,9 @@ class InputRadioTagTest extends InputTagTest
      */
     public function testSetValue()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers Ease\Html\InputRadioTag::getTagName
-     */
-    public function testGetTagName()
-    {
-        $this->assertEquals('radio', $this->object->getTagName());
-        $this->object->setName = true;
-        $this->object->setTagName('Test');
-        $this->assertEquals('Test', $this->object->getTagName());
+        $this->object->setValue('test');
+        $this->assertEquals('<input name="choose" value="test" type="radio" checked />',
+            $this->object->getRendered());
     }
 
     /**
@@ -64,5 +72,4 @@ class InputRadioTagTest extends InputTagTest
     {
         parent::testDraw($this->rendered);
     }
-    
-    }
+}

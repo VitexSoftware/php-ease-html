@@ -41,9 +41,9 @@ class InputRadioTag extends InputTag
      */
     public function setValue($value)
     {
-        $CurrentValue = $this->getTagProperty('value');
-        if ($CurrentValue) {
-            if ($CurrentValue == $value) {
+        $currentValue = $this->getTagProperty('value');
+        if ($currentValue) {
+            if ($currentValue == $value) {
                 $this->setTagProperties(['checked']);
             }
         } else {

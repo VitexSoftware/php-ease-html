@@ -11,7 +11,7 @@ class InputNumberTagTest extends InputTagTest
      * @var InputNumberTag
      */
     protected $object;
-    public $rendered = '<input name="test" type="number" value="" />';
+    public $rendered = '<input name="test" type="number" value="12" />';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -19,7 +19,26 @@ class InputNumberTagTest extends InputTagTest
      */
     protected function setUp(): void
     {
-        $this->object = new \Ease\Html\InputNumberTag('test');
+        $this->object = new \Ease\Html\InputNumberTag('test', 12);
+    }
+
+    /**
+     * 
+     * @covers Ease\Html\InputNumberTag::__construct
+     */
+    public function testConstructor()
+    {
+        $classname = get_class($this->object);
+
+        // Get mock, without the constructor being called
+        $mock = $this->getMockBuilder($classname)
+            ->disableOriginalConstructor()
+            ->getMockForAbstractClass();
+
+        $mock->__construct('Tag', 10, ['name' => 'Tag', 'id' => 'testing']);
+
+        $this->assertEquals('<input name="Tag" id="testing" type="number" value="10" />',
+            $mock->getRendered());
     }
 
     /**

@@ -11,7 +11,7 @@ class InputHiddenTagTest extends InputTagTest
      * @var InputHiddenTag
      */
     protected $object;
-    public $rendered = '<input name="test" type="hidden" />';
+    public $rendered = '<input name="test" value="value" type="hidden" />';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -19,7 +19,7 @@ class InputHiddenTagTest extends InputTagTest
      */
     protected function setUp(): void
     {
-        $this->object = new \Ease\Html\InputHiddenTag('test');
+        $this->object = new \Ease\Html\InputHiddenTag('test','value');
     }
 
     /**
@@ -29,5 +29,25 @@ class InputHiddenTagTest extends InputTagTest
     protected function tearDown(): void
     {
     }
+    
+    /**
+     * 
+     * @covers Ease\Html\InputHiddenTag::__construct
+     */
+    public function testConstructor()
+    {
+        $classname = get_class($this->object);
+
+        // Get mock, without the constructor being called
+        $mock = $this->getMockBuilder($classname)
+            ->disableOriginalConstructor()
+            ->getMockForAbstractClass();
+
+        $mock->__construct('Tag', 'info@vitexsoftware.cz', ['name' => 'Tag', 'id' => 'testing']);
+
+        $this->assertEquals('<input name="Tag" value="info@vitexsoftware.cz" id="testing" type="hidden" />',
+            $mock->getRendered());
+    }
+    
 
 }

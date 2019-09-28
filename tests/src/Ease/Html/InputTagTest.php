@@ -28,6 +28,7 @@ class InputTagTest extends TagTest
      */
     protected function tearDown(): void
     {
+        
     }
 
     /**
@@ -45,7 +46,7 @@ class InputTagTest extends TagTest
     public function testGetValue()
     {
         $this->object->setValue('test');
-        $this->assertEquals($this->object->getValue(),'test' );
+        $this->assertEquals($this->object->getValue(), 'test');
     }
 
     /**
@@ -53,6 +54,7 @@ class InputTagTest extends TagTest
      */
     public function testGetTagName()
     {
+        $this->object->setTagName('test');
         $this->assertEquals('test', $this->object->getTagName());
         $this->object->setName = true;
         $this->object->setTagName('Test');

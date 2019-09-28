@@ -11,7 +11,7 @@ class InputPasswordTagTest extends InputTagTest
      * @var InputPasswordTag
      */
     protected $object;
-    public $rendered = '<input type="password" name="test" />';
+    public $rendered = '<input type="password" value="secret" name="test" />';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -19,11 +19,29 @@ class InputPasswordTagTest extends InputTagTest
      */
     protected function setUp(): void
     {
-        $this->object = new \Ease\Html\InputPasswordTag('test');
+        $this->object = new \Ease\Html\InputPasswordTag('test','secret');
     }
 
-    
-        /**
+    /**
+     * 
+     * @covers Ease\Html\InputPasswordTag::__construct
+     */
+    public function testConstructor()
+    {
+        $classname = get_class($this->object);
+
+        // Get mock, without the constructor being called
+        $mock = $this->getMockBuilder($classname)
+            ->disableOriginalConstructor()
+            ->getMockForAbstractClass();
+
+        $mock->__construct('Tag', 'secret', ['name' => 'Tag', 'id' => 'testing']);
+
+        $this->assertEquals('<input type="password" value="secret" name="Tag" />',
+            $mock->getRendered());
+    }
+
+    /**
      * 
      * @covers Ease\Html\InputPasswordTag::draw
      */
@@ -31,11 +49,13 @@ class InputPasswordTagTest extends InputTagTest
     {
         parent::testDraw($this->rendered);
     }
+
     /**
      * Tears down the fixture, for example, closes a network connection.
      * This method is called after a test is executed.
      */
     protected function tearDown(): void
     {
+        
     }
 }

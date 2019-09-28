@@ -24,6 +24,28 @@ class ImgTagTest extends TagTest
         $this->object = new ImgTag('http://localhost/favicon.png');
     }
 
+    
+    /**
+     * 
+     * @covers Ease\Html\ImgTag::__construct
+     */
+    public function testConstructor()
+    {
+        $classname = get_class($this->object);
+
+        // Get mock, without the constructor being called
+        $mock = $this->getMockBuilder($classname)
+            ->disableOriginalConstructor()
+            ->getMockForAbstractClass();
+        $mock->__construct('Test');
+
+        $mock->__construct('Tag', 'Alt', ['name' => 'Tag', 'id' => 'testing']);
+
+        $this->assertEquals('<img src="Tag" name="Tag" id="testing" alt="Alt" />',
+            $mock->getRendered());
+    }
+    
+    
     /**
      * 
      * @covers Ease\Html\ImgTag::draw
