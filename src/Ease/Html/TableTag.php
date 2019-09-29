@@ -138,6 +138,36 @@ class TableTag extends PairTag
     }
 
     /**
+     * Vyprázní obsah objektu.
+     * Empty container contents
+     */
+    public function emptyContents()
+    {
+        $this->tBody->emptyContents();
+    }
+
+    /**
+     * Contentets
+     * 
+     * @return mixed
+     */
+    public function getContents()
+    {
+        return $this->tBody->getContents();
+    }
+
+    /**
+     * Vrací počet vložených položek.
+     * Obtain number of enclosed items in current or given object.
+     *
+     * @return int nuber of parts enclosed
+     */
+    public function getItemsCount()
+    {
+        return $this->tBody->getItemsCount();
+    }
+
+    /**
      * Populate table with given data
      *
      * @param array $contents

@@ -57,7 +57,8 @@ class TableTagTest extends PairTagTest
     public function testAddRowHeaderColumns()
     {
         $this->object->addRowHeaderColumns(['a', 'b', 'c']);
-        $this->assertEquals('<table><thead><tr><th>a</th><th>b</th><th>c</th></tr></thead><tbody></tbody><tfoot></tfoot></table>', $this->object->getRendered());
+        $this->assertEquals('<table><thead><tr><th>a</th><th>b</th><th>c</th></tr></thead><tbody></tbody><tfoot></tfoot></table>',
+            $this->object->getRendered());
     }
 
     /**
@@ -65,7 +66,7 @@ class TableTagTest extends PairTagTest
      */
     public function testIsEmpty()
     {
-        $this->object->addItem( new \Ease\Html\TrTag( new \Ease\Html\TdTag() ) );
+        $this->object->addRowColumns(['a' => 'A', 'b' => 'B']);
         $this->assertFalse($this->object->isEmpty());
         $this->object->emptyContents();
         $this->assertTrue($this->object->isEmpty());
@@ -80,4 +81,64 @@ class TableTagTest extends PairTagTest
         $this->assertEquals('<table><thead></thead><tbody><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></tbody><tfoot></tfoot></table>',
             $this->object->getRendered());
     }
+
+    /**
+     * @covers Ease\Html\TableTag::addToLastItem
+     */
+    public function testAddToLastItem()
+    {
+        $this->object->emptyContents();
+        $this->object->addItem(new \Ease\Html\DivTag());
+        $this->object->addToLastItem(new \Ease\Html\PreTag());
+        $this->assertEquals('<table><thead></thead><tbody></tbody><tfoot></tfoot><div></div></table>',
+            $this->object->getRendered());
+    }
+
+    /**
+     * @covers Ease\Html\TableTag::getFirstPart
+     */
+    public function testGetFirstPart()
+    {
+        $this->object->emptyContents();
+        $this->assertNull($this->object->getFirstPart());
+        $this->object->addRowColumns(['a' => 'A', 'b' => 'B']);
+        $this->assertEquals('<thead></thead>',
+            $this->object->getFirstPart()->getRendered());
+    }
+
+    /**
+     * @covers Ease\Html\TableTag::addAsFirst
+     */
+    public function testAddAsFirst()
+    {
+        $this->object->emptyContents();
+        $this->object->addItem(new \Ease\Html\DivTag());
+        $this->object->addAsFirst(new \Ease\Html\SpanTag());
+        $this->assertEquals('<table><thead></thead><tbody></tbody><tfoot></tfoot><div></div><span></span><thead></thead><tbody></tbody><tfoot></tfoot><div></div></table>',
+            $this->object->getRendered());
+    }
+
+    /**
+     * @covers Ease\Html\TableTag::getItemsCount
+     */
+    public function testGetItemsCount()
+    {
+        $this->object->emptyContents();
+        $this->assertEquals(0, $this->object->getItemsCount());
+        $this->object->addRowColumns(['a' => 'A', 'b' => 'B']);
+        $this->assertEquals(1, $this->object->getItemsCount());
+    }
+    
+    /**
+     * @covers Ease\Html\TableTag::addItems
+     */
+    public function testAddItems()
+    {
+        $this->object->emptyContents();
+        $this->object->addItems([new \Ease\Html\DivTag(), new \Ease\Html\SpanTag()]);
+        $this->assertEquals('<table><thead></thead><tbody></tbody><tfoot></tfoot><div></div><span></span></table>',
+            $this->object->getRendered());
+    }
+    
+    
 }
