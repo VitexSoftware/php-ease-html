@@ -337,7 +337,7 @@ class WebPage extends Document
      */
     public function getItemsCount()
     {
-        return parent::getItemsCount($this->body);
+        return $this->body->getItemsCount();
     }
 
     /**

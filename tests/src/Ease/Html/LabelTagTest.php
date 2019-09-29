@@ -56,5 +56,7 @@ class LabelTagTest extends PairTagTest
 
         $mock->__construct('for', 'Iam label',
             ['name' => 'Label', 'id' => 'testing']);
+        
+        $this->assertEquals( '<label for="for" name="Label" id="testing">Iam label</label>',$mock->getRendered() );
     }
 }

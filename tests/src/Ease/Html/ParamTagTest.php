@@ -40,6 +40,10 @@ class ParamTagTest extends TagTest
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();
         $mock->__construct('name', 'value');
+        
+               
+        $this->assertEquals( '<param name="name" value="value" />',$mock->getRendered());  
+        
     }
 
     /**

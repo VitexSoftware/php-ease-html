@@ -13,26 +13,24 @@ class WebPageTest extends DocumentTest
      * @var WebPage
      */
     protected $object;
-    public $rendered = '<!DOCTYPE html><html lang="cs-CZ"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title><link href="test.css" rel="stylesheet" type="text/css" media="screen" /><style>border: 1px solid red</style>
-<script>
-// <![CDATA[
-window.location = "login.php"
-// ]]>
-</script>
+    public $rendered = '<!DOCTYPE html><html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title>
+<style></style></head><body>
+<script src="test.js"></script>
 
 <script>
 // <![CDATA[
 window.location = "http://v.s.cz/"
+window.location = "login.php"
 // ]]>
 </script>
 
-<script src="test.js"></script>
+
 <script>
 // <![CDATA[
 $(document).ready(function () { alert("test") });
 // ]]>
 </script>
-</head><body></body></html>';
+</body></html>';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -139,8 +137,8 @@ $(document).ready(function () { alert("test") });
     {
         ob_start();
         $this->object->draw();
-        $this->assertEquals('<!DOCTYPE html><html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title><link href="test.css" rel="stylesheet" type="text/css" media="screen" />
-<style>.test {color:red;}</style></head><body>
+        $this->assertEquals('<!DOCTYPE html><html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title>
+<style></style></head><body>
 <script src="test.js"></script>
 
 <script>

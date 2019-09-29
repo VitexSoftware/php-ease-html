@@ -42,6 +42,10 @@ class OptionTagTest extends \Test\Ease\Html\PairTagTest
         $mock->__construct('Test');
 
         $mock->__construct('option', 'value');
+        
+        $this->assertEquals('<option value="value">Testoption</option>',
+            $mock->getRendered());
+        
     }
 
     /**
