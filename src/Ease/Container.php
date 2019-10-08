@@ -11,8 +11,14 @@ namespace Ease;
 
 class Container extends Sand implements Embedable
 {
+
     use Glue;
-    
+    /**
+     * Library version
+     * @var string 
+     */
+    public static $libVersion = 1.0;
+
     /**
      * Kontejner, který může obsahovat vložené objekty, které se vykreslí.
      *
@@ -24,7 +30,6 @@ class Container extends Sand implements Embedable
             $this->addItem($initialContent);
         }
     }
-
 
     /**
      * Vloží jako první element do objektu.
