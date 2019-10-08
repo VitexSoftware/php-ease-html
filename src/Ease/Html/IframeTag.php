@@ -10,7 +10,7 @@ namespace Ease\Html;
 class IframeTag extends PairTag
 {
     public $tagType = 'iframe';
-
+   
     /**
      * iFrame element.
      *

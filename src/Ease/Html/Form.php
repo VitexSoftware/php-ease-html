@@ -128,11 +128,11 @@ class Form extends PairTag
      * @param array           $data asociativní pole dat
      * @param \Ease\Container|mixed $form formulář k naplnění
      */
-    public static function fillMeUp(&$data, &$form)
+    public static function fillMeUp($data, &$form)
     {
-        if (isset($form->pageParts) && is_array($form->pageParts) && count($form->pageParts)) {
+        if (!empty($form->pageParts)) {
             foreach ($form->pageParts as $partName => $part) {
-                if (isset($part->pageParts) && is_array($part->pageParts) && count($part->pageParts)) {
+                if (!empty($part->pageParts)) {
                     self::fillMeUp($data, $part);
                 }
                 if (is_object($part)) {

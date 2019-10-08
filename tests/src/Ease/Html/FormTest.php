@@ -13,7 +13,7 @@ class FormTest extends PairTagTest
      * @var Form
      */
     protected $object;
-    public $rendered = '<form method="post" name="test"></form>';
+    public $rendered = '<form method="post" name="test" action="test.php"></form>';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -21,7 +21,7 @@ class FormTest extends PairTagTest
      */
     protected function setUp(): void
     {
-        $this->object = new \Ease\Html\Form('test');
+        $this->object = new \Ease\Html\Form('test','test.php');
     }
 
     /**
@@ -30,6 +30,7 @@ class FormTest extends PairTagTest
      */
     protected function tearDown(): void
     {
+        
     }
 
     /**
@@ -85,6 +86,35 @@ class FormTest extends PairTagTest
     }
 
     /**
+     * @covers Ease\Html\Form::fillUp
+     */
+    public function testFillUp()
+    {
+        $this->object->emptyContents();
+        $this->object->fillUp(['a' => 1, 'b' => 2]);
+        $this->assertEquals('<form method="post" name="test" action="test.php"></form>',
+            $this->object->getRendered());
+        $this->object->addItem(new \Ease\Html\InputTag('a'));
+        $this->object->addItem(new \Ease\Html\InputTag('b'));
+        $this->object->fillUp(['a' => 1, 'b' => 2]);
+        $this->assertEquals('<form method="post" name="test" action="test.php"><input name="a" value="1" /><input name="b" value="2" /></form>',
+            $this->object->getRendered());
+    }
+
+    /**
+     * @covers Ease\Html\Form::fillMeUp
+     */
+    public function testFillMeUp()
+    {
+        $this->object->emptyContents();
+        $this->object->addItem(new \Ease\Html\InputTag('a'));
+        $this->object->addItem(new \Ease\Html\InputTag('b'));
+        \Ease\Html\Form::fillMeUp(['a' => 1, 'b' => 2], $this->object);
+        $this->assertEquals('<form method="post" name="test" action="test.php"><input name="a" value="1" /><input name="b" value="2" /></form>',
+            $this->object->getRendered());
+    }
+
+    /**
      * @covers Ease\Html\Form::getTagName
      */
     public function testGetTagName()
@@ -93,26 +123,5 @@ class FormTest extends PairTagTest
         $this->object->setName = true;
         $this->object->setTagName('Test');
         $this->assertEquals('Test', $this->object->getTagName());
-    }
-
-    /**
-     * @covers Ease\Html\Form::fillUp
-     */
-    public function testFillUp()
-    {
-        $this->object->fillUp(['a' => 1, 'b' => 2]);
-    }
-
-    /**
-     * @covers Ease\Html\Form::fillMeUp
-     *
-     * @todo   Implement testFillMeUp().
-     */
-    public function testFillMeUp()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
     }
 }
