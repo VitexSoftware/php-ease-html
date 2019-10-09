@@ -21,6 +21,8 @@ class HeadTagTest extends PairTagTest
      */
     protected function setUp(): void
     {
+        \Ease\Document::singleton()->cascadeStyles = [];
+        \Ease\Document::singleton()->javaScripts = [];
         $this->object = new HeadTag();
     }
 
@@ -73,10 +75,11 @@ class HeadTagTest extends PairTagTest
     }
 
     /**
-     * @covers Ease\Html\HeadTag::draw
+     * @covers Ease\Html\HeadTag::drawIfNotDrawn
      */
-    public function testDraw($whatWant = null)
+    public function testDrawIfNotDrawn($canBeEmpty = false)
     {
-        parent::testDraw($this->rendered);
-    }
+        parent::testDrawIfNotDrawn($canBeEmpty);
+    }    
+    
 }

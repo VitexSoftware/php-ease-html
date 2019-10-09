@@ -243,8 +243,7 @@ class ContainerTest extends SandTest
         ob_end_clean();
         ob_start();
         $this->object->drawIfNotDrawn();
-        $out = ob_get_contents();
-        $this->assertEmpty($out);
+        $this->assertEmpty(ob_get_contents());
         ob_end_clean();
     }
 

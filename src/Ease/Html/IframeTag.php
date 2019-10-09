@@ -9,18 +9,15 @@ namespace Ease\Html;
  */
 class IframeTag extends PairTag
 {
-    public $tagType = 'iframe';
-   
     /**
      * iFrame element.
      *
      * @param string $src        content url
      * @param array  $properties HTML tag proberties
      */
-    public function __construct($src, $properties = [])
+    public function __construct( string $src, $properties = [])
     {
         $properties['src'] = $src;
-        $this->setTagProperties($properties);
-        parent::__construct();
+        parent::__construct('iframe',$properties);
     }
 }

@@ -374,6 +374,30 @@ class WebPage extends Document
     }
     
     /**
+     * Vrací odkaz na poslední vloženou položku.
+     *
+     * @return Embedable|string
+     */
+    public function &lastItem()
+    {
+        $lastPart = empty($this->body->pageParts) ? null : end($this->body->pageParts);
+        return $lastPart;
+    }
+    
+    /**
+     * Přidá položku do poslední vložené položky.
+     *
+     * @param object $pageItem hodnota nebo EaseObjekt s metodou draw()
+     *
+     * @return Container|null success
+     */
+    public function addToLastItem($pageItem)
+    {
+        return $this->isEmpty() ? null : end($this->body->pageParts)->addItem($pageItem);
+    }
+
+    
+    /**
      * Vyprázní obsah webstránky
      * Empty webpage contents
      */

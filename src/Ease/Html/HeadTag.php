@@ -153,7 +153,7 @@ class HeadTag extends PairTag
                 $cascadeStyles[] = $style;
             }
         }
-        return implode($divider, $cascadeStylesIncludes).$divider.'<style>'.implode($divider,
+        return empty($stylesArray) ? '' :  implode($divider, $cascadeStylesIncludes).$divider.'<style>'.implode($divider,
                 $cascadeStyles).'</style>';
     }
 

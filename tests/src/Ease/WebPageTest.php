@@ -13,7 +13,7 @@ class WebPageTest extends DocumentTest
      * @var WebPage
      */
     protected $object;
-    public $rendered = '<!DOCTYPE html><html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title>
+    public $rendered = '<!DOCTYPE html><html lang="cs"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title>
 <style></style></head><body>
 <script src="test.js"></script>
 
@@ -135,9 +135,12 @@ $(document).ready(function () { alert("test") });
      */
     public function testDraw($whatWant = null)
     {
+        $this->object->emptyContents();
+        \Ease\Document::singleton()->cascadeStyles = [];
+        \Ease\Document::singleton()->javaScripts = [];
         ob_start();
         $this->object->draw();
-        $this->assertEquals('<!DOCTYPE html><html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title>
+        $this->assertEquals('<!DOCTYPE html><html lang="cs"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title>
 <style></style></head><body>
 <script src="test.js"></script>
 
@@ -171,4 +174,7 @@ $(document).ready(function () { alert("test") });
             'This test has not been implemented yet.'
         );
     }
+    
+    
+    
 }
