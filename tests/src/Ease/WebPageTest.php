@@ -13,21 +13,11 @@ class WebPageTest extends DocumentTest
      * @var WebPage
      */
     protected $object;
-    public $rendered = '<!DOCTYPE html><html lang="cs"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title>
-<style></style></head><body>
-<script src="test.js"></script>
+    public $rendered = '<!DOCTYPE html><html lang="cs"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title></head><body>
 
 <script>
 // <![CDATA[
-window.location = "http://v.s.cz/"
 window.location = "login.php"
-// ]]>
-</script>
-
-
-<script>
-// <![CDATA[
-$(document).ready(function () { alert("test") });
 // ]]>
 </script>
 </body></html>';
@@ -38,7 +28,9 @@ $(document).ready(function () { alert("test") });
      */
     protected function setUp(): void
     {
-        $this->object = new WebPage();
+        $this->object                              = new WebPage();
+        \Ease\WebPage::singleton()->cascadeStyles = [];
+        \Ease\Document::singleton()->javaScripts   = [];
     }
 
     /**
@@ -75,10 +67,11 @@ $(document).ready(function () { alert("test") });
      */
     public function testIncludeJavaScript()
     {
-        \Ease\WebPage::singleton()->javaScripts = [];
-        $this->object->includeJavaScript('test.js');
-        $this->assertEquals(['#test.js'],
+        \Ease\WebPage::singleton()->javaScripts  = [];
+        $this->object->includeJavaScript('WebPage.js');
+        $this->assertEquals(['#WebPage.js'],
             \Ease\WebPage::singleton()->javaScripts);
+        \Ease\Document::singleton()->javaScripts = [];
     }
 
     /**
@@ -86,7 +79,9 @@ $(document).ready(function () { alert("test") });
      */
     public function testAddJavaScript()
     {
-        $this->assertEquals(0, $this->object->addJavaScript('alert("test")'));
+        $this->assertEquals(0,
+            $this->object->addJavaScript('alert("WebPageTest")'));
+        \Ease\Document::singleton()->javaScripts = [];
     }
 
     /**
@@ -95,6 +90,7 @@ $(document).ready(function () { alert("test") });
     public function testAddToScriptsStack()
     {
         $this->assertEquals(0, $this->object->addToScriptsStack('var test = 1;'));
+        \Ease\Document::singleton()->javaScripts = [];
     }
 
     /**
@@ -110,7 +106,8 @@ $(document).ready(function () { alert("test") });
      */
     public function testIncludeCss()
     {
-        $this->assertTrue($this->object->includeCss('test.css'));
+        $this->assertTrue($this->object->includeCss('WebPage.css'));
+        \Ease\WebPage::singleton()->cascadeStyles = [];
     }
 
     /**
@@ -136,21 +133,9 @@ $(document).ready(function () { alert("test") });
     public function testDraw($whatWant = null)
     {
         $this->object->emptyContents();
-        \Ease\Document::singleton()->cascadeStyles = [];
-        \Ease\Document::singleton()->javaScripts = [];
-        ob_start();
-        $this->object->draw();
-        $this->assertEquals('<!DOCTYPE html><html lang="cs"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title>
-<style></style></head><body>
-<script src="test.js"></script>
-
-<script>
-// <![CDATA[
-$(document).ready(function () { alert("test") });
-// ]]>
-</script>
-</body></html>', ob_get_contents());
-        ob_end_flush();
+        \Ease\WebPage::singleton()->javaScripts = [];
+        \Ease\WebPage::singleton()->cascadeStyles = [];
+        parent::testDraw($whatWant);
     }
 
     /**
@@ -174,7 +159,4 @@ $(document).ready(function () { alert("test") });
             'This test has not been implemented yet.'
         );
     }
-    
-    
-    
 }
