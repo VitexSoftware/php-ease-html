@@ -1,9 +1,19 @@
-php-ease-html (0.5) UNRELEASED; urgency=medium
+php-ease-html (0.15) UNRELEASED; urgency=medium
 
   * First release
   * Backported Mailer
   * Backported Mailer
   * Backported Mailer
   * Another Unit tests
+  * All Tests pass
+  * All Tests pass
+  * All Tests pass
+  * All Tests pass
+  * All Tests pass
+  * All Tests pass
+  * All Tests pass
+  * All Tests pass
+  * All Tests pass
+  * All Tests pass
 
- -- Vítězslav Dvořák <info@vitexsoftware.cz>  Wed, 02 Oct 2019 22:40:24 +0200
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sat, 12 Oct 2019 14:34:53 +0200

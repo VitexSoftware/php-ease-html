@@ -33,7 +33,7 @@ class InputSubmitTagTest extends InputTagTest
         
     }
 
-   /**
+    /**
      * 
      * @covers Ease\Html\InputSubmitTag::__construct
      */
@@ -51,8 +51,7 @@ class InputSubmitTagTest extends InputTagTest
         $this->assertEquals('<input name="Tag" id="testing" type="submit" value="label" />',
             $mock->getRendered());
     }
-     
-    
+
     /**
      * @covers Ease\Html\InputSubmitTag::setValue
      *
