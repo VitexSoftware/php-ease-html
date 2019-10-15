@@ -1,5 +1,4 @@
-name: CI
-
+name: PHPUnit
 on: [push]
 
 jobs:
@@ -10,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
       env: 
-        DEBIAN_FRONTEND: "noninteractive"
+        DEBIAN_FRONTEND: noninteractive
     - name: Prepare Environment
       run: |
         sudo apt-get update
