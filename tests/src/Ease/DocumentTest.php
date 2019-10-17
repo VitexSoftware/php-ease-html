@@ -23,7 +23,9 @@ class DocumentTest extends ContainerTest
      */
     protected function setUp(): void
     {
-        $this->object = new Document();
+        \Ease\Document::singleton()->javaScripts   = [];
+        \Ease\WebPage::singleton()->cascadeStyles = [];
+        $this->object                              = new Document();
     }
 
     /**
@@ -44,7 +46,7 @@ class DocumentTest extends ContainerTest
             $this->assertInstanceOf(get_class($this->object),
                 Document::singleton());
         } else {
-            $this->assertIsObject( Document::singleton());
+            $this->assertIsObject(Document::singleton());
         }
     }
 
@@ -56,7 +58,7 @@ class DocumentTest extends ContainerTest
         \Ease\WebPage::singleton()->javaScripts = [];
         $this->assertEquals(0, $this->object->addJavaScript('alert("hallo");'));
         $this->assertEquals(0,
-            $this->object->addJavaScript('alert("world");', false));
+            $this->object->addJavaScript('alert("Document");', false));
     }
 
     /**
@@ -64,7 +66,8 @@ class DocumentTest extends ContainerTest
      */
     public function testIncludeJavaScript()
     {
-        $this->assertEquals(0, $this->object->includeJavaScript('test.js'));
+        $this->assertEquals(0, $this->object->includeJavaScript('Document.js'));
+        \Ease\Document::singleton()->javaScripts = [];
     }
 
     /**
@@ -72,7 +75,8 @@ class DocumentTest extends ContainerTest
      */
     public function testAddCSS()
     {
-        $this->assertTrue($this->object->addCSS('.test {color:red;}'));
+        $this->assertTrue($this->object->addCSS('.Document {color:red;}'));
+        \Ease\WebPage::singleton()->cascadeStyles = [];
     }
 
     /**
@@ -80,7 +84,8 @@ class DocumentTest extends ContainerTest
      */
     public function testIncludeCss()
     {
-        $this->assertEquals(1, $this->object->includeCss('test.css'));
+        $this->assertTrue($this->object->includeCss('Document.css'));
+        \Ease\WebPage::singleton()->cascadeStyles = [];
     }
 
     /**
@@ -90,7 +95,8 @@ class DocumentTest extends ContainerTest
     {
         $this->assertEquals(0, $this->object->redirect('http://v.s.cz/'));
         $this->assertTrue(\Ease\Document::$pageClosed);
-        \Ease\Document::$pageClosed = false;
+        \Ease\Document::$pageClosed             = false;
+        \Ease\WebPage::singleton()->javaScripts = [];
     }
 
     /**
@@ -229,5 +235,4 @@ class DocumentTest extends ContainerTest
         Document::registerItem($item);
         $this->assertInstanceOf(get_class($item), end(Document::$allItems));
     }
-    
 }
