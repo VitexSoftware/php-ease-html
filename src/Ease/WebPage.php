@@ -213,7 +213,7 @@ class WebPage extends Document
             } else {
                 $javaScripts[] = $code;
             }
-        } else { //Pozice urcena
+        } else { //Force Position
             if (isset($javaScripts[$position])) { //Uz je obsazeno
                 if ($javaScripts[$position] == $code) {
                     return $position;
