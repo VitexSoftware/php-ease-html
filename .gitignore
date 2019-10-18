@@ -9,3 +9,4 @@
 /debian/php-ease-html-dev.substvars
 /debian/php-ease-html-dev.debhelper.log
 /debian/.debhelper
+/debian/php-ease-html-dev/

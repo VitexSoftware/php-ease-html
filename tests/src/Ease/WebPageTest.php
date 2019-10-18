@@ -111,9 +111,9 @@ window.location = "login.php"
     }
 
     /**
-     * @covers Ease\WebPage::getStatusMessagesAsHtml
+     * @covers Ease\WebPage::getStatusMessagesBlock
      */
-    public function testGetStatusMessagesAsHtml()
+    public function testGetStatusMessagesBlock()
     {
         \Ease\Shared::singleton()->cleanMessages();
         \Ease\Shared::singleton()->addStatusMessage('success Status message for testGetStatusMessagesAsHtml',
@@ -123,7 +123,7 @@ window.location = "login.php"
         \Ease\Shared::singleton()->addStatusMessage('error Status message for testGetStatusMessagesAsHtml',
             'error');
         $this->assertEquals('<div><div style="color: #2C5F23;">success Status message for testGetStatusMessagesAsHtml</div><div style="color: #AB250E;">warning Status message for testGetStatusMessagesAsHtml</div><div style="color: red;">error Status message for testGetStatusMessagesAsHtml</div></div>',
-            $this->object->getStatusMessagesAsHtml()->__toString());
+            $this->object->getStatusMessagesBlock()->__toString());
         \Ease\Shared::singleton()->cleanMessages();
     }
 

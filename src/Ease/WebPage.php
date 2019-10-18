@@ -283,7 +283,7 @@ class WebPage extends Document
      *
      * @return \Ease\Html\DivTag
      */
-    public function getStatusMessagesAsHtml()
+    public function getStatusMessagesBlock()
     {
         $htmlFargment = new Html\DivTag();
 
