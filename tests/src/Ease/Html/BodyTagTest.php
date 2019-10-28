@@ -13,7 +13,14 @@ class BodyTagTest extends PairTagTest
      * @var BodyTag
      */
     protected $object;
-    public $rendered = '<body></body>';
+    public $rendered = '<body>
+
+<script>
+// <![CDATA[
+window.location = "login.php"
+// ]]>
+</script>
+</body>';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -21,7 +28,9 @@ class BodyTagTest extends PairTagTest
      */
     protected function setUp(): void
     {
-        $this->object = new \Ease\Html\BodyTag();
+        \Ease\WebPage::singleton()->cascadeStyles = [];
+        \Ease\Document::singleton()->javaScripts  = [];
+        $this->object                             = new \Ease\Html\BodyTag();
     }
 
     /**
@@ -30,13 +39,34 @@ class BodyTagTest extends PairTagTest
      */
     protected function tearDown(): void
     {
+        
     }
 
+    /**
+     * @covers Ease\Html\BodyTag::__construct
+     */
     public function testConstructor()
     {
         parent::testConstructor();
-        $tester = new BodyTag('test');
-        $this->assertEquals('test', $tester->getTagID());
+    }
+
+    /**
+     * @covers Ease\Html\BodyTag::drawIfNotDrawn
+     */
+    public function testDrawIfNotDrawn($canBeEmpty = false)
+    {
+        $this->object->emptyContents();
+        \Ease\WebPage::singleton()->cascadeStyles = [];
+        \Ease\Document::singleton()->javaScripts  = [];
+        parent::testDrawIfNotDrawn($canBeEmpty);
+    }
+
+    /**
+     * @covers Ease\Html\BodyTag::draw
+     */
+    public function testDraw($whatWant = null)
+    {
+        parent::testDraw($whatWant);
     }
 
     /**

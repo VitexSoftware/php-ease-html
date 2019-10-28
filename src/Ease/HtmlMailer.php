@@ -222,30 +222,22 @@ class HtmlMailer extends Document
     /**
      * Obtain item count
      *
-     * @param Container $object
      * @return int
      */
-    public function getItemsCount($object = null)
+    public function getItemsCount()
     {
-        if (is_null($object)) {
-            $object = $this->htmlBody;
-        }
-        return parent::getItemsCount($object);
+        return $this->htmlBody->getItemsCount($object);
     }
 
     /**
      * Is object empty ?
-     *
-     * @param Container $element
      * 
      * @return boolean
      */
-    public function isEmpty($element = null)
+    public function isEmpty()
     {
-        if (is_null($element)) {
-            $element = $this->htmlBody;
-        }
-        return parent::isEmpty($element);
+
+        return $this->htmlBody->isEmpty($element);
     }
 
     /**
@@ -254,7 +246,7 @@ class HtmlMailer extends Document
      */
     public function emptyContents()
     {
-        $this->htmlBody = null;
+        $this->htmlBody->emptyContents();
     }
 
     /**
