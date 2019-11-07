@@ -213,7 +213,7 @@ class WebPage extends Document
             } else {
                 $javaScripts[] = $code;
             }
-        } else { //Pozice urcena
+        } else { //Force Position
             if (isset($javaScripts[$position])) { //Uz je obsazeno
                 if ($javaScripts[$position] == $code) {
                     return $position;
@@ -283,13 +283,14 @@ class WebPage extends Document
      *
      * @return \Ease\Html\DivTag
      */
-    public function getStatusMessagesAsHtml()
+    public function getStatusMessagesBlock()
     {
         $htmlFargment = new Html\DivTag();
 
         foreach (\Ease\Shared::singleton()->getStatusMessages() as $quee => $messages) {
             foreach ($messages as $message) {
-                $htmlFargment->addItem(new Html\DivTag($message,['style'=> Logger\Regent::singleton()->logStyles[$quee] ]));
+                $htmlFargment->addItem(new Html\DivTag($message,
+                        ['style' => Logger\Regent::singleton()->logStyles[$quee]]));
             }
         }
         return $htmlFargment;
@@ -359,7 +360,6 @@ class WebPage extends Document
         return empty($this->body->pageParts);
     }
 
-    
     /**
      * Vloží jako první element do objektu.
      *
@@ -370,9 +370,9 @@ class WebPage extends Document
      */
     public function &addAsFirst($pageItem, $pageItemName = null)
     {
-       return $this->body->addAsFirst($pageItem, $pageItemName);
+        return $this->body->addAsFirst($pageItem, $pageItemName);
     }
-    
+
     /**
      * Vrací odkaz na poslední vloženou položku.
      *
@@ -383,7 +383,7 @@ class WebPage extends Document
         $lastPart = empty($this->body->pageParts) ? null : end($this->body->pageParts);
         return $lastPart;
     }
-    
+
     /**
      * Přidá položku do poslední vložené položky.
      *
@@ -396,7 +396,6 @@ class WebPage extends Document
         return $this->isEmpty() ? null : end($this->body->pageParts)->addItem($pageItem);
     }
 
-    
     /**
      * Vyprázní obsah webstránky
      * Empty webpage contents

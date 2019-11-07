@@ -68,7 +68,7 @@ class SelectTag extends PairTag
             if ($this->_itemsIDs) {
                 $newItem->setTagID($this->getTagName().$itemName);
             }
-            if ($this->defaultValue == $itemName) {
+            if (($this->defaultValue == $itemName) || (array_search($itemName, $this->_itemsIDs))) {
                 $this->lastItem()->setDefault();
             }
         }

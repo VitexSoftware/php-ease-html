@@ -1,5 +1,5 @@
 #DESTDIR ?= debian/php-ease-html/DEBIAN
-#libdir  ?= /usr/share/php/Ease
+#libdir  ?= /usr/share/php/EaseHtml
 #docdir  ?= /doc/ease-html/html
 
 all: build install
@@ -36,8 +36,10 @@ apigen:
 composer:
 	composer update
 
-phpunit:
+phpunit: composer
 	vendor/bin/phpunit --bootstrap tests/Bootstrap.php --configuration phpunit.xml tests/src/
+
+test: phpunit
 
 deb:
 	dch -i "`git log -1 --pretty=%B`"

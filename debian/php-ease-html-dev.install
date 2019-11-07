@@ -1,0 +1,3 @@
+src/Ease/*                      usr/share/php/EaseHtmlTests/
+debian/test/composer.json	usr/share/php/EaseHtmlTests/
+debian/test/Bootstrap.php	usr/share/php/EaseHtmlTests/

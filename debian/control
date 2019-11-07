@@ -1,11 +1,11 @@
 Source: php-ease-html
-Build-Depends: debhelper (>= 7.0.50~)
+Build-Depends: debhelper (>= 7.0.50~), php-ease-core
 Section: web
 Standards-Version: 3.9.8
 Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
 Uploaders: Vitex <vitex@hippy.cz>
 Priority: optional
-Homepage: https://github.com/VitexSoftware/ease-html
+Homepage: https://github.com/VitexSoftware/php-ease-html
 
 Package: php-ease-html
 Depends: ${misc:Depends},libjs-jquery (>= 1.4), php-mail, php-mail-mime, php-ease-core
@@ -16,3 +16,13 @@ Section: web
 Priority: optional
 Description: EasePHP Framework HTML support
  HTML classes for Ease Framework. 
+
+Package: php-ease-html-dev
+Depends: ${misc:Depends}, php-ease-core-dev
+Architecture: all
+Conflicts: ease-framework
+Section: devel
+Priority: optional
+Description: EasePHP Framework HTML unit tests
+ HTML classes for Ease Framework. 
+
