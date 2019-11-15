@@ -198,7 +198,7 @@ class Document extends Container
     public function onlyForLogged($loginPage = 'login.php', $message = null)
     {
 
-        if (!method_exists(\Ease\Shared::user(), 'isLogged') || !\Ease\Shared::user()->isLogged()) {
+        if (!method_exists(\Ease\User::singleton(), 'isLogged') || !\Ease\User::singleton()->isLogged()) {
             if (!empty($message)) {
                 \Ease\User::singleton()->addStatusMessage(_('Sign in first please'),
                     'warning');
