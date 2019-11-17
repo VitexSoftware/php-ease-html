@@ -119,4 +119,19 @@ class SelectTag extends PairTag
             }
         }
     }
+    
+    /**
+     * Disable menu item
+     *  
+     * @param int $itemID
+     */
+    public function disableItem($itemID) {
+        foreach ($this->pageParts as $optionId => $option) {
+            if ($option->getValue() == $itemID) {
+                $this->pageParts[$optionId]->setTagProperties(['disabled']);
+            }
+        }
+        
+    }
+    
 }
