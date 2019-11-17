@@ -29,30 +29,21 @@ class SelectTag extends PairTag
     public $items = [];
 
     /**
-     * Mají se vloženým položkám nastavovat ID ?
-     *
-     * @var bool
-     */
-    private $_itemsIDs = false;
-
-    /**
      * Html select box.
      *
      * @param string $name         jmeno
      * @param array  $items        polozky
      * @param string $defaultValue id predvolene polozky
-     * @param array  $itemsIDs     id položek
      * @param array  $properties   tag properties
      */
     public function __construct($name, $items = null, $defaultValue = null,
-                                $itemsIDs = false, $properties = [])
+                                 $properties = [])
     {
         parent::__construct('select', $properties);
         $this->defaultValue = $defaultValue;
         $this->_itemsIDs    = $itemsIDs;
         $this->setTagName($name);
         if (is_array($items)) {
-            $this->items = $items;
             $this->addItems($items);
         }
     }
@@ -69,7 +60,7 @@ class SelectTag extends PairTag
             if ($this->_itemsIDs) {
                 $newItem->setTagID($this->getTagName().$itemName);
             }
-            if (($this->defaultValue == $itemName) || (array_search($itemName, $this->items))) {
+            if (($this->defaultValue == $itemName)) {
                 $this->lastItem()->setDefault();
             }
         }
