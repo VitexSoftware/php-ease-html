@@ -29,27 +29,18 @@ class SelectTag extends PairTag
     public $items = [];
 
     /**
-     * Mají se vloženým položkám nastavovat ID ?
-     *
-     * @var bool
-     */
-    private $_itemsIDs = false;
-
-    /**
      * Html select box.
      *
      * @param string $name         jmeno
      * @param array  $items        polozky
      * @param string $defaultValue id predvolene polozky
-     * @param array  $itemsIDs     id položek
      * @param array  $properties   tag properties
      */
     public function __construct($name, $items = null, $defaultValue = null,
-                                $itemsIDs = false, $properties = [])
+                                 $properties = [])
     {
         parent::__construct('select', $properties);
         $this->defaultValue = $defaultValue;
-        $this->_itemsIDs    = $itemsIDs;
         $this->setTagName($name);
         if (is_array($items)) {
             $this->addItems($items);
@@ -65,10 +56,7 @@ class SelectTag extends PairTag
     {
         foreach ($items as $itemName => $itemValue) {
             $newItem = $this->addItem(new OptionTag($itemValue, $itemName));
-            if ($this->_itemsIDs) {
-                $newItem->setTagID($this->getTagName().$itemName);
-            }
-            if ($this->defaultValue == $itemName) {
+            if (($this->defaultValue == $itemName)) {
                 $this->lastItem()->setDefault();
             }
         }
@@ -131,4 +119,19 @@ class SelectTag extends PairTag
             }
         }
     }
+    
+    /**
+     * Disable menu item
+     *  
+     * @param int $itemID
+     */
+    public function disableItem($itemID) {
+        foreach ($this->pageParts as $optionId => $option) {
+            if ($option->getValue() == $itemID) {
+                $this->pageParts[$optionId]->setTagProperties(['disabled']);
+            }
+        }
+        
+    }
+    
 }

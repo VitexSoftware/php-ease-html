@@ -1,0 +1,9 @@
+./src/Ease/Container.php
+./src/Ease/Document.php
+./src/Ease/Embedable.php
+./src/Ease/Glue.php
+./src/Ease/Html
+./src/Ease/HtmlMailer.php
+./src/Ease/Part.php
+./src/Ease/WebPage.php
+./debian/composer.json

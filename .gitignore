@@ -5,3 +5,8 @@
 /.phpunit.result.cache
 /tests/nb-phpunit-coverage.xml
 /tests/nb-phpunit-log.xml
+/debian/php-ease-html
+/debian/php-ease-html-dev.substvars
+/debian/php-ease-html-dev.debhelper.log
+/debian/.debhelper
+/debian/php-ease-html-dev/

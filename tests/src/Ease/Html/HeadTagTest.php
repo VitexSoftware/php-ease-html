@@ -75,8 +75,19 @@ class HeadTagTest extends PairTagTest
     /**
      * @covers Ease\Html\HeadTag::draw
      */
-    public function testDraw($whatWant = null)
+    public function testDraw($whatWant = NULL)
     {
-        parent::testDraw($this->rendered);
+        \Ease\WebPage::singleton()->cascadeStyles = [];
+        \Ease\Document::singleton()->javaScripts = [];
+        parent::testDraw($whatWant);
     }
+    
+    /**
+     * @covers Ease\Html\HeadTag::drawIfNotDrawn
+     */
+    public function testDrawIfNotDrawn($canBeEmpty = false)
+    {
+        parent::testDrawIfNotDrawn($canBeEmpty);
+    }    
+    
 }

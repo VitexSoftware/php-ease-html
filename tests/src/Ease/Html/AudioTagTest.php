@@ -13,7 +13,6 @@ class AudioTagTest extends PairTagTest
      * @var AudioTag
      */
     protected $object;
-    
     public $rendered = '<audio></audio>';
 
     /**
@@ -31,5 +30,6 @@ class AudioTagTest extends PairTagTest
      */
     protected function tearDown(): void
     {
+        
     }
 }

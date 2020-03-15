@@ -3,12 +3,15 @@
 Ease Framework Html 
 ===================
 
-[![Latest Version](https://img.shields.io/github/release/VitexSoftware/ease-html.svg?style=flat-square)](https://github.com/VitexSoftware/ease-html/releases)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/VitexSoftware/ease-html/blob/master/LICENSE)
-[![Build Status](https://img.shields.io/travis/VitexSoftware/ease-html/master.svg?style=flat-square)](https://travis-ci.org/vitexsoftware/ease-html)
-[![Total Downloads](https://img.shields.io/packagist/dt/VitexSoftware/ease-html.svg?style=flat-square)](https://packagist.org/packages/vitexsoftware/ease-html)
-[![Latest stable](https://img.shields.io/packagist/v/VitexSoftware/ease-html.svg?style=flat-square)](https://packagist.org/packages/vitexsoftware/ease-html)
+[![Latest Stable Version](https://poser.pugx.org/vitexsoftware/ease-html/v/stable)](https://packagist.org/packages/vitexsoftware/ease-html)
+[![Total Downloads](https://poser.pugx.org/vitexsoftware/ease-html/downloads)](https://packagist.org/packages/vitexsoftware/ease-html)
+[![Latest Unstable Version](https://poser.pugx.org/vitexsoftware/ease-html/v/unstable)](https://packagist.org/packages/vitexsoftware/ease-html)
+[![License](https://poser.pugx.org/vitexsoftware/ease-html/license)](https://packagist.org/packages/vitexsoftware/ease-html)
+[![Monthly Downloads](https://poser.pugx.org/vitexsoftware/ease-html/d/monthly)](https://packagist.org/packages/vitexsoftware/ease-html)
+[![Daily Downloads](https://poser.pugx.org/vitexsoftware/ease-html/d/daily)](https://packagist.org/packages/vitexsoftware/ease-html)
 
+[![GitHub issues](https://img.shields.io/github/issues/VitexSoftware/php-ease-html?style=social)](https://github.com/VitexSoftware/php-ease-html/issues)
+[![GitHub stars](https://img.shields.io/github/stars/VitexSoftware/php-ease-html?style=social)](https://github.com/VitexSoftware/php-ease-html/stargazers)
 
  "my way how to assemble web page using PHP Objects."
 
