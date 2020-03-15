@@ -1,8 +1,9 @@
-php-ease-html (0.4) UNRELEASED; urgency=medium
+php-ease-html (0.5) UNRELEASED; urgency=medium
 
   * First release
   * Backported Mailer
   * Backported Mailer
   * Backported Mailer
+  * Logo and icon added
 
- -- Vítězslav Dvořák <vitex@develoid.jinonice.czf>  Thu, 06 Jun 2019 13:25:27 +0200
+ -- Vítězslav Dvořák <vitex@develoid.jinonice.czf>  Thu, 20 Feb 2020 20:41:23 +0100
