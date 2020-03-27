@@ -35,9 +35,9 @@ class TableTag extends PairTag
      */
     public function __construct($content = null, $properties = [])
     {
-        parent::__construct('table', $properties, $content);
+        parent::__construct('table', $properties);
         $this->tHead = $this->addItem(new Thead());
-        $this->tBody = $this->addItem(new Tbody());
+        $this->tBody = $this->addItem(new Tbody($content));
         $this->tFoot = $this->addItem(new Tfoot());
     }
 
@@ -178,4 +178,19 @@ class TableTag extends PairTag
             $this->addRowColumns($cRow);
         }
     }
+
+    /**
+     * Remove empty tHead and tFoot
+     */
+    public function finalize() {
+        if($this->tHead->isEmpty()){
+           $this->tHead->suicide();
+        }
+        if($this->tFoot->isEmpty()){
+           $this->tFoot->suicide();
+        }
+        $this->finalized = true;
+    }
+    
+    
 }
