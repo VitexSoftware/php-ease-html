@@ -8,11 +8,13 @@ override_dh_clean:
 	dh_clean
 
 
-override_dh_test:
-	composer --working-dir=debian/test update
-	phpunit --bootstrap debian/test/Bootstrap.php --configuration phpunit.xml tests/src/
-	dh_test
+#override_dh_test:
+#	composer --working-dir=debian/test update
+#	phpunit --bootstrap debian/test/Bootstrap.php --configuration phpunit.xml tests/src/
+#	dh_test
 
 override_dh_install:
-	        
 	dh_install
+	echo "require_once 'Mail.php';"  >> debian/php-ease-html/usr/share/php/EaseHtml/HtmlMailer.php
+	echo "require_once 'Mail/mime.php';" >> debian/php-ease-html/usr/share/php/EaseHtml/HtmlMailer.php
+

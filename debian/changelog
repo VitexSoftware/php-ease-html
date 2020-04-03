@@ -1,9 +1,19 @@
-php-ease-html (0.5) UNRELEASED; urgency=medium
+php-ease-html (1.17) UNRELEASED; urgency=medium
 
+  * Remove empty tHead and tFoot
+
+ -- CyberVitexus <vitex@exiv.jinonice.czf>  Fri, 03 Apr 2020 00:04:40 +0200
+
+php-ease-html (1.16) EXPERIMENTAL; urgency=medium
+
+  [ Vítězslav Dvořák ]
   * First release
-  * Backported Mailer
-  * Backported Mailer
   * Backported Mailer
   * Logo and icon added
 
- -- Vítězslav Dvořák <vitex@develoid.jinonice.czf>  Thu, 20 Feb 2020 20:41:23 +0100
+  [ CyberVitexus ]
+  * Remove empty tHead and tFoot
+  * Debian Buster rebuild
+  * Remove empty tHead and tFoot
+
+ -- CyberVitexus <vitex@exiv.jinonice.czf>  Fri, 03 Apr 2020 00:02:34 +0200
