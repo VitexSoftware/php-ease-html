@@ -3,7 +3,7 @@
  * Common webpage class
  *
  * @author     Vítězslav Dvořák <vitex@hippy.cz>
- * @copyright  2009-2019 Vitex@hippy.cz (G)
+ * @copyright  2009-2020 Vitex@hippy.cz (G)
  */
 
 namespace Ease;
@@ -281,11 +281,13 @@ class WebPage extends Document
     /**
      * Use this to show status messages on page
      *
+     * @param array $properties Div properties
+     * 
      * @return \Ease\Html\DivTag
      */
-    public function getStatusMessagesBlock()
+    public function getStatusMessagesBlock($properties = [])
     {
-        $htmlFargment = new Html\DivTag();
+        $htmlFargment = new Html\DivTag(null, $properties );
 
         foreach (\Ease\Shared::singleton()->getStatusMessages() as $quee => $messages) {
             foreach ($messages as $message) {
