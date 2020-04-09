@@ -11,14 +11,15 @@ class InputPasswordTag extends InputTextTag
 {
 
     /**
-     * Input pro heslo.
+     * Password Input
      *
-     * @param string $name  jméno tagu
-     * @param string $value předvolené heslo
+     * @param string $name       Tag Name
+     * @param string $value      prefilled password
+     * @param array  $properties Description
      */
-    public function __construct($name, $value = null)
+    public function __construct($name, $value = null, $properties = [])
     {
-        parent::__construct($name, $value);
-        $this->setTagProperties(['type' => 'password']);
+        $properties['type'] = 'password';
+        parent::__construct($name, $value,$properties);
     }
 }
