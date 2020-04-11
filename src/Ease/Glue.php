@@ -1,4 +1,5 @@
 <?php
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,8 +12,8 @@ namespace Ease;
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
-trait Glue
-{
+trait Glue {
+
     /**
      * Pole objektů a fragmentů k vykreslení.
      * Array of objects and fragments to draw
@@ -50,32 +51,33 @@ trait Glue
      *
      * @return mixed Odkaz na vložený objekt
      */
-    public static function &addItemCustom($pageItem, Embedable $context)
-    {
+    public static function &addItemCustom($pageItem, Embedable $context) {
         $itemPointer = null;
-        if (is_object($pageItem)) {
-            $context->pageParts[] = $pageItem;
+        if (!is_null($pageItem)) {
+            if (is_object($pageItem)) {
+                $context->pageParts[] = $pageItem;
 
-            $pageItemName = key(array_slice($context->pageParts, -1, 1, true));
+                $pageItemName = key(array_slice($context->pageParts, -1, 1, true));
 
-            $context->pageParts[$pageItemName]->parentObject = &$context;
-            $context->pageParts[$pageItemName]->setEmbedName($pageItemName);
-            $context->pageParts[$pageItemName]->afterAdd($context);
+                $context->pageParts[$pageItemName]->parentObject = &$context;
+                $context->pageParts[$pageItemName]->setEmbedName($pageItemName);
+                $context->pageParts[$pageItemName]->afterAdd($context);
 
-            $itemPointer = &$context->pageParts[$pageItemName];
-        } else {
-            if (is_array($pageItem)) {
-                $addedItemPointer = $context->addItems($pageItem);
-                $itemPointer      = &$addedItemPointer;
+                $itemPointer = &$context->pageParts[$pageItemName];
             } else {
-                if (!is_null($pageItem)) {
-                    $context->pageParts[] = $pageItem;
-                    $endPointer           = end($context->pageParts);
-                    $itemPointer          = &$endPointer;
+                if (is_array($pageItem)) {
+                    $addedItemPointer = $context->addItems($pageItem);
+                    $itemPointer = &$addedItemPointer;
+                } else {
+                    if (!is_null($pageItem)) {
+                        $context->pageParts[] = $pageItem;
+                        $endPointer = end($context->pageParts);
+                        $itemPointer = &$endPointer;
+                    }
                 }
             }
+            Document::singleton()->registerItem($itemPointer);
         }
-        Document::singleton()->registerItem($itemPointer);
         return $itemPointer;
     }
 
@@ -86,8 +88,7 @@ trait Glue
      *
      * @return mixed Pointer to included object
      */
-    public function addItem($pageItem)
-    {
+    public function addItem($pageItem) {
         return self::addItemCustom($pageItem, $this);
     }
 
@@ -98,8 +99,7 @@ trait Glue
      *
      * @return boolean success
      */
-    public function setEmbedName($embedName)
-    {
+    public function setEmbedName($embedName) {
         $this->embedName = $embedName;
         return true;
     }
@@ -107,24 +107,21 @@ trait Glue
     /**
      * Method executed after adding object into new one
      */
-    public function afterAdd()
-    {
+    public function afterAdd() {
         
     }
 
     /**
      * Method executed before rendering
      */
-    public function finalize()
-    {
+    public function finalize() {
         $this->finalized = true;
     }
 
     /**
      * Recursive draw object and its contents
      */
-    public function draw()
-    {
+    public function draw() {
         foreach ($this->pageParts as $part) {
             if (is_object($part)) {
                 if (method_exists($part, 'drawIfNotDrawn')) {
@@ -138,4 +135,5 @@ trait Glue
         }
         $this->drawStatus = true;
     }
+
 }

@@ -32,45 +32,18 @@ class Form extends PairTag
     public $setName = false;
 
     /**
-     * Zobrazí html formulář.
+     * Html Form Tag
      *
-     * @param string $formName      jméno formuláře
-     * @param string $formAction    cíl formulář např login.php
-     * @param string $formMethod    metoda odesílání POST|GET
-     * @param mixed  $formContents  prvky uvnitř formuláře
      * @param array  $tagProperties vlastnosti tagu například:
      *                              array('enctype' => 'multipart/form-data')
+     * @param mixed  $formContents  prvky uvnitř formuláře
      */
-    public function __construct($formName, $formAction = null,
-                                $formMethod = 'post', $formContents = null,
-                                $tagProperties = [])
+    public function __construct($tagProperties = [], $formContents = null)
     {
-        parent::__construct('form',
-            ['method' => $formMethod, 'name' => $formName]);
-        if (!is_null($formAction)) {
-            $this->setFormTarget($formAction);
-        } else {
-            if (isset($_SERVER['REQUEST_URI'])) {
-                $this->setFormTarget($_SERVER['REQUEST_URI']);
-            }
+        if(!array_key_exists('method', $tagProperties)){
+            $tagProperties['method'] = 'POST';
         }
-        if (isset($formContents)) {
-            $this->addItem($formContents);
-        }
-        if (!empty($tagProperties)) {
-            $this->setTagProperties($tagProperties);
-        }
-    }
-
-    /**
-     * Nastaví cíl odeslání.
-     *
-     * @param string $formTarget cíl odeslání formuláře
-     */
-    public function setFormTarget($formTarget)
-    {
-        $this->formTarget = $formTarget;
-        $this->setTagProperties(['action' => $formTarget]);
+        parent::__construct('form', $tagProperties, $formContents);
     }
 
     /**
