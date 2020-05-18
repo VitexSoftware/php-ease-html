@@ -1,6 +1,5 @@
-#DESTDIR ?= debian/php-ease-html/DEBIAN
-#libdir  ?= /usr/share/php/EaseHtml
-#docdir  ?= /doc/ease-html/html
+repoversion=$(shell LANG=C aptitude show php-ease-html | grep Version: | awk '{print $$2}')
+nextversion=$(shell echo $(repoversion) | perl -ne 'chomp; print join(".", splice(@{[split/\./,$$_]}, 0, -1), map {++$$_} pop @{[split/\./,$$_]}), "\n";')
 
 all: build install
 
@@ -8,7 +7,7 @@ fresh:
 	git pull origin master
 	PACKAGE=`cat debian/composer.json | grep '"name"' | head -n 1 |  awk -F'"' '{print $4}'`; \
 	VERSION=`cat debian/composer.json | grep version | awk -F'"' '{print $4}'`; \
-	dch -b -v "${VERSION}" --package ${PACKAGE} "$CHANGES" \
+	dch -b -v "${VERSION}" --package ${PACKAGE} "$CHANGES" 
 	composer install
 	
 #install:
@@ -49,8 +48,14 @@ rpm:
 	rpmdev-bumpspec --comment="`git log -1 --pretty=%B`" --userstring="Vítězslav Dvořák <info@vitexsoftware.cz>" ease-html.spec
 	rpmbuild -ba ease-html.spec
 
-release: fresh deb
-	
+release:
+	echo Release v$(nextversion)
+	dch -v $(nextversion) `git log -1 --pretty=%B | head -n 1`
+	debuild -i -us -uc -b
+	git commit -a -m "Release v$(nextversion)"
+	git tag -a $(nextversion) -m "version $(nextversion)"
+
+
 
 openbuild:
 	
