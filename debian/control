@@ -11,7 +11,7 @@ Package: php-ease-html
 Depends: ${misc:Depends},libjs-jquery (>= 1.4), php-mail, php-mail-mime, php-ease-core
 Architecture: all
 Conflicts: ease-framework
-Suggests: php-ease-twbootstrap
+Suggests: php-ease-bootstrap
 Section: web
 Priority: optional
 Description: EasePHP Framework HTML support
