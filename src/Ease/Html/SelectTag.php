@@ -7,8 +7,8 @@ namespace Ease\Html;
  *
  * @author Vítězslav Dvořák <vitex@hippy.cz>
  */
-class SelectTag extends PairTag
-{
+class SelectTag extends PairTag {
+
     /**
      * Předvolené položka #.
      *
@@ -37,8 +37,7 @@ class SelectTag extends PairTag
      * @param array  $properties   tag properties
      */
     public function __construct($name, $items = null, $defaultValue = null,
-                                 $properties = [])
-    {
+            $properties = []) {
         parent::__construct('select', $properties);
         $this->defaultValue = $defaultValue;
         $this->setTagName($name);
@@ -52,8 +51,7 @@ class SelectTag extends PairTag
      *
      * @param array $items položky výběru
      */
-    public function addItems($items)
-    {
+    public function addItems($items) {
         foreach ($items as $itemName => $itemValue) {
             $newItem = $this->addItem(new OptionTag($itemValue, $itemName));
             if (($this->defaultValue == $itemName)) {
@@ -67,8 +65,7 @@ class SelectTag extends PairTag
      *
      * @return array
      */
-    public function loadItems()
-    {
+    public function loadItems() {
         return [];
     }
 
@@ -77,14 +74,16 @@ class SelectTag extends PairTag
      *
      * @param string $value nastavovaná hodnota
      */
-    public function setValue($value)
-    {
+    public function setValue($value) {
         if (trim(strlen($value))) {
             foreach ($this->pageParts as $option) {
                 if ($option->getValue() == $value) {
                     $option->setDefault();
                 } else {
-                    unset($option->tagProperties['selected']);
+                    $pos = array_search('selected', $option->tagProperties);
+                    if (($pos !== false) && is_numeric($pos)) {
+                        unset($option->tagProperties[$pos]);
+                    }
                 }
             }
         } else {
@@ -98,8 +97,7 @@ class SelectTag extends PairTag
     /**
      * Vložit načtené položky.
      */
-    public function finalize()
-    {
+    public function finalize() {
         if (!count($this->pageParts)) {
             //Uninitialised Select - so we load items
             $this->addItems($this->loadItems());
@@ -111,15 +109,14 @@ class SelectTag extends PairTag
      *
      * @param string $itemID klíč hodnoty k odstranění ze seznamu
      */
-    public function delItem($itemID)
-    {
+    public function delItem($itemID) {
         foreach ($this->pageParts as $optionId => $option) {
             if ($option->getValue() == $itemID) {
                 unset($this->pageParts[$optionId]);
             }
         }
     }
-    
+
     /**
      * Disable menu item
      *  
@@ -131,7 +128,6 @@ class SelectTag extends PairTag
                 $this->pageParts[$optionId]->setTagProperties(['disabled']);
             }
         }
-        
     }
-    
+
 }

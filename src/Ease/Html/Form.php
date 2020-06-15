@@ -63,7 +63,7 @@ class Form extends PairTag
         if (isset($where->pageParts) && is_array($where->pageParts) && count($where->pageParts)) {
             foreach ($where->pageParts as $pagePart) {
                 if (is_object($pagePart)) {
-                    if (method_exists($pagePart, 'GetTagName')) {
+                    if (method_exists($pagePart, 'getTagName')) {
                         if ($pagePart->getTagName() == $searchFor) {
                             return $pagePart;
                         }

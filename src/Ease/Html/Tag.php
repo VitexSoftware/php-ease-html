@@ -122,16 +122,7 @@ class Tag extends Document
      */
     public function getTagName()
     {
-        $tagName = null;
-        if ($this->setName === true) {
-            if (isset($this->tagProperties['name'])) {
-                $tagName = $this->tagProperties['name'];
-            }
-        } else {
-            $tagName = $this->tagName;
-        }
-
-        return $tagName;
+        return $this->setName ? $this->getTagProperty('name') : $this->tagName;
     }
 
     /**
