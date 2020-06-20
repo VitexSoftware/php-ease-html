@@ -6,8 +6,9 @@ php-ease-html (1.20) UNRELEASED; urgency=medium
   * twbootstrap renamed to bootstrap
   * Release v1.20
   * Release v1.20
+  * Release v1.20
 
- -- CyberVitexus <vitex@exiv.jinonice.czf>  Sat, 20 Jun 2020 13:16:18 +0200
+ -- CyberVitexus <vitex@exiv.jinonice.czf>  Sat, 20 Jun 2020 13:20:15 +0200
 
 php-ease-html (1.16) EXPERIMENTAL; urgency=medium
 
