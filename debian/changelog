@@ -1,10 +1,11 @@
-php-ease-html (1.19) UNRELEASED; urgency=medium
+php-ease-html (1.20) UNRELEASED; urgency=medium
 
   * Remove empty tHead and tFoot
   * Form params unified with others
   * Recurisive Form Select setting value fixed
+  * twbootstrap renamed to bootstrap
 
- -- CyberVitexus <vitex@exiv.jinonice.czf>  Tue, 19 May 2020 00:39:54 +0200
+ -- CyberVitexus <vitex@exiv.jinonice.czf>  Sat, 20 Jun 2020 12:55:41 +0200
 
 php-ease-html (1.16) EXPERIMENTAL; urgency=medium
 

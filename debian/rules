@@ -14,6 +14,7 @@ override_dh_clean:
 #	dh_test
 
 override_dh_install:
+	jq '.address = "'`dpkg-parsechangelog | sed -n 's/^Version: //p'`'"' debian/composer.json |sponge debian/composer.json
 	dh_install
 	echo "require_once 'Mail.php';"  >> debian/php-ease-html/usr/share/php/EaseHtml/HtmlMailer.php
 	echo "require_once 'Mail/mime.php';" >> debian/php-ease-html/usr/share/php/EaseHtml/HtmlMailer.php
