@@ -52,7 +52,7 @@ class UlTag extends PairTag
             }
             $itemAdded = &$this->lastItem;
         } else {
-            if (isset($pageItem->tagType) && $pageItem->tagType == 'li') {
+            if (is_object($pageItem) && method_exists($pageItem,'getTagType') && ($pageItem->getTagType() == 'li')) {
                 $itemAdded = parent::addItem($pageItem);
             } else {
                 $itemAdded = parent::addItem(new LiTag($pageItem, $properties));

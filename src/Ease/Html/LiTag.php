@@ -13,11 +13,11 @@ class LiTag extends PairTag
     /**
      * Simple LI tag.
      *
-     * @param mixed $ulContents obsah položky seznamu
+     * @param mixed $liContents obsah položky seznamu
      * @param array $properties parametry LI tagu
      */
-    public function __construct($ulContents = null, $properties = [])
+    public function __construct($liContents = null, $properties = [])
     {
-        parent::__construct('li', $properties, $ulContents);
+        parent::__construct('li', $properties, $liContents);
     }
 }
