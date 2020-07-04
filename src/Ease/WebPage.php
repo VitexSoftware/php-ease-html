@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Common webpage class
  *
@@ -17,8 +18,8 @@ use Ease\Html\HtmlTag;
  *
  * @author Vítězslav Dvořák <vitex@hippy.cz>
  */
-class WebPage extends Document
-{
+class WebPage extends Document {
+
     /**
      * Saves obejct instace (singleton...).
      */
@@ -92,16 +93,15 @@ class WebPage extends Document
      * @param $pageTitle string 
      * @param $toBody    mixed
      */
-    public function __construct($pageTitle = null, $toBody = [])
-    {
+    public function __construct($pageTitle = null, $toBody = []) {
         $this->setPageTitle($pageTitle);
 
         parent::__construct();
         parent::addItem('<!DOCTYPE html>');
-        $html                = parent::addItem(new HtmlTag());
-        $this->head          = $html->addItem(new HeadTag());
-        $this->body          = $html->addItem(new BodyTag($toBody));
-        $this->javaScripts   = &$this->head->javaScripts;
+        $html = parent::addItem(new HtmlTag());
+        $this->head = $html->addItem(new HeadTag());
+        $this->body = $html->addItem(new BodyTag($toBody));
+        $this->javaScripts = &$this->head->javaScripts;
         $this->cascadeStyles = &$this->head->cascadeStyles;
         self::singleton($this);
     }
@@ -110,8 +110,7 @@ class WebPage extends Document
      * 
      * @return string
      */
-    public function getPageTitle()
-    {
+    public function getPageTitle() {
         return $this->pageTitle;
     }
 
@@ -120,8 +119,7 @@ class WebPage extends Document
      *
      * @return string
      */
-    public function setTagID($tagID = null)
-    {
+    public function setTagID($tagID = null) {
         return $this->body->setTagID($tagID);
     }
 
@@ -130,8 +128,7 @@ class WebPage extends Document
      * 
      * @return string|null Page BODY ID
      */
-    public function getTagID()
-    {
+    public function getTagID() {
         return $this->body->getTagID();
     }
 
@@ -140,8 +137,7 @@ class WebPage extends Document
      * 
      * @return mixed
      */
-    public function getContents()
-    {
+    public function getContents() {
         return $this->body->getContents();
     }
 
@@ -153,8 +149,7 @@ class WebPage extends Document
      *
      * @return Document poiner to object well included
      */
-    public function &addItem($item, $pageItemName = null)
-    {
+    public function &addItem($item, $pageItemName = null) {
         $added = $this->body->addItem($item, $pageItemName);
 
         return $added;
@@ -168,9 +163,8 @@ class WebPage extends Document
      *
      * @return string
      */
-    public function includeJavaScript($javaScriptFile, $position = null)
-    {
-        return $this->addToScriptsStack('#'.$javaScriptFile, $position);
+    public function includeJavaScript($javaScriptFile, $position = null) {
+        return $this->addToScriptsStack('#' . $javaScriptFile, $position);
     }
 
     /**
@@ -183,10 +177,9 @@ class WebPage extends Document
      * @return int
      */
     public function addJavaScript($javaScript, $position = null,
-                                  $inDocumentReady = true)
-    {
-        return $this->addToScriptsStack(($inDocumentReady ? '$' : '@').$javaScript,
-                $position);
+            $inDocumentReady = true) {
+        return $this->addToScriptsStack(($inDocumentReady ? '$' : '@') . $javaScript,
+                        $position);
     }
 
     /**
@@ -197,8 +190,7 @@ class WebPage extends Document
      *
      * @return int
      */
-    public function addToScriptsStack($code, $position = 0)
-    {
+    public function addToScriptsStack($code, $position = 0) {
         $javaScripts = & \Ease\WebPage::singleton()->javaScripts;
         if ($position == 0) {
             if (!empty($javaScripts)) {
@@ -224,9 +216,9 @@ class WebPage extends Document
                     unset($javaScripts[$scriptFound]);
                 }
 
-                $backup                 = array_slice($javaScripts, $position);
+                $backup = array_slice($javaScripts, $position);
                 $javaScripts[$position] = $code;
-                $nextFreeID             = $position + 1;
+                $nextFreeID = $position + 1;
                 foreach ($backup as $code) {
                     $javaScripts[$nextFreeID++] = $code;
                 }
@@ -249,10 +241,9 @@ class WebPage extends Document
      *
      * @return bool
      */
-    public function addCSS($css)
-    {
+    public function addCSS($css) {
         if (is_array($css)) {
-            $css = key($css).'{'.current($css).'}';
+            $css = key($css) . '{' . current($css) . '}';
         }
         $this->cascadeStyles[md5($css)] = $css;
         return true;
@@ -267,10 +258,9 @@ class WebPage extends Document
      *
      * @return boolean success
      */
-    public function includeCss($cssFile, $fwPrefix = false, $media = 'screen')
-    {
+    public function includeCss($cssFile, $fwPrefix = false, $media = 'screen') {
         if ($fwPrefix) {
-            $this->cascadeStyles[$this->cssPrefix.$cssFile] = $this->cssPrefix.$cssFile;
+            $this->cascadeStyles[$this->cssPrefix . $cssFile] = $this->cssPrefix . $cssFile;
         } else {
             $this->cascadeStyles[$cssFile] = $cssFile;
         }
@@ -285,15 +275,12 @@ class WebPage extends Document
      * 
      * @return \Ease\Html\DivTag
      */
-    public function getStatusMessagesBlock($properties = [])
-    {
-        $htmlFargment = new Html\DivTag(null, $properties );
+    public function getStatusMessagesBlock($properties = []) {
+        $htmlFargment = new Html\DivTag(null, $properties);
 
-        foreach (\Ease\Shared::singleton()->getStatusMessages() as $quee => $messages) {
-            foreach ($messages as $message) {
-                $htmlFargment->addItem(new Html\DivTag($message,
-                        ['style' => Logger\Regent::singleton()->logStyles[$quee]]));
-            }
+        foreach (\Ease\Shared::logger()->getMessages() as $message) {
+            $htmlFargment->addItem(new Html\DivTag($message->body,
+                            ['style' => Logger\Regent::singleton()->logStyles[$message->type], 'data-caller' => $message->caller]));
         }
         return $htmlFargment;
     }
@@ -301,8 +288,7 @@ class WebPage extends Document
     /**
      * Provede vykreslení obsahu objektu.
      */
-    public function draw()
-    {
+    public function draw() {
         $this->finalizeRegistred();
         $this->drawAllContents();
     }
@@ -310,8 +296,7 @@ class WebPage extends Document
     /**
      * Provede finalizaci všech registrovaných objektů.
      */
-    public function finalizeRegistred()
-    {
+    public function finalizeRegistred() {
         do {
             foreach (self::$allItems as $PartID => $part) {
                 if (is_object($part)) {
@@ -327,8 +312,7 @@ class WebPage extends Document
      *
      * @param string $pageTitle titulek
      */
-    public function setPageTitle($pageTitle)
-    {
+    public function setPageTitle($pageTitle) {
         $this->pageTitle = $pageTitle;
     }
 
@@ -338,16 +322,14 @@ class WebPage extends Document
      *
      * @return int nuber of parts enclosed
      */
-    public function getItemsCount()
-    {
+    public function getItemsCount() {
         return $this->body->getItemsCount();
     }
 
     /**
      * Vrací první vloženou položku.
      */
-    public function getFirstPart()
-    {
+    public function getFirstPart() {
         return $this->isEmpty() ? null : reset($this->body->pageParts);
     }
 
@@ -357,8 +339,7 @@ class WebPage extends Document
      *
      * @return bool emptyness
      */
-    public function isEmpty($element = null)
-    {
+    public function isEmpty($element = null) {
         return empty($this->body->pageParts);
     }
 
@@ -370,8 +351,7 @@ class WebPage extends Document
      *
      * @return mixed Odkaz na vložený objekt
      */
-    public function &addAsFirst($pageItem, $pageItemName = null)
-    {
+    public function &addAsFirst($pageItem, $pageItemName = null) {
         return $this->body->addAsFirst($pageItem, $pageItemName);
     }
 
@@ -380,8 +360,7 @@ class WebPage extends Document
      *
      * @return Embedable|string
      */
-    public function &lastItem()
-    {
+    public function &lastItem() {
         $lastPart = empty($this->body->pageParts) ? null : end($this->body->pageParts);
         return $lastPart;
     }
@@ -393,8 +372,7 @@ class WebPage extends Document
      *
      * @return Container|null success
      */
-    public function addToLastItem($pageItem)
-    {
+    public function addToLastItem($pageItem) {
         return $this->isEmpty() ? null : end($this->body->pageParts)->addItem($pageItem);
     }
 
@@ -402,19 +380,18 @@ class WebPage extends Document
      * Vyprázní obsah webstránky
      * Empty webpage contents
      */
-    public function emptyContents()
-    {
+    public function emptyContents() {
         $this->body->emptyContents();
     }
 
     /**
      * @return WebPage
      */
-    public static function singleton($webPage = null)
-    {
+    public static function singleton($webPage = null) {
         if (!isset(self::$instance)) {
             self::$instance = is_object($webPage) ? $webPage : new self();
         }
         return self::$instance;
     }
+
 }
