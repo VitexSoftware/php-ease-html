@@ -21,7 +21,6 @@ define('EASE_LOGGER', 'syslog');
 
 
 \Ease\Locale::singleton('cs_CZ');
-
-//\Ease\Shared::user(new \Ease\Anonym());
+\Ease\Shared::user(new \Ease\Anonym());
 //\Ease\Shared::webPage(new \Ease\WebPage());
 

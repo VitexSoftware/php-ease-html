@@ -7,21 +7,22 @@ namespace Ease\Html;
  *
  * @author Vitex <vitex@hippy.cz>
  */
-class InputRangeTag extends InputTag
-{
+class InputRangeTag extends InputTag {
 
     /**
-     * The <input type="month"> allows the user to select a month and year.
+     * The &lt;input type="range"&gt; defines a control for entering a number whose exact value is not important 
+     * 
+     * @see https://www.w3schools.com/tags/att_input_type_range.asp
      *
      * @param string $name       name
      * @param string $value      initial value
-     * @param array  $properties additional properties
+     * @param array  $properties additional properties min,max,step...
      */
-    public function __construct($name, $value = null, $properties = [])
-    {
-        $properties['type']  = 'month';
+    public function __construct($name, $value = null, $properties = []) {
+        $properties['type'] = 'range';
         $properties['value'] = $value;
-        $properties['name']  = $name;
+        $properties['name'] = $name;
         parent::__construct($name, $value, $properties);
     }
+
 }
