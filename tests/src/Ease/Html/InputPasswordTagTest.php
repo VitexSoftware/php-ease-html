@@ -37,7 +37,7 @@ class InputPasswordTagTest extends InputTagTest
 
         $mock->__construct('Tag', 'secret', ['name' => 'Tag', 'id' => 'testing']);
 
-        $this->assertEquals('<input type="password" value="secret" name="Tag" />',
+        $this->assertEquals('<input name="Tag" id="testing" type="password" value="secret" />',
             $mock->getRendered());
     }
 
