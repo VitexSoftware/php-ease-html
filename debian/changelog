@@ -11,8 +11,9 @@ php-ease-html (1.23) UNRELEASED; urgency=medium
   * Release v1.21
   * Merge branch 'master' of github.com:VitexSoftware/ease-html
   * All tests pass
+  * Release v1.23
 
- -- CyberVitexus <vitex@exiv.jinonice.czf>  Sun, 19 Jul 2020 14:07:44 +0200
+ -- CyberVitexus <vitex@exiv.jinonice.czf>  Sun, 19 Jul 2020 14:24:45 +0200
 
 php-ease-html (1.16) EXPERIMENTAL; urgency=medium
 
