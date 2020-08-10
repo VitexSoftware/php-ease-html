@@ -1,4 +1,4 @@
-php-ease-html (1.23) UNRELEASED; urgency=medium
+php-ease-html (1.24) UNRELEASED; urgency=medium
 
   * Remove empty tHead and tFoot
   * Form params unified with others
@@ -13,8 +13,9 @@ php-ease-html (1.23) UNRELEASED; urgency=medium
   * All tests pass
   * Release v1.23
   * Require stable version of ease core
+  * Release v1.23
 
- -- CyberVitexus <vitex@exiv.jinonice.czf>  Sun, 19 Jul 2020 14:40:28 +0200
+ -- CyberVitexus <vitex@exiv.jinonice.czf>  Mon, 10 Aug 2020 15:25:56 +0200
 
 php-ease-html (1.16) EXPERIMENTAL; urgency=medium
 

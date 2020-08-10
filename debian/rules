@@ -4,8 +4,13 @@
 	dh $@
 
 override_dh_clean:
-	rm -rf debian/test/vendor
+	rm -rf debian/test/vendor docs
 	dh_clean
+
+#override_dh_prep:
+#	composer update
+#	apigen generate --destination=docs -- src
+#	dh_prep
 
 
 #override_dh_test:
