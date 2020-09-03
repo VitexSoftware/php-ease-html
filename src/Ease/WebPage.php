@@ -390,6 +390,7 @@ class WebPage extends Document {
     public static function singleton($webPage = null) {
         if (!isset(self::$instance)) {
             self::$instance = is_object($webPage) ? $webPage : new self();
+            \Ease\Document::singleton()->registerItem(self::$instance);
         }
         return self::$instance;
     }

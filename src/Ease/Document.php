@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Simple html page class.
  *
  * @author     Vitex <vitex@hippy.cz>
- * @copyright  2009-2019 Vitex@hippy.cz (G)
+ * @copyright  2009-2020 Vitex@hippy.cz (G)
  */
 
 namespace Ease;
@@ -13,8 +14,8 @@ namespace Ease;
  *
  * @author Vitex <vitex@hippy.cz>
  */
-class Document extends Container
-{
+class Document extends Container {
+
     /**
      * Saves obejct instace (singleton...).
      */
@@ -65,10 +66,9 @@ class Document extends Container
      * @return int 
      */
     public function addJavaScript($javaScript, $position = null,
-                                  $inDocumentReady = true)
-    {
+            $inDocumentReady = true) {
         return WebPage::singleton()->addJavaScript($javaScript, $position,
-                $inDocumentReady);
+                        $inDocumentReady);
     }
 
     /**
@@ -79,10 +79,9 @@ class Document extends Container
      *
      * @return string
      */
-    public function includeJavaScript($javaScriptFile, $position = null)
-    {
+    public function includeJavaScript($javaScriptFile, $position = null) {
         return WebPage::singleton()->includeJavaScript($javaScriptFile,
-                $position);
+                        $position);
     }
 
     /**
@@ -92,8 +91,7 @@ class Document extends Container
      *
      * @return bool
      */
-    public function addCSS($css)
-    {
+    public function addCSS($css) {
         return \Ease\webPage::singleton()->addCSS($css);
     }
 
@@ -106,27 +104,24 @@ class Document extends Container
      *
      * @return boolean
      */
-    public function includeCss($cssFile, $fwPrefix = false, $media = 'screen')
-    {
+    public function includeCss($cssFile, $fwPrefix = false, $media = 'screen') {
         return WebPage::singleton()->includeCss($cssFile, $fwPrefix, $media);
     }
 
     /**
      * Perform http redirect
-     * Provede http přesměrování.
      *
-     * @param string $url adresa přesměrování
+     * @param string $url redirect to URL
      */
-    public function redirect($url)
-    {
-        $messages = Shared::instanced()->statusMessages;
+    public function redirect($url) {
+        $messages = \Ease\Shared::logger()->getMessages();
         if (count($messages)) {
-            $_SESSION['EaseMessages'] = $messages;
+            $_SESSION[\Ease\Shared::appName()]['EaseMessages'] = $messages;
         }
         if (headers_sent()) {
-            $this->addJavaScript('window.location = "'.$url.'"', 0, false);
+            $this->addJavaScript('window.location = "' . $url . '"', 0, false);
         } else {
-            header('Location: '.$url);
+            header('Location: ' . $url);
         }
         WebPage::$pageClosed = true;
     }
@@ -136,8 +131,7 @@ class Document extends Container
      *
      * @return string
      */
-    public static function getUri()
-    {
+    public static function getUri() {
         return $_SERVER['REQUEST_URI'];
     }
 
@@ -148,8 +142,7 @@ class Document extends Container
      *
      * @return string the current URL or NULL for php-cli
      */
-    public static function phpSelf($dropqs = true)
-    {
+    public static function phpSelf($dropqs = true) {
         $url = null;
         if (php_sapi_name() != 'cli') {
 
@@ -158,13 +151,13 @@ class Document extends Container
                 $schema .= 's';
             }
             $url = sprintf('%s://%s%s', $schema, $_SERVER['SERVER_NAME'],
-                $_SERVER['REQUEST_URI']);
+                    $_SERVER['REQUEST_URI']);
 
             $parts = parse_url($url);
 
-            $port   = $_SERVER['SERVER_PORT'];
+            $port = $_SERVER['SERVER_PORT'];
             $scheme = $parts['scheme'];
-            $host   = $parts['host'];
+            $host = $parts['host'];
             if (isset($parts['path'])) {
                 $path = $parts['path'];
             } else {
@@ -177,8 +170,7 @@ class Document extends Container
             }
             $port || $port = ($scheme == 'https') ? '443' : '80';
 
-            if (($scheme == 'https' && $port != '443') || ($scheme == 'http' && $port
-                != '80')
+            if (($scheme == 'https' && $port != '443') || ($scheme == 'http' && $port != '80')
             ) {
                 $host = "$host:$port";
             }
@@ -195,13 +187,12 @@ class Document extends Container
      *
      * @param string $loginPage adresa přihlašovací stránky
      */
-    public function onlyForLogged($loginPage = 'login.php', $message = null)
-    {
+    public function onlyForLogged($loginPage = 'login.php', $message = null) {
 
         if (!method_exists(\Ease\Shared::user(), 'isLogged') || !\Ease\Shared::user()->isLogged()) {
             if (!empty($message)) {
                 \Ease\User::singleton()->addStatusMessage(_('Sign in first please'),
-                    'warning');
+                        'warning');
             }
             $this->redirect($loginPage);
             self::$pageClosed = true;
@@ -215,8 +206,7 @@ class Document extends Container
      *
      * @return null|Embedable Pointer to included object
      */
-    public function addItem($pageItem)
-    {
+    public function addItem($pageItem) {
         return self::$pageClosed ? null : parent::addItem($pageItem);
     }
 
@@ -225,8 +215,7 @@ class Document extends Container
      *
      * @return array
      */
-    public function getRequestValues()
-    {
+    public function getRequestValues() {
         return $_REQUEST;
     }
 
@@ -235,8 +224,7 @@ class Document extends Container
      *
      * @return bool
      */
-    public static function isPosted()
-    {
+    public static function isPosted() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             return true;
         } else {
@@ -252,8 +240,7 @@ class Document extends Container
      *
      * @return mixed
      */
-    public static function sanitizeAsType($value, $sanitizeAs)
-    {
+    public static function sanitizeAsType($value, $sanitizeAs) {
         $sanitized = null;
         switch ($sanitizeAs) {
             case 'string':
@@ -298,12 +285,11 @@ class Document extends Container
      *
      * @return mixed
      */
-    public static function getRequestValue($field, $sanitizeAs = null)
-    {
+    public static function getRequestValue($field, $sanitizeAs = null) {
         $value = null;
         if (isset($_REQUEST[$field])) {
             $value = empty($sanitizeAs) ? $_REQUEST[$field] : self::sanitizeAsType($_REQUEST[$field],
-                    $sanitizeAs);
+                            $sanitizeAs);
         }
         return $value;
     }
@@ -316,12 +302,11 @@ class Document extends Container
      *
      * @return string
      */
-    public static function getGetValue($field, $sanitizeAs = null)
-    {
+    public static function getGetValue($field, $sanitizeAs = null) {
         $value = null;
         if (isset($_GET[$field])) {
             $value = empty($sanitizeAs) ? $_GET[$field] : self::sanitizeAsType($_GET[$field],
-                    $sanitizeAs);
+                            $sanitizeAs);
         }
         return $value;
     }
@@ -334,12 +319,11 @@ class Document extends Container
      *
      * @return string
      */
-    public static function getPostValue($field, $sanitizeAs = null)
-    {
+    public static function getPostValue($field, $sanitizeAs = null) {
         $value = null;
         if (isset($_POST[$field])) {
             $value = empty($sanitizeAs) ? $_POST[$field] : self::sanitizeAsType($_POST[$field],
-                    $sanitizeAs);
+                            $sanitizeAs);
         }
         return $value;
     }
@@ -351,8 +335,7 @@ class Document extends Container
      *
      * @return bool
      */
-    public static function isFormPosted()
-    {
+    public static function isFormPosted() {
         return isset($_POST) && count($_POST);
     }
 
@@ -362,12 +345,11 @@ class Document extends Container
      * @param array  $params
      * @param string $baseUrl
      */
-    public static function arrayToUrlParams($params, $baseUrl = '')
-    {
+    public static function arrayToUrlParams($params, $baseUrl = '') {
         if (strstr($baseUrl, '?')) {
-            return $baseUrl.'&'.http_build_query($params);
+            return $baseUrl . '&' . http_build_query($params);
         } else {
-            return $baseUrl.'?'.http_build_query($params);
+            return $baseUrl . '?' . http_build_query($params);
         }
     }
 
@@ -376,8 +358,7 @@ class Document extends Container
      *
      * @param mixed $itemPointer
      */
-    public static function registerItem(&$itemPointer)
-    {
+    public static function registerItem(&$itemPointer) {
         self::$allItems[] = $itemPointer;
     }
 
@@ -388,8 +369,7 @@ class Document extends Container
      *
      * @return WebPage
      */
-    public static function &webPage($oPage = null)
-    {
+    public static function &webPage($oPage = null) {
         if (is_object($oPage)) {
             self::$webPage = &$oPage;
         }
@@ -402,12 +382,12 @@ class Document extends Container
     /**
      * @return WebPage
      */
-    public static function singleton()
-    {
+    public static function singleton() {
         if (!isset(self::$instance)) {
             self::$instance = new self();
         }
 
         return self::$instance;
     }
+
 }

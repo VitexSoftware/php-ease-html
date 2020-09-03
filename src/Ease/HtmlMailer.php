@@ -82,6 +82,12 @@ class HtmlMailer extends Document {
     public $htmlDocument = null;
 
     /**
+     *
+     * @var SimpleHtmlHeadTag 
+     */
+    public $htmlHead = null;
+
+    /**
      * Ukazatel na BODY html dokumentu.
      *
      * @var BodyTag
@@ -118,7 +124,7 @@ class HtmlMailer extends Document {
                     'From' => $this->fromEmailAddress,
                     'Reply-To' => $this->fromEmailAddress,
                     'Subject' => $mailSubject,
-                    'Content-Type' => 'text/plain; charset=utf-8',
+                    'Content-Type' => 'text/html; charset=utf-8',
                     'Content-Transfer-Encoding' => '8bit',
                 ]
         );
@@ -134,6 +140,10 @@ class HtmlMailer extends Document {
         $this->mimer = new Mail_mime($mimer_params);
 
         parent::__construct();
+
+        $this->htmlDocument = new HtmlTag();
+        $this->htmlHead = $this->htmlDocument->addItem(new SimpleHeadTag(new TitleTag($this->emailSubject)));
+        $this->htmlBody = $this->htmlDocument->addItem(new BodyTag($item));
 
         if (isset($emailContents)) {
             $this->addItem($emailContents);
@@ -191,25 +201,8 @@ class HtmlMailer extends Document {
      * @return mixed ukazatel na vložený obsah
      */
     public function &addItem($item, $pageItemName = null) {
-        $mailBody = '';
-        if (is_object($item)) {
-            $this->mailHeaders['Content-Type'] = 'text/html';
-            if (is_object($this->htmlDocument)) {
-                if (is_null($this->htmlBody)) {
-                    $this->htmlBody = new BodyTag();
-                }
-                $mailBody = $this->htmlBody->addItem($item, $pageItemName);
-            } else {
-                $this->htmlDocument = new HtmlTag(new SimpleHeadTag(new TitleTag($this->emailSubject)));
-                $this->htmlBody = $this->htmlDocument->addItem(new BodyTag($item));
-                $mailBody = $this->htmlDocument;
-            }
-        } else {
-            $this->textBody .= is_array($item) ? implode("\n", $item) : $item;
-            $this->mimer->setTXTBody($this->textBody);
-        }
-
-        return $mailBody;
+        $added = $this->htmlBody->addItem($item, $pageItemName);
+        return $added;
     }
 
     public function getContents() {
