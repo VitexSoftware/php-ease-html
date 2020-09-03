@@ -143,11 +143,7 @@ class HtmlMailer extends Document {
 
         $this->htmlDocument = new HtmlTag();
         $this->htmlHead = $this->htmlDocument->addItem(new SimpleHeadTag(new TitleTag($this->emailSubject)));
-        $this->htmlBody = $this->htmlDocument->addItem(new BodyTag($item));
-
-        if (isset($emailContents)) {
-            $this->addItem($emailContents);
-        }
+        $this->htmlBody = $this->htmlDocument->addItem(new BodyTag($emailContents));
     }
 
     /**
