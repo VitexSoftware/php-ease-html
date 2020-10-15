@@ -1,21 +1,11 @@
-php-ease-html (1.24) UNRELEASED; urgency=medium
+php-ease-html (1.25) UNRELEASED; urgency=medium
 
   * Remove empty tHead and tFoot
   * Form params unified with others
   * Recurisive Form Select setting value fixed
   * twbootstrap renamed to bootstrap
-  * Release v1.20
-  * Release v1.20
-  * Release v1.20
-  * Release v1.20
-  * Release v1.21
-  * Merge branch 'master' of github.com:VitexSoftware/ease-html
-  * All tests pass
-  * Release v1.23
-  * Require stable version of ease core
-  * Release v1.23
 
- -- CyberVitexus <vitex@exiv.jinonice.czf>  Mon, 10 Aug 2020 15:25:56 +0200
+ -- CyberVitexus <vitex@exiv.jinonice.czf>  Thu, 15 Oct 2020 23:45:32 +0200
 
 php-ease-html (1.16) EXPERIMENTAL; urgency=medium
 

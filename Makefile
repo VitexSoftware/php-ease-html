@@ -25,7 +25,7 @@ clean:
 	rm -rf debian/php-ease-html
 	rm -rf debian/php-ease-html-doc
 	rm -rf debian/*.log debian/tmp
-	rm -rf docs/* .phpunit.result.cache tests/*.xml
+	rm -rf .phpunit.result.cache tests/*.xml
 
 apigen:
 	VERSION=`cat debian/composer.json | grep version | awk -F'"' '{print $4}'`; \
