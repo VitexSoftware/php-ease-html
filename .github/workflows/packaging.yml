@@ -1,4 +1,4 @@
-name: DebianPackage
+name: Ubuntu Packaging
 
 on:
   release:
@@ -13,11 +13,15 @@ jobs:
     - uses: actions/checkout@master
       env: 
         DEBIAN_FRONTEND: "noninteractive"
-    - name: Prepare Debuild Environment
+    - name: Prepare Environment
       run: |
         echo "deb http://repo.vitexsoftware.cz $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/vitexsoftware.list
         sudo wget -O /etc/apt/trusted.gpg.d/vitexsoftware.gpg http://repo.vitexsoftware.cz/keyring.gpg
         sudo apt-get update
-        sudo apt-get install -y aptitude composer exim4 pbuilder ubuntu-dev-tools apt-file debhelper 
-    - name: Build Package
-      run: debuild-pbuilder
+        sudo apt-get install -y aptitude moreutils composer exim4 pbuilder ubuntu-dev-tools apt-file debhelper phpdocumentor
+    - name: Build Debian package
+      uses: dawidd6/action-debian-package@v1
+      with:
+        source_directory: .
+        artifacts_directory: dist
+        

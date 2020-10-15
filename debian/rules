@@ -4,13 +4,14 @@
 	dh $@
 
 override_dh_clean:
-	rm -rf debian/test/vendor docs
+	rm -rf debian/test/vendor .phpdoc
 	dh_clean
 
-#override_dh_prep:
-#	composer update
-#	apigen generate --destination=docs -- src
-#	dh_prep
+override_dh_prep:
+	rm docs/* -r
+	phpdoc -d src --title "Vitex Software's Ease Html"
+	mv .phpdoc/build/* docs
+	dh_prep
 
 
 #override_dh_test:
@@ -19,8 +20,8 @@ override_dh_clean:
 #	dh_test
 
 override_dh_install:
-	jq '.address = "'`dpkg-parsechangelog | sed -n 's/^Version: //p'`'"' debian/composer.json |sponge debian/composer.json
+	jq '.version = "'`dpkg-parsechangelog | sed -n 's/^Version: //p'`'"' debian/composer.json |sponge debian/composer.json
 	dh_install
-	echo "require_once 'Mail.php';"  >> debian/php-ease-html/usr/share/php/EaseHtml/HtmlMailer.php
-	echo "require_once 'Mail/mime.php';" >> debian/php-ease-html/usr/share/php/EaseHtml/HtmlMailer.php
+	echo "require_once 'Mail.php';"  >> debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml/HtmlMailer.php
+	echo "require_once 'Mail/mime.php';" >> debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml/HtmlMailer.php
 

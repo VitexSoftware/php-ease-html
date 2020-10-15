@@ -1,4 +1,15 @@
-docs/*				usr/share/doc/ease-html/html
-docs/resources/*		usr/share/doc/ease-html/html/resources
-debian/php-vitexsoftware-ease-html-doc.conf	usr/share/doc/ease-html-doc/apache
-README.md			usr/share/doc/ease-html
+docs/classes/*		usr/share/doc/php-vitexsoftware-ease-html/html/classes
+docs/css/*		usr/share/doc/php-vitexsoftware-ease-html/html/css
+docs/files/*		usr/share/doc/php-vitexsoftware-ease-html/html/files
+docs/graphs/*		usr/share/doc/php-vitexsoftware-ease-html/html/graphs
+docs/index.html		usr/share/doc/php-vitexsoftware-ease-html/html/
+docs/indices/*		usr/share/doc/php-vitexsoftware-ease-html/html/indices
+docs/js/*		usr/share/doc/php-vitexsoftware-ease-html/html/js
+docs/namespaces/*		usr/share/doc/php-vitexsoftware-ease-html/html/namespaces
+docs/packages/*		usr/share/doc/php-vitexsoftware-ease-html/html/packages
+docs/reports/*		usr/share/doc/php-vitexsoftware-ease-html/html/reports
+
+debian/php-vitexsoftware-ease-html-doc.conf	usr/share/doc/php-vitexsoftware-ease-html-doc/apache
+README.md			usr/share/doc/php-vitexsoftware-ease-html
+
+
