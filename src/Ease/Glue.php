@@ -61,7 +61,7 @@ trait Glue {
 
                 $context->pageParts[$pageItemName]->parentObject = &$context;
                 $context->pageParts[$pageItemName]->setEmbedName($pageItemName);
-                $context->pageParts[$pageItemName]->afterAdd($context);
+                $context->pageParts[$pageItemName]->afterAdd();
 
                 $itemPointer = &$context->pageParts[$pageItemName];
             } else {
