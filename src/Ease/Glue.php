@@ -35,7 +35,7 @@ trait Glue {
      *
      * @var bool
      */
-    private $finalized = false;
+    protected $finalized = false;
 
     /**
      *

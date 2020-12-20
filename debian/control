@@ -1,5 +1,5 @@
 Source: php-ease-html
-Build-Depends: debhelper (>= 7.0.50~), php-ease-core, phpdocumentor
+Build-Depends: debhelper (>= 7.0.50~), php-vitexsoftware-ease-core, phpdocumentor
 Section: web
 Standards-Version: 3.9.8
 Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
@@ -18,7 +18,7 @@ Description: EasePHP Framework HTML support
  HTML classes for Ease Framework. 
 
 Package: php-vitexsoftware-ease-html-dev
-Depends: ${misc:Depends}, php-ease-core-dev
+Depends: ${misc:Depends}, php-vitexsoftware-ease-core-dev
 Architecture: all
 Conflicts: ease-framework
 Section: devel
