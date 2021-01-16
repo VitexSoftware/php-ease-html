@@ -92,7 +92,7 @@ class Document extends Container {
      * @return bool
      */
     public function addCSS($css) {
-        return \Ease\webPage::singleton()->addCSS($css);
+        return \Ease\WebPage::singleton()->addCSS($css);
     }
 
     /**
