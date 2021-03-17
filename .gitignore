@@ -10,3 +10,17 @@
 /debian/php-ease-html-dev.debhelper.log
 /debian/.debhelper
 /debian/php-ease-html-dev/
+/.phpdoc/
+/debian/php-vitexsoftware-ease-html-dev.debhelper.log
+/debian/php-vitexsoftware-ease-html-dev.substvars
+/debian/php-vitexsoftware-ease-html-doc.debhelper.log
+/debian/php-vitexsoftware-ease-html-doc.substvars
+/debian/php-vitexsoftware-ease-html.debhelper.log
+/debian/php-vitexsoftware-ease-html.substvars
+/debian/files
+/debian/php-vitexsoftware-ease-html/
+/debian/php-vitexsoftware-ease-html-dev/
+/debian/php-vitexsoftware-ease-html-doc/
+/docs/
+
+

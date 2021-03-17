@@ -123,6 +123,7 @@ class Document extends Container {
         } else {
             header('Location: ' . $url);
         }
+        session_write_close();
         WebPage::$pageClosed = true;
     }
 

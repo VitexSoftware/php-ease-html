@@ -1,4 +1,4 @@
-Source: php-ease-html
+Source: php-vitexsoftware-ease-html
 Build-Depends: debhelper (>= 7.0.50~), php-vitexsoftware-ease-core, phpdocumentor
 Section: web
 Standards-Version: 3.9.8
@@ -11,6 +11,7 @@ Package: php-vitexsoftware-ease-html
 Depends: ${misc:Depends},libjs-jquery (>= 1.4), php-mail, php-mail-mime, php-vitexsoftware-ease-core
 Architecture: all
 Conflicts: ease-framework
+Replaces: php-ease-html
 Suggests: php-vitexsoftware-ease-bootstrap
 Section: web
 Priority: optional
