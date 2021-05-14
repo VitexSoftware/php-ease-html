@@ -57,11 +57,11 @@ class Document extends Container {
     public static $allItems = [];
 
     /**
-     * Vloží javascript do stránky.
+     * Include javascript into page.
      *
      * @param string $javaScript      JS code
-     * @param string $position        končná pozice: '+','-','0','--',...
-     * @param bool   $inDocumentReady vložit do DocumentReady bloku ?
+     * @param string $position        final position: '+','-','0','--',...
+     * @param bool   $inDocumentReady include into DocumentReady block ?
      *
      * @return int 
      */
@@ -72,10 +72,10 @@ class Document extends Container {
     }
 
     /**
-     * Includuje Javascript do stránky.
+     * Include Javascript into page.
      *
-     * @param string $javaScriptFile soubor s javascriptem
-     * @param string $position       končná pozice: '+','-','0','--',...
+     * @param string $javaScriptFile javascript file
+     * @param string $position       final position: '+','-','0','--',...
      *
      * @return string
      */
@@ -226,7 +226,7 @@ class Document extends Container {
      * @return bool
      */
     public static function isPosted() {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (array_key_exists('REQUEST_METHOD', $_SERVER) && ($_SERVER['REQUEST_METHOD'] == 'POST') ) {
             return true;
         } else {
             return false;

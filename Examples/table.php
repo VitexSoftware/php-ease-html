@@ -17,7 +17,7 @@ $tableData = [
     'foot' => ['col1' => 'col1 footer', 'col2' => 'col2 footer', 'col3' => 'col3 footer'],
 ];
 
-$table = new \Ease\Html\TableTag();
+$table = new \Ease\Html\TableTag(null,['class'=>'table','id'=>'myTable']);
 
 $table->addRowHeaderColumns($tableData['head']);
 $table->addRowColumns($tableData['body']);
@@ -29,7 +29,7 @@ echo $table;
 /**
 Produced code:
 
-<table>
+<table class="table", id="myTable">
    <thead>
       <tr>
          <th>col1 heading</th>
