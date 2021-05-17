@@ -3,21 +3,22 @@
 namespace Ease\Html;
 
 /**
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
- *
  * HTML major heading tag.
+ *
+ * @author Vitex <vitex@hippy.cz>
  */
 class SmallTag extends PairTag
 {
 
-	/**
-	 * Small font tag
-	 *
-	 * @param mixed $content    inserted content
-	 * @param array $properties small tag properties
-	 */
-	public function __construct($content = null, $properties = [])
-	{
-		parent::__construct('small', $properties, $content);
-	}
+    /**
+     * Tag pro male písmo.
+     * Small font tag
+     *
+     * @param mixed $content    vkládaný obsah
+     * @param array $properties parametry tagu
+     */
+    public function __construct($content = null, $properties = [])
+    {
+        parent::__construct('small', $properties, $content);
+    }
 }
