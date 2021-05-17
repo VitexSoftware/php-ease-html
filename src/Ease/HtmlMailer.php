@@ -19,7 +19,7 @@ use Mail_mime;
 /**
  * Build & Send email
  *
- *  
+ *
  */
 class HtmlMailer extends Document
 {
@@ -83,7 +83,7 @@ class HtmlMailer extends Document
 
 	/**
 	 *
-	 * @var SimpleHtmlHeadTag 
+	 * @var SimpleHtmlHeadTag
 	 */
 	public $htmlHead = null;
 
@@ -224,7 +224,7 @@ class HtmlMailer extends Document
 
 	/**
 	 * Is object empty ?
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public function isEmpty()

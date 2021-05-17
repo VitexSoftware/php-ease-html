@@ -2,9 +2,9 @@
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
- * 
+ *
  * HTML title class.
  */
 class TitleTag extends PairTag

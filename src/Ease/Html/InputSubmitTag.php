@@ -10,31 +10,31 @@ namespace Ease\Html;
 class InputSubmitTag extends InputTag
 {
 
-    /**
-     * Odesílací tlačítko formuláře.
-     *
-     * @param string $name       tag name
-     * @param string $value      initial value
-     * @param array  $properties additional input submit tag properties
-     */
-    public function __construct($name, $value = null, $properties = [])
-    {
-        if (is_null($value)) {
-            $value = $name;
-        }
-        $properties['type']  = 'submit';
-        $properties['name']  = $name;
-        $properties['value'] = $value;
-        parent::__construct($name, $value, $properties);
-    }
+	/**
+	 * Form submit button.
+	 *
+	 * @param string $name       tag name
+	 * @param string $value      initial value
+	 * @param array  $properties additional input submit tag properties
+	 */
+	public function __construct($name, $value = null, $properties = [])
+	{
+		if (is_null($value)) {
+			$value = $name;
+		}
+		$properties['type']  = 'submit';
+		$properties['name']  = $name;
+		$properties['value'] = $value;
+		parent::__construct($name, $value, $properties);
+	}
 
-    /**
-     * Mockup for label.
-     *
-     * @param bool $value is ignored
-     */
-    public function setValue($value = true)
-    {
-        
-    }
+	/**
+	 * Mockup for label.
+	 *
+	 * @param bool $value is ignored
+	 */
+	public function setValue($value = true)
+	{
+		
+	}
 }

@@ -2,7 +2,7 @@
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  * Html Select.

@@ -2,7 +2,7 @@
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>*/
 
 use Ease\Document;
@@ -199,10 +199,10 @@ class Tag extends Document
 
 	/**
 	 * Sets tag property to given value.
-	 * 
+	 *
 	 * @param string $name
 	 * @param string $value
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public function setTagProperty($name, $value)
@@ -228,7 +228,7 @@ class Tag extends Document
 	 * Sets tag parameters.
 	 *
 	 * @param array $properties associative array of tag parameters
-	 * 
+	 *
 	 * @return boolean operation success
 	 */
 	public function setTagProperties(array $properties)

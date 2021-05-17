@@ -16,7 +16,7 @@ class Container extends Sand implements Embedable
 
 	/**
 	 * Library version
-	 * @var string 
+	 * @var string
 	 */
 	public static $libVersion = 1.0;
 
@@ -143,7 +143,7 @@ class Container extends Sand implements Embedable
 
 	/**
 	 * Contentets
-	 * 
+	 *
 	 * @return mixed
 	 */
 	public function getContents()
@@ -226,9 +226,9 @@ class Container extends Sand implements Embedable
 
 	/**
 	 * Always returns Embedable item
-	 * 
+	 *
 	 * @param mixed $item
-	 * 
+	 *
 	 * @return Embedable
 	 */
 	public static function embedablize($item)

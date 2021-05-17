@@ -12,7 +12,7 @@ namespace Ease;
 /**
  * An object designed to "hold" content - not visible itself
  *
- *  
+ *
  */
 class Document extends Container
 {
@@ -64,7 +64,7 @@ class Document extends Container
 	 * @param string $position        final position: '+','-','0','--',...
 	 * @param bool   $inDocumentReady to insert into a DocumentReady block?
 	 *
-	 * @return int 
+	 * @return int
 	 */
 	public function addJavaScript(
 		$javaScript,

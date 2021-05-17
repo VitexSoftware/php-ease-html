@@ -2,7 +2,7 @@
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  * HTML table.
@@ -23,7 +23,7 @@ class TableTag extends PairTag
 
 	/**
 	 * Table Foot
-	 * @var Tfoot 
+	 * @var Tfoot
 	 */
 	public $tFoot = null;
 
@@ -153,7 +153,7 @@ class TableTag extends PairTag
 
 	/**
 	 * Contentets.
-	 * 
+	 *
 	 * @return mixed
 	 */
 	public function getContents()
