@@ -3,7 +3,7 @@
 /**
  * Common webpage class
  *
- * @author     Vítězslav Dvořák <vitex@hippy.cz>
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  * @copyright  2009-2020 Vitex@hippy.cz (G)
  */
 
