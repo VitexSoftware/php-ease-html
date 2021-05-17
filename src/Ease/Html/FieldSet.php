@@ -3,73 +3,76 @@
 namespace Ease\Html;
 
 /**
- * Html Fieldset.
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * Html Fieldset.
  */
 class FieldSet extends PairTag
 {
-    /**
-     * Legenda rámečku.
-     *
-     * @var mixed
-     */
-    public $legend = null;
+	/**
+	 * Frame legend.
+	 *
+	 * @var mixed
+	 */
+	public $legend = null;
 
-    /**
-     * Objekt s tagem Legendy.
-     *
-     * @var PairTag
-     */
-    public $legendTag = null;
+	/**
+	 * Object with legend tag.
+	 *
+	 * @var PairTag
+	 */
+	public $legendTag = null;
 
-    /**
-     * Obsah rámu.
-     *
-     * @var mixed
-     */
-    public $content = null;
+	/**
+	 * Frame content.
+	 *
+	 * @var mixed
+	 */
+	public $content = null;
 
-    /**
-     * Zobrazí rámeček.
-     *
-     * @param string|mixed $legend  popisek - text nebo Ease objekty
-     * @param mixed        $content prvky vkládané do rámečku
-     */
-    public function __construct($legend, $content = null)
-    {
-        $this->setTagName($legend);
-        $this->legend    = $legend;
-        $this->legendTag = $this->addItem(new PairTag('legend', null,
-                $this->legend));
-        if ($content) {
-            $this->content = $this->addItem($content);
-        }
-        parent::__construct('fieldset');
-    }
+	/**
+	 * Displays the frame.
+	 *
+	 * @param string|mixed $legend      frame title in text format or ease framework object
+	 * @param mixed        $content     elements inserted into the frame
+	 */
+	public function __construct($legend, $content = null)
+	{
+		$this->setTagName($legend);
+		$this->legend    = $legend;
+		$this->legendTag = $this->addItem(new PairTag(
+			'legend',
+			null,
+			$this->legend
+		));
+		if ($content) {
+			$this->content = $this->addItem($content);
+		}
+		parent::__construct('fieldset');
+	}
 
-    /**
-     * Nastavení legendy.
-     *
-     * @param string $legend popisek
-     */
-    public function setLegend($legend)
-    {
-        $this->legend = $legend;
-    }
+	/**
+	 * Legend settings.
+	 *
+	 * @param string $legend description
+	 */
+	public function setLegend($legend)
+	{
+		$this->legend = $legend;
+	}
 
-    /**
-     * Vložení legendy.
-     */
-    public function finalize()
-    {
-        if ($this->legend) {
-            if (is_object(reset($this->pageParts))) {
-                reset($this->pageParts)->pageParts = [$this->legend];
-            } else {
-                array_unshift($this->pageParts, $this->legendTag);
-                reset($this->pageParts)->pageParts = [$this->legend];
-            }
-        }
-    }
+	/**
+	 * Inserts the legend.
+	 */
+	public function finalize()
+	{
+		if ($this->legend) {
+			if (is_object(reset($this->pageParts))) {
+				reset($this->pageParts)->pageParts = [$this->legend];
+			} else {
+				array_unshift($this->pageParts, $this->legendTag);
+				reset($this->pageParts)->pageParts = [$this->legend];
+			}
+		}
+	}
 }

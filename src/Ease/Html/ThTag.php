@@ -3,21 +3,21 @@
 namespace Ease\Html;
 
 /**
- * HTML Table Header cell class.
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author     Vitex <vitex@hippy.cz>
+ * HTML Table Header cell class.
  */
 class ThTag extends PairTag
 {
 
-    /**
-     * Buňka s popiskem tabulky.
-     *
-     * @param mixed $content    vkládaný obsah
-     * @param array $properties parametry tagu
-     */
-    public function __construct($content = null, $properties = [])
-    {
-        parent::__construct('th', $properties, $content);
-    }
+	/**
+	 * Cell with table label.
+	 *
+	 * @param mixed $content    inserted content
+	 * @param array $properties th tag properties
+	 */
+	public function __construct($content = null, $properties = [])
+	{
+		parent::__construct('th', $properties, $content);
+	}
 }

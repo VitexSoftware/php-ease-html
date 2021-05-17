@@ -3,26 +3,25 @@
 namespace Ease\Html;
 
 /**
- * HTML5 tel input tag.
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 tel input tag.
  */
 class InputTelTag extends InputTag
 {
 
-    /**
-     * The <input type="tel"> is used for input fields that should contain a
-     * telephone number.
-     *
-     * @param string $name       name
-     * @param string $value      initial value
-     * @param array  $properties additional properties
-     */
-    public function __construct($name, $value = null, $properties = [])
-    {
-        $properties['type']  = 'tel';
-        $properties['value'] = $value;
-        $properties['name']  = $name;
-        parent::__construct($name, $value, $properties);
-    }
+	/**
+	 * The <input type="tel"> is used for input fields that should contain a phone number.
+	 *
+	 * @param string $name       tag name
+	 * @param string $value      initial value
+	 * @param array  $properties additional input tel iinput submit tag properties
+	 */
+	public function __construct($name, $value = null, $properties = [])
+	{
+		$properties['type']  = 'tel';
+		$properties['value'] = $value;
+		$properties['name']  = $name;
+		parent::__construct($name, $value, $properties);
+	}
 }

@@ -3,19 +3,21 @@
 namespace Ease\Html;
 
 /**
- * Html element pro adresu.
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ *
+ *   Html address element.
  */
 class AddressTag extends PairTag
 {
 
-    /**
-     * Html element pro adresu.
-     *
-     * @param string $content       text adresy
-     * @param array  $tagProperties vlastnosti tagu
-     */
-    public function __construct($content = null, $tagProperties = null)
-    {
-        parent::__construct('address', $tagProperties, $content);
-    }
+	/**
+	 * Html address element.
+	 *
+	 * @param string $content       address content
+	 * @param array  $properties address tag properties
+	 */
+	public function __construct($content = null, $properties = null)
+	{
+		parent::__construct('address', $properties, $content);
+	}
 }
