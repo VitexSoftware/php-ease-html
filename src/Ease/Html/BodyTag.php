@@ -3,41 +3,41 @@
 namespace Ease\Html;
 
 /**
- * Třída pro tělo HTML stránky.
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author     Vitex <vitex@hippy.cz>
+ * Body class of HTML page.
  */
 class BodyTag extends PairTag
 {
 
-    /**
-     * Tělo stránky je v aplikaci vždy dostupně jako
-     * $this->easeShared->webPage->body.
-     *
-     * @param mixed  $content     items to be included
-     * @param array  $properties  additional properties for tag
-     */
-    public function __construct($content = null, $properties = null)
-    {
-        parent::__construct('body', $properties, $content);
-    }
+	/**
+	 * The page body is always avalible in the app as
+	 * WebPage::singleton()->body.
+	 *
+	 * @param mixed  $content     inserted content
+	 * @param array  $properties  body tag properties
+	 */
+	public function __construct($content = null, $properties = [])
+	{
+		parent::__construct('body', $properties, $content);
+	}
 
-    /**
-     * Nastaví jméno objektu na "body".
-     *
-     * @param string $objectName jméno objektu
-     */
-    public function setObjectName($objectName = null)
-    {
-        parent::setObjectName('body');
-    }
+	/**
+	 * Sets the object name to "body".
+	 *
+	 * @param string $objectName object name
+	 */
+	public function setObjectName($objectName = null)
+	{
+		parent::setObjectName('body');
+	}
 
-    /**
-     * Vykreslí hlavičku HTML stránky.
-     */
-    public function draw()
-    {
-        $this->addItem(HeadTag::getScriptsRendered(\Ease\WebPage::singleton()->javaScripts));
-        parent::draw();
-    }
+	/**
+	 * Renders the head of the HTML page.
+	 */
+	public function draw()
+	{
+		$this->addItem(HeadTag::getScriptsRendered(\Ease\WebPage::singleton()->javaScripts));
+		parent::draw();
+	}
 }

@@ -3,62 +3,64 @@
 namespace Ease\Html;
 
 /**
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ *
  * HTML unsorted list.
  *
- * @author Vitex <vitex@hippy.cz>
+ *
  */
 class UlTag extends PairTag
 {
 
-    /**
-     * Vytvori UL container.
-     *
-     * @param mixed $ulContents položky seznamu
-     * @param array $properties parametry tagu
-     */
-    public function __construct($ulContents = null, $properties = [])
-    {
-        parent::__construct('ul', $properties, $ulContents);
-    }
+	/**
+	 * Creates UL container.
+	 *
+	 * @param mixed $ulContents list items
+	 * @param array $properties ul tag properties
+	 */
+	public function __construct($ulContents = null, $properties = [])
+	{
+		parent::__construct('ul', $properties, $ulContents);
+	}
 
-    /**
-     * Vloží pole elementů.
-     *
-     * @param array $itemsArray pole hodnot nebo EaseObjektů s metodou draw()
-     */
-    public function addItems($itemsArray)
-    {
-        $itemsAdded = [];
-        foreach ($itemsArray as $item) {
-            $itemsAdded[] = $this->addItemSmart($item);
-        }
+	/**
+	 * Inserts an array of elements.
+	 *
+	 * @param array $itemsArray field of values or EaseObjektů with draw() method.
+	 */
+	public function addItems($itemsArray)
+	{
+		$itemsAdded = [];
+		foreach ($itemsArray as $item) {
+			$itemsAdded[] = $this->addItemSmart($item);
+		}
 
-        return $itemsAdded;
-    }
+		return $itemsAdded;
+	}
 
-    /**
-     * Every item id added in LiTag envelope.
-     *
-     * @param mixed  $pageItem   obsah vkládaný jako položka výčtu
-     * @param array $properties Vlastnosti LI tagu
-     *
-     * @return mixed
-     */
-    public function &addItemSmart($pageItem, $properties = [])
-    {
-        if (is_array($pageItem)) {
-            foreach ($pageItem as $item) {
-                $this->addItemSmart($item);
-            }
-            $itemAdded = &$this->lastItem;
-        } else {
-            if (is_object($pageItem) && method_exists($pageItem,'getTagType') && ($pageItem->getTagType() == 'li')) {
-                $itemAdded = parent::addItem($pageItem);
-            } else {
-                $itemAdded = parent::addItem(new LiTag($pageItem, $properties));
-            }
-        }
+	/**
+	 * Every item id added in LiTag envelope.
+	 *
+	 * @param mixed  $pageItem      content inserted as an enumeration item
+	 * @param array $properties     ul tag properties
+	 *
+	 * @return mixed
+	 */
+	public function &addItemSmart($pageItem, $properties = [])
+	{
+		if (is_array($pageItem)) {
+			foreach ($pageItem as $item) {
+				$this->addItemSmart($item);
+			}
+			$itemAdded = &$this->lastItem;
+		} else {
+			if (is_object($pageItem) && method_exists($pageItem, 'getTagType') && ($pageItem->getTagType() == 'li')) {
+				$itemAdded = parent::addItem($pageItem);
+			} else {
+				$itemAdded = parent::addItem(new LiTag($pageItem, $properties));
+			}
+		}
 
-        return $itemAdded;
-    }
+		return $itemAdded;
+	}
 }

@@ -3,31 +3,33 @@
 namespace Ease\Html;
 
 /**
- * Definiční list.
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ *
+ * Definition list.
  */
 class DlTag extends PairTag
 {
 
-    /**
-     * Definice.
-     *
-     * @param mixed $content
-     * @param array $tagProperties vlastnosti tagu
-     */
-    public function __construct($content = null, $tagProperties = null)
-    {
-        parent::__construct('dl', $tagProperties, $content);
-    }
+	/**
+	 * Definition
+	 *
+	 * @param mixed $content       content included
+	 * @param array $properties    dl tag properties
+	 */
+	public function __construct($content = null, $properties = null)
+	{
+		parent::__construct('dl', $properties, $content);
+	}
 
-    /**
-     * Vloží novou definici.
-     *
-     * @param string|mixed $term  Subjekt
-     * @param string|mixed $value Popis subjektu
-     */
-    public function addDef($term, $value)
-    {
-        $this->addItem(new DtTag($term));
-        $this->addItem(new DdTag($value));
-    }
+	/**
+	 * Inserts new definition
+	 *
+	 * @param string|mixed $term    subject
+	 * @param string|mixed $value   subject description
+	 */
+	public function addDef($term, $value)
+	{
+		$this->addItem(new DtTag($term));
+		$this->addItem(new DdTag($value));
+	}
 }
