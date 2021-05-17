@@ -3,46 +3,46 @@
 namespace Ease\Html;
 
 /**
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ * Tag Label pro LabeledInput.
  *
- * Tag Label for LabeledInput.
+ * @author Vítězslav Dvořák <vitex@hippy.cz>
  */
 class LabelTag extends PairTag
 {
-	/**
-	 * Link to content.
-	 *
-	 * @var mixed
-	 */
-	public $contents = null;
+    /**
+     * Odkaz na obsah.
+     *
+     * @var mixed
+     */
+    public $contents = null;
 
-	/**
-	 * Displays tag label.
-	 *
-	 * @param string $for        reference element
-	 * @param mixed  $contents   labeled content
-	 * @param array  $properties labe tag properties
-	 */
-	public function __construct($for, $contents = null, $properties = [])
-	{
-		$this->setTagProperties(['for' => $for]);
-		parent::__construct('label', $properties);
-		$this->contents = $this->addItem($contents);
-	}
+    /**
+     * Show tag label
+     *
+     * @param string $for        vztažný element
+     * @param mixed  $contents   obsah opatřovaný popiskem
+     * @param array  $properties vlastnosti tagu
+     */
+    public function __construct($for, $contents = null, $properties = [])
+    {
+        $this->setTagProperties(['for' => $for]);
+        parent::__construct('label', $properties);
+        $this->contents = $this->addItem($contents);
+    }
 
-	/**
-	 * Sets object name.
-	 *
-	 * @param string $objectName the set name
-	 *
-	 * @return string New object name
-	 */
-	public function setObjectName($objectName = null)
-	{
-		if (is_null($objectName)) {
-			$objectName = get_class($this) . '@' . $this->getTagProperty('for');
-		}
+    /**
+     * Set object name.
+     *
+     * @param string $objectName nastavované jméno
+     *
+     * @return string New object name
+     */
+    public function setObjectName($objectName = null)
+    {
+        if (is_null($objectName)) {
+            $objectName = get_class($this).'@'.$this->getTagProperty('for');
+        }
 
-		return parent::setObjectName($objectName);
-	}
+        return parent::setObjectName($objectName);
+    }
 }

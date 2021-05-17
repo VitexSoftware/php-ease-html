@@ -1,34 +1,40 @@
 <?php
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 namespace Ease\Html;
 
 /**
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ * Description of Comment
  *
- * Description of a Comment.
+ * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
 class Comment extends Tag
 {
-	/**
-	 * Tag type - f.e. A or STRONG.
-	 *
-	 * @var string
-	 */
-	public $tagType = '!--';
+    /**
+     * Typ tagu - např A či STRONG.
+     *
+     * @var string
+     */
+    public $tagType = '!--';
 
-	/**
-	 * Trailing for xhtml.
-	 *
-	 * @var string
-	 */
-	public $trail = ' --';
+    /**
+     * Koncové lomítko pro xhtml.
+     *
+     * @var string
+     */
+    public $trail = ' --';
 
-	/**
-	 *
-	 * @param string $comment
-	 */
-	public function __construct($comment)
-	{
-		parent::__construct('!--', [$comment]);
-	}
+    /**
+     * 
+     * @param string $comment
+     */
+    public function __construct($comment)
+    {
+        parent::__construct('!--', [$comment]);
+    }
+
 }
