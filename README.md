@@ -217,3 +217,4 @@ sudo wget -O /etc/apt/trusted.gpg.d/vitexsoftware.gpg http://repo.vitexsoftware.
 sudo apt update
 sudo apt install php-vitexsoftware-ease-html
 ```
+
