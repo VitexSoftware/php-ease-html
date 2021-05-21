@@ -1,4 +1,5 @@
 <?php
+declare (strict_types=1);
 
 use Ease\Html\ArticleTag as Article;
 use Ease\Html\ATag;

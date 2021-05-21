@@ -1,4 +1,5 @@
 <?php
+declare (strict_types=1);
 
 namespace Ease\Html;
 
@@ -26,12 +27,12 @@ class Tag extends Document
      */
     private $tagType = null;
 
-    /**
-     * Pole vlastností tagu.
-     *
-     * @var array
-     */
-    public $tagProperties = [];
+	/**
+	 * Tag property fields.
+	 *
+	 * @var array
+	 */
+	public $tagProperties = [];
 
     /**
      * pole ze kterého se rendruje obsah STYLE tagu.

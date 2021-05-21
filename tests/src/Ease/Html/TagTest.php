@@ -1,4 +1,5 @@
 <?php
+declare (strict_types=1);
 
 namespace Test\Ease\Html;
 
@@ -221,7 +222,7 @@ class TagTest extends DocumentTest
     public function testDraw($whatWant = null)
     {
         $tagType = $this->object->getTagType();
-        if (!strlen($tagType)) {
+        if (empty($tagType)) {
             $tagType = 'test';
             $this->object->setTagType($tagType);
         }
