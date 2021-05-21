@@ -1,4 +1,5 @@
 <?php
+declare (strict_types=1);
 
 namespace Ease\Html;
 
@@ -69,33 +70,34 @@ class SelectTag extends PairTag {
         return [];
     }
 
+	/**
+	 * Value setting.
+	 *
+	 * @param string $value     the set value
+	 */
+	public function setValue($value)
+	{
+		if (!empty($value)) {
+			foreach ($this->pageParts as $option) {
+				if ($option->getValue() == $value) {
+					$option->setDefault();
+				} else {
+					$pos = array_search('selected', $option->tagProperties);
+					if (($pos !== false) && is_numeric($pos)) {
+						unset($option->tagProperties[$pos]);
+					}
+				}
+			}
+		} else {
+			if (isset($this->pageParts) && count($this->pageParts)) {
+				$firstItem = &reset($this->pageParts);
+				$firstItem->setDefault();
+			}
+		}
+	}
+  
     /**
-     * Nastavení hodnoty.
-     *
-     * @param string $value nastavovaná hodnota
-     */
-    public function setValue($value) {
-        if (trim(strlen($value))) {
-            foreach ($this->pageParts as $option) {
-                if ($option->getValue() == $value) {
-                    $option->setDefault();
-                } else {
-                    $pos = array_search('selected', $option->tagProperties);
-                    if (($pos !== false) && is_numeric($pos)) {
-                        unset($option->tagProperties[$pos]);
-                    }
-                }
-            }
-        } else {
-            if (isset($this->pageParts) && count($this->pageParts)) {
-                $firstItem = &reset($this->pageParts);
-                $firstItem->setDefault();
-            }
-        }
-    }
-
-    /**
-     * Vložit načtené položky.
+     * Include loaded items
      */
     public function finalize() {
         if (!count($this->pageParts)) {

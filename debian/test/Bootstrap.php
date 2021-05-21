@@ -1,4 +1,5 @@
 <?php
+declare (strict_types=1);
 /**
  * Zaváděcí soubor pro provádění PHPUnit testů na EaseFrameworkem.
  *
