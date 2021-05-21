@@ -1,4 +1,5 @@
 <?php
+declare (strict_types=1);
 
 /**
  * Html form able to be recursive filled.*/
