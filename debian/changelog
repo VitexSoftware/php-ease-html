@@ -9,8 +9,9 @@ php-vitexsoftware-ease-html (1.31) UNRELEASED; urgency=medium
   * Merge branch 'main' of github.com:VitexSoftware/ease-html into main
   * Documentation removed
   * table example with properties
+  * Merge branch 'main' of github.com:VitexSoftware/ease-html into main
 
- -- CyberVitexus <vitex@exiv.jinonice.czf>  Fri, 14 May 2021 22:04:25 +0200
+ -- CyberVitexus <vitex@exiv.jinonice.czf>  Fri, 21 May 2021 12:59:16 +0200
 
 php-ease-html (1.16) EXPERIMENTAL; urgency=medium
 
