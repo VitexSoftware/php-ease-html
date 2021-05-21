@@ -3,39 +3,39 @@ declare (strict_types=1);
 
 namespace Ease\Html;
 
-/** 
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+/**
+ * Odesílací tlačítko formuláře.
  *
- * Form submit button. 
+ * @author Vítězslav Dvořák <vitex@hippy.cz>    
  */
 class InputSubmitTag extends InputTag
 {
 
-	/**
-	 * Form submit button.
-	 *
-	 * @param string $name       tag name
-	 * @param string $value      initial value
-	 * @param array  $properties additional input submit tag properties
-	 */
-	public function __construct($name, $value = null, $properties = [])
-	{
-		if (is_null($value)) {
-			$value = $name;
-		}
-		$properties['type']  = 'submit';
-		$properties['name']  = $name;
-		$properties['value'] = $value;
-		parent::__construct($name, $value, $properties);
-	}
+    /**
+     * Odesílací tlačítko formuláře.
+     *
+     * @param string $name       jméno tagu
+     * @param string $value      vracená hodnota
+     * @param array  $properties Pole vlastností tagu
+     */
+    public function __construct($name, $value = null, $properties = [])
+    {
+        if (is_null($value)) {
+            $value = $name;
+        }
+        $properties['type']  = 'submit';
+        $properties['name']  = $name;
+        $properties['value'] = $value;
+        parent::__construct($name, $value, $properties);
+    }
 
-	/**
-	 * Mockup for label.
-	 *
-	 * @param bool $value is ignored
-	 */
-	public function setValue($value = true)
-	{
-		
-	}
+    /**
+     * Maketa kuli popisku.
+     *
+     * @param bool $value je ignorováno
+     */
+    public function setValue($value = true)
+    {
+        
+    }
 }

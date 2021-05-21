@@ -4,21 +4,21 @@ declare (strict_types=1);
 namespace Ease\Html;
 
 /**
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
- *
  * HTML Table cell class.
+ *
+ * @author Vitex <vitex@hippy.cz>
  */
 class TdTag extends PairTag
 {
 
-	/**
-	 * Table cell.
-	 *
-	 * @param mixed $content    insertred value
-	 * @param array $properties td tag properties
-	 */
-	public function __construct($content = null, $properties = [])
-	{
-		parent::__construct('td', $properties, $content);
-	}
+    /**
+     * Buňka tabulky.
+     *
+     * @param mixed $content    vkládaný obsah
+     * @param array $properties parametry tagu
+     */
+    public function __construct($content = null, $properties = [])
+    {
+        parent::__construct('td', $properties, $content);
+    }
 }

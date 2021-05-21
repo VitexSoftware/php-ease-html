@@ -3,21 +3,21 @@ declare (strict_types=1);
 namespace Ease\Html;
 
 /**
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
- *
  * HTML major heading tag.
+ *
+ * @author Vitex <vitex@hippy.cz>
  */
 class H1Tag extends PairTag
 {
 
-	/**
-	 * H1 Tag.
-	 *
-	 * @param mixed $content    inserted content
-	 * @param array $properties h1 tag propoerties
-	 */
-	public function __construct($content = null, $properties = [])
-	{
-		parent::__construct('h1', $properties, $content);
-	}
+    /**
+     * Simple H1 Tag.
+     *
+     * @param mixed $content    vkládaný obsah
+     * @param array $properties parametry tagu
+     */
+    public function __construct($content = null, $properties = [])
+    {
+        parent::__construct('h1', $properties, $content);
+    }
 }

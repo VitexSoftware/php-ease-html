@@ -3,21 +3,21 @@ declare (strict_types=1);
 namespace Ease\Html;
 
 /**
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
- *
  * HTML H2 tag.
+ *
+ * @author Vitex <vitex@hippy.cz>
  */
 class H2Tag extends PairTag
 {
 
-	/**
-	 * H2 Tag.
-	 *
-	 * @param mixed  $content    inserted content
-	 * @param string $properties h2 tag propoerties
-	 */
-	public function __construct($content = null, $properties = [])
-	{
-		parent::__construct('h2', $properties, $content);
-	}
+    /**
+     * Nadpis druhé velikosti.
+     *
+     * @param mixed  $content    text nadpisu
+     * @param string $properties parametry tagu
+     */
+    public function __construct($content = null, $properties = [])
+    {
+        parent::__construct('h2', $properties, $content);
+    }
 }

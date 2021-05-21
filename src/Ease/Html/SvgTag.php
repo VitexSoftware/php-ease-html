@@ -4,21 +4,21 @@ declare (strict_types=1);
 namespace Ease\Html;
 
 /**
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
- *
  * HTML5 svg tag.
+ *
+ * @author Vitex <vitex@hippy.cz>
  */
 class SvgTag extends PairTag
 {
 
-	/**
-	 * Render scalable vector graphics
-	 *
-	 * @param mixed  $content    items included
-	 * @param array  $properties tag svg propertiess
-	 */
-	public function __construct($content = null, $properties = [])
-	{
-		parent::__construct('svg', $properties, $content);
-	}
+    /**
+     * Draw scalable vector graphics
+     *
+     * @param mixed  $content    items included
+     * @param array  $properties params array
+     */
+    public function __construct($content = null, $properties = [])
+    {
+        parent::__construct('svg', $properties, $content);
+    }
 }

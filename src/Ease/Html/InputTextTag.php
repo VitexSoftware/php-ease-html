@@ -4,32 +4,32 @@ declare (strict_types=1);
 namespace Ease\Html;
 
 /**
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ * Zobrazí input text tag.
  *
- * Displays the input text tag.
+ * @author Vítězslav Dvořák <vitex@hippy.cz>
  */
 class InputTextTag extends InputTag
 {
 
-	/**
-	 * Displays the input text tag.
-	 *
-	 * @param string $name       tag name
-	 * @param string $value      intial value
-	 * @param array  $properties additional input tel input text tag properties
-	 */
-	public function __construct($name, $value = null, $properties = [])
-	{
-		if (!isset($properties['type'])) {
-			$properties['type'] = 'text';
-		}
-		if (!is_null($value)) {
-			$properties['value'] = $value;
-		}
-		if ($name) {
-			$properties['name'] = $name;
-		}
-		$this->setTagProperties($properties);
-		parent::__construct($name, $value);
-	}
+    /**
+     * Zobrazí input text tag.
+     *
+     * @param string $name       jméno
+     * @param string $value      předvolená hodnota
+     * @param array  $properties dodatečné vlastnosti tagu
+     */
+    public function __construct($name, $value = null, $properties = [])
+    {
+        if (!isset($properties['type'])) {
+            $properties['type'] = 'text';
+        }
+        if (!is_null($value)) {
+            $properties['value'] = $value;
+        }
+        if ($name) {
+            $properties['name'] = $name;
+        }
+        $this->setTagProperties($properties);
+        parent::__construct($name, $value);
+    }
 }

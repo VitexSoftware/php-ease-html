@@ -3,21 +3,21 @@ declare (strict_types=1);
 namespace Ease\Html;
 
 /**
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
- *
  * HTML H5 tag.
+ *
+ * @author Vitex <vitex@hippy.cz>
  */
 class H5Tag extends PairTag
 {
 
-	/**
-	 * H5 Tag.
-	 *
-	 * @param mixed $content    inserted content
-	 * @param array $properties h5 tag propoerties
-	 */
-	public function __construct($content = null, $properties = [])
-	{
-		parent::__construct('h5', $properties, $content);
-	}
+    /**
+     * Simple H5 tag.
+     *
+     * @param mixed $content    vkládaný obsah
+     * @param array $properties parametry tagu
+     */
+    public function __construct($content = null, $properties = [])
+    {
+        parent::__construct('h5', $properties, $content);
+    }
 }

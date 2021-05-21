@@ -4,21 +4,21 @@ declare (strict_types=1);
 namespace Ease\Html;
 
 /**
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
- *
  * HTML5 ruby tag.
+ *
+ * @author Vitex <vitex@hippy.cz>
  */
 class RubyTag extends PairTag
 {
 
-	/**
-	 * Defines a ruby annotation (for East Asian typography)
-	 *
-	 * @param mixed  $content    items included
-	 * @param array  $properties ruby tag properties
-	 */
-	public function __construct($content = null, $properties = [])
-	{
-		parent::__construct('ruby', $properties, $content);
-	}
+    /**
+     * Defines a ruby annotation (for East Asian typography)
+     *
+     * @param mixed  $content    items included
+     * @param array  $properties params array
+     */
+    public function __construct($content = null, $properties = [])
+    {
+        parent::__construct('ruby', $properties, $content);
+    }
 }

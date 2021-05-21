@@ -4,21 +4,21 @@ declare (strict_types=1);
 namespace Ease\Html;
 
 /**
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
- *
  * HtmlParam tag.
+ *
+ * @author Vitex <vitex@hippy.cz>
  */
 class ParamTag extends Tag
 {
 
-	/**
-	 * Paramm tag.
-	 *
-	 * @param string $name  tag name
-	 * @param string $value tag value
-	 */
-	public function __construct($name, $value)
-	{
-		parent::__construct('param', ['name' => $name, 'value' => $value]);
-	}
+    /**
+     * Paramm tag.
+     *
+     * @param string $name  jméno parametru
+     * @param string $value hodnota parametru
+     */
+    public function __construct($name, $value)
+    {
+        parent::__construct('param', ['name' => $name, 'value' => $value]);
+    }
 }

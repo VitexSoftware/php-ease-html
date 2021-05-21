@@ -4,25 +4,25 @@ declare (strict_types=1);
 namespace Ease\Html;
 
 /**
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ *  fragment skriptu ve stránce.
  *
- *  page javascript fragment.
+ * @author Vitex <vitex@hippy.cz>
  */
 class JavaScript extends ScriptTag
 {
 
-	/**
-	 * page javascript fragment.
-	 *
-	 * @param string $content  script content
-	 */
-	public function __construct($content, $properties = [])
-	{
-		if (is_null($properties)) {
-			$properties = ['type' => 'text/javascript'];
-		} else {
-			$properties['type'] = 'text/javascript';
-		}
-		parent::__construct($content, $properties);
-	}
+    /**
+     * fragment javaskriptu ve stránce.
+     *
+     * @param string $content text scriptu
+     */
+    public function __construct($content, $properties = [])
+    {
+        if (is_null($properties)) {
+            $properties = ['type' => 'text/javascript'];
+        } else {
+            $properties['type'] = 'text/javascript';
+        }
+        parent::__construct($content, $properties);
+    }
 }

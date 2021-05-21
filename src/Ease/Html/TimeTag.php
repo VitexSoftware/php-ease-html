@@ -4,20 +4,21 @@ declare (strict_types=1);
 namespace Ease\Html;
 
 /**
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  * HTML5 time tag.
+ *
+ * @author Vitex <vitex@hippy.cz>
  */
 class TimeTag extends PairTag
 {
 
-	/**
-	 * Defines a date/time
-	 *
-	 * @param mixed  $content    items included
-	 * @param array  $properties time tag properties
-	 */
-	public function __construct($content = null, $properties = [])
-	{
-		parent::__construct('time', $properties, $content);
-	}
+    /**
+     * Defines a date/time
+     *
+     * @param mixed  $content    items included
+     * @param array  $properties params array
+     */
+    public function __construct($content = null, $properties = [])
+    {
+        parent::__construct('time', $properties, $content);
+    }
 }
