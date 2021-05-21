@@ -222,7 +222,7 @@ class TagTest extends DocumentTest
     public function testDraw($whatWant = null)
     {
         $tagType = $this->object->getTagType();
-        if (!strlen($tagType)) {
+        if (empty($tagType)) {
             $tagType = 'test';
             $this->object->setTagType($tagType);
         }

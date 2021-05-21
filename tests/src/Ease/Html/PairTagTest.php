@@ -103,7 +103,7 @@ class PairTagTest extends TagTest
     public function testTagEnclousure()
     {
         $tagType = $this->object->getTagType();
-        if (!strlen($tagType)) {
+        if (empty($tagType)) {
             $tagType = 'test';
             $this->object->setTagType($tagType);
         }

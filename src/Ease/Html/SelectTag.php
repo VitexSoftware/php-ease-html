@@ -84,7 +84,7 @@ class SelectTag extends PairTag
 	 */
 	public function setValue($value)
 	{
-		if (trim(strlen($value))) {
+		if (!empty($value)) {
 			foreach ($this->pageParts as $option) {
 				if ($option->getValue() == $value) {
 					$option->setDefault();
