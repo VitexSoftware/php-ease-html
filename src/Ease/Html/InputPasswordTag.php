@@ -3,10 +3,10 @@ declare (strict_types=1);
 
 namespace Ease\Html;
 
-/**
- * Vstup pro zadání hesla.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vítězslav Dvořák <vitex@hippy.cz>
+ * Input for password insertion..
  */
 class InputPasswordTag extends InputTextTag
 {
@@ -21,6 +21,6 @@ class InputPasswordTag extends InputTextTag
     public function __construct($name, $value = null, $properties = [])
     {
         $properties['type'] = 'password';
-        parent::__construct($name, $value,$properties);
+        parent::__construct($name, $value, $properties);
     }
 }

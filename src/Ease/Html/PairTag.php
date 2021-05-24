@@ -3,10 +3,10 @@ declare (strict_types=1);
 
 namespace Ease\Html;
 
-/**
- * Obecný párový HTML tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author     Vitex <vitex@hippy.cz>
+ * General HTML pair tag.
  */
 class PairTag extends Tag
 {
@@ -20,14 +20,16 @@ class PairTag extends Tag
     /**
      * Common pair tag.
      *
-     * @param string       $tagType       typ tagu
-     * @param array|string $tagProperties parametry tagu
-     * @param mixed        $content       Content to insert into tag
+     * @param string       $tagType         tag type
+     * @param array|string $properties      pair tag properties
+     * @param mixed        $content         Content to insert into tag
      */
-    public function __construct($tagType = null, $tagProperties = null,
-                                $content = null)
-    {
-        parent::__construct($tagType, $tagProperties);
+    public function __construct(
+        $tagType = null,
+        $properties = null,
+        $content = null
+    ) {
+        parent::__construct($tagType, $properties);
         if (empty($content) === false) {
             $this->addItem($content);
         }
@@ -56,6 +58,6 @@ class PairTag extends Tag
      */
     public function tagEnclousure()
     {
-        echo '</'.$this->getTagType().'>';
+        echo '</' . $this->getTagType() . '>';
     }
 }

@@ -3,10 +3,10 @@ declare (strict_types=1);
 
 namespace Ease\Html;
 
-/**
- * HTML5 time input tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 time input tag.
  */
 class InputTimeTag extends InputTag
 {
@@ -14,9 +14,9 @@ class InputTimeTag extends InputTag
     /**
      * The <input type="time"> allows the user to select a time (no time zone).
      *
-     * @param string $name       name
+     * @param string $name       tag name
      * @param string $value      initial value
-     * @param array  $properties additional properties
+     * @param array  $properties additional input tel input time tag properties
      */
     public function __construct($name, $value = null, $properties = [])
     {

@@ -3,18 +3,18 @@ declare (strict_types=1);
 
 namespace Ease\Html;
 
-/**
- *  fragment skriptu ve stránce.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ *  page javascript fragment.
  */
 class JavaScript extends ScriptTag
 {
 
     /**
-     * fragment javaskriptu ve stránce.
+     * page javascript fragment.
      *
-     * @param string $content text scriptu
+     * @param string $content  script content
      */
     public function __construct($content, $properties = [])
     {

@@ -3,10 +3,10 @@ declare (strict_types=1);
 
 namespace Ease\Html;
 
-/**
- * HTML Table row class.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author     Vitex <vitex@hippy.cz>
+ * HTML Table row class.
  */
 class TrTag extends PairTag
 {
@@ -14,8 +14,8 @@ class TrTag extends PairTag
     /**
      * TR tag.
      *
-     * @param mixed $content    vkládaný obsah
-     * @param array $properties parametry tagu
+     * @param mixed $content    inserted value
+     * @param array $properties tr tag properties
      */
     public function __construct($content = null, $properties = [])
     {

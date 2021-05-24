@@ -3,10 +3,10 @@ declare (strict_types=1);
 
 namespace Ease\Html;
 
-/**
- * HTML5 range input tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 range input tag.
  */
 class InputRangeTag extends InputTag {
 
@@ -17,7 +17,7 @@ class InputRangeTag extends InputTag {
      *
      * @param string $name       name
      * @param string $value      initial value
-     * @param array  $properties additional properties min,max,step...
+     * @param array  $properties additional input range tag properties min,max,step...
      */
     public function __construct($name, $value = null, $properties = []) {
         $properties['type'] = 'range';

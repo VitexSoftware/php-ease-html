@@ -3,10 +3,10 @@ declare (strict_types=1);
 
 namespace Ease\Html;
 
-/**
- * HTML5 Aside tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 Aside tag. 
  */
 class AsideTag extends PairTag
 {
@@ -15,7 +15,7 @@ class AsideTag extends PairTag
      * Defines content aside from the page content
      *
      * @param mixed  $content    items included
-     * @param array  $properties params array
+     * @param array  $properties Aside tag properties
      */
     public function __construct($content = null, $properties = [])
     {

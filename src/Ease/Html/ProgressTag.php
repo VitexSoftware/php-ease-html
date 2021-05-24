@@ -3,10 +3,10 @@ declare (strict_types=1);
 
 namespace Ease\Html;
 
-/**
- * HTML5 progress tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 progress tag.
  */
 class ProgressTag extends PairTag
 {
@@ -15,7 +15,7 @@ class ProgressTag extends PairTag
      * Represents the progress of a task
      *
      * @param mixed  $content    items included
-     * @param array  $properties params array
+     * @param array  $properties progress tag properties
      */
     public function __construct($content = null, $properties = [])
     {

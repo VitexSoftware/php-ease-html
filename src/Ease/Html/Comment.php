@@ -3,22 +3,22 @@ declare (strict_types=1);
 
 namespace Ease\Html;
 
-/**
- * Description of Comment
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vítězslav Dvořák <info@vitexsoftware.cz>
+ * Description of a Comment.
  */
 class Comment extends Tag
 {
     /**
-     * Typ tagu - např A či STRONG.
+     * Tag type - f.e. A or STRONG.
      *
      * @var string
      */
     public $tagType = '!--';
 
     /**
-     * Koncové lomítko pro xhtml.
+     * Trailing for xhtml.
      *
      * @var string
      */

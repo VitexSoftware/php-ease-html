@@ -3,22 +3,22 @@ declare (strict_types=1);
 
 namespace Ease\Html;
 
-/**
- * HTML5 summary tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 summary tag.
  */
 class SummaryTag extends PairTag
 {
 
-    /**
-     * Defines a visible heading for a <details> element
-     *
-     * @param mixed  $content    items included
-     * @param array  $properties params array
-     */
-    public function __construct($content = null, $properties = [])
-    {
-        parent::__construct('summary', $properties, $content);
-    }
+	/**
+	 * Defines a visible heading for a <details> element
+	 *
+	 * @param mixed  $content    items included
+	 * @param array  $properties summary tag properties
+	 */
+	public function __construct($content = null, $properties = [])
+	{
+		parent::__construct('summary', $properties, $content);
+	}
 }

@@ -3,17 +3,17 @@ declare (strict_types=1);
 
 namespace Ease\Html;
 
-/**
- * HTML top tag class.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML top tag class.
  */
 class HtmlTag extends PairTag
 {
     /**
      * HTML.
      *
-     * @param mixed $content vložený obsah - tělo stránky
+     * @param mixed $content inserted content - page body
      */
     public function __construct($content = null)
     {
@@ -21,11 +21,11 @@ class HtmlTag extends PairTag
     }
 
     /**
-     * Nastaví jméno objektu na "html".
+     * Sets object name to "html".
      *
-     * @param string $ObjectName jméno objektu
+     * @param string $ObjectName    object name
      * 
-     * @return string final object name
+     * @return string               final object name
      */
     public function setObjectName($ObjectName = null)
     {

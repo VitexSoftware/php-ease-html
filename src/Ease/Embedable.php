@@ -5,7 +5,7 @@ namespace Ease;
 
 /**
  *
- * @author Vítězslav Dvořák <info@vitexsoftware.cz>
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  */
 interface Embedable
 {

@@ -3,10 +3,10 @@ declare (strict_types=1);
 
 namespace Ease\Html;
 
-/**
- * Horizontal line tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * Horizontal line tag.
  */
 class HrTag extends Tag
 {
@@ -14,7 +14,7 @@ class HrTag extends Tag
     /**
      * Horizontal line tag.
      *
-     * @param array $properties parametry tagu
+     * @param array $properties tag parameters
      */
     public function __construct($properties = [])
     {

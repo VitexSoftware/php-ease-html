@@ -3,22 +3,24 @@ declare (strict_types=1);
 
 namespace Ease\Html;
 
-/**
- * Skript ve stránce.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ *
+ * Page script.
  */
 class ScriptTag extends PairTag
 {
 
     /**
-     * Skript.
+     * Script.
      *
-     * @param string|mixed $content
-     * @param array        $tagProperties
+     * @param string|mixed $content     tag content
+     * @param array        $properties  script tag properties
      */
-    public function __construct($content = null, $tagProperties = null)
+    public function __construct($content = null, $properties = null)
     {
         parent::__construct(
-            'script', $tagProperties, '// <![CDATA[
+            'script', $properties, '// <![CDATA[
 '.$content.'
 // ]]>'
         );

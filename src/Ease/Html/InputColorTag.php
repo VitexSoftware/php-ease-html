@@ -3,10 +3,10 @@ declare (strict_types=1);
 
 namespace Ease\Html;
 
-/**
- * HTML5 color input tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 color input tag.
  */
 class InputColorTag extends InputTag
 {
@@ -16,7 +16,7 @@ class InputColorTag extends InputTag
      *
      * @param string $name       name
      * @param string $value      initial value
-     * @param array  $properties additional properties
+     * @param array  $properties additional input color tag properties
      */
     public function __construct($name, $value = null, $properties = [])
     {

@@ -3,6 +3,9 @@ declare (strict_types=1);
 
 namespace Ease\Html;
 
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ */
 class Thead extends PairTag
 {
 
