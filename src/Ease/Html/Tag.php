@@ -33,7 +33,7 @@ class Tag extends Document
 	 *
 	 * @var array
 	 */
-	public $properties = [];
+	public $tagProperties = [];
 
 	/**
 	 * the field from which the contents of the STYLE tag are rendered.
