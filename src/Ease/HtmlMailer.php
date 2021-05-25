@@ -9,7 +9,7 @@ namespace Ease;
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  * @copyright 2009-2019 Vitex@hippy.cz (G)
  */
- 
+
 use Ease\Html\BodyTag;
 use Ease\Html\HtmlTag;
 use Ease\Html\SimpleHeadTag;

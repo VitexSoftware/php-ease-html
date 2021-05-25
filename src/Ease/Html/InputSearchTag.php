@@ -35,5 +35,4 @@ class InputSearchTag extends InputTag
         }
         parent::__construct($name, $value, $properties);
     }
-
 }

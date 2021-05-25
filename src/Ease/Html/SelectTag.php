@@ -19,7 +19,7 @@ class SelectTag extends PairTag
     public $defaultValue = null;
 
     /**
-     * Automatic setting of the elemnet name.
+     * Automatic setting of the element name.
      *
      * @var bool
      */
@@ -141,5 +141,4 @@ class SelectTag extends PairTag
             }
         }
     }
-
 }

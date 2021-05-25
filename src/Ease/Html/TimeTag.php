@@ -6,8 +6,6 @@ namespace Ease\Html;
 /** 
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  * HTML5 time tag.
- *
- * @author Vitex <vitex@hippy.cz>
  */
 class TimeTag extends PairTag
 {
