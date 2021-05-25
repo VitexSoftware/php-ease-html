@@ -6,7 +6,9 @@ namespace Ease\Html;
 /** 
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * Number input field
+ * Input field for numbers
+ *
+ * @author Vítězslav Dvořák <vitex@hippy.cz>
  */
 class InputNumberTag extends InputTag
 {

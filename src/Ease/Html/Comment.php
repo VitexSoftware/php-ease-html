@@ -32,5 +32,4 @@ class Comment extends Tag
     {
         parent::__construct('!--', [$comment]);
     }
-
 }
