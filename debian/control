@@ -12,7 +12,7 @@ Depends: ${misc:Depends},libjs-jquery (>= 1.4), php-mail, php-mail-mime, php-vit
 Architecture: all
 Conflicts: ease-framework
 Replaces: php-ease-html
-Suggests: php-vitexsoftware-ease-bootstrap
+Recommends: php-vitexsoftware-ease-bootstrap,php-vitexsoftware-ease-bootstrap4
 Section: web
 Priority: optional
 Description: EasePHP Framework HTML support
