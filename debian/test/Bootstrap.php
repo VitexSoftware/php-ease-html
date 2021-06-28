@@ -9,7 +9,7 @@ declare (strict_types=1);
 
 namespace Test\Ease;
 
-require_once __DIR__.'/../vendor/autoload.php';
+require_once '/var/lib/composer/php-vitexsoftware-ease-html-dev/autoload.php';
 
 if ((php_sapi_name() != 'cli') && (session_status() == 'PHP_SESSION_NONE')) {
     session_start();

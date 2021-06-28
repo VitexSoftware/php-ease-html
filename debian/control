@@ -29,7 +29,7 @@ Description: EasePHP Framework HTML unit tests
 
 Package: php-vitexsoftware-ease-html-doc
 Depends: ${misc:Depends}
-Suggest: www-browser
+Suggests: www-browser
 Architecture: all
 Conflicts: ease-framework-doc
 Section: devel
