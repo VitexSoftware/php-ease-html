@@ -1,3 +1,4 @@
 src/Ease/*                      usr/share/php/EaseHtmlTests/
 debian/test/composer.json	usr/lib/php-vitexsoftware-ease-html-dev/
 debian/test/Bootstrap.php	usr/share/php/EaseHtmlTests/
+debian/test/phpunit.xml		usr/share/php/EaseHtmlTests/
