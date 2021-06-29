@@ -20,11 +20,19 @@
     "minimum-stability": "dev",
     "require": {
         "deb/ease-core": "*"
+        "deb/ease-html": "*"
     },
     "repositories": [
         {
             "type": "path",
             "url": "/usr/share/php/EaseCore",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "/usr/share/php/EaseHtml",
             "options": {
                 "symlink": true
             }
