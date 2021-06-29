@@ -1,5 +1,5 @@
 {
-    "name": "deb/ease-html",
+    "name": "deb/ease-html-test",
     "description": "An Core of PHP Framework for Ease of writing Applications (debianized)",
     "version": "0.5",
     "authors": [
@@ -21,7 +21,6 @@
     "require": {
         "deb/ease-core": "*"
     },
-
     "repositories": [
         {
             "type": "path",
