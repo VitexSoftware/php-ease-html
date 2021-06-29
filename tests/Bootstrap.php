@@ -18,7 +18,6 @@ if ((php_sapi_name() != 'cli') && (session_status() == 'PHP_SESSION_NONE')) {
 define('EASE_APPNAME', 'EaseHtmlUnitTest');
 define('EASE_LOGGER', 'syslog');
 
-
 \Ease\Locale::singleton('cs_CZ');
 //\Ease\Shared::webPage(new \Ease\WebPage());
 
