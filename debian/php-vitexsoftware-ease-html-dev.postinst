@@ -28,7 +28,7 @@ case "$1" in
         composer-debian php-vitexsoftware-ease-html-dev
 	pwd
 	echo 'TESTING: phpunit --bootstrap /usr/share/php/EaseHtml/Test/Bootstrap.php --configuration /usr/share/php/EaseHtml/Test/phpunit.xml'
-	su - `composer-webuser` -s /bin/bash -c 'phpunit --bootstrap /usr/share/php/EaseHtml/Test/Bootstrap.php --configuration /usr/share/php/Ease/Html/Test/phpunit.xml'
+	su - `composer-webuser` -s /bin/bash -c 'phpunit --bootstrap /usr/share/php/EaseHtml/Test/Bootstrap.php --configuration /usr/share/php/EaseHtml/Test/phpunit.xml'
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
