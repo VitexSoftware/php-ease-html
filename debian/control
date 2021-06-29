@@ -1,5 +1,5 @@
 Source: php-vitexsoftware-ease-html
-Build-Depends: debhelper (>= 7.0.50~), php-vitexsoftware-ease-core, phpdocumentor, phpunit
+Build-Depends: debhelper (>= 7.0.50~), php-vitexsoftware-ease-core, phpdocumentor
 Section: web
 Standards-Version: 3.9.8
 Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
