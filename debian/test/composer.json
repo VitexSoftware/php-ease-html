@@ -19,7 +19,7 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "deb/ease-core": "*"
+        "deb/ease-core": "*",
         "deb/ease-html": "*"
     },
     "repositories": [
