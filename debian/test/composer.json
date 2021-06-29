@@ -17,8 +17,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\Ease\\": [ "/usr/share/php/EaseCoreTests", "tests/src/Ease" ],
-            "Tests\\Ease\\Html\\": "tests/src/EaseHtml"
+            "Tests\\Ease\\": [ "/usr/share/php/EaseCoreTests", "/usr/share/php/EaseHtmlTests" ],
+            "Tests\\Ease\\Html\\": "/usr/share/php/EaseHtmlTests/Html"
         }
     },
     "minimum-stability": "dev",
