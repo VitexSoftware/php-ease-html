@@ -25,3 +25,6 @@ define('EASE_LOGGER', 'syslog');
 \Ease\Shared::user(new \Ease\Anonym());
 //\Ease\Shared::webPage(new \Ease\WebPage());
 
+class User extends \Ease\User {
+  
+}
