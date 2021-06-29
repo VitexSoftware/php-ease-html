@@ -1,5 +1,5 @@
-tests/src/Ease/*                usr/share/php/EaseHtmlTests/
-tests/src/Ease/Html/*           usr/share/php/EaseHtmlTests/Html
+tests/src/Ease/*                usr/share/php/EaseHtml/Test/
+tests/src/Ease/Html/*           usr/share/php/EaseHtml/Test/Html
 debian/test/composer.json	usr/lib/php-vitexsoftware-ease-html-dev/
-debian/test/Bootstrap.php	usr/share/php/EaseHtmlTests/
-debian/test/phpunit.xml		usr/share/php/EaseHtmlTests/
+debian/test/Bootstrap.php	usr/share/php/EaseHtml/Test/
+debian/test/phpunit.xml		usr/share/php/EaseHtml/Test/

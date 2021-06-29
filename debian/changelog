@@ -1,4 +1,4 @@
-php-vitexsoftware-ease-html (1.33) UNRELEASED; urgency=medium
+php-vitexsoftware-ease-html (1.34) UNRELEASED; urgency=medium
 
   * Remove empty tHead and tFoot
   * Form params unified with others
@@ -12,8 +12,9 @@ php-vitexsoftware-ease-html (1.33) UNRELEASED; urgency=medium
   * Merge branch 'main' of github.com:VitexSoftware/ease-html into main
   * phpunit.xml for debian added
   * Test files packed
+  * show phpunit command
 
- -- CyberVitexus <vitex@exiv.jinonice.czf>  Tue, 29 Jun 2021 10:44:35 +0200
+ -- CyberVitexus <vitex@exiv.jinonice.czf>  Tue, 29 Jun 2021 13:25:01 +0200
 
 php-ease-html (1.16) EXPERIMENTAL; urgency=medium
 

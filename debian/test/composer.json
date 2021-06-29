@@ -13,8 +13,8 @@
         "psr-4": {
             "Ease\\": "\\src\\Ease",
             "Ease\\Html\\": "src\\EaseHtml",
-            "Tests\\Ease\\": [ "/usr/share/php/EaseCoreTests", "/usr/share/php/EaseHtmlTests" ],
-            "Tests\\Ease\\Html\\": "/usr/share/php/EaseHtmlTests/Html"
+            "Tests\\Ease\\": [ "/usr/share/php/EaseCoreTests", "/usr/share/php/EaseHtml/Test" ],
+            "Tests\\Ease\\Html\\": "/usr/share/php/EaseHtml/Test/Html"
         }
     },
     "minimum-stability": "dev",
