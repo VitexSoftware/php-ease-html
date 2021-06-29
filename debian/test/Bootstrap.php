@@ -7,7 +7,7 @@ declare (strict_types=1);
  * @copyright  2012-2017 Vitex@hippy.cz (G)
  */
 
-namespace Test\Ease;
+#namespace Test\Ease;
 
 require_once '/var/lib/composer/php-vitexsoftware-ease-html-dev/autoload.php';
 
@@ -26,3 +26,8 @@ define('EASE_LOGGER', 'syslog');
 //\Ease\Shared::user(new \Ease\Anonym());
 //\Ease\Shared::webPage(new \Ease\WebPage());
 
+class User extends \Ease\User {
+ 
+}
+
+\Ease\Shared::user(new \User);
