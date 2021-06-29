@@ -38,8 +38,6 @@ composer:
 phpunit: composer
 	vendor/bin/phpunit --bootstrap tests/Bootstrap.php --configuration phpunit.xml tests/src/
 
-#test: phpunit
-
 deb:
 	dch -i "`git log -1 --pretty=%B`"
 	debuild -i -us -uc -b

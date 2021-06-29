@@ -3,7 +3,7 @@
 cacheResult ="false">
   <testsuites>
     <testsuite name="all">
-      <directory>/usr/share/php/EaseHtmlTests/Ease</directory>
+      <directory>/usr/share/php/EaseHtmlTests/Html</directory>
     </testsuite>
   </testsuites>
 </phpunit>
