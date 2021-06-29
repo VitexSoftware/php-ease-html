@@ -1,7 +1,7 @@
 repoversion=$(shell LANG=C aptitude show php-vitexsoftware-ease-html | grep Version: | awk '{print $$2}')
 nextversion=$(shell echo $(repoversion) | perl -ne 'chomp; print join(".", splice(@{[split/\./,$$_]}, 0, -1), map {++$$_} pop @{[split/\./,$$_]}), "\n";')
 
-all: build install
+all: composer test apigen
 
 fresh:
 	git pull origin master
@@ -31,6 +31,7 @@ apigen:
 	VERSION=`cat debian/composer.json | grep version | awk -F'"' '{print $4}'`; \
 	apigen generate --source src --destination docs --title "Ease PHP Framework html ${VERSION}" --charset UTF-8 --access-levels public --access-levels protected --php --tree
 
+test: phpunit
 
 composer:
 	composer update

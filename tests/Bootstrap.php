@@ -21,3 +21,8 @@ define('EASE_LOGGER', 'syslog');
 \Ease\Locale::singleton('cs_CZ');
 //\Ease\Shared::webPage(new \Ease\WebPage());
 
+class User extends \Ease\User {
+ 
+}
+
+\Ease\Shared::user(new \User);
