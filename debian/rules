@@ -18,7 +18,7 @@ override_dh_prep:
 override_dh_auto_test:
 	composer update
 	vendor/bin/phpunit --bootstrap tests/Bootstrap.php --configuration phpunit.xml tests/src/
-	dh_auto_test
+#	dh_auto_test
 
 override_dh_install:
 	jq '.version = "'`dpkg-parsechangelog | sed -n 's/^Version: //p'| sed 's/~.*//'`'"'  debian/composer.json |sponge debian/composer.json
