@@ -16,7 +16,7 @@ override_dh_prep:
 
 
 override_dh_auto_test:
-	composer --working-dir=debian/test update
+	composer update
 	phpunit --bootstrap debian/test/Bootstrap.php --configuration phpunit.xml tests/src/
 	dh_auto_test
 
