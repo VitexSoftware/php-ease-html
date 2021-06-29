@@ -13,10 +13,6 @@
         "psr-4": {
             "Ease\\": "\\src\\Ease",
             "Ease\\Html\\": "src\\EaseHtml"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
             "Tests\\Ease\\": [ "/usr/share/php/EaseCoreTests", "/usr/share/php/EaseHtmlTests" ],
             "Tests\\Ease\\Html\\": "/usr/share/php/EaseHtmlTests/Html"
         }
