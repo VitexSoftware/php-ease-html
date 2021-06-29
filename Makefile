@@ -3,6 +3,8 @@ nextversion=$(shell echo $(repoversion) | perl -ne 'chomp; print join(".", splic
 
 #all: test doc
 
+all:
+
 fresh:
 	git pull origin master
 	PACKAGE=`cat debian/composer.json | grep '"name"' | head -n 1 |  awk -F'"' '{print $4}'`; \
