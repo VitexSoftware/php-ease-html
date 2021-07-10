@@ -82,7 +82,7 @@ class SelectTag extends PairTag
      *
      * @param string $value     the set value
      */
-    public function setValue($value)
+    public function setValue(string $value)
     {
         if (empty(trim($value)) === false  ) {
             foreach ($this->pageParts as $option) {
