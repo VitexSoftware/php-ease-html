@@ -1,4 +1,5 @@
 <?php
+
 declare (strict_types=1);
 /**
  * Zaváděcí soubor pro provádění PHPUnit testů na EaseFrameworkem.
@@ -6,8 +7,7 @@ declare (strict_types=1);
  * @author     Vitex <vitex@hippy.cz>
  * @copyright  2012-2017 Vitex@hippy.cz (G)
  */
-
-require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 if ((php_sapi_name() != 'cli') && (session_status() == 'PHP_SESSION_NONE')) {
     session_start();
@@ -20,9 +20,4 @@ define('EASE_LOGGER', 'syslog');
 
 \Ease\Locale::singleton('cs_CZ');
 //\Ease\Shared::webPage(new \Ease\WebPage());
-
-class User extends \Ease\User {
- 
-}
-
-\Ease\Shared::user(new \User);
+\Ease\Shared::user(\Ease\User::singleton(null, '\Ease\User'));
