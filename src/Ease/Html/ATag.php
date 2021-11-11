@@ -1,4 +1,5 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Ease\Html;
@@ -8,8 +9,7 @@ namespace Ease\Html;
  *
  * HTML hyperlink class.
  */
-class ATag extends PairTag
-{
+class ATag extends PairTag {
 
     /**
      * displays HTML link.
@@ -18,11 +18,11 @@ class ATag extends PairTag
      * @param mixed       $contents   inserted content
      * @param array       $properties A tag properties
      */
-    public function __construct($href, $contents = null, $properties = [])
-    {
+    public function __construct($href, $contents = null, $properties = []) {
         if (!is_null($href)) {
             $properties['href'] = $href;
         }
         parent::__construct('a', $properties, $contents);
     }
+
 }

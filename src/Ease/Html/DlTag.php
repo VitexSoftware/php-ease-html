@@ -1,15 +1,15 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  * Definition list.
  */
-class DlTag extends PairTag
-{
+class DlTag extends PairTag {
 
     /**
      * Definition
@@ -17,8 +17,7 @@ class DlTag extends PairTag
      * @param mixed $content       content included
      * @param array $properties    dl tag properties
      */
-    public function __construct($content = null, $properties = null)
-    {
+    public function __construct($content = null, $properties = null) {
         parent::__construct('dl', $properties, $content);
     }
 
@@ -28,9 +27,9 @@ class DlTag extends PairTag
      * @param string|mixed $term    subject
      * @param string|mixed $value   subject description
      */
-    public function addDef($term, $value)
-    {
+    public function addDef($term, $value) {
         $this->addItem(new DtTag($term));
         $this->addItem(new DdTag($value));
     }
+
 }

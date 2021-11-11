@@ -1,15 +1,15 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  * HTML5 input datetime-local tag.
  */
-class InputDateTimeLocalTag extends InputTag
-{
+class InputDateTimeLocalTag extends InputTag {
 
     /**
      * The <input type="datetime-local"> is used for input fields that should contain a
@@ -20,12 +20,12 @@ class InputDateTimeLocalTag extends InputTag
      * @param array            $properties additional input date time local properties
      */
     public function __construct($name,
-    /** @scrutinizer ignore-type */
-    $value = null, $properties = [])
-    {
-        $properties['type']  = 'datetime-local';
+            /** @scrutinizer ignore-type */
+            $value = null, $properties = []) {
+        $properties['type'] = 'datetime-local';
         $properties['value'] = is_object($value) ? $value->format('c') : $value;
-        $properties['name']  = $name;
+        $properties['name'] = $name;
         parent::__construct($name, $value, $properties);
     }
+
 }

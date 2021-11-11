@@ -1,16 +1,17 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  * HTML webPage head class.
  *
  */
-class HeadTag extends PairTag
-{
+class HeadTag extends PairTag {
+
     /**
      * Javascripts to render in page.
      *
@@ -37,10 +38,9 @@ class HeadTag extends PairTag
      *
      * @param mixed $content        inserted content
      */
-    public function __construct($content = null)
-    {
+    public function __construct($content = null) {
         parent::__construct('head', null, $content);
-        $this->addItem('<meta http-equiv="Content-Type" content="text/html; charset='.$this->charSet.'" />');
+        $this->addItem('<meta http-equiv="Content-Type" content="text/html; charset=' . $this->charSet . '" />');
     }
 
     /**
@@ -50,8 +50,7 @@ class HeadTag extends PairTag
      * 
      * @return string               final object name
      */
-    public function setObjectName($objectName = null)
-    {
+    public function setObjectName($objectName = null) {
         return parent::setObjectName('head');
     }
 
@@ -62,12 +61,11 @@ class HeadTag extends PairTag
      *
      * @return string
      */
-    public static function jsEnclosure($javaScript)
-    {
+    public static function jsEnclosure($javaScript) {
         return '
 <script>
 // <![CDATA[
-'.$javaScript.'
+' . $javaScript . '
 // ]]>
 </script>
 ';
@@ -76,9 +74,8 @@ class HeadTag extends PairTag
     /**
      * Hadle page title.
      */
-    public function finalize()
-    {
-        $this->addItem('<title>'.\Ease\WebPage::singleton()->getPageTitle().'</title>');
+    public function finalize() {
+        $this->addItem('<title>' . \Ease\WebPage::singleton()->getPageTitle() . '</title>');
     }
 
     /**
@@ -89,50 +86,47 @@ class HeadTag extends PairTag
      * @return string
      */
     static public function getScriptsRendered(array $scriptsArray,
-                                              $divider = "\n")
-    {
+            $divider = "\n") {
         $scriptsRendered = '';
         ksort($scriptsArray, SORT_NUMERIC);
-        $scriptsInline   = [];
+        $scriptsInline = [];
         $scriptsIncluded = [];
-        $ODRStack        = [];
+        $ODRStack = [];
         foreach ($scriptsArray as $script) {
             $scriptType = $script[0];
             $scriptBody = substr($script, 1);
             switch ($scriptType) {
                 case '#':
-                    $scriptsIncluded[] = '<script src="'.$scriptBody.'"></script>';
+                    $scriptsIncluded[] = '<script src="' . $scriptBody . '"></script>';
                     break;
                 case '@':
-                    $scriptsInline[]   = $scriptBody;
+                    $scriptsInline[] = $scriptBody;
                     break;
                 case '$':
-                    $ODRStack[]        = $scriptBody;
+                    $ODRStack[] = $scriptBody;
                     break;
             }
         }
 
         if (!empty($scriptsIncluded)) {
-            $scriptsRendered .= $divider.implode($divider, $scriptsIncluded);
+            $scriptsRendered .= $divider . implode($divider, $scriptsIncluded);
         }
 
         if (!empty($scriptsInline)) {
-            $scriptsRendered .= $divider.self::jsEnclosure(implode($divider,
-                        $scriptsInline));
+            $scriptsRendered .= $divider . self::jsEnclosure(implode($divider,
+                                    $scriptsInline));
         }
 
         if (!empty($ODRStack)) {
-            $scriptsRendered .= $divider.
-                self::jsEnclosure(
-                    '$(document).ready(function () { '.implode($divider,
-                        $ODRStack).' });'
+            $scriptsRendered .= $divider .
+                    self::jsEnclosure(
+                            '$(document).ready(function () { ' . implode($divider,
+                                    $ODRStack) . ' });'
             );
         }
         return $scriptsRendered;
     }
 
-    
-    
     /**
      * Get included and inline Syles Fragment rendered
      * 
@@ -143,27 +137,26 @@ class HeadTag extends PairTag
      * @return string
      */
     static public function getStylesRendered(array $stylesArray,
-                                             $media = 'screen', $divider = "\n")
-    {
-        $cascadeStyles         = [];
+            $media = 'screen', $divider = "\n") {
+        $cascadeStyles = [];
         $cascadeStylesIncludes = [];
         foreach ($stylesArray as $styleRes => $style) {
             if ($styleRes == $style) {
-                $cascadeStylesIncludes[] = '<link href="'.$style.'" rel="stylesheet" type="text/css" media="'.$media.'" />';
+                $cascadeStylesIncludes[] = '<link href="' . $style . '" rel="stylesheet" type="text/css" media="' . $media . '" />';
             } else {
                 $cascadeStyles[] = $style;
             }
         }
-        return empty($stylesArray) ? '' :  implode($divider, $cascadeStylesIncludes).$divider.'<style>'.implode($divider,
-                $cascadeStyles).'</style>';
+        return empty($stylesArray) ? '' : implode($divider, $cascadeStylesIncludes) . $divider . '<style>' . implode($divider,
+                        $cascadeStyles) . '</style>';
     }
 
     /**
      * Renders the header of the HTML page.
      */
-    public function draw()
-    {
+    public function draw() {
         $this->addItem(self::getStylesRendered(\Ease\WebPage::singleton()->cascadeStyles));
         parent::draw();
     }
+
 }

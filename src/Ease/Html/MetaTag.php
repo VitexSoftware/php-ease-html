@@ -1,15 +1,15 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  * HTML meta tag.
  */
-class MetaTag extends Tag
-{
+class MetaTag extends Tag {
 
     /**
      * Describe metadata within an HTML document
@@ -18,8 +18,7 @@ class MetaTag extends Tag
      * @param string $content    meta property value
      * @param array  $properties other html tag properties
      */
-    public function __construct($name = null, $content = null, $properties = [])
-    {
+    public function __construct($name = null, $content = null, $properties = []) {
         if (!is_null($name)) {
             $properties['name'] = $name;
         }
@@ -28,4 +27,5 @@ class MetaTag extends Tag
         }
         parent::__construct('meta', $properties);
     }
+
 }

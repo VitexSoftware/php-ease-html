@@ -1,15 +1,16 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  * Description of a Comment.
  */
-class Comment extends Tag
-{
+class Comment extends Tag {
+
     /**
      * Tag type - f.e. A or STRONG.
      *
@@ -28,8 +29,8 @@ class Comment extends Tag
      * 
      * @param string $comment
      */
-    public function __construct($comment)
-    {
+    public function __construct($comment) {
         parent::__construct('!--', [$comment]);
     }
+
 }

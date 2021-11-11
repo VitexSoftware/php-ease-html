@@ -1,15 +1,15 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  * HTML Table row class.
  */
-class TrTag extends PairTag
-{
+class TrTag extends PairTag {
 
     /**
      * TR tag.
@@ -17,8 +17,8 @@ class TrTag extends PairTag
      * @param mixed $content    inserted value
      * @param array $properties tr tag properties
      */
-    public function __construct($content = null, $properties = [])
-    {
+    public function __construct($content = null, $properties = []) {
         parent::__construct('tr', $properties, $content);
     }
+
 }

@@ -1,15 +1,15 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  * Definition content.
  */
-class DdTag extends PairTag
-{
+class DdTag extends PairTag {
 
     /**
      * Definition content
@@ -17,8 +17,8 @@ class DdTag extends PairTag
      * @param string|mixed $content     content included
      * @param array        $properties  Dd tag properties
      */
-    public function __construct($content = null, $properties = null)
-    {
+    public function __construct($content = null, $properties = null) {
         parent::__construct('dd', $properties, $content);
     }
+
 }

@@ -1,15 +1,16 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  * Show search input field.
  */
-class InputSearchTag extends InputTag
-{
+class InputSearchTag extends InputTag {
+
     /**
      * URL data source for the hinter.
      *
@@ -18,14 +19,13 @@ class InputSearchTag extends InputTag
     public $dataSourceURL = null;
 
     /**
-     *Displays a tag for the search box.
+     * Displays a tag for the search box.
      *
      * @param string $name       tag name
      * @param string $value      initial value
      * @param array  $properties additional input search tag properties
      */
-    public function __construct($name, $value = null, $properties = [])
-    {
+    public function __construct($name, $value = null, $properties = []) {
         $properties['type'] = 'search';
         if ($value) {
             $properties['value'] = $value;
@@ -35,4 +35,5 @@ class InputSearchTag extends InputTag
         }
         parent::__construct($name, $value, $properties);
     }
+
 }

@@ -1,15 +1,16 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Ease;
 
 /**
  * jQuery common class.
-  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *  
  */
-class Part extends Document
-{
+class Part extends Document {
+
     /**
      * Partname/Tag ID.
      *
@@ -31,8 +32,7 @@ class Part extends Document
      */
     public $partProperties = [];
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         self::jQueryze();
     }
@@ -42,8 +42,7 @@ class Part extends Document
      *
      * @param string $partName jméno vložené části
      */
-    public function setPartName($partName)
-    {
+    public function setPartName($partName) {
         $this->partName = $partName;
     }
 
@@ -52,16 +51,14 @@ class Part extends Document
      *
      * @return string
      */
-    public function onDocumentReady()
-    {
+    public function onDocumentReady() {
         return '';
     }
 
     /**
      * Add Js/Css into page.
      */
-    public function finalize()
-    {
+    public function finalize() {
         $javaScript = $this->onDocumentReady();
         if ($javaScript) {
             WebPage::singleton()->addJavaScript($javaScript, null, true);
@@ -71,11 +68,10 @@ class Part extends Document
     /**
      * Opatří objekt vším potřebným pro funkci jQuery.
      */
-    public static function jQueryze()
-    {
+    public static function jQueryze() {
 
         WebPage::singleton()->includeJavaScript(WebPage::singleton()->jqueryJavaScript,
-            0, !strstr(WebPage::singleton()->jqueryJavaScript, '://'));
+                0, !strstr(WebPage::singleton()->jqueryJavaScript, '://'));
     }
 
     /**
@@ -83,18 +79,17 @@ class Part extends Document
      *
      * @param mixed $partProperties vlastnosti jQuery widgetu
      */
-    public function setPartProperties($partProperties)
-    {
+    public function setPartProperties($partProperties) {
         if (is_array($partProperties)) {
             if (is_array($this->partProperties)) {
                 $this->partProperties = array_merge($this->partProperties,
-                    $partProperties);
+                        $partProperties);
             } else {
                 $this->partProperties = $partProperties;
             }
         } else {
-            $propBuff             = $partProperties;
-            $this->partProperties = ' '.$propBuff;
+            $propBuff = $partProperties;
+            $this->partProperties = ' ' . $propBuff;
         }
     }
 
@@ -105,8 +100,7 @@ class Part extends Document
      *
      * @return string
      */
-    public function getPartPropertiesToString($partProperties = null)
-    {
+    public function getPartPropertiesToString($partProperties = null) {
         if (!$partProperties) {
             $partProperties = $this->partProperties;
         }
@@ -121,61 +115,58 @@ class Part extends Document
      *
      * @return string
      */
-    public static function partPropertiesToString($partProperties)
-    {
+    public static function partPropertiesToString($partProperties) {
         if (is_array($partProperties)) {
             $partPropertiesString = '';
-            $partsArray           = [];
+            $partsArray = [];
             foreach ($partProperties as $partPropertyName => $partPropertyValue) {
                 if (!is_null($partPropertyName)) {
                     if (is_numeric($partPropertyName)) {
                         if (!strstr($partPropertiesString,
-                                ' '.$partPropertyValue.' ')) {
-                            $partsArray[] = ' '.$partPropertyValue.' ';
+                                        ' ' . $partPropertyValue . ' ')) {
+                            $partsArray[] = ' ' . $partPropertyValue . ' ';
                         }
                     } else {
                         if (is_array($partPropertyValue)) {
                             if (Functions::isAssoc($partPropertyValue)) {
                                 if ($partPropertyName) {
-                                    $partsArray[] = $partPropertyName.': { '.self::partPropertiesToString($partPropertyValue).' } ';
+                                    $partsArray[] = $partPropertyName . ': { ' . self::partPropertiesToString($partPropertyValue) . ' } ';
                                 } else {
                                     $partsArray[] = self::partPropertiesToString($partPropertyValue);
                                 }
                             } else {
                                 foreach ($partPropertyValue as $key => $value) {
                                     if (is_string($value)) {
-                                        $partPropertyValue[$key] = '"'.$value.'"';
+                                        $partPropertyValue[$key] = '"' . $value . '"';
                                     }
                                 }
                                 if (is_array($partPropertyValue)) {
                                     foreach ($partPropertyValue as $pId => $piece) {
                                         if (is_array($piece)) {
-                                            $partPropertyValue[$pId] = ' { '.self::partPropertiesToString($piece).' } ';
+                                            $partPropertyValue[$pId] = ' { ' . self::partPropertiesToString($piece) . ' } ';
                                         }
                                     }
-                                    $partsArray[] = $partPropertyName.': ['.implode(',',
-                                            $partPropertyValue).'] ';
+                                    $partsArray[] = $partPropertyName . ': [' . implode(',',
+                                                    $partPropertyValue) . '] ';
                                 } else {
-                                    $partsArray[] = $partPropertyName.':'.$partPropertyValue;
+                                    $partsArray[] = $partPropertyName . ':' . $partPropertyValue;
                                 }
                             }
                         } elseif (is_int($partPropertyValue)) {
-                            $partsArray[] = '"'.$partPropertyName.'": '.$partPropertyValue.' ';
+                            $partsArray[] = '"' . $partPropertyName . '": ' . $partPropertyValue . ' ';
                         } else {
-                            if (!is_null($partPropertyValue) && (strlen($partPropertyValue)
-                                || $partPropertyValue === false)) {
+                            if (!is_null($partPropertyValue) && (strlen($partPropertyValue) || $partPropertyValue === false)) {
                                 if ((strlen($partPropertyValue) > 7) && !substr_compare($partPropertyValue,
-                                        'function', 0, 8) || $partPropertyValue[0]
-                                    == '{' || $partPropertyValue === true) {
+                                                'function', 0, 8) || $partPropertyValue[0] == '{' || $partPropertyValue === true) {
                                     if ($partPropertyValue === true) {
                                         $partPropertyValue = 'true';
                                     }
                                     if ($partPropertyValue === false) {
                                         $partPropertyValue = 'false';
                                     }
-                                    $partsArray[] = $partPropertyName.': '.$partPropertyValue.' ';
+                                    $partsArray[] = $partPropertyName . ': ' . $partPropertyValue . ' ';
                                 } else {
-                                    $partsArray[] = $partPropertyName.': "'.$partPropertyValue.'" ';
+                                    $partsArray[] = $partPropertyName . ': "' . $partPropertyValue . '" ';
                                 }
                             }
                         }
@@ -185,7 +176,7 @@ class Part extends Document
                 }
             }
             $partPropertiesString = implode(
-                ',
+                    ',
 ', $partsArray
             );
 
@@ -194,4 +185,5 @@ class Part extends Document
             return $partProperties;
         }
     }
+
 }

@@ -1,15 +1,15 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  *   Html address element.
  */
-class AddressTag extends PairTag
-{
+class AddressTag extends PairTag {
 
     /**
      * Html address element.
@@ -17,8 +17,8 @@ class AddressTag extends PairTag
      * @param string $content       address content
      * @param array  $properties address tag properties
      */
-    public function __construct($content = null, $properties = null)
-    {
+    public function __construct($content = null, $properties = null) {
         parent::__construct('address', $properties, $content);
     }
+
 }

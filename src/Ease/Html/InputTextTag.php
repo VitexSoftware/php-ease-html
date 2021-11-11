@@ -1,15 +1,15 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  * Displays the input text tag.
  */
-class InputTextTag extends InputTag
-{
+class InputTextTag extends InputTag {
 
     /**
      * Displays the input text tag.
@@ -18,8 +18,7 @@ class InputTextTag extends InputTag
      * @param string $value      intial value
      * @param array  $properties additional input tel input text tag properties
      */
-    public function __construct($name, $value = null, $properties = [])
-    {
+    public function __construct($name, $value = null, $properties = []) {
         if (!isset($properties['type'])) {
             $properties['type'] = 'text';
         }
@@ -32,4 +31,5 @@ class InputTextTag extends InputTag
         $this->setTagProperties($properties);
         parent::__construct($name, $value);
     }
+
 }

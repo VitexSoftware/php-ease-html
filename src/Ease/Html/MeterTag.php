@@ -1,15 +1,15 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  * HTML5 meter tag.
  */
-class MeterTag extends PairTag
-{
+class MeterTag extends PairTag {
 
     /**
      * Defines a scalar measurement within a known range (a gauge)
@@ -17,8 +17,8 @@ class MeterTag extends PairTag
      * @param mixed  $content    items included
      * @param array  $properties master tag properties
      */
-    public function __construct($content = null, $properties = [])
-    {
+    public function __construct($content = null, $properties = []) {
         parent::__construct('meter', $properties, $content);
     }
+
 }

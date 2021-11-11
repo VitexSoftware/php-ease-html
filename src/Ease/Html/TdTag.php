@@ -1,15 +1,15 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  * HTML Table cell class.
  */
-class TdTag extends PairTag
-{
+class TdTag extends PairTag {
 
     /**
      * Table cell.
@@ -17,8 +17,8 @@ class TdTag extends PairTag
      * @param mixed $content    insertred value
      * @param array $properties td tag properties
      */
-    public function __construct($content = null, $properties = [])
-    {
+    public function __construct($content = null, $properties = []) {
         parent::__construct('td', $properties, $content);
     }
+
 }

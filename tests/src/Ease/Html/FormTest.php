@@ -1,4 +1,5 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Test\Ease\Html;
@@ -32,18 +33,16 @@ class FormTest extends PairTagTest {
         
     }
 
-    public function testConstructor()
-    {
+    public function testConstructor() {
         $classname = get_class($this->object);
         $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
+                ->disableOriginalConstructor()
+                ->getMockForAbstractClass();
         $mock->__construct(['name' => 'Tag', 'id' => 'testing']);
         $mock->__construct(['name' => 'Tag', 'id' => 'testing'], 'Initial Content');
         $this->assertObjectHasAttribute('pageParts', $mock);
     }
-    
-    
+
     /**
      * @covers Ease\Html\Form::setFormTarget
      *

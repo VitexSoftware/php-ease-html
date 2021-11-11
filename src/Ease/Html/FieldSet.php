@@ -1,15 +1,16 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  * Html Fieldset.
  */
-class FieldSet extends PairTag
-{
+class FieldSet extends PairTag {
+
     /**
      * Frame legend.
      *
@@ -37,12 +38,11 @@ class FieldSet extends PairTag
      * @param string|mixed $legend      frame title in text format or ease framework object
      * @param mixed        $content     elements inserted into the frame
      */
-    public function __construct($legend, $content = null)
-    {
+    public function __construct($legend, $content = null) {
         $this->setTagName($legend);
-        $this->legend    = $legend;
+        $this->legend = $legend;
         $this->legendTag = $this->addItem(new PairTag('legend', null,
-                $this->legend));
+                        $this->legend));
         if ($content) {
             $this->content = $this->addItem($content);
         }
@@ -54,16 +54,14 @@ class FieldSet extends PairTag
      *
      * @param string $legend description
      */
-    public function setLegend($legend)
-    {
+    public function setLegend($legend) {
         $this->legend = $legend;
     }
 
     /**
      * Inserts the legend.
      */
-    public function finalize()
-    {
+    public function finalize() {
         if ($this->legend) {
             if (is_object(reset($this->pageParts))) {
                 reset($this->pageParts)->pageParts = [$this->legend];
@@ -73,4 +71,5 @@ class FieldSet extends PairTag
             }
         }
     }
+
 }

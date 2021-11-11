@@ -1,15 +1,15 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  * HTML5 embed tag.
  */
-class EmbedTag extends PairTag
-{
+class EmbedTag extends PairTag {
 
     /**
      * Defines a container for an external (non-HTML) application
@@ -17,8 +17,8 @@ class EmbedTag extends PairTag
      * @param mixed  $content    items included
      * @param array  $properties embed tag properties
      */
-    public function __construct($content = null, $properties = [])
-    {
+    public function __construct($content = null, $properties = []) {
         parent::__construct('embed', $properties, $content);
     }
+
 }

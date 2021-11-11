@@ -1,15 +1,15 @@
 <?php
+
 declare (strict_types=1);
 
 namespace Ease\Html;
 
-/** 
+/**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  * HtmlParam tag.
  */
-class ParamTag extends Tag
-{
+class ParamTag extends Tag {
 
     /**
      * Paramm tag.
@@ -17,8 +17,8 @@ class ParamTag extends Tag
      * @param string $name  tag name
      * @param string $value tag value
      */
-    public function __construct($name, $value)
-    {
+    public function __construct($name, $value) {
         parent::__construct('param', ['name' => $name, 'value' => $value]);
     }
+
 }
