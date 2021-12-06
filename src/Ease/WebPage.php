@@ -287,7 +287,7 @@ class WebPage extends Document {
         foreach (\Ease\Shared::logger()->getMessages() as $message) {
             $htmlFargment->addItem(new Html\DivTag(
                             $message->body,
-                            ['style' => Logger\Regent::singleton()->logStyles[$message->type], 'data-caller' => $message->caller]
+                            ['style' => Logger\Regent::singleton()->logStyles[$message->type], 'data-caller' => is_object($message->caller) ? get_class($message->caller) : $message->caller]
             ));
         }
         return $htmlFargment;

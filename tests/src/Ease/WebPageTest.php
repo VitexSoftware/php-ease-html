@@ -100,6 +100,7 @@ window.location = "login.php"
      */
     public function testIncludeCss() {
         $this->assertTrue($this->object->includeCss('WebPage.css'));
+        $this->assertTrue($this->object->includeCss('WebPage.css','/js/'));
         \Ease\WebPage::singleton()->cascadeStyles = [];
     }
 
@@ -146,6 +147,13 @@ window.location = "login.php"
         $this->markTestIncomplete(
                 'This test has not been implemented yet.'
         );
+    }
+
+    /**
+     * @covers Ease\WebPage::getItemsCount
+     */
+    public function testGetItemsCount() {
+        $this->assertEquals(0, $this->object->getItemsCount());
     }
 
 }
