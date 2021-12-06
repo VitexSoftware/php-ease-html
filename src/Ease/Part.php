@@ -71,7 +71,7 @@ class Part extends Document {
     public static function jQueryze() {
 
         WebPage::singleton()->includeJavaScript(WebPage::singleton()->jqueryJavaScript,
-                0, !strstr(WebPage::singleton()->jqueryJavaScript, '://'));
+            0, !strstr(WebPage::singleton()->jqueryJavaScript, '://'));
     }
 
     /**
@@ -79,17 +79,18 @@ class Part extends Document {
      *
      * @param mixed $partProperties vlastnosti jQuery widgetu
      */
-    public function setPartProperties($partProperties) {
+    public function setPartProperties($partProperties)
+    {
         if (is_array($partProperties)) {
             if (is_array($this->partProperties)) {
                 $this->partProperties = array_merge($this->partProperties,
-                        $partProperties);
+                    $partProperties);
             } else {
                 $this->partProperties = $partProperties;
             }
         } else {
-            $propBuff = $partProperties;
-            $this->partProperties = ' ' . $propBuff;
+            $propBuff             = $partProperties;
+            $this->partProperties = ' '.$propBuff;
         }
     }
 
@@ -155,6 +156,10 @@ class Part extends Document {
                         } elseif (is_int($partPropertyValue)) {
                             $partsArray[] = '"' . $partPropertyName . '": ' . $partPropertyValue . ' ';
                         } else {
+                            if (is_bool($partPropertyValue)) {
+                                $partPropertyValue = $partPropertyValue ? 'true' : 'false';
+                                $partsArray[] = $partPropertyName . ': ' . $partPropertyValue . ' ';
+                            } else
                             if (!is_null($partPropertyValue) && (strlen($partPropertyValue) || $partPropertyValue === false)) {
                                 if ((strlen($partPropertyValue) > 7) && !substr_compare($partPropertyValue,
                                                 'function', 0, 8) || $partPropertyValue[0] == '{' || $partPropertyValue === true) {
