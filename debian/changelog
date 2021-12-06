@@ -1,5 +1,6 @@
-php-vitexsoftware-ease-html (1.36) UNRELEASED; urgency=medium
+php-vitexsoftware-ease-html (1.37) UNRELEASED; urgency=medium
 
+  [ CyberVitexus ]
   * Remove empty tHead and tFoot
   * Form params unified with others
   * Recurisive Form Select setting value fixed
@@ -16,7 +17,10 @@ php-vitexsoftware-ease-html (1.36) UNRELEASED; urgency=medium
   * tests moved to EaseHtml/Tests
   * Run test before building deb package
 
- -- CyberVitexus <vitex@exiv.jinonice.czf>  Tue, 29 Jun 2021 21:59:19 +0200
+  [ vitex ]
+  * strict types support for parameter generator
+
+ -- vitex <info@vitexsoftware.cz>  Mon, 06 Dec 2021 15:36:25 +0100
 
 php-ease-html (1.16) EXPERIMENTAL; urgency=medium
 
