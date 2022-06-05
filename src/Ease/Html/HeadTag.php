@@ -156,7 +156,7 @@ class HeadTag extends PairTag {
      */
     public function draw() {
         $this->addItem(self::getStylesRendered(\Ease\WebPage::singleton()->cascadeStyles));
-        parent::draw();
+        return parent::draw();
     }
 
 }

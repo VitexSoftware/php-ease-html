@@ -28,9 +28,7 @@ class InputTag extends Tag {
     public function __construct($name, $value = null, $properties = []) {
         parent::__construct('input');
         $this->setTagName($name);
-        if (isset($properties)) {
-            $this->setTagProperties($properties);
-        }
+        $this->setTagProperties($properties);
         if (!is_null($value)) {
             $this->setValue($value);
         }

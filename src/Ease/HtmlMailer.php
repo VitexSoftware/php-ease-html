@@ -213,7 +213,7 @@ class HtmlMailer extends Document {
      * @return int
      */
     public function getItemsCount() {
-        return $this->htmlBody->getItemsCount($object);
+        return $this->htmlBody->getItemsCount();
     }
 
     /**
@@ -223,7 +223,7 @@ class HtmlMailer extends Document {
      */
     public function isEmpty() {
 
-        return $this->htmlBody->isEmpty($element);
+        return $this->htmlBody->isEmpty();
     }
 
     /**

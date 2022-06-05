@@ -28,7 +28,7 @@ class BodyTag extends PairTag {
      * @param string $objectName object name
      */
     public function setObjectName($objectName = null) {
-        parent::setObjectName('body');
+        return parent::setObjectName('body');
     }
 
     /**
