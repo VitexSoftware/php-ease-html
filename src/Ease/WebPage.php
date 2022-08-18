@@ -97,7 +97,6 @@ class WebPage extends Document {
      */
     public function __construct($pageTitle = null, $toBody = []) {
         $this->setPageTitle($pageTitle);
-
         parent::__construct();
         parent::addItem('<!DOCTYPE html>');
         $html = parent::addItem(new HtmlTag());
@@ -183,9 +182,7 @@ class WebPage extends Document {
             $position = null,
             $inDocumentReady = true
     ) {
-        return $this->addToScriptsStack(($inDocumentReady ? '$' : '@') . $javaScript,
-                        $position
-        );
+        return $this->addToScriptsStack(($inDocumentReady ? '$' : '@') . $javaScript,$position);
     }
 
     /**
