@@ -165,11 +165,14 @@ class TableTag extends PairTag {
      * Fill table with given data.
      *
      * @param array $contents
+     * 
+     * @return self Updated table
      */
     public function populate($contents) {
         foreach ($contents as $cRow) {
             $this->addRowColumns($cRow);
         }
+        return $this;
     }
 
     /**
