@@ -8,11 +8,9 @@ Priority: optional
 Homepage: https://github.com/VitexSoftware/php-ease-html
 
 Package: php-vitexsoftware-ease-html
-Depends: ${misc:Depends},libjs-jquery (>= 1.4), php-mail, php-mail-mime, php-vitexsoftware-ease-core
+Depends: ${misc:Depends},libjs-jquery (>= 1.4), php-vitexsoftware-ease-core
 Architecture: all
-Conflicts: ease-framework
 Replaces: php-ease-html
-Recommends: php-vitexsoftware-ease-bootstrap,php-vitexsoftware-ease-bootstrap4
 Section: web
 Priority: optional
 Description: EasePHP Framework HTML support
@@ -21,7 +19,6 @@ Description: EasePHP Framework HTML support
 Package: php-vitexsoftware-ease-html-dev
 Depends: ${misc:Depends}, php-vitexsoftware-ease-core-dev
 Architecture: all
-Conflicts: ease-framework
 Section: devel
 Priority: optional
 Description: EasePHP Framework HTML unit tests
@@ -31,7 +28,6 @@ Package: php-vitexsoftware-ease-html-doc
 Depends: ${misc:Depends}
 Suggests: www-browser
 Architecture: all
-Conflicts: ease-framework-doc
 Section: devel
 Priority: optional
 Description: EasePHP Framework HTML unit documentation
