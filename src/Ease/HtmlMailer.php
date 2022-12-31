@@ -113,7 +113,7 @@ class HtmlMailer extends Document {
             $mailSubject,
             $emailContents = null
     ) {
-        if (defined('EASE_SMTP')) {
+        if (\Ease\Functions::cfg('EASE_SMTP')) {
             $this->parameters = (array) json_decode(constant('EASE_SMTP'));
         }
 

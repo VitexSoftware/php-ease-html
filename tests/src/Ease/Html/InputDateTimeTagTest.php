@@ -13,12 +13,14 @@ class InputDateTimeTagTest extends \PHPUnit\Framework\TestCase {
      * @var InputDateTimeTag
      */
     protected $object;
+    public $rendered = '<input name="when" type="date" value="DATE" />';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
     protected function setUp(): void {
+     $this->rendered = strReplace('DATE', date('Y-m-d') , $this->rendered);
         $this->object = new InputDateTimeTag();
     }
 

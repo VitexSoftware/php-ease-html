@@ -201,6 +201,8 @@ class Document extends Container {
      * Redirects the unlogged-in user to the login page.
      *
      * @param string $loginPage login page address
+     *
+     * @return boolean Logged
      */
     public function onlyForLogged($loginPage = 'login.php', $message = null) {
 
@@ -213,7 +215,9 @@ class Document extends Container {
             }
             $this->redirect($loginPage);
             self::$pageClosed = true;
+            return true;
         }
+        return false;
     }
 
     /**
