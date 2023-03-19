@@ -40,7 +40,7 @@ class FormTest extends PairTagTest {
                 ->getMockForAbstractClass();
         $mock->__construct(['name' => 'Tag', 'id' => 'testing']);
         $mock->__construct(['name' => 'Tag', 'id' => 'testing'], 'Initial Content');
-        $this->assertObjectHasAttribute('pageParts', $mock);
+        $this->assertFalse(empty($mock->getRendered()));
     }
 
     /**

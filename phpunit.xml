@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src</directory>
-        </whitelist>
-    </filter>
-    
-    <logging>
-        <log type="coverage-clover" target="tests/nb-phpunit-coverage.xml"/>
-        <log type="junit" target="tests/nb-phpunit-log.xml" />
-        <log type="coverage-text" target="php://stdout"/>
-    </logging>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" bootstrap="tests/Bootstrap.php" >
+  <coverage processUncoveredFiles="true">
+    <include>
+      <directory suffix=".php">tests/src</directory>
+    </include>
+    <report>
+      <clover outputFile="tests/nb-phpunit-coverage.xml"/>
+      <text outputFile="php://stdout"/>
+    </report>
+  </coverage>
+  <logging>
+    <junit outputFile="tests/nb-phpunit-log.xml"/>
+  </logging>
 </phpunit>

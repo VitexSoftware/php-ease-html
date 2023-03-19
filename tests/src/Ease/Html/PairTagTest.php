@@ -38,6 +38,9 @@ class PairTagTest extends TagTest {
         
     }
 
+    /**
+     * Check Constructor
+     */
     public function testConstructor() {
         $classname = get_class($this->object);
 
@@ -50,7 +53,8 @@ class PairTagTest extends TagTest {
         $mock->__construct('PairTag', ['name' => 'Tag', 'id' => 'testing'],
                 'Initial Content');
         $mock->__construct('Test');
-        $this->assertObjectHasAttribute('pageParts', $mock);
+
+        $this->assertFalse(empty($mock->getRendered()));
     }
 
     /**
