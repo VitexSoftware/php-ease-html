@@ -246,7 +246,7 @@ class Document extends Container {
      * @return bool
      */
     public static function isPosted() {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (array_key_exists('REQUEST_METHOD', $_SERVER) && $_SERVER['REQUEST_METHOD'] == 'POST') {
             return true;
         } else {
             return false;
