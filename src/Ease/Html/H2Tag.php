@@ -17,7 +17,7 @@ class H2Tag extends PairTag {
      * @param mixed  $content    inserted content
      * @param string $properties h2 tag propoerties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = '', $properties = []) {
         parent::__construct('h2', $properties, $content);
     }
 

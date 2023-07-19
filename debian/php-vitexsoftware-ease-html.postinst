@@ -24,7 +24,7 @@ set -e
 case "$1" in
     configure)
 
-        composer-global-update ease-html
+        composer-global-update deb/ease-html
 
     ;;
 

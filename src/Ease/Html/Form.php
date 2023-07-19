@@ -51,7 +51,7 @@ class Form extends PairTag {
      * @param string        $searchFor  searched elements name
      * @param \Ease\Container $where    object in where the search happens
      *
-     * @return \Ease\Container
+     * @return \Ease\Container|null
      */
     public function &objectContentSearch($searchFor, $where = null) {
         if (is_null($where)) {

@@ -295,6 +295,7 @@ class Tag extends Document {
         echo '<' . trim($this->tagType . ' ' . $this->tagPropertiesToString());
         echo $this->trail . '>';
         $this->drawStatus = true;
+        return '';
     }
 
 }

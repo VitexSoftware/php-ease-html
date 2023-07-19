@@ -43,6 +43,7 @@ class PairTag extends Tag {
         $this->tagBegin();
         $this->drawAllContents();
         $this->tagEnclousure();
+        return '';
     }
 
     /**

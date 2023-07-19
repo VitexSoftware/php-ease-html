@@ -43,7 +43,7 @@ class ImgTag extends Tag {
      * @param string $imgRawData   raw image data
      * @param string $contentType  mime type eg. image/gif
      * 
-     * @return type
+     * @return string
      */
     public static function base64src($imgRawData, $contentType) {
         return 'data: ' . $contentType . ';base64,' . base64_encode($imgRawData);

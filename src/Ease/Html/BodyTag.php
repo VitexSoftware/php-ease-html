@@ -36,7 +36,7 @@ class BodyTag extends PairTag {
      */
     public function draw() {
         $this->addItem(HeadTag::getScriptsRendered(\Ease\WebPage::singleton()->javaScripts));
-        parent::draw();
+        return parent::draw();
     }
 
 }
