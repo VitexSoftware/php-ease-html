@@ -4,7 +4,8 @@ declare (strict_types=1);
 
 namespace Ease\Html;
 
-/** @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com> 
+/** 
+ * @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com> 
  * Displays checkbox tag.
  *
  * @author Vítězslav Dvořák <vitex@hippy.cz>

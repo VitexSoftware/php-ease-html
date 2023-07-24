@@ -292,10 +292,13 @@ class WebPage extends Document {
 
     /**
      * Renders the contents of the object.
+     * 
+     * @return string Empty string
      */
     public function draw() {
         $this->finalizeRegistred();
         $this->drawAllContents();
+        return '';
     }
 
     /**
@@ -342,7 +345,7 @@ class WebPage extends Document {
      *
      * @return bool emptyness
      */
-    public function isEmpty($element = null) {
+    public function isEmpty() {
         return empty($this->body->pageParts);
     }
 

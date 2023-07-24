@@ -114,6 +114,8 @@ trait Glue {
 
     /**
      * Recursive draw object and its contents
+     * 
+     * @return string Empty string
      */
     public function draw() {
         foreach ($this->pageParts as $part) {
@@ -128,6 +130,7 @@ trait Glue {
             }
         }
         $this->drawStatus = true;
+        return '';
     }
 
 }

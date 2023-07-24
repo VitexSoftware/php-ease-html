@@ -6,7 +6,7 @@ declare (strict_types=1);
  * Simple html page class.
  *
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
- * @copyright  2009-2020 Vitex@hippy.cz (G)
+ * @copyright  2009-2023 Vitex@hippy.cz (G)
  */
 
 namespace Ease;
@@ -363,7 +363,7 @@ class Document extends Container {
      * @return bool
      */
     public static function isFormPosted() {
-        return isset($_POST) && count($_POST);
+        return empty($_POST) == false;
     }
 
     /**

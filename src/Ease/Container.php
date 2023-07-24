@@ -16,7 +16,12 @@ class Container extends Sand implements Embedable {
     use Glue;
 
     /**
-     * Library version
+     * Library version. 
+     * 
+     * *** Use version from composer.json instead ***
+     * 
+     * @deprecated since version 1.32
+     * 
      * @var string 
      */
     public static $libVersion = 1.0;

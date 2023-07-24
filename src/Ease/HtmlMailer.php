@@ -27,7 +27,7 @@ class HtmlMailer extends Document {
     /**
      * Object for sending mail.
      *
-     * @var
+     * @var $mailer
      */
     public $mailer = null;
     public $mimer = null;
@@ -156,9 +156,7 @@ class HtmlMailer extends Document {
      * @return string
      */
     public function getMailHeader($headername) {
-        if (isset($this->mailHeaders[$headername])) {
-            return $this->mailHeaders[$headername];
-        }
+        return array_key_exists($this->mailHeaders,$headername) ? $this->mailHeaders[$headername] : '';
     }
 
     /**
@@ -169,11 +167,7 @@ class HtmlMailer extends Document {
      * @return bool true            if the headers have been set
      */
     public function setMailHeaders(array $mailHeaders) {
-        if (is_array($this->mailHeaders)) {
-            $this->mailHeaders = array_merge($this->mailHeaders, $mailHeaders);
-        } else {
-            $this->mailHeaders = $mailHeaders;
-        }
+        $this->mailHeaders = array_merge($this->mailHeaders, $mailHeaders);
         if (isset($this->mailHeaders['To'])) {
             $this->emailAddress = $this->mailHeaders['To'];
         }
@@ -187,7 +181,6 @@ class HtmlMailer extends Document {
             }
         }
         $this->finalized = false;
-
         return true;
     }
 
@@ -203,6 +196,11 @@ class HtmlMailer extends Document {
         return $added;
     }
 
+    /**
+     * Gives you current Body
+     * 
+     * @return BodyTag
+     */
     public function getContents() {
         return $this->htmlBody;
     }
@@ -222,7 +220,6 @@ class HtmlMailer extends Document {
      * @return boolean
      */
     public function isEmpty() {
-
         return $this->htmlBody->isEmpty();
     }
 
@@ -278,7 +275,6 @@ class HtmlMailer extends Document {
         if (!$this->finalized) {
             $this->finalize();
         }
-
         $oMail = new Mail();
         if (count($this->parameters)) {
             $this->mailer = $oMail->factory('smtp', $this->parameters);
