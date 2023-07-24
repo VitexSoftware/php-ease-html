@@ -8,6 +8,7 @@ override_dh_clean:
 	dh_clean
 
 override_dh_prep:
+	which php && php --version 
 	mkdir -p docs
 	rm -f docs/* -r
 	phpdoc -d src --title "Vitex Software's Ease Html"
