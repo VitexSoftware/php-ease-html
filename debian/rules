@@ -8,7 +8,6 @@ override_dh_clean:
 	dh_clean
 
 override_dh_prep:
-	which php && php --version 
 	mkdir -p docs
 	rm -f docs/* -r
 	phpdoc -d src --title "Vitex Software's Ease Html"
@@ -18,6 +17,8 @@ override_dh_prep:
 
 
 override_dh_auto_test:
+	which php && php --version 
+	which composer && composer --version
 	composer update
 	vendor/bin/phpunit --bootstrap tests/Bootstrap.php --configuration phpunit.xml tests/src/
 #	dh_auto_test
