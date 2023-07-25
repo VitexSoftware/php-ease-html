@@ -113,13 +113,12 @@ class DocumentTest extends ContainerTest {
      * @covers Ease\Document::onlyForLogged
      */
     public function testOnlyForLogged() {
+        $backup = $this->object;
         $this->assertEquals(1, $this->object->onlyForLogged());
         $this->assertTrue(Document::$pageClosed);
-
-//        $this->assertEquals(1, $this->object->onlyForLogged('login.php','test message'));
-
-
+        $this->assertEquals(1, $this->object->onlyForLogged('login.php','test message'));
         Document::$pageClosed = false;
+        $this->object = $backup;
     }
 
     /**
