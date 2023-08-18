@@ -16,17 +16,6 @@ class Container extends Sand implements Embedable {
     use Glue;
 
     /**
-     * Library version. 
-     * 
-     * *** Use version from composer.json instead ***
-     * 
-     * @deprecated since version 1.32
-     * 
-     * @var string 
-     */
-    public static $libVersion = 1.0;
-
-    /**
      * A container that can contain embedded objects that are rendered.
      *
      * @param Embedable|string $initialContent value or EaseObject with draw () method
@@ -35,6 +24,7 @@ class Container extends Sand implements Embedable {
         if (!empty($initialContent)) {
             $this->addItem($initialContent);
         }
+        $this->setObjectName();
     }
 
     /**
