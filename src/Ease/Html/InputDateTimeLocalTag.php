@@ -9,7 +9,8 @@ namespace Ease\Html;
  *
  * HTML5 input datetime-local tag.
  */
-class InputDateTimeLocalTag extends InputTag {
+class InputDateTimeLocalTag extends InputTag
+{
 
     /**
      * The <input type="datetime-local"> is used for input fields that should contain a
@@ -21,11 +22,10 @@ class InputDateTimeLocalTag extends InputTag {
      */
     public function __construct($name,
             /** @scrutinizer ignore-type */
-            $value = null, $properties = []) {
+            $value = null, $properties = [])
+    {
         $properties['type'] = 'datetime-local';
-        $properties['value'] = is_object($value) ? $value->format('c') : $value;
         $properties['name'] = $name;
-        parent::__construct($name, $value, $properties);
+        parent::__construct($name, is_object($value) ? $value->format('c') : $value, $properties);
     }
-
 }
