@@ -26,6 +26,6 @@ class InputDateTimeLocalTag extends InputTag
     {
         $properties['type'] = 'datetime-local';
         $properties['name'] = $name;
-        parent::__construct($name, is_object($value) ? $value->format('c') : $value, $properties);
+        parent::__construct($name, is_object($value) ? $value->format('Y-m-dTH:i:s') : $value, $properties);
     }
 }
