@@ -93,7 +93,7 @@ class SelectTag extends PairTag {
                 }
             }
         } else {
-            if (isset($this->pageParts) && count($this->pageParts)) {
+            if (empty($this->pageParts) === true) {
                 reset($this->pageParts);
                 $firstItem = &$this->pageParts[array_keys($this->pageParts)[0] ];
                 $firstItem->setDefault();
