@@ -51,6 +51,11 @@ class HtmlMailer extends Document {
      * @var string
      */
     public $emailAddress = 'postmaster@localhost';
+    
+    /**
+     * Subject of email
+     * @var string
+     */
     public $emailSubject = null;
 
     /**
