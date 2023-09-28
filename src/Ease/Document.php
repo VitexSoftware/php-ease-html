@@ -5,7 +5,7 @@ declare (strict_types=1);
 /**
  * Simple html page class.
  *
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ * @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  * @copyright  2009-2023 Vitex@hippy.cz (G)
  */
 
@@ -342,7 +342,7 @@ class Document extends Container {
      * @param string $field      key POST
      * @param string $sanitizeAs treat the returned value as float|int|string
      *
-     * @return string
+     * @return mixed
      */
     public static function getPostValue($field, $sanitizeAs = null) {
         $value = null;

@@ -270,7 +270,7 @@ class HtmlMailer extends Document {
      * Do not draw mail included in page
      */
     public function draw() {
-        return;
+        return '';
     }
 
     /**

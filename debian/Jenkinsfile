@@ -58,11 +58,11 @@ architectures.each {
                 stage('Checkout ' + architecture + ' ' + distribution) {
                     buildImage = docker.image(vendor + '/' + distribution)
                     sh 'git checkout debian/changelog'
-                    def VERSION = sh(
+                    def version = sh(
                         script: 'dpkg-parsechangelog --show-field Version',
                         returnStdout: true
                     ).trim()
-                    ver = VERSION + '.' + env.BUILD_NUMBER  + '~' + distroCodename
+                    ver = version + '.' + env.BUILD_NUMBER  + '~' + distroCodename
                 }
                 stage('Build ' + architecture + ' ' + distribution) {
                     buildImage.inside {
