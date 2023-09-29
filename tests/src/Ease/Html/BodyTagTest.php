@@ -47,8 +47,8 @@ class BodyTagTest extends PairTagTest {
      */
     public function testDrawIfNotDrawn($canBeEmpty = false) {
         $this->object->emptyContents();
-        \Ease\WebPage::singleton()->cascadeStyles = [];
-        \Ease\Document::singleton()->javaScripts = [];
+        \Ease\WebPage::clearJavaScriptsCache();
+        \Ease\WebPage::clearCascadeStylesCache();
         parent::testDrawIfNotDrawn($canBeEmpty);
     }
 

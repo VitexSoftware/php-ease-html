@@ -169,6 +169,7 @@ class WebPageTest extends DocumentTest
      */
     public function testDrawIfNotDrawn($canBeEmpty = false)
     {
+        \Ease\WebPage::clearJavaScriptsCache();
         parent::testDrawIfNotDrawn($canBeEmpty);
     }
 }

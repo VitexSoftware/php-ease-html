@@ -221,6 +221,15 @@ class Document extends Container {
     }
 
     /**
+     * Open Previously closed Web Page
+     */
+    public function makePagePublic()
+    {
+        self::$pageClosed = false;
+        return self::$pageClosed === false;
+    }
+    
+    /**
      * Include next element into current page (if not closed).
      *
      * @param mixed  $pageItem     value or EaseClass with draw() method

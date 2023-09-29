@@ -1,7 +1,6 @@
 <?php
 
 declare (strict_types=1);
-
 /**
  * Common webpage class
  *
@@ -20,7 +19,8 @@ use Ease\Html\HtmlTag;
  *
  * @author Vítězslav Dvořák <vitex@hippy.cz>
  */
-class WebPage extends Document {
+class WebPage extends Document
+{
 
     /**
      * Saves obejct instace (singleton...).
@@ -31,7 +31,7 @@ class WebPage extends Document {
      * Where to look for jquery script
      * @var string path or url
      */
-    public $jqueryJavaScript = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js';
+    public $jqueryJavaScript = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js';
 
     /**
      * JavaScripts to be in page
@@ -95,7 +95,8 @@ class WebPage extends Document {
      * @param $pageTitle string
      * @param $toBody    mixed
      */
-    public function __construct($pageTitle = null, $toBody = []) {
+    public function __construct($pageTitle = null, $toBody = [])
+    {
         $this->setPageTitle($pageTitle);
         parent::__construct();
         parent::addItem('<!DOCTYPE html>');
@@ -111,7 +112,8 @@ class WebPage extends Document {
      *
      * @return string
      */
-    public function getPageTitle() {
+    public function getPageTitle()
+    {
         return $this->pageTitle;
     }
 
@@ -120,7 +122,8 @@ class WebPage extends Document {
      *
      * @return string
      */
-    public function setTagID($tagID = null) {
+    public function setTagID($tagID = null)
+    {
         return $this->body->setTagID($tagID);
     }
 
@@ -129,7 +132,8 @@ class WebPage extends Document {
      *
      * @return string|null Page BODY ID
      */
-    public function getTagID() {
+    public function getTagID()
+    {
         return $this->body->getTagID();
     }
 
@@ -138,7 +142,8 @@ class WebPage extends Document {
      *
      * @return mixed
      */
-    public function getContents() {
+    public function getContents()
+    {
         return $this->body->getContents();
     }
 
@@ -150,9 +155,9 @@ class WebPage extends Document {
      *
      * @return Document poiner to object well included
      */
-    public function &addItem($item, $pageItemName = null) {
+    public function &addItem($item, $pageItemName = null)
+    {
         $added = $this->body->addItem($item, $pageItemName);
-
         return $added;
     }
 
@@ -164,7 +169,8 @@ class WebPage extends Document {
      *
      * @return string
      */
-    public function includeJavaScript($javaScriptFile, $position = null) {
+    public function includeJavaScript($javaScriptFile, $position = null)
+    {
         return $this->addToScriptsStack('#' . $javaScriptFile, $position);
     }
 
@@ -181,8 +187,9 @@ class WebPage extends Document {
             $javaScript,
             $position = null,
             $inDocumentReady = true
-    ) {
-        return $this->addToScriptsStack(($inDocumentReady ? '$' : '@') . $javaScript,$position);
+    )
+    {
+        return $this->addToScriptsStack(($inDocumentReady ? '$' : '@') . $javaScript, $position);
     }
 
     /**
@@ -193,14 +200,14 @@ class WebPage extends Document {
      *
      * @return int
      */
-    public function addToScriptsStack($code, $position = 0) {
+    public function addToScriptsStack($code, $position = 0)
+    {
         $javaScripts = &\Ease\WebPage::singleton()->javaScripts;
         if ($position == 0) {
             if (!empty($javaScripts)) {
                 $scriptFound = array_search($code, $javaScripts);
                 if (!$scriptFound && ($javaScripts[0] != $code)) {
                     $javaScripts[] = $code;
-
                     return key($javaScripts);
                 } else {
                     return $scriptFound;
@@ -229,7 +236,6 @@ class WebPage extends Document {
                 return $nextFreeID - 1;
             } else { //position still free
                 $javaScripts[] = $code;
-
                 return key($javaScripts);
             }
         }
@@ -244,7 +250,8 @@ class WebPage extends Document {
      *
      * @return bool
      */
-    public function addCSS($css) {
+    public function addCSS($css)
+    {
         if (is_array($css)) {
             $css = key($css) . '{' . current($css) . '}';
         }
@@ -261,7 +268,8 @@ class WebPage extends Document {
      *
      * @return boolean success
      */
-    public function includeCss($cssFile, $fwPrefix = false, $media = 'screen') {
+    public function includeCss($cssFile, $fwPrefix = false, $media = 'screen')
+    {
         if ($fwPrefix) {
             $this->cascadeStyles[$this->cssPrefix . $cssFile] = $this->cssPrefix . $cssFile;
         } else {
@@ -278,9 +286,9 @@ class WebPage extends Document {
      *
      * @return \Ease\Html\DivTag
      */
-    public function getStatusMessagesBlock($properties = []) {
+    public function getStatusMessagesBlock($properties = [])
+    {
         $htmlFargment = new Html\DivTag(null, $properties);
-
         foreach (\Ease\Shared::logger()->getMessages() as $message) {
             $htmlFargment->addItem(new Html\DivTag(
                             $message->body,
@@ -295,7 +303,8 @@ class WebPage extends Document {
      * 
      * @return string Empty string
      */
-    public function draw() {
+    public function draw()
+    {
         $this->finalizeRegistred();
         $this->drawAllContents();
         return '';
@@ -304,7 +313,8 @@ class WebPage extends Document {
     /**
      * Finalizes all registered objects.
      */
-    public function finalizeRegistred() {
+    public function finalizeRegistred()
+    {
         do {
             foreach (self::$allItems as $PartID => $part) {
                 if (is_object($part)) {
@@ -320,7 +330,8 @@ class WebPage extends Document {
      *
      * @param string $pageTitle title
      */
-    public function setPageTitle($pageTitle) {
+    public function setPageTitle($pageTitle)
+    {
         $this->pageTitle = $pageTitle;
     }
 
@@ -329,14 +340,16 @@ class WebPage extends Document {
      *
      * @return int number of parts enclosed
      */
-    public function getItemsCount() {
+    public function getItemsCount()
+    {
         return $this->body->getItemsCount();
     }
 
     /**
      * Returns the first inserted item.
      */
-    public function getFirstPart() {
+    public function getFirstPart()
+    {
         return $this->isEmpty() ? null : reset($this->body->pageParts);
     }
 
@@ -345,7 +358,8 @@ class WebPage extends Document {
      *
      * @return bool emptyness
      */
-    public function isEmpty() {
+    public function isEmpty()
+    {
         return empty($this->body->pageParts);
     }
 
@@ -357,7 +371,8 @@ class WebPage extends Document {
      *
      * @return mixed A reference to the embedded object
      */
-    public function &addAsFirst($pageItem, $pageItemName = null) {
+    public function &addAsFirst($pageItem, $pageItemName = null)
+    {
         return $this->body->addAsFirst($pageItem, $pageItemName);
     }
 
@@ -366,7 +381,8 @@ class WebPage extends Document {
      *
      * @return Embedable|string
      */
-    public function &lastItem() {
+    public function &lastItem()
+    {
         $lastPart = empty($this->body->pageParts) ? null : end($this->body->pageParts);
         return $lastPart;
     }
@@ -378,21 +394,24 @@ class WebPage extends Document {
      *
      * @return Container|null success
      */
-    public function addToLastItem($pageItem) {
+    public function addToLastItem($pageItem)
+    {
         return $this->isEmpty() ? null : end($this->body->pageParts)->addItem($pageItem);
     }
 
     /**
      * Empties webpage contents
      */
-    public function emptyContents() {
+    public function emptyContents()
+    {
         $this->body->emptyContents();
     }
 
     /**
      * @return WebPage
      */
-    public static function singleton($webPage = null) {
+    public static function singleton($webPage = null)
+    {
         if (!isset(self::$instance)) {
             self::$instance = is_object($webPage) ? $webPage : new self();
             \Ease\Document::singleton()->registerItem(self::$instance);
@@ -400,4 +419,25 @@ class WebPage extends Document {
         return self::$instance;
     }
 
+    /**
+     * Clears Cache of Javascripts to be rendered into page
+     * 
+     * @return boolean
+     */
+    public static function clearJavaScriptsCache()
+    {
+        \Ease\WebPage::singleton()->javaScripts = [];
+        return empty(\Ease\WebPage::singleton()->javaScripts);
+    }
+
+    /**
+     * Clears Cache of Javascripts to be rendered into page
+     * 
+     * @return boolean
+     */
+    public static function clearCascadeStylesCache()
+    {
+        \Ease\WebPage::singleton()->cascadeStyles = [];
+        return empty(\Ease\WebPage::singleton()->cascadeStyles);
+    }
 }
