@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease;
 
@@ -8,8 +8,8 @@ namespace Ease;
  *
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  */
-interface Embedable {
-
+interface Embedable
+{
     /**
      * Include next element into current object.
      *

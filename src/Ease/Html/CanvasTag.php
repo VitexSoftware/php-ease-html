@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML5 canvas tag.
  */
-class CanvasTag extends PairTag {
-
+class CanvasTag extends PairTag
+{
     /**
      * Renders graphics, on the fly, via scripting (usually JavaScript)
      *
      * @param mixed  $content    items included
      * @param array  $properties canvas properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('canvas', $properties, $content);
     }
-
 }

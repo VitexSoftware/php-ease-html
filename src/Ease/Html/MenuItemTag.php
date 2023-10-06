@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML5 menuitem tag.
  */
-class MenuItemTag extends PairTag {
-
+class MenuItemTag extends PairTag
+{
     /**
      * Defines a command/menu item that the user can invoke from a popup menu
      *
      * @param mixed  $content    items included
      * @param array  $properties menu tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('menuitem', $properties, $content);
     }
-
 }

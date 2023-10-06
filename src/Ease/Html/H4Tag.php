@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML H4 tag.
  */
-class H4Tag extends PairTag {
-
+class H4Tag extends PairTag
+{
     /**
      * H4 tag.
      *
      * @param mixed $content    inserted content
      * @param array $properties h4 tag propoerties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('h4', $properties, $content);
     }
-
 }

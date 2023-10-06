@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,8 +9,8 @@ namespace Ease\Html;
  *
  * Siple HTML head tag class.
  */
-class SimpleHeadTag extends PairTag {
-
+class SimpleHeadTag extends PairTag
+{
     /**
      * Content type of webpage.
      *
@@ -31,9 +31,9 @@ class SimpleHeadTag extends PairTag {
      * @param mixed $contents   inserted content
      * @param array $properties simple head tag properties
      */
-    public function __construct($contents = null, $properties = []) {
+    public function __construct($contents = null, $properties = [])
+    {
         parent::__construct('head', $properties, $contents);
         $this->addItem('<meta http-equiv="Content-Type" content="' . self::$contentType . '; charset=' . $this->charSet . '" />');
     }
-
 }

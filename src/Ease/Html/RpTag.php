@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML5 rp tag.
  */
-class RpTag extends PairTag {
-
+class RpTag extends PairTag
+{
     /**
      * Defines what to show in browsers that do not support ruby annotations
      *
      * @param mixed  $content    items included
      * @param array  $properties rp tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('rp', $properties, $content);
     }
-
 }

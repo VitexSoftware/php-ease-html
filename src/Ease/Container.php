@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 /**
  * Object able to contain other object in int.
@@ -11,8 +11,8 @@ declare (strict_types=1);
 
 namespace Ease;
 
-class Container extends Sand implements Embedable {
-
+class Container extends Sand implements Embedable
+{
     use Glue;
 
     /**
@@ -20,7 +20,8 @@ class Container extends Sand implements Embedable {
      *
      * @param Embedable|string $initialContent value or EaseObject with draw () method
      */
-    public function __construct($initialContent = null) {
+    public function __construct($initialContent = null)
+    {
         if (!empty($initialContent)) {
             $this->addItem($initialContent);
         }
@@ -35,7 +36,8 @@ class Container extends Sand implements Embedable {
      *
      * @return mixed A link to the embedded object
      */
-    public function &addAsFirst($pageItem, $pageItemName = null) {
+    public function &addAsFirst($pageItem, $pageItemName = null)
+    {
         $swap = $this->pageParts;
         $this->emptyContents();
         $itemPointer = $this->addItem($pageItem);
@@ -46,7 +48,8 @@ class Container extends Sand implements Embedable {
     /**
      * Allows an already inserted object to be removed from the tree for rendering.
      */
-    public function suicide() {
+    public function suicide()
+    {
         if (isset($this->parentObject) && isset($this->parentObject->pageParts[$this->embedName])) {
             unset($this->parentObject->pageParts[$this->embedName]);
 
@@ -61,7 +64,8 @@ class Container extends Sand implements Embedable {
      *
      * @return int number of parts enclosed
      */
-    public function getItemsCount() {
+    public function getItemsCount()
+    {
         return count($this->pageParts);
     }
 
@@ -72,7 +76,8 @@ class Container extends Sand implements Embedable {
      *
      * @return Embedable|string A link to the embedded object.
      */
-    public function &addNextTo($pageItem) {
+    public function &addNextTo($pageItem)
+    {
         $itemPointer = $this->parentObject->addItem($pageItem);
 
         return $itemPointer;
@@ -83,7 +88,8 @@ class Container extends Sand implements Embedable {
      *
      * @return Brick|mixed
      */
-    public function &lastItem() {
+    public function &lastItem()
+    {
         $lastPart = empty($this->pageParts) ? null : end($this->pageParts);
         return $lastPart;
     }
@@ -95,14 +101,16 @@ class Container extends Sand implements Embedable {
      *
      * @return Container|null success
      */
-    public function addToLastItem($pageItem) {
+    public function addToLastItem($pageItem)
+    {
         return $this->isEmpty() ? null : end($this->pageParts)->addItem($pageItem);
     }
 
     /**
      * Returns the first inserted item.
      */
-    public function getFirstPart() {
+    public function getFirstPart()
+    {
         return $this->isEmpty() ? null : reset($this->pageParts);
     }
 
@@ -111,7 +119,8 @@ class Container extends Sand implements Embedable {
      *
      * @param array $itemsArray value field or EaseObject with draw () method
      */
-    public function addItems($itemsArray) {
+    public function addItems($itemsArray)
+    {
         $itemsAdded = [];
         foreach ($itemsArray as $itemID => $item) {
             $itemsAdded[$itemID] = $this->addItem($item);
@@ -123,23 +132,26 @@ class Container extends Sand implements Embedable {
     /**
      * Empty container contents
      */
-    public function emptyContents() {
+    public function emptyContents()
+    {
         $this->pageParts = [];
     }
 
     /**
      * Contentets
-     * 
+     *
      * @return mixed
      */
-    public function getContents() {
+    public function getContents()
+    {
         return $this->pageParts;
     }
 
     /**
      * It recursively scans all inserted objects and calls their draw ().
      */
-    public function drawAllContents() {
+    public function drawAllContents()
+    {
         if (!empty($this->pageParts)) {
             foreach ($this->pageParts as $part) {
                 if (is_object($part) && method_exists($part, 'draw')) {
@@ -157,7 +169,8 @@ class Container extends Sand implements Embedable {
      *
      * @return string
      */
-    public function getRendered() {
+    public function getRendered()
+    {
         $retVal = '';
         ob_start();
         $this->draw();
@@ -170,7 +183,8 @@ class Container extends Sand implements Embedable {
     /**
      * Draw contents not drawn yet.
      */
-    public function drawIfNotDrawn() {
+    public function drawIfNotDrawn()
+    {
         if ($this->drawStatus === false) {
             $this->draw();
         }
@@ -181,7 +195,8 @@ class Container extends Sand implements Embedable {
      *
      * @return bool
      */
-    public function isFinalized() {
+    public function isFinalized()
+    {
         return $this->finalized;
     }
 
@@ -190,7 +205,8 @@ class Container extends Sand implements Embedable {
      *
      * @param bool $flag finalization flag
      */
-    public function setFinalized($flag = true) {
+    public function setFinalized($flag = true)
+    {
         $this->finalized = $flag;
     }
 
@@ -199,18 +215,20 @@ class Container extends Sand implements Embedable {
      *
      * @return bool emptiness
      */
-    public function isEmpty() {
+    public function isEmpty()
+    {
         return empty($this->pageParts);
     }
 
     /**
      * Always returns Embedable item
-     * 
+     *
      * @param mixed $item
-     * 
+     *
      * @return Embedable
      */
-    public static function embedablize($item) {
+    public static function embedablize($item)
+    {
         return (is_object($item) && $item instanceof Embedable) ? $item : new self($item);
     }
 
@@ -219,7 +237,8 @@ class Container extends Sand implements Embedable {
      *
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         ob_start();
         $this->draw();
         $objectOut = ob_get_contents();
@@ -227,5 +246,4 @@ class Container extends Sand implements Embedable {
 
         return $objectOut;
     }
-
 }

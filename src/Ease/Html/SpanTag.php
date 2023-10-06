@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML span tag.
  */
-class SpanTag extends PairTag {
-
+class SpanTag extends PairTag
+{
     /**
      * <span> tag.
      *
      * @param mixed $content    content entered
      * @param array $properties span tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('span', $properties, $content);
     }
-
 }

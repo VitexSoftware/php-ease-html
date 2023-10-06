@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease;
 
@@ -10,6 +10,7 @@ namespace Ease;
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  * @copyright 2009-2019 Vitex@hippy.cz (G)
  */
+
 use Ease\Html\BodyTag;
 use Ease\Html\HtmlTag;
 use Ease\Html\SimpleHeadTag;
@@ -20,10 +21,10 @@ use Mail_mime;
 /**
  * Build & Send email
  *
- *  
+ *
  */
-class HtmlMailer extends Document {
-
+class HtmlMailer extends Document
+{
     /**
      * Object for sending mail.
      *
@@ -51,7 +52,7 @@ class HtmlMailer extends Document {
      * @var string
      */
     public $emailAddress = 'postmaster@localhost';
-    
+
     /**
      * Subject of email
      * @var string
@@ -88,7 +89,7 @@ class HtmlMailer extends Document {
 
     /**
      *
-     * @var SimpleHtmlHeadTag 
+     * @var SimpleHtmlHeadTag
      */
     public $htmlHead = null;
 
@@ -114,9 +115,9 @@ class HtmlMailer extends Document {
      * @param mixed  $emailContents body - any mix of text and EaseObjects
      */
     public function __construct(
-            $emailAddress,
-            $mailSubject,
-            $emailContents = null
+        $emailAddress,
+        $mailSubject,
+        $emailContents = null
     ) {
         if (\Ease\Functions::cfg('EASE_SMTP')) {
             $this->parameters = (array) json_decode(\Ease\Functions::cfg('EASE_SMTP'));
@@ -127,7 +128,7 @@ class HtmlMailer extends Document {
         }
 
         $this->setMailHeaders(
-                [
+            [
                     'To' => $emailAddress,
                     'From' => $this->fromEmailAddress,
                     'Reply-To' => $this->fromEmailAddress,
@@ -160,8 +161,9 @@ class HtmlMailer extends Document {
      *
      * @return string
      */
-    public function getMailHeader($headername) {
-        return array_key_exists($this->mailHeaders,$headername) ? $this->mailHeaders[$headername] : '';
+    public function getMailHeader($headername)
+    {
+        return array_key_exists($this->mailHeaders, $headername) ? $this->mailHeaders[$headername] : '';
     }
 
     /**
@@ -171,7 +173,8 @@ class HtmlMailer extends Document {
      *
      * @return bool true            if the headers have been set
      */
-    public function setMailHeaders(array $mailHeaders) {
+    public function setMailHeaders(array $mailHeaders)
+    {
         $this->mailHeaders = array_merge($this->mailHeaders, $mailHeaders);
         if (isset($this->mailHeaders['To'])) {
             $this->emailAddress = $this->mailHeaders['To'];
@@ -196,17 +199,19 @@ class HtmlMailer extends Document {
      *
      * @return mixed pointer to the inserted content
      */
-    public function &addItem($item, $pageItemName = null) {
+    public function &addItem($item, $pageItemName = null)
+    {
         $added = $this->htmlBody->addItem($item, $pageItemName);
         return $added;
     }
 
     /**
      * Gives you current Body
-     * 
+     *
      * @return BodyTag
      */
-    public function getContents() {
+    public function getContents()
+    {
         return $this->htmlBody;
     }
 
@@ -215,23 +220,26 @@ class HtmlMailer extends Document {
      *
      * @return int
      */
-    public function getItemsCount() {
+    public function getItemsCount()
+    {
         return $this->htmlBody->getItemsCount();
     }
 
     /**
      * Is object empty ?
-     * 
+     *
      * @return boolean
      */
-    public function isEmpty() {
+    public function isEmpty()
+    {
         return $this->htmlBody->isEmpty();
     }
 
     /**
      * Empty container contents
      */
-    public function emptyContents() {
+    public function emptyContents()
+    {
         $this->htmlBody->emptyContents();
     }
 
@@ -241,14 +249,16 @@ class HtmlMailer extends Document {
      * @param string $filename path / file name to attach
      * @param string $mimeType MIME attachement type
      */
-    public function addFile($filename, $mimeType = 'text/plain') {
+    public function addFile($filename, $mimeType = 'text/plain')
+    {
         $this->mimer->addAttachment($filename, $mimeType);
     }
 
     /**
      * Builds the body of the mail
      */
-    public function finalize() {
+    public function finalize()
+    {
         if (method_exists($this->htmlDocument, 'GetRendered')) {
             $this->htmlBodyRendered = $this->htmlDocument->getRendered();
         } else {
@@ -269,14 +279,16 @@ class HtmlMailer extends Document {
     /**
      * Do not draw mail included in page
      */
-    public function draw() {
+    public function draw()
+    {
         return '';
     }
 
     /**
      * Send mail.
      */
-    public function send() {
+    public function send()
+    {
         if (!$this->finalized) {
             $this->finalize();
         }
@@ -287,26 +299,26 @@ class HtmlMailer extends Document {
             $this->mailer = $oMail->factory('mail');
         }
         $this->sendResult = $this->mailer->send(
-                $this->emailAddress,
-                $this->mailHeadersDone,
-                $this->mailBody
+            $this->emailAddress,
+            $this->mailHeadersDone,
+            $this->mailBody
         );
 
         if ($this->notify === true) {
             $mailStripped = str_replace(['<', '>'], '', $this->emailAddress);
             if ($this->sendResult === true) {
                 $this->addStatusMessage(sprintf(
-                                _('Message %s was sent to %s'),
-                                $this->emailSubject,
-                                $mailStripped
-                        ), 'success');
+                    _('Message %s was sent to %s'),
+                    $this->emailSubject,
+                    $mailStripped
+                ), 'success');
             } else {
                 $this->addStatusMessage(sprintf(
-                                _('Message %s, for %s was not sent because of %s'),
-                                $this->emailSubject,
-                                $mailStripped,
-                                $this->sendResult->message
-                        ), 'warning');
+                    _('Message %s, for %s was not sent because of %s'),
+                    $this->emailSubject,
+                    $mailStripped,
+                    $this->sendResult->message
+                ), 'warning');
             }
         }
 
@@ -318,7 +330,8 @@ class HtmlMailer extends Document {
      *
      * @param bool $notify required notification status
      */
-    public function setUserNotification($notify) {
+    public function setUserNotification($notify)
+    {
         $this->notify = (bool) $notify;
     }
 
@@ -329,10 +342,10 @@ class HtmlMailer extends Document {
      *
      * @return Container A link to the embedded object
      */
-    public function &addNextTo($pageItem) {
+    public function &addNextTo($pageItem)
+    {
         $itemPointer = $this->htmlBody->parentObject->addItem($pageItem);
 
         return $itemPointer;
     }
-
 }

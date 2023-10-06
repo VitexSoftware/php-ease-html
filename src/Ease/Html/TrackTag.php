@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML5 track tag.
  */
-class TrackTag extends PairTag {
-
+class TrackTag extends PairTag
+{
     /**
      * Defines text tracks for media elements (<video> and <audio>)
      *
      * @param mixed  $content    items included
      * @param array  $properties track tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('track', $properties, $content);
     }
-
 }

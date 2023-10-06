@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML5 video tag.
  */
-class VideoTag extends PairTag {
-
+class VideoTag extends PairTag
+{
     /**
      * Defines video or movie
      *
      * @param mixed  $content    items included
      * @param array  $properties video tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('video', $properties, $content);
     }
-
 }

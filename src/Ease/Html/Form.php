@@ -8,8 +8,8 @@ namespace Ease\Html;
 /**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  */
-class Form extends PairTag {
-
+class Form extends PairTag
+{
     /**
      * Form goal.
      *
@@ -38,7 +38,8 @@ class Form extends PairTag {
      *                              ('enctype' => 'multipart/form-data')
      * @param mixed  $formContents  inside form elements
      */
-    public function __construct($properties = [], $formContents = null) {
+    public function __construct($properties = [], $formContents = null)
+    {
         if (!array_key_exists('method', $properties)) {
             $properties['method'] = 'POST';
         }
@@ -53,7 +54,8 @@ class Form extends PairTag {
      *
      * @return \Ease\Container|null
      */
-    public function &objectContentSearch($searchFor, $where = null) {
+    public function &objectContentSearch($searchFor, $where = null)
+    {
         if (is_null($where)) {
             $where = &$this;
         }
@@ -67,8 +69,8 @@ class Form extends PairTag {
                         }
                     } else {
                         $itemFound = $this->objectContentSearch(
-                                $searchFor,
-                                $pagePart
+                            $searchFor,
+                            $pagePart
                         );
                         if ($itemFound) {
                             return $itemFound;
@@ -86,7 +88,8 @@ class Form extends PairTag {
      *
      * @param string $data   asociative data field
      */
-    public function fillUp($data = null) {
+    public function fillUp($data = null)
+    {
         if (is_null($data)) {
             $data = $this->getData();
         }
@@ -99,17 +102,20 @@ class Form extends PairTag {
      * @param array $data                   asociative data field
      * @param \Ease\Container|mixed $form   form to be filled
      */
-    public static function fillMeUp($data, &$form) {
+    public static function fillMeUp($data, &$form)
+    {
         if (!empty($form->pageParts)) {
             foreach ($form->pageParts as $partName => $part) {
                 if (!empty($part->pageParts)) {
                     self::fillMeUp($data, $part);
                 }
                 if (is_object($part)) {
-                    if (method_exists($part, 'setValue') && method_exists(
-                                    $part,
-                                    'getTagName'
-                            )) {
+                    if (
+                        method_exists($part, 'setValue') && method_exists(
+                            $part,
+                            'getTagName'
+                        )
+                    ) {
                         $tagName = $part->getTagName();
                         if (isset($data[$tagName])) {
                             $part->setValue($data[$tagName], true);
@@ -122,5 +128,4 @@ class Form extends PairTag {
             }
         }
     }
-
 }

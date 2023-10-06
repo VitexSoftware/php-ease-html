@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,8 +9,8 @@ namespace Ease\Html;
  *
  * Body class of HTML page.
  */
-class BodyTag extends PairTag {
-
+class BodyTag extends PairTag
+{
     /**
      * The page body is always avalible in the app as
      * WebPage::singleton()->body.
@@ -18,7 +18,8 @@ class BodyTag extends PairTag {
      * @param mixed  $content     inserted content
      * @param array  $properties  body tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('body', $properties, $content);
     }
 
@@ -27,16 +28,17 @@ class BodyTag extends PairTag {
      *
      * @param string $objectName object name
      */
-    public function setObjectName($objectName = null) {
+    public function setObjectName($objectName = null)
+    {
         return parent::setObjectName('body');
     }
 
     /**
      * Renders the head of the HTML page.
      */
-    public function draw() {
+    public function draw()
+    {
         $this->addItem(HeadTag::getScriptsRendered(\Ease\WebPage::singleton()->javaScripts));
         return parent::draw();
     }
-
 }

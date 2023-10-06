@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,18 +9,18 @@ namespace Ease\Html;
  *
  * HTML5 rt tag.
  *
- *  
+ *
  */
-class RtTag extends PairTag {
-
+class RtTag extends PairTag
+{
     /**
      * Defines an explanation/pronunciation of characters (for East Asian typography)
      *
      * @param mixed  $content    items included
      * @param array  $properties rt tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('rt', $properties, $content);
     }
-
 }

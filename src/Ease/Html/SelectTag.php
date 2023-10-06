@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,8 +9,8 @@ namespace Ease\Html;
  *
  * Html Select.
  */
-class SelectTag extends PairTag {
-
+class SelectTag extends PairTag
+{
     /**
      * Default item #.
      *
@@ -39,10 +39,10 @@ class SelectTag extends PairTag {
      * @param array  $properties   select tag properties
      */
     public function __construct(
-            $name,
-            $items = null,
-            $defaultValue = null,
-            $properties = []
+        $name,
+        $items = null,
+        $defaultValue = null,
+        $properties = []
     ) {
         parent::__construct('select', $properties);
         $this->defaultValue = $defaultValue;
@@ -57,7 +57,8 @@ class SelectTag extends PairTag {
      *
      * @param array $items          selection items
      */
-    public function addItems($items) {
+    public function addItems($items)
+    {
         foreach ($items as $itemName => $itemValue) {
             $newItem = $this->addItem(new OptionTag($itemValue, $itemName));
             if (($this->defaultValue == $itemName)) {
@@ -71,7 +72,8 @@ class SelectTag extends PairTag {
      *
      * @return array
      */
-    public function loadItems() {
+    public function loadItems()
+    {
         return [];
     }
 
@@ -80,7 +82,8 @@ class SelectTag extends PairTag {
      *
      * @param string $value     the set value
      */
-    public function setValue(string $value) {
+    public function setValue(string $value)
+    {
         if (empty(trim($value)) === false) {
             foreach ($this->pageParts as $option) {
                 if ($option->getValue() == $value) {
@@ -104,7 +107,8 @@ class SelectTag extends PairTag {
     /**
      * Inserta loaded items.
      */
-    public function finalize() {
+    public function finalize()
+    {
         if (!count($this->pageParts)) {
             //Uninitialised Select - so we load items
             $this->addItems($this->loadItems());
@@ -116,7 +120,8 @@ class SelectTag extends PairTag {
      *
      * @param string $itemID value key for removing from the list
      */
-    public function delItem($itemID) {
+    public function delItem($itemID)
+    {
         foreach ($this->pageParts as $optionId => $option) {
             if ($option->getValue() == $itemID) {
                 unset($this->pageParts[$optionId]);
@@ -126,15 +131,15 @@ class SelectTag extends PairTag {
 
     /**
      * Disable menu item
-     *  
+     *
      * @param int $itemID
      */
-    public function disableItem($itemID) {
+    public function disableItem($itemID)
+    {
         foreach ($this->pageParts as $optionId => $option) {
             if ($option->getValue() == $itemID) {
                 $this->pageParts[$optionId]->setTagProperties(['disabled']);
             }
         }
     }
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML5 Article tag.
  */
-class AudioTag extends PairTag {
-
+class AudioTag extends PairTag
+{
     /**
      * Defines audio content
      *
      * @param mixed  $content    items included
      * @param array  $properties audio tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('audio', $properties, $content);
     }
-
 }

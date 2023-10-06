@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,8 +9,8 @@ namespace Ease\Html;
  *
  * HTML5 week input tag.
  */
-class InputWeekTag extends InputTag {
-
+class InputWeekTag extends InputTag
+{
     /**
      * The <input type="week"> allows the user to select a week and year.
      *
@@ -18,11 +18,11 @@ class InputWeekTag extends InputTag {
      * @param string $value      initial value
      * @param array  $properties additional input tel input week tag properties
      */
-    public function __construct($name, $value = null, $properties = []) {
+    public function __construct($name, $value = null, $properties = [])
+    {
         $properties['type'] = 'week';
         $properties['value'] = $value;
         $properties['name'] = $name;
         parent::__construct($name, $value, $properties);
     }
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,8 +9,8 @@ namespace Ease\Html;
  *
  * Send button
  */
-class SubmitButton extends InputTag {
-
+class SubmitButton extends InputTag
+{
     /**
      * Button label.
      *
@@ -27,12 +27,19 @@ class SubmitButton extends InputTag {
      * @param string $hint      mouseover tip
      * @param string $classCss  css class for tag buttons
      */
-    public function __construct($label, $value = null, $hint = null,
-            $classCss = null) {
+    public function __construct(
+        $label,
+        $value = null,
+        $hint = null,
+        $classCss = null
+    ) {
         $properties = ['type' => 'submit'];
         if (is_null($value)) {
-            $value = trim(str_replace([' ', '?'], '',
-                            @iconv('utf-8', 'us-ascii//TRANSLIT', strtolower($label))));
+            $value = trim(str_replace(
+                [' ', '?'],
+                '',
+                @iconv('utf-8', 'us-ascii//TRANSLIT', strtolower($label))
+            ));
         } else {
             $properties['value'] = $value;
         }
@@ -53,11 +60,11 @@ class SubmitButton extends InputTag {
      * @param string $value     return tag value
      * @param bool   $Automatic Hack for keeping the lables while filling the form
      */
-    public function setValue($value, $Automatic = false) {
+    public function setValue($value, $Automatic = false)
+    {
         if (!$Automatic) {
             //FillUp sets up button lables
             parent::SetValue($value);
         }
     }
-
 }

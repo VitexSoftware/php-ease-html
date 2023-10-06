@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * Html element for a button.
  */
-class ButtonTag extends PairTag {
-
+class ButtonTag extends PairTag
+{
     /**
      * Html element for a button.
      *
      * @param string $content       button content
      * @param array  $properties    button tag properties
      */
-    public function __construct($content, $properties = []) {
+    public function __construct($content, $properties = [])
+    {
         parent::__construct('button', $properties, $content);
     }
-
 }

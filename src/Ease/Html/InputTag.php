@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,8 +9,8 @@ namespace Ease\Html;
  *
  * General input TAG.
  */
-class InputTag extends Tag {
-
+class InputTag extends Tag
+{
     /**
      * Sets tag name automatically
      *
@@ -25,7 +25,8 @@ class InputTag extends Tag {
      * @param string            $value      return value
      * @param array             $properties additional input tag properties
      */
-    public function __construct($name, $value = null, $properties = []) {
+    public function __construct($name, $value = null, $properties = [])
+    {
         parent::__construct('input');
         $this->setTagName($name);
         $this->setTagProperties($properties);
@@ -39,7 +40,8 @@ class InputTag extends Tag {
      *
      * @param string $value return value
      */
-    public function setValue($value) {
+    public function setValue($value)
+    {
         $this->setTagProperties(['value' => $value]);
     }
 
@@ -48,8 +50,8 @@ class InputTag extends Tag {
      *
      * @return string $value
      */
-    public function getValue() {
+    public function getValue()
+    {
         return $this->getTagProperty('value');
     }
-
 }

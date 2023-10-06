@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,8 +9,8 @@ namespace Ease\Html;
  *
  * Text area.
  */
-class TextareaTag extends PairTag {
-
+class TextareaTag extends PairTag
+{
     /**
      * Link to content.
      */
@@ -24,7 +24,8 @@ class TextareaTag extends PairTag {
      * @param string $content    text arrey content
      * @param array  $properties text area tag properties
      */
-    public function __construct($name, $content = '', $properties = []) {
+    public function __construct($name, $content = '', $properties = [])
+    {
         $this->setTagName($name);
         parent::__construct('textarea', $properties);
         if ($content) {
@@ -37,9 +38,9 @@ class TextareaTag extends PairTag {
      *
      * @param string $value value
      */
-    public function setValue($value) {
+    public function setValue($value)
+    {
         $this->pageParts = [];
         $this->addItem($value);
     }
-
 }

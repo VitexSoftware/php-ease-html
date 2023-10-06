@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,8 +9,8 @@ namespace Ease\Html;
  *
  * Radio button.
  */
-class InputRadioTag extends InputTag {
-
+class InputRadioTag extends InputTag
+{
     /**
      * Return value.
      *
@@ -25,7 +25,8 @@ class InputRadioTag extends InputTag {
      * @param string $value         return value
      * @param array  $properties    input radio tag properties
      */
-    public function __construct($name, $value = null, $properties = null) {
+    public function __construct($name, $value = null, $properties = null)
+    {
         parent::__construct($name, $value);
         if ($properties) {
             $this->setTagProperties($properties);
@@ -39,7 +40,8 @@ class InputRadioTag extends InputTag {
      *
      * @param string $value return value
      */
-    public function setValue($value) {
+    public function setValue($value)
+    {
         $currentValue = $this->getTagProperty('value');
         if ($currentValue) {
             if ($currentValue == $value) {
@@ -49,5 +51,4 @@ class InputRadioTag extends InputTag {
             $this->setTagProperties(['value' => $value]);
         }
     }
-
 }

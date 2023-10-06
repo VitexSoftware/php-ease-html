@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,8 +9,8 @@ namespace Ease\Html;
  *
  * Description of a Comment.
  */
-class Comment extends Tag {
-
+class Comment extends Tag
+{
     /**
      * Tag type - f.e. A or STRONG.
      *
@@ -26,11 +26,11 @@ class Comment extends Tag {
     public $trail = ' --';
 
     /**
-     * 
+     *
      * @param string $comment
      */
-    public function __construct($comment) {
+    public function __construct($comment)
+    {
         parent::__construct('!--', [$comment]);
     }
-
 }

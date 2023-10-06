@@ -1,6 +1,7 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
+
 /**
  * Common webpage class
  *
@@ -21,7 +22,6 @@ use Ease\Html\HtmlTag;
  */
 class WebPage extends Document
 {
-
     /**
      * Saves obejct instace (singleton...).
      */
@@ -184,11 +184,10 @@ class WebPage extends Document
      * @return int
      */
     public function addJavaScript(
-            $javaScript,
-            $position = null,
-            $inDocumentReady = true
-    )
-    {
+        $javaScript,
+        $position = null,
+        $inDocumentReady = true
+    ) {
         return $this->addToScriptsStack(($inDocumentReady ? '$' : '@') . $javaScript, $position);
     }
 
@@ -291,8 +290,8 @@ class WebPage extends Document
         $htmlFargment = new Html\DivTag(null, $properties);
         foreach (\Ease\Shared::logger()->getMessages() as $message) {
             $htmlFargment->addItem(new Html\DivTag(
-                            $message->body,
-                            ['style' => Logger\Regent::singleton()->logStyles[$message->type], 'data-caller' => is_object($message->caller) ? get_class($message->caller) : $message->caller]
+                $message->body,
+                ['style' => Logger\Regent::singleton()->logStyles[$message->type], 'data-caller' => is_object($message->caller) ? get_class($message->caller) : $message->caller]
             ));
         }
         return $htmlFargment;
@@ -300,7 +299,7 @@ class WebPage extends Document
 
     /**
      * Renders the contents of the object.
-     * 
+     *
      * @return string Empty string
      */
     public function draw()
@@ -421,7 +420,7 @@ class WebPage extends Document
 
     /**
      * Clears Cache of Javascripts to be rendered into page
-     * 
+     *
      * @return boolean
      */
     public static function clearJavaScriptsCache()
@@ -432,7 +431,7 @@ class WebPage extends Document
 
     /**
      * Clears Cache of Javascripts to be rendered into page
-     * 
+     *
      * @return boolean
      */
     public static function clearCascadeStylesCache()

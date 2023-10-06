@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -11,19 +11,20 @@ namespace Ease\Html;
  */
 class InputDateTimeLocalTag extends InputTag
 {
-
     /**
      * The <input type="datetime-local"> is used for input fields that should contain a
      * date and time with no time zone.
      *
      * @param string           $name       name
-     * @param string|\DateTime $value      initial value as string or DateTime 
+     * @param string|\DateTime $value      initial value as string or DateTime
      * @param array            $properties additional input date time local properties
      */
-    public function __construct($name,
-            /** @scrutinizer ignore-type */
-            $value = null, $properties = [])
-    {
+    public function __construct(
+        $name,
+        /** @scrutinizer ignore-type */
+        $value = null,
+        $properties = []
+    ) {
         $properties['type'] = 'datetime-local';
         $properties['name'] = $name;
         parent::__construct($name, is_object($value) ? $value->format('Y-m-dTH:i:s') : $value, $properties);

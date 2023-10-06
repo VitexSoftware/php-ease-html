@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML H2 tag.
  */
-class H2Tag extends PairTag {
-
+class H2Tag extends PairTag
+{
     /**
      * H2 Tag.
      *
      * @param mixed $content    inserted content
      * @param array $properties h2 tag propoerties
      */
-    public function __construct($content = '', $properties = []) {
+    public function __construct($content = '', $properties = [])
+    {
         parent::__construct('h2', $properties, $content);
     }
-
 }

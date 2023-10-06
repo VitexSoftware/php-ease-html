@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML5 svg tag.
  */
-class SvgTag extends PairTag {
-
+class SvgTag extends PairTag
+{
     /**
      * Render scalable vector graphics
      *
      * @param mixed  $content    items included
      * @param array  $properties tag svg propertiess
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('svg', $properties, $content);
     }
-
 }

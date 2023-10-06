@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,15 +9,15 @@ namespace Ease\Html;
  *
  * Horizontal line tag.
  */
-class HrTag extends Tag {
-
+class HrTag extends Tag
+{
     /**
      * Horizontal line tag.
      *
      * @param array $properties tag parameters
      */
-    public function __construct($properties = []) {
+    public function __construct($properties = [])
+    {
         parent::__construct('hr', $properties);
     }
-
 }

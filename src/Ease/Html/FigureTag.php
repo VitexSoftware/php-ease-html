@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML5 figure tag.
  */
-class FigureTag extends PairTag {
-
+class FigureTag extends PairTag
+{
     /**
      * Defines self-contained content.
      *
      * @param mixed  $content    items included
      * @param array  $properties figure tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('figure', $properties, $content);
     }
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -10,8 +10,8 @@ namespace Ease\Html;
  * HTML webPage head class.
  *
  */
-class HeadTag extends PairTag {
-
+class HeadTag extends PairTag
+{
     /**
      * Javascripts to render in page.
      *
@@ -38,7 +38,8 @@ class HeadTag extends PairTag {
      *
      * @param mixed $content        inserted content
      */
-    public function __construct($content = null) {
+    public function __construct($content = null)
+    {
         parent::__construct('head', null, $content);
         $this->addItem('<meta http-equiv="Content-Type" content="text/html; charset=' . $this->charSet . '" />');
     }
@@ -47,10 +48,11 @@ class HeadTag extends PairTag {
      * Change name directly to head.
      *
      * @param string $objectName    object name
-     * 
+     *
      * @return string               final object name
      */
-    public function setObjectName($objectName = null) {
+    public function setObjectName($objectName = null)
+    {
         return parent::setObjectName('head');
     }
 
@@ -61,7 +63,8 @@ class HeadTag extends PairTag {
      *
      * @return string
      */
-    public static function jsEnclosure($javaScript) {
+    public static function jsEnclosure($javaScript)
+    {
         return '
 <script>
 // <![CDATA[
@@ -74,19 +77,22 @@ class HeadTag extends PairTag {
     /**
      * Hadle page title.
      */
-    public function finalize() {
+    public function finalize()
+    {
         $this->addItem('<title>' . \Ease\WebPage::singleton()->getPageTitle() . '</title>');
     }
 
     /**
-     * 
+     *
      * @param array $scriptsArray
      * @param string $divider use '' for optimized output
-     * 
+     *
      * @return string
      */
-    static public function getScriptsRendered(array $scriptsArray,
-            $divider = "\n") {
+    public static function getScriptsRendered(
+        array $scriptsArray,
+        $divider = "\n"
+    ) {
         $scriptsRendered = '';
         ksort($scriptsArray, SORT_NUMERIC);
         $scriptsInline = [];
@@ -113,31 +119,38 @@ class HeadTag extends PairTag {
         }
 
         if (!empty($scriptsInline)) {
-            $scriptsRendered .= $divider . self::jsEnclosure(implode($divider,
-                                    $scriptsInline));
+            $scriptsRendered .= $divider . self::jsEnclosure(implode(
+                $divider,
+                $scriptsInline
+            ));
         }
 
         if (!empty($ODRStack)) {
             $scriptsRendered .= $divider .
                     self::jsEnclosure(
-                            '$(document).ready(function () { ' . implode($divider,
-                                    $ODRStack) . ' });'
-            );
+                        '$(document).ready(function () { ' . implode(
+                            $divider,
+                            $ODRStack
+                        ) . ' });'
+                    );
         }
         return $scriptsRendered;
     }
 
     /**
      * Get included and inline Syles Fragment rendered
-     * 
+     *
      * @param array  $stylesArray
      * @param string $media
      * @param string $divider use '' for optimized output
-     * 
+     *
      * @return string
      */
-    static public function getStylesRendered(array $stylesArray,
-            $media = 'screen', $divider = "\n") {
+    public static function getStylesRendered(
+        array $stylesArray,
+        $media = 'screen',
+        $divider = "\n"
+    ) {
         $cascadeStyles = [];
         $cascadeStylesIncludes = [];
         foreach ($stylesArray as $styleRes => $style) {
@@ -147,16 +160,18 @@ class HeadTag extends PairTag {
                 $cascadeStyles[] = $style;
             }
         }
-        return empty($stylesArray) ? '' : implode($divider, $cascadeStylesIncludes) . $divider . '<style>' . implode($divider,
-                        $cascadeStyles) . '</style>';
+        return empty($stylesArray) ? '' : implode($divider, $cascadeStylesIncludes) . $divider . '<style>' . implode(
+            $divider,
+            $cascadeStyles
+        ) . '</style>';
     }
 
     /**
      * Renders the header of the HTML page.
      */
-    public function draw() {
+    public function draw()
+    {
         $this->addItem(self::getStylesRendered(\Ease\WebPage::singleton()->cascadeStyles));
         return parent::draw();
     }
-
 }

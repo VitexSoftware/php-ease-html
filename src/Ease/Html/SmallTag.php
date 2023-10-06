@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML major heading tag.
  */
-class SmallTag extends PairTag {
-
+class SmallTag extends PairTag
+{
     /**
      * Small font tag
      *
      * @param mixed $content    inserted content
      * @param array $properties small tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('small', $properties, $content);
     }
-
 }

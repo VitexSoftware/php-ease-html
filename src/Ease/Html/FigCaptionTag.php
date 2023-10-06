@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML5 figcaption tag.
  */
-class FigCaptionTag extends PairTag {
-
+class FigCaptionTag extends PairTag
+{
     /**
      * Defines a caption for a <figure> element
      *
      * @param mixed  $content    items included
      * @param array  $properties fig caption tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('figcaption', $properties, $content);
     }
-
 }

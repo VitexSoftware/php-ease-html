@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,17 +9,18 @@ namespace Ease\Html;
  *
  * HTML unsorted list.
  *
- *  
+ *
  */
-class UlTag extends PairTag {
-
+class UlTag extends PairTag
+{
     /**
      * Creates UL container.
      *
      * @param mixed $ulContents list items
      * @param array $properties ul tag properties
      */
-    public function __construct($ulContents = null, $properties = []) {
+    public function __construct($ulContents = null, $properties = [])
+    {
         parent::__construct('ul', $properties, $ulContents);
     }
 
@@ -28,7 +29,8 @@ class UlTag extends PairTag {
      *
      * @param array $itemsArray field of values or EaseObjektů with draw() method.
      */
-    public function addItems($itemsArray) {
+    public function addItems($itemsArray)
+    {
         $itemsAdded = [];
         foreach ($itemsArray as $item) {
             $itemsAdded[] = $this->addItemSmart($item);
@@ -45,7 +47,8 @@ class UlTag extends PairTag {
      *
      * @return mixed
      */
-    public function &addItemSmart($pageItem, $properties = []) {
+    public function &addItemSmart($pageItem, $properties = [])
+    {
         if (is_array($pageItem)) {
             foreach ($pageItem as $item) {
                 $this->addItemSmart($item);
@@ -61,5 +64,4 @@ class UlTag extends PairTag {
 
         return $itemAdded;
     }
-
 }

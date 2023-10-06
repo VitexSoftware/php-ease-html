@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HtmlParam tag.
  */
-class ParamTag extends Tag {
-
+class ParamTag extends Tag
+{
     /**
      * Paramm tag.
      *
      * @param string $name  tag name
      * @param string $value tag value
      */
-    public function __construct($name, $value) {
+    public function __construct($name, $value)
+    {
         parent::__construct('param', ['name' => $name, 'value' => $value]);
     }
-
 }

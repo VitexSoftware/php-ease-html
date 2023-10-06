@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease;
 
@@ -8,8 +8,8 @@ namespace Ease;
  *
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  */
-trait Glue {
-
+trait Glue
+{
     /**
      * Array of objects and fragments to draw
      *
@@ -33,7 +33,7 @@ trait Glue {
 
     /**
      *
-     * @var string|null 
+     * @var string|null
      */
     private $embedName = null;
 
@@ -45,7 +45,8 @@ trait Glue {
      *
      * @return mixed Odkaz na vložený objekt
      */
-    public static function &addItemCustom($pageItem, Embedable $context) {
+    public static function &addItemCustom($pageItem, Embedable $context)
+    {
         $itemPointer = null;
         if (!is_null($pageItem)) {
             if (is_object($pageItem)) {
@@ -82,18 +83,20 @@ trait Glue {
      *
      * @return mixed Pointer to included object
      */
-    public function addItem($pageItem) {
+    public function addItem($pageItem)
+    {
         return self::addItemCustom($pageItem, $this);
     }
 
     /**
      * Notify component about its embed name
-     * 
+     *
      * @param string  $embedName parent::$pageParts[$embedName] == self
      *
      * @return boolean success
      */
-    public function setEmbedName($embedName) {
+    public function setEmbedName($embedName)
+    {
         $this->embedName = $embedName;
         return true;
     }
@@ -101,23 +104,25 @@ trait Glue {
     /**
      * Method executed after adding object into new one
      */
-    public function afterAdd() {
-        
+    public function afterAdd()
+    {
     }
 
     /**
      * Method executed before rendering
      */
-    public function finalize() {
+    public function finalize()
+    {
         $this->finalized = true;
     }
 
     /**
      * Recursive draw object and its contents
-     * 
+     *
      * @return string Empty string
      */
-    public function draw() {
+    public function draw()
+    {
         foreach ($this->pageParts as $part) {
             if (is_object($part)) {
                 if (method_exists($part, 'drawIfNotDrawn')) {
@@ -132,5 +137,4 @@ trait Glue {
         $this->drawStatus = true;
         return '';
     }
-
 }

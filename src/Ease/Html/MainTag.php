@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML5 main tag.
  */
-class MainTag extends PairTag {
-
+class MainTag extends PairTag
+{
     /**
      * Defines the main content of a document
      *
      * @param mixed  $content    items included
      * @param array  $properties main tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('main', $properties, $content);
     }
-
 }

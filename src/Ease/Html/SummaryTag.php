@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML5 summary tag.
  */
-class SummaryTag extends PairTag {
-
+class SummaryTag extends PairTag
+{
     /**
      * Defines a visible heading for a <details> element
      *
      * @param mixed  $content    items included
      * @param array  $properties summary tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('summary', $properties, $content);
     }
-
 }

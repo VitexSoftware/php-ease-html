@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,8 +9,8 @@ namespace Ease\Html;
  *
  * HTML table.
  */
-class TableTag extends PairTag {
-
+class TableTag extends PairTag
+{
     /**
      * Table header.
      * @var Thead
@@ -25,7 +25,7 @@ class TableTag extends PairTag {
 
     /**
      * Table Foot
-     * @var Tfoot 
+     * @var Tfoot
      */
     public $tFoot = null;
 
@@ -35,7 +35,8 @@ class TableTag extends PairTag {
      * @param mixed $content    inserted value
      * @param array $properties table tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('table', $properties);
         $this->tHead = $this->addItem(new Thead());
         $this->tBody = $this->addItem(new Tbody($content));
@@ -45,7 +46,8 @@ class TableTag extends PairTag {
     /**
      * @param array $headerColumns table header items
      */
-    public function setHeader(array $headerColumns) {
+    public function setHeader(array $headerColumns)
+    {
         $this->tHead->emptyContents();
         $this->addRowHeaderColumns($headerColumns);
     }
@@ -58,7 +60,8 @@ class TableTag extends PairTag {
      *
      * @return TrTag table row reference
      */
-    public function &addRowColumns($columns = null, $properties = []) {
+    public function &addRowColumns($columns = null, $properties = [])
+    {
         $tableRow = $this->tBody->addItem(new TrTag());
         if (is_array($columns)) {
             foreach ($columns as $column) {
@@ -83,7 +86,8 @@ class TableTag extends PairTag {
      *
      * @return TrTag table row reference
      */
-    public function &addRowHeaderColumns($columns = null, $properties = []) {
+    public function &addRowHeaderColumns($columns = null, $properties = [])
+    {
         $tableRow = $this->tHead->addItem(new TrTag());
         if (is_array($columns)) {
             foreach ($columns as $column) {
@@ -108,7 +112,8 @@ class TableTag extends PairTag {
      *
      * @return TrTag table row reference
      */
-    public function &addRowFooterColumns($columns = null, $properties = []) {
+    public function &addRowFooterColumns($columns = null, $properties = [])
+    {
         $tableRow = $this->tFoot->addItem(new TrTag());
         if (is_array($columns)) {
             foreach ($columns as $column) {
@@ -130,23 +135,26 @@ class TableTag extends PairTag {
      *
      * @return boolean
      */
-    public function isEmpty() {
+    public function isEmpty()
+    {
         return $this->tBody->isEmpty();
     }
 
     /**
      * Empties container contents.
      */
-    public function emptyContents() {
+    public function emptyContents()
+    {
         $this->tBody->emptyContents();
     }
 
     /**
      * Contentets.
-     * 
+     *
      * @return mixed
      */
-    public function getContents() {
+    public function getContents()
+    {
         return $this->tBody->getContents();
     }
 
@@ -155,7 +163,8 @@ class TableTag extends PairTag {
      *
      * @return int nuber of parts enclosed
      */
-    public function getItemsCount() {
+    public function getItemsCount()
+    {
         return $this->tBody->getItemsCount();
     }
 
@@ -163,10 +172,11 @@ class TableTag extends PairTag {
      * Fill table with given data.
      *
      * @param array $contents
-     * 
+     *
      * @return self Updated table
      */
-    public function populate($contents) {
+    public function populate($contents)
+    {
         foreach ($contents as $cRow) {
             $this->addRowColumns($cRow);
         }
@@ -176,7 +186,8 @@ class TableTag extends PairTag {
     /**
      * Remove empty tHead and tFoot.
      */
-    public function finalize() {
+    public function finalize()
+    {
         if ($this->tHead->isEmpty()) {
             $this->tHead->suicide();
         }
@@ -185,5 +196,4 @@ class TableTag extends PairTag {
         }
         $this->finalized = true;
     }
-
 }

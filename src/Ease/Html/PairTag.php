@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,8 +9,8 @@ namespace Ease\Html;
  *
  * General HTML pair tag.
  */
-class PairTag extends Tag {
-
+class PairTag extends Tag
+{
     /**
      * Character to close tag.
      *
@@ -26,9 +26,9 @@ class PairTag extends Tag {
      * @param mixed        $content         Content to insert into tag
      */
     public function __construct(
-            $tagType = null,
-            $properties = null,
-            $content = null
+        $tagType = null,
+        $properties = null,
+        $content = null
     ) {
         parent::__construct($tagType, $properties);
         if (empty($content) === false) {
@@ -39,7 +39,8 @@ class PairTag extends Tag {
     /**
      * Render tag and its contents.
      */
-    public function draw() {
+    public function draw()
+    {
         $this->tagBegin();
         $this->drawAllContents();
         $this->tagEnclousure();
@@ -49,15 +50,16 @@ class PairTag extends Tag {
     /**
      * Show pair tag begin.
      */
-    public function tagBegin() {
+    public function tagBegin()
+    {
         parent::draw();
     }
 
     /**
      * Show pair tag ending.
      */
-    public function tagEnclousure() {
+    public function tagEnclousure()
+    {
         echo '</' . $this->getTagType() . '>';
     }
-
 }

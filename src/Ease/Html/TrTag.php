@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML Table row class.
  */
-class TrTag extends PairTag {
-
+class TrTag extends PairTag
+{
     /**
      * TR tag.
      *
      * @param mixed $content    inserted value
      * @param array $properties tr tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('tr', $properties, $content);
     }
-
 }

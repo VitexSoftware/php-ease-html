@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML5 mark tag.
  */
-class MarkTag extends PairTag {
-
+class MarkTag extends PairTag
+{
     /**
      * Defines marked/highlighted text
      *
      * @param mixed  $content    items included
      * @param array  $properties mark tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('mark', $properties, $content);
     }
-
 }

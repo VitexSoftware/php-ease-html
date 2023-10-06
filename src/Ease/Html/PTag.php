@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML Paragraph class tag.
  */
-class PTag extends PairTag {
-
+class PTag extends PairTag
+{
     /**
      * Paragraph.
      *
      * @param mixed $content    inserted content
      * @param array $properties p tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('p', $properties, $content);
     }
-
 }

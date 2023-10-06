@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,8 +9,8 @@ namespace Ease\Html;
  *
  * Tag Label for LabeledInput.
  */
-class LabelTag extends PairTag {
-
+class LabelTag extends PairTag
+{
     /**
      * Link to content.
      *
@@ -25,7 +25,8 @@ class LabelTag extends PairTag {
      * @param mixed  $contents   labeled content
      * @param array  $properties labe tag properties
      */
-    public function __construct($for, $contents = null, $properties = []) {
+    public function __construct($for, $contents = null, $properties = [])
+    {
         $this->setTagProperties(['for' => $for]);
         parent::__construct('label', $properties);
         $this->contents = $this->addItem($contents);
@@ -38,12 +39,12 @@ class LabelTag extends PairTag {
      *
      * @return string New object name
      */
-    public function setObjectName($objectName = null) {
+    public function setObjectName($objectName = null)
+    {
         if (is_null($objectName)) {
             $objectName = get_class($this) . '@' . $this->getTagProperty('for');
         }
 
         return parent::setObjectName($objectName);
     }
-
 }

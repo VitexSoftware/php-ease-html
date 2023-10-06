@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML Table Header cell class.
  */
-class ThTag extends PairTag {
-
+class ThTag extends PairTag
+{
     /**
      * Cell with table label.
      *
      * @param mixed $content    inserted content
      * @param array $properties th tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('th', $properties, $content);
     }
-
 }

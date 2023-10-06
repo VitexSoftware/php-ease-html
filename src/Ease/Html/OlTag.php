@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,17 +9,17 @@ namespace Ease\Html;
  *
  * HTML unsorted list.
  */
-class OlTag extends UlTag {
-
+class OlTag extends UlTag
+{
     /**
      * Vytvori OL container.
      *
      * @param mixed $ulContents items included
      * @param array $properties ol tag properties
      */
-    public function __construct($ulContents = null, $properties = []) {
+    public function __construct($ulContents = null, $properties = [])
+    {
         parent::__construct($ulContents, $properties);
         $this->setTagType('ol');
     }
-
 }

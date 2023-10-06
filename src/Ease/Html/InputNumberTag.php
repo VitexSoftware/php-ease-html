@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -11,8 +11,8 @@ namespace Ease\Html;
  *
  * @author Vítězslav Dvořák <vitex@hippy.cz>
  */
-class InputNumberTag extends InputTag {
-
+class InputNumberTag extends InputTag
+{
     /**
      * The <input type="number"> defines a numeric input field.
      * You can also set restrictions on what numbers are accepted.
@@ -21,11 +21,11 @@ class InputNumberTag extends InputTag {
      * @param string $value      initial value
      * @param array  $properties additional input number tag properties
      */
-    public function __construct($name, $value = null, $properties = []) {
+    public function __construct($name, $value = null, $properties = [])
+    {
         $properties['type'] = 'number';
         $properties['value'] = $value;
         $properties['name'] = $name;
         parent::__construct($name, $value, $properties);
     }
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML5 wbr tag.
  */
-class WbrTag extends PairTag {
-
+class WbrTag extends PairTag
+{
     /**
      * Defines a possible line-break
      *
      * @param mixed  $content    items included
      * @param array  $properties wbr tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('wbr', $properties, $content);
     }
-
 }

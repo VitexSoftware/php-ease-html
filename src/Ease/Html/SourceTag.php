@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML5 source tag.
  */
-class SourceTag extends PairTag {
-
+class SourceTag extends PairTag
+{
     /**
      * Defines multiple media resources for media elements (<video> and <audio>)
      *
      * @param mixed  $content    items included
      * @param array  $properties source tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('source', $properties, $content);
     }
-
 }

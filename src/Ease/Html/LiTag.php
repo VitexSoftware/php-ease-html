@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML list item tag class.
  */
-class LiTag extends PairTag {
-
+class LiTag extends PairTag
+{
     /**
      * Simple LI tag.
      *
      * @param mixed $liContents list item content
      * @param array $properties Li tag properties
      */
-    public function __construct($liContents = null, $properties = []) {
+    public function __construct($liContents = null, $properties = [])
+    {
         parent::__construct('li', $properties, $liContents);
     }
-
 }

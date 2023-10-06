@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * HTML5 section tag.
  */
-class SectionTag extends PairTag {
-
+class SectionTag extends PairTag
+{
     /**
      * Defines a section in a document
      *
      * @param mixed  $content    items included
      * @param array  $properties section tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('section', $properties, $content);
     }
-
 }

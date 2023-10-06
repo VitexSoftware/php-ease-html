@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * Reformatted text.
  */
-class PreTag extends PairTag {
-
+class PreTag extends PairTag
+{
     /**
      * Reformatted text.
      *
      * @param string|mixed $content     tag content
      * @param array        $properties  pre tag properties
      */
-    public function __construct($content = null, $properties = null) {
+    public function __construct($content = null, $properties = null)
+    {
         parent::__construct('pre', $properties, $content);
     }
-
 }

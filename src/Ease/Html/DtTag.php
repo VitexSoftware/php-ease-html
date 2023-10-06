@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Ease\Html;
 
@@ -9,16 +9,16 @@ namespace Ease\Html;
  *
  * Term definition.
  */
-class DtTag extends PairTag {
-
+class DtTag extends PairTag
+{
     /**
      * Term definition.
      *
      * @param string|mixed  $content     term name / keyword
-     * @param array         $properties  dt tag properties   
+     * @param array         $properties  dt tag properties
      */
-    public function __construct($content = null, $properties = []) {
+    public function __construct($content = null, $properties = [])
+    {
         parent::__construct('dt', $properties, $content);
     }
-
 }
