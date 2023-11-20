@@ -7,7 +7,7 @@ namespace Ease;
 /**
  * HTML ✉Class.
  *
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ * @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  * @copyright 2009-2019 Vitex@hippy.cz (G)
  */
 
@@ -89,14 +89,14 @@ class HtmlMailer extends Document
 
     /**
      *
-     * @var SimpleHtmlHeadTag
+     * @var SimpleHtmlHeadTag|null
      */
     public $htmlHead = null;
 
     /**
      * Pointer to the BODY html document.
      *
-     * @var BodyTag
+     * @var BodyTag|Ease\Embedable|null
      */
     public $htmlBody = null;
 
@@ -303,7 +303,9 @@ class HtmlMailer extends Document
             $this->mailHeadersDone,
             $this->mailBody
         );
-
+        if (is_object($this->sendResult) && get_class($this->sendResult) == 'PEAR_Error') {
+            throw new \Ease\Exception($this->sendResult->getMessage());
+        }
         if ($this->notify === true) {
             $mailStripped = str_replace(['<', '>'], '', $this->emailAddress);
             if ($this->sendResult === true) {
