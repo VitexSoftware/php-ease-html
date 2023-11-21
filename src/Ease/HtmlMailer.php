@@ -113,7 +113,7 @@ class HtmlMailer extends Document
      * @param string $emailAddress  address
      * @param string $mailSubject   suject
      * @param mixed  $emailContents body - any mix of text and EaseObjects
-     * @param array  $heasers       overide Mail Headers
+     * @param array  $headers       overide Mail Headers
      */
     public function __construct(
         $emailAddress,
