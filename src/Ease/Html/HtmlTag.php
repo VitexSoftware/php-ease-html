@@ -12,13 +12,17 @@ namespace Ease\Html;
 class HtmlTag extends PairTag
 {
     /**
-     * HTML.
+     * HTML Tag
      *
-     * @param mixed $content inserted content - page body
+     * @param mixed  $content    inserted content - page body
+     * @param string $properties Description
      */
-    public function __construct($content = null)
+    public function __construct($content = null, $properties = [])
     {
-        parent::__construct('html', ['lang' => \Ease\Locale::singleton()->get2Code()], $content);
+        if (array_key_exists('lang', $properties) === false) {
+            $properties['lang'] = \Ease\Locale::singleton()->get2Code();
+        }
+        parent::__construct('html', $properties, $content);
     }
 
     /**
