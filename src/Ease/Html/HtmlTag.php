@@ -14,8 +14,8 @@ class HtmlTag extends PairTag
     /**
      * HTML Tag
      *
-     * @param mixed  $content    inserted content - page body
-     * @param string $properties Description
+     * @param mixed $content    inserted content - page body
+     * @param array $properties Description
      */
     public function __construct($content = null, $properties = [])
     {

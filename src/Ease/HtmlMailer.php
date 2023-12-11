@@ -51,7 +51,7 @@ class HtmlMailer extends Document
      *
      * @var string
      */
-    public $emailAddress = 'postmaster@localhost';
+    public $emailAddress = '';
 
     /**
      * Subject of email
@@ -113,11 +113,13 @@ class HtmlMailer extends Document
      * @param string $emailAddress  address
      * @param string $mailSubject   suject
      * @param mixed  $emailContents body - any mix of text and EaseObjects
+     * @param array  $headers       overide Mail Headers
      */
     public function __construct(
         $emailAddress,
         $mailSubject,
-        $emailContents = null
+        $emailContents = null,
+        $headers = []
     ) {
         if (\Ease\Functions::cfg('EASE_SMTP')) {
             $this->parameters = (array) json_decode(\Ease\Functions::cfg('EASE_SMTP'));
@@ -128,14 +130,14 @@ class HtmlMailer extends Document
         }
 
         $this->setMailHeaders(
-            [
+            array_merge([
                     'To' => $emailAddress,
                     'From' => $this->fromEmailAddress,
                     'Reply-To' => $this->fromEmailAddress,
                     'Subject' => $mailSubject,
                     'Content-Type' => 'text/html; charset=utf-8',
                     'Content-Transfer-Encoding' => '8bit',
-                ]
+                ], $headers)
         );
 
         $mimer_params = array(
