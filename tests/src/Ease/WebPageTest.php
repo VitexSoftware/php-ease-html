@@ -119,7 +119,7 @@ class WebPageTest extends DocumentTest
                 'warning');
         $this->object->addStatusMessage('error Status message for testGetStatusMessagesAsHtml',
                 'error');
-        $this->assertEquals('<div><div style="color: #2C5F23;" data-caller="Ease\WebPage">success Status message for testGetStatusMessagesAsHtml</div><div style="color: #AB250E;" data-caller="Ease\WebPage">warning Status message for testGetStatusMessagesAsHtml</div><div style="color: red;" data-caller="Ease\WebPage">error Status message for testGetStatusMessagesAsHtml</div></div>',
+        $this->assertEquals('<div><div style="color: #2C5F23;" data-caller="Ease\WebPage">🌼&nbsp;success Status message for testGetStatusMessagesAsHtml</div><div style="color: #AB250E;" data-caller="Ease\WebPage">⚠&nbsp;warning Status message for testGetStatusMessagesAsHtml</div><div style="color: red;" data-caller="Ease\WebPage">💀&nbsp;error Status message for testGetStatusMessagesAsHtml</div></div>',
                 $this->object->getStatusMessagesBlock()->__toString());
     }
 
