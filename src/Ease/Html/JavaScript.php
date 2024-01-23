@@ -16,11 +16,9 @@ class JavaScript extends ScriptTag
      *
      * @param string $content  script content
      */
-    public function __construct($content, $properties = [])
+    public function __construct($content, array $properties = [])
     {
-        if (empty($properties)) {
-            $properties = ['type' => 'text/javascript'];
-        } else {
+        if (array_key_exists('type', $properties) === false) {
             $properties['type'] = 'text/javascript';
         }
         parent::__construct($content, $properties);
