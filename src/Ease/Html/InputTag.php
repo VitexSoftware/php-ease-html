@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * General input TAG.
  */
-class InputTag extends Tag
+class InputTag extends Tag implements Input
 {
     /**
      * Sets tag name automatically

@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * Text area.
  */
-class TextareaTag extends PairTag
+class TextareaTag extends PairTag implements Input
 {
     /**
      * Link to content.
@@ -42,5 +42,14 @@ class TextareaTag extends PairTag
     {
         $this->pageParts = [];
         $this->addItem($value);
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getValue(): string
+    {
+        return $this->getContents();
     }
 }

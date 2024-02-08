@@ -1,4 +1,4 @@
-php-vitexsoftware-ease-html (1.38.0) UNRELEASED; urgency=medium
+php-vitexsoftware-ease-html (1.39.0) UNRELEASED; urgency=medium
 
   [ CyberVitexus ]
   * Remove empty tHead and tFoot
@@ -21,7 +21,10 @@ php-vitexsoftware-ease-html (1.38.0) UNRELEASED; urgency=medium
   * strict types support for parameter generator
   * HTMLtag now accept parameters
 
- -- vitex <info@vitexsoftware.cz>  Mon, 11 Dec 2023 15:06:16 +0100
+  [  ]
+  * Input Interface added
+
+ --  <vitezslav.dvorak@spojenet.cz>  Thu, 08 Feb 2024 15:31:06 +0100
 
 php-ease-html (1.16) EXPERIMENTAL; urgency=medium
 

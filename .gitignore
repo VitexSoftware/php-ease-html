@@ -27,3 +27,5 @@
 /.vscode/
 /nbproject/
 /.phpunit.cache/
+/debian/debhelper-build-stamp
+
