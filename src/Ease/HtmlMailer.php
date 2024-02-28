@@ -8,7 +8,7 @@ namespace Ease;
  * HTML ✉Class.
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
- * @copyright 2009-2019 Vitex@hippy.cz (G)
+ * @copyright 2009-2024 Vitex@hippy.cz (G)
  */
 
 use Ease\Html\BodyTag;

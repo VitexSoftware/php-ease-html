@@ -14,8 +14,8 @@ class ButtonTag extends PairTag
     /**
      * Html element for a button.
      *
-     * @param string $content       button content
-     * @param array  $properties    button tag properties
+     * @param mixed $content       button content
+     * @param array $properties    button tag properties
      */
     public function __construct($content, $properties = [])
     {
