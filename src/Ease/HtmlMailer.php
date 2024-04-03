@@ -89,14 +89,14 @@ class HtmlMailer extends Document
 
     /**
      *
-     * @var SimpleHtmlHeadTag|null
+     * @var Html\SimpleHeadTag|null
      */
     public $htmlHead = null;
 
     /**
      * Pointer to the BODY html document.
      *
-     * @var BodyTag|Ease\Embedable|null
+     * @var BodyTag|Embedable|null
      */
     public $htmlBody = null;
 
@@ -163,7 +163,7 @@ class HtmlMailer extends Document
      *
      * @return string
      */
-    public function getMailHeader($headername)
+    public function getMailHeader(string $headername)
     {
         return array_key_exists($this->mailHeaders, $headername) ? $this->mailHeaders[$headername] : '';
     }
@@ -201,9 +201,9 @@ class HtmlMailer extends Document
      *
      * @return mixed pointer to the inserted content
      */
-    public function &addItem($item, $pageItemName = null)
+    public function &addItem($item)
     {
-        $added = $this->htmlBody->addItem($item, $pageItemName);
+        $added = $this->htmlBody->addItem($item);
         return $added;
     }
 

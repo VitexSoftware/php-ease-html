@@ -13,7 +13,7 @@ Ease Framework Html
 [![GitHub issues](https://img.shields.io/github/issues/VitexSoftware/php-ease-html?style=social)](https://github.com/VitexSoftware/php-ease-html/issues)
 [![GitHub stars](https://img.shields.io/github/stars/VitexSoftware/php-ease-html?style=social)](https://github.com/VitexSoftware/php-ease-html/stargazers)
 
- "my way how to assemble web page using PHP Objects."
+ "My way how to assemble web page using PHP Objects."
 
 Basic Example for [HTML5 WebPage](Examples/webpage.php):
 
@@ -212,8 +212,8 @@ Debian Repository
 
 ```shell
 sudo apt install lsb-release wget
-echo "deb http://repo.vitexsoftware.cz $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/vitexsoftware.list
-sudo wget -O /etc/apt/trusted.gpg.d/vitexsoftware.gpg http://repo.vitexsoftware.cz/keyring.gpg
+echo "deb https://repo.vitexsoftware.com $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/vitexsoftware.list
+sudo wget -O /etc/apt/trusted.gpg.d/vitexsoftware.gpg https://repo.vitexsoftware.com/keyring.gpg
 sudo apt update
 sudo apt install php-vitexsoftware-ease-html
 ```

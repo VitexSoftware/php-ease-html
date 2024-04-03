@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "vitexsoftware/ease-core": ">= 1.8"
+        "vitexsoftware/ease-core": ">= 1.41"
     },
     "autoload": {
         "psr-4": {
@@ -27,6 +27,7 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "*"
+        "phpunit/phpunit":"^10.0",
+        "phpstan/phpstan":"^1.10"
     }
 }

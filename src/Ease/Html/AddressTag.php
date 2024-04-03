@@ -17,7 +17,7 @@ class AddressTag extends PairTag
      * @param string $content       address content
      * @param array  $properties address tag properties
      */
-    public function __construct($content = null, $properties = null)
+    public function __construct($content = null, $properties = [])
     {
         parent::__construct('address', $properties, $content);
     }
