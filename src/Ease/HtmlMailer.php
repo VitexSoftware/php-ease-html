@@ -250,10 +250,12 @@ class HtmlMailer extends Document
      *
      * @param string $filename path / file name to attach
      * @param string $mimeType MIME attachement type
+     * 
+     * @return boolean file attachment successful
      */
     public function addFile($filename, $mimeType = 'text/plain')
     {
-        $this->mimer->addAttachment($filename, $mimeType);
+        return $this->mimer->addAttachment($filename, $mimeType);
     }
 
     /**
