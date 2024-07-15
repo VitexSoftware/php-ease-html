@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * Html Select.
  */
-class SelectTag extends PairTag
+class SelectTag extends PairTag implements Input 
 {
     /**
      * Default item #.
@@ -39,10 +39,10 @@ class SelectTag extends PairTag
      * @param array  $properties   select tag properties
      */
     public function __construct(
-        $name,
-        $items = null,
-        $defaultValue = null,
-        $properties = []
+            $name,
+            $items = null,
+            $defaultValue = null,
+            $properties = []
     ) {
         parent::__construct('select', $properties);
         $this->defaultValue = $defaultValue;
@@ -139,6 +139,21 @@ class SelectTag extends PairTag
         foreach ($this->pageParts as $optionId => $option) {
             if ($option->getValue() == $itemID) {
                 $this->pageParts[$optionId]->setTagProperties(['disabled']);
+            }
+        }
+    }
+
+    /**
+     * Get value of selected item
+     * 
+     * @return string
+     */
+    #[\Override]
+    public function getValue(): string {
+        foreach ($this->pageParts as $option) {
+            $pos = array_search('selected', $option->tagProperties);
+            if (($pos !== false) && is_numeric($pos)) {
+                return $option->getValue();
             }
         }
     }
