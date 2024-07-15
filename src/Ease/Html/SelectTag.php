@@ -82,7 +82,7 @@ class SelectTag extends PairTag implements Input
      *
      * @param string $value     the set value
      */
-    public function setValue(string $value)
+    public function setValue($value)
     {
         if (empty(trim($value)) === false) {
             foreach ($this->pageParts as $option) {
