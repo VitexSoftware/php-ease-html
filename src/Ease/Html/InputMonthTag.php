@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * HTML5 month input tag.
  */
-class InputMonthTag extends InputTag
+class InputMonthTag extends InputTag implements Input
 {
     /**
      * The <input type="month"> allows the user to select a month and year.

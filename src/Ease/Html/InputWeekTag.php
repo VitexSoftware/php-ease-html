@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * HTML5 week input tag.
  */
-class InputWeekTag extends InputTag
+class InputWeekTag extends InputTag implements Input
 {
     /**
      * The <input type="week"> allows the user to select a week and year.

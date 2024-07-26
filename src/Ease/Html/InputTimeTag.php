@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * HTML5 time input tag.
  */
-class InputTimeTag extends InputTag
+class InputTimeTag extends InputTag implements Input
 {
     /**
      * The <input type="time"> allows the user to select a time (no time zone).

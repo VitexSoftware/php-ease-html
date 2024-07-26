@@ -11,7 +11,7 @@ namespace Ease\Html;
  *
  * @author Vítězslav Dvořák <vitex@hippy.cz>
  */
-class InputNumberTag extends InputTag
+class InputNumberTag extends InputTag implements Input
 {
     /**
      * The <input type="number"> defines a numeric input field.

@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * HTML5 range input tag.
  */
-class InputRangeTag extends InputTag
+class InputRangeTag extends InputTag implements Input
 {
     /**
      * The &lt;input type="range"&gt; defines a control for entering a number whose exact value is not important

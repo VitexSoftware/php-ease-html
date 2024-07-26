@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * Form submit button.
  */
-class InputSubmitTag extends InputTag
+class InputSubmitTag extends InputTag implements Input
 {
     /**
      * Odesílací tlačítko formuláře.

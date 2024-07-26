@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * HTML5 url input tag.
  */
-class InputUrlTag extends InputTag
+class InputUrlTag extends InputTag implements Input
 {
     /**
      * The <input type="url"> is used for input fields that should contain a

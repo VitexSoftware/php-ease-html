@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * Hidden input.
  */
-class InputHiddenTag extends InputTag
+class InputHiddenTag extends InputTag implements Input
 {
     /**
      * Hidden input.

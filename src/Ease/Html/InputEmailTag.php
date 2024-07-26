@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * HTML5 email input tag.
  */
-class InputEmailTag extends InputTag
+class InputEmailTag extends InputTag implements Input
 {
     /**
      * The <input type="email"> is used for input fields that should contain an

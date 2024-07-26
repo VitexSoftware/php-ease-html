@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * HTML5 date input tag.
  */
-class InputDateTag extends InputTag
+class InputDateTag extends InputTag implements Input
 {
     /**
      * The <input type="date"> is used for input fields that should contain a date.

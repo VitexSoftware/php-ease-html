@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * Show search input field.
  */
-class InputSearchTag extends InputTag
+class InputSearchTag extends InputTag implements Input
 {
     /**
      * URL data source for the hinter.

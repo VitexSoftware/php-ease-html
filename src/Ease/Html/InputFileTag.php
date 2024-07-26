@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * Input element for sending a file.
  */
-class InputFileTag extends InputTag
+class InputFileTag extends InputTag implements Input
 {
     /**
      * Input box for file selection.

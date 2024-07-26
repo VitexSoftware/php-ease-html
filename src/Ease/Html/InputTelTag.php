@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * HTML5 tel input tag.
  */
-class InputTelTag extends InputTag
+class InputTelTag extends InputTag implements Input
 {
     /**
      * The <input type="tel"> is used for input fields that should contain a phone number.

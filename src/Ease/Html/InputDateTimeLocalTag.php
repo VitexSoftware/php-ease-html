@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * HTML5 input datetime-local tag.
  */
-class InputDateTimeLocalTag extends InputTag
+class InputDateTimeLocalTag extends InputTag implements Input
 {
     /**
      * The <input type="datetime-local"> is used for input fields that should contain a

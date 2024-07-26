@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * Input for password insertion..
  */
-class InputPasswordTag extends InputTextTag
+class InputPasswordTag extends InputTextTag implements Input
 {
     /**
      * Password Input

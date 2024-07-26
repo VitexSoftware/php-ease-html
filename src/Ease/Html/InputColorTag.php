@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * HTML5 color input tag.
  */
-class InputColorTag extends InputTag
+class InputColorTag extends InputTag implements Input
 {
     /**
      * The <input type="color"> is used for input fields that should contain a color.

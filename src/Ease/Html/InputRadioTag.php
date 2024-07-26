@@ -9,7 +9,7 @@ namespace Ease\Html;
  *
  * Radio button.
  */
-class InputRadioTag extends InputTag
+class InputRadioTag extends InputTag implements Input
 {
     /**
      * Return value.
