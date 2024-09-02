@@ -1,6 +1,17 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Test\Ease;
 
@@ -11,12 +22,8 @@ use Ease\WebPage;
  */
 class WebPageTest extends DocumentTest
 {
-
-    /**
-     * @var WebPage
-     */
-    protected $object;
     public $rendered = '<!DOCTYPE html><html lang="cs"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title></head><body></body></html>';
+    protected WebPage $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -35,22 +42,21 @@ class WebPageTest extends DocumentTest
      */
     protected function tearDown(): void
     {
-        
     }
 
     /**
-     * @covers Ease\WebPage::setTagID
+     * @covers \Ease\WebPage::setTagID
      */
-    public function testSetTagID()
+    public function testSetTagID(): void
     {
         $this->object->setTagID('test');
         $this->assertEquals('test', $this->object->getTagID());
     }
 
     /**
-     * @covers Ease\WebPage::addItem
+     * @covers \Ease\WebPage::addItem
      */
-    public function testAddItem()
+    public function testAddItem(): void
     {
         $this->object->emptyContents();
         $tester = new \Ease\Html\SpanTag();
@@ -59,48 +65,52 @@ class WebPageTest extends DocumentTest
     }
 
     /**
-     * @covers Ease\WebPage::includeJavaScript
+     * @covers \Ease\WebPage::includeJavaScript
      */
-    public function testIncludeJavaScript()
+    public function testIncludeJavaScript(): void
     {
         \Ease\WebPage::singleton()->javaScripts = [];
         $this->object->includeJavaScript('WebPage.js');
-        $this->assertEquals(['#WebPage.js'],
-                \Ease\WebPage::singleton()->javaScripts);
+        $this->assertEquals(
+            ['#WebPage.js'],
+            \Ease\WebPage::singleton()->javaScripts,
+        );
         \Ease\Document::singleton()->javaScripts = [];
     }
 
     /**
-     * @covers Ease\WebPage::addJavaScript
+     * @covers \Ease\WebPage::addJavaScript
      */
-    public function testAddJavaScript()
+    public function testAddJavaScript(): void
     {
-        $this->assertEquals(0,
-                $this->object->addJavaScript('alert("WebPageTest")'));
+        $this->assertEquals(
+            0,
+            $this->object->addJavaScript('alert("WebPageTest")'),
+        );
         \Ease\Document::singleton()->javaScripts = [];
     }
 
     /**
-     * @covers Ease\WebPage::addToScriptsStack
+     * @covers \Ease\WebPage::addToScriptsStack
      */
-    public function testAddToScriptsStack()
+    public function testAddToScriptsStack(): void
     {
         $this->assertEquals(0, $this->object->addToScriptsStack('var test = 1;'));
         \Ease\Document::singleton()->javaScripts = [];
     }
 
     /**
-     * @covers Ease\WebPage::addCSS
+     * @covers \Ease\WebPage::addCSS
      */
-    public function testAddCSS()
+    public function testAddCSS(): void
     {
         $this->assertTrue($this->object->addCSS('border: 1px solid red'));
     }
 
     /**
-     * @covers Ease\WebPage::includeCss
+     * @covers \Ease\WebPage::includeCss
      */
-    public function testIncludeCss()
+    public function testIncludeCss(): void
     {
         $this->assertTrue($this->object->includeCss('WebPage.css'));
         $this->assertTrue($this->object->includeCss('WebPage.css', '/js/'));
@@ -108,25 +118,35 @@ class WebPageTest extends DocumentTest
     }
 
     /**
-     * @covers Ease\WebPage::getStatusMessagesBlock
+     * @covers \Ease\WebPage::getStatusMessagesBlock
      */
-    public function testGetStatusMessagesBlock()
+    public function testGetStatusMessagesBlock(): void
     {
         \Ease\Shared::logger()->cleanMessages();
-        $this->object->addStatusMessage('success Status message for testGetStatusMessagesAsHtml',
-                'success');
-        $this->object->addStatusMessage('warning Status message for testGetStatusMessagesAsHtml',
-                'warning');
-        $this->object->addStatusMessage('error Status message for testGetStatusMessagesAsHtml',
-                'error');
-        $this->assertEquals('<div><div style="color: #2C5F23;" data-caller="Ease\WebPage">🌼&nbsp;success Status message for testGetStatusMessagesAsHtml</div><div style="color: #AB250E;" data-caller="Ease\WebPage">⚠&nbsp;warning Status message for testGetStatusMessagesAsHtml</div><div style="color: red;" data-caller="Ease\WebPage">💀&nbsp;error Status message for testGetStatusMessagesAsHtml</div></div>',
-                $this->object->getStatusMessagesBlock()->__toString());
+        $this->object->addStatusMessage(
+            'success Status message for testGetStatusMessagesAsHtml',
+            'success',
+        );
+        $this->object->addStatusMessage(
+            'warning Status message for testGetStatusMessagesAsHtml',
+            'warning',
+        );
+        $this->object->addStatusMessage(
+            'error Status message for testGetStatusMessagesAsHtml',
+            'error',
+        );
+        $this->assertEquals(
+            '<div><div style="color: #2C5F23;" data-caller="Ease\WebPage">🌼&nbsp;success Status message for testGetStatusMessagesAsHtml</div><div style="color: #AB250E;" data-caller="Ease\WebPage">⚠&nbsp;warning Status message for testGetStatusMessagesAsHtml</div><div style="color: red;" data-caller="Ease\WebPage">💀&nbsp;error Status message for testGetStatusMessagesAsHtml</div></div>',
+            $this->object->getStatusMessagesBlock()->__toString(),
+        );
     }
 
     /**
-     * @covers Ease\WebPage::draw
+     * @covers \Ease\WebPage::draw
+     *
+     * @param null|mixed $whatWant
      */
-    public function testDraw($whatWant = null)
+    public function testDraw($whatWant = null): void
     {
         $this->object->emptyContents();
         \Ease\WebPage::singleton()->javaScripts = [];
@@ -135,39 +155,41 @@ class WebPageTest extends DocumentTest
     }
 
     /**
-     * @covers Ease\WebPage::finalizeRegistred
+     * @covers \Ease\WebPage::finalizeRegistred
      */
-    public function testFinalizeRegistred()
+    public function testFinalizeRegistred(): void
     {
         $this->object->finalizeRegistred();
         $this->assertEmpty(WebPage::$allItems);
     }
 
     /**
-     * @covers Ease\WebPage::setPageTitle
+     * @covers \Ease\WebPage::setPageTitle
      *
      * @todo   Implement testSetPageTitle().
      */
-    public function testSetPageTitle()
+    public function testSetPageTitle(): void
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-                'This test has not been implemented yet.'
+            'This test has not been implemented yet.',
         );
     }
 
     /**
-     * @covers Ease\WebPage::getItemsCount
+     * @covers \Ease\WebPage::getItemsCount
      */
-    public function testGetItemsCount()
+    public function testGetItemsCount(): void
     {
         $this->assertEquals(0, $this->object->getItemsCount());
     }
 
     /**
-     * @covers Ease\WebPage::drawIfNotDrawn
+     * @covers \Ease\WebPage::drawIfNotDrawn
+     *
+     * @param mixed $canBeEmpty
      */
-    public function testDrawIfNotDrawn($canBeEmpty = false)
+    public function testDrawIfNotDrawn($canBeEmpty = false): void
     {
         \Ease\WebPage::clearJavaScriptsCache();
         parent::testDrawIfNotDrawn($canBeEmpty);

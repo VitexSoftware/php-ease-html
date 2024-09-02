@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
@@ -13,20 +24,15 @@ class Comment extends Tag
 {
     /**
      * Tag type - f.e. A or STRONG.
-     *
-     * @var string
      */
-    public $tagType = '!--';
+    public string $tagType = '!--';
 
     /**
      * Trailing for xhtml.
-     *
-     * @var string
      */
-    public $trail = ' --';
+    public string $trail = ' --';
 
     /**
-     *
      * @param string $comment
      */
     public function __construct($comment)

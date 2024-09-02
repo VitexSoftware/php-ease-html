@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
@@ -23,12 +34,15 @@ class InputTextTag extends InputTag implements Input
         if (!isset($properties['type'])) {
             $properties['type'] = 'text';
         }
-        if (!is_null($value)) {
+
+        if (null !== $value) {
             $properties['value'] = $value;
         }
+
         if ($name) {
             $properties['name'] = $name;
         }
+
         $this->setTagProperties($properties);
         parent::__construct($name, $value);
     }

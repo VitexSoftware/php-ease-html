@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
@@ -13,28 +24,26 @@ class OptionTag extends PairTag
 {
     /**
      * Value.
-     *
-     * @var string
      */
-    public $value = null;
+    public string $value = null;
 
     /**
      * Drop-down menu item tag.
      *
-     * @param string|mixed $content text volby
-     * @param string|int   $value   return value
+     * @param mixed|string $content text volby
+     * @param int|string   $value   return value
      */
     public function __construct($content, $value = null)
     {
         parent::__construct('option', ['value' => $value], $content);
-        $this->setObjectName($this->getObjectName() . '@' . $value);
+        $this->setObjectName($this->getObjectName().'@'.$value);
         $this->value = &$this->tagProperties['value'];
     }
 
     /**
      * Sets the default item.
      *
-     * @return boolean
+     * @return bool
      */
     public function setDefault()
     {
@@ -46,7 +55,7 @@ class OptionTag extends PairTag
      *
      * @param int|string $value return value
      */
-    public function setValue($value)
+    public function setValue($value): void
     {
         $this->value = $value;
     }

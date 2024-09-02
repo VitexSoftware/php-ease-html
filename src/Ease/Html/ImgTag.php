@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
@@ -14,16 +25,18 @@ class ImgTag extends Tag
     /**
      * Html Image.
      *
-     * @param string $image         image URL
-     * @param string $alt           alternat name for text only browsers
+     * @param string $image      image URL
+     * @param string $alt        alternat name for text only browsers
      * @param array  $properties IMG tag properties
      */
     public function __construct($image, $alt = null, $properties = [])
     {
         $properties['src'] = $image;
+
         if (isset($alt)) {
             $properties['alt'] = $alt;
         }
+
         parent::__construct('img', $properties);
     }
 
@@ -42,13 +55,13 @@ class ImgTag extends Tag
     /**
      * Convert.
      *
-     * @param string $imgRawData   raw image data
-     * @param string $contentType  mime type eg. image/gif
+     * @param string $imgRawData  raw image data
+     * @param string $contentType mime type eg. image/gif
      *
      * @return string
      */
     public static function base64src($imgRawData, $contentType)
     {
-        return 'data: ' . $contentType . ';base64,' . base64_encode($imgRawData);
+        return 'data: '.$contentType.';base64,'.base64_encode($imgRawData);
     }
 }

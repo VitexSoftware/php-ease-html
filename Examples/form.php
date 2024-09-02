@@ -1,10 +1,16 @@
 <?php
-declare (strict_types=1);
+
+declare(strict_types=1);
+
 /**
- * EaseFramework - HTML5 Input widgets Example
+ * This file is part of the EaseHtml package
  *
- * @author Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright Vitex@hippy.cz (G) 2018-2019
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Example\Ease\HTML;
@@ -33,8 +39,6 @@ $form->addItem(new \Ease\Html\InputTimeTag('time'));
 $form->addItem(new \Ease\Html\InputUrlTag('url'));
 $form->addItem(new \Ease\Html\InputWeekTag('week'));
 
-
 $form->addItem(new \Ease\Html\SubmitButton('Submit'));
-
 
 echo $form;

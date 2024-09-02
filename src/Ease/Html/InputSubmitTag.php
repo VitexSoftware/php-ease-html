@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
@@ -20,9 +31,10 @@ class InputSubmitTag extends InputTag implements Input
      */
     public function __construct($name, $value = null, $properties = [])
     {
-        if (is_null($value)) {
+        if (null === $value) {
             $value = $name;
         }
+
         $properties['type'] = 'submit';
         $properties['name'] = $name;
         $properties['value'] = $value;
@@ -34,7 +46,7 @@ class InputSubmitTag extends InputTag implements Input
      *
      * @param bool $value is ignored
      */
-    public function setValue($value = true)
+    public function setValue($value = true): void
     {
     }
 }

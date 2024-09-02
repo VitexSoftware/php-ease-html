@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
@@ -12,10 +23,10 @@ namespace Ease\Html;
 class SourceTag extends PairTag
 {
     /**
-     * Defines multiple media resources for media elements (<video> and <audio>)
+     * Defines multiple media resources for media elements (<video> and <audio>).
      *
-     * @param mixed  $content    items included
-     * @param array  $properties source tag properties
+     * @param mixed $content    items included
+     * @param array $properties source tag properties
      */
     public function __construct($content = null, $properties = [])
     {

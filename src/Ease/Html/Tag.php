@@ -2,10 +2,22 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com> */
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ */
 
 use Ease\Document;
 use Ease\Functions;
@@ -18,45 +30,28 @@ class Tag extends Document
 {
     /**
      * Tag name - is also used as an object name.
-     *
-     * @var string
      */
-    public $tagName = null;
-
-    /**
-     * Tag type - e.g. A or STRONG.
-     *
-     * @var string
-     */
-    private $tagType = null;
+    public string $tagName = null;
 
     /**
      * Tag property fields.
-     *
-     * @var array
      */
-    public $tagProperties = [];
+    public array $tagProperties = [];
 
     /**
      * the field from which the contents of the STYLE tag are rendered.
-     *
-     * @var array
      */
-    public $cssProperties = null;
+    public array $cssProperties = null;
 
     /**
      * Do not log HTML object events.
-     *
-     * @var string
      */
-    public $logType = 'none';
+    public string $logType = 'none';
 
     /**
      * Trailing for xhtml.
-     *
-     * @var string
      */
-    public $trail = ' /';
+    public string $trail = ' /';
 
     /**
      * Should the object automatically fulfill the name property?
@@ -64,23 +59,30 @@ class Tag extends Document
     public $setName = false;
 
     /**
+     * Tag type - e.g. A or STRONG.
+     */
+    private string $tagType = null;
+
+    /**
      * Object for rendering a general unpaired html tag.
      *
-     * @param string  $tagType      tag type
-     * @param array   $properties   tag properties
+     * @param string $tagType    tag type
+     * @param array  $properties tag properties
      */
     public function __construct($tagType = null, $properties = null)
     {
-        $this->setTagType(is_null($tagType) ? $this->getTagType() : $tagType);
+        $this->setTagType(null === $tagType ? $this->getTagType() : $tagType);
         parent::__construct();
+
         if ($properties) {
             $this->setTagProperties($properties);
         }
+
         $this->setObjectName();
     }
 
     /**
-     * Sets ObjectName
+     * Sets ObjectName.
      *
      * @param string $objectName object name
      *
@@ -88,19 +90,20 @@ class Tag extends Document
      */
     public function setObjectName($objectName = null)
     {
-        if (is_null($objectName) === false) {
+        if ((null === $objectName) === false) {
             $objName = parent::setObjectName($objectName);
         } else {
             if (empty($this->tagName) === false) {
-                $objName = parent::setObjectName(get_class($this) . '@' . $this->tagName);
+                $objName = parent::setObjectName(\get_class($this).'@'.$this->tagName);
             } else {
                 if (empty($this->tagType) === false) {
-                    $objName = parent::setObjectName(get_class($this) . '@' . $this->tagType);
+                    $objName = parent::setObjectName(\get_class($this).'@'.$this->tagType);
                 } else {
                     $objName = parent::setObjectName();
                 }
             }
         }
+
         return $objName;
     }
 
@@ -109,12 +112,14 @@ class Tag extends Document
      *
      * @param string $tagName he name of the tag in the property NAME
      */
-    public function setTagName($tagName)
+    public function setTagName($tagName): void
     {
         $this->tagName = $tagName;
+
         if ($this->setName) {
             $this->tagProperties['name'] = $tagName;
         }
+
         $this->setObjectName();
     }
 
@@ -133,7 +138,7 @@ class Tag extends Document
      *
      * @param string $tagType tag type e.g. img
      */
-    public function setTagType($tagType)
+    public function setTagType($tagType): void
     {
         $this->tagType = $tagType;
     }
@@ -153,7 +158,7 @@ class Tag extends Document
      *
      * @param string $className jméno css třídy
      */
-    public function setTagClass($className)
+    public function setTagClass($className): void
     {
         $this->setTagProperties(['class' => $className]);
     }
@@ -163,9 +168,9 @@ class Tag extends Document
      *
      * @param string $className jméno css třídy
      */
-    public function addTagClass($className)
+    public function addTagClass($className): void
     {
-        $this->setTagClass(trim($this->getTagClass() . ' ' . $className));
+        $this->setTagClass(trim($this->getTagClass().' '.$className));
     }
 
     /**
@@ -185,7 +190,8 @@ class Tag extends Document
      */
     public function setTagID($tagID = null)
     {
-        $this->setTagProperties(['id' => is_null($tagID) ? Functions::randomString() : $tagID]);
+        $this->setTagProperties(['id' => null === $tagID ? Functions::randomString() : $tagID]);
+
         return $this->getTagID();
     }
 
@@ -205,11 +211,12 @@ class Tag extends Document
      * @param string $name
      * @param string $value
      *
-     * @return boolean
+     * @return bool
      */
     public function setTagProperty($name, $value)
     {
         $this->tagProperties[$name] = $value;
+
         return true;
     }
 
@@ -222,7 +229,7 @@ class Tag extends Document
      */
     public function getTagProperty($propertyName)
     {
-        return array_key_exists($propertyName, $this->tagProperties) ? $this->tagProperties[$propertyName] : null;
+        return \array_key_exists($propertyName, $this->tagProperties) ? $this->tagProperties[$propertyName] : null;
     }
 
     /**
@@ -230,7 +237,7 @@ class Tag extends Document
      *
      * @param array $properties associative array of tag parameters
      *
-     * @return boolean operation success
+     * @return bool operation success
      */
     public function setTagProperties(array $properties)
     {
@@ -238,17 +245,19 @@ class Tag extends Document
             $properties['id'] = preg_replace(
                 '/[^A-Za-z0-9_\\-]/',
                 '',
-                $properties['id']
+                $properties['id'],
             );
         }
+
         $this->tagProperties = empty($this->tagProperties) ? $properties : array_merge(
             $this->tagProperties,
-            $properties
+            $properties,
         );
 
         if (isset($properties['name'])) {
             $this->setTagName($properties['name']);
         }
+
         return true;
     }
 
@@ -260,9 +269,11 @@ class Tag extends Document
     public function tagPropertiesToString()
     {
         $props = [];
+
         foreach ($this->tagProperties as $propName => $propValue) {
-            $props[] = is_string($propName) ? $propName . '="' . $propValue . '"' : $propValue;
+            $props[] = \is_string($propName) ? $propName.'="'.$propValue.'"' : $propValue;
         }
+
         return implode(' ', $props);
     }
 
@@ -271,7 +282,7 @@ class Tag extends Document
      *
      * @param array $cssProperties asociative feild, or CSS definition
      */
-    public function setTagCss(array $cssProperties)
+    public function setTagCss(array $cssProperties): void
     {
         $this->cssProperties = $cssProperties;
         $this->setTagProperties(['style' => $this->cssPropertiesToString()]);
@@ -289,21 +300,25 @@ class Tag extends Document
         if (!$cssProperties) {
             $cssProperties = $this->cssProperties;
         }
+
         $cssPropertiesString = ' ';
+
         foreach ($cssProperties as $cssPropertyName => $cssPropertiesssPropertyValue) {
-            $cssPropertiesString .= $cssPropertyName . ':' . $cssPropertiesssPropertyValue . ';';
+            $cssPropertiesString .= $cssPropertyName.':'.$cssPropertiesssPropertyValue.';';
         }
+
         return trim($cssPropertiesString);
     }
 
     /**
      * Add Css to tag properties.
      */
-    public function finalize()
+    public function finalize(): void
     {
         if (!empty($this->cssProperties)) {
             $this->setTagProperties(['style' => $this->cssPropertiesToString()]);
         }
+
         parent::finalize();
     }
 
@@ -312,9 +327,10 @@ class Tag extends Document
      */
     public function draw()
     {
-        echo '<' . trim($this->tagType . ' ' . $this->tagPropertiesToString());
-        echo $this->trail . '>';
+        echo '<'.trim($this->tagType.' '.$this->tagPropertiesToString());
+        echo $this->trail.'>';
         $this->drawStatus = true;
+
         return '';
     }
 }
