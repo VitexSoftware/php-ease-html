@@ -97,10 +97,8 @@ class Form extends PairTag
 
     /**
      * Fills up inserted objects with data.
-     *
-     * @param string $data asociative data field
      */
-    public function fillUp($data = null): void
+    public function fillUp(array $data): void
     {
         if (null === $data) {
             $data = $this->getData();
@@ -112,10 +110,10 @@ class Form extends PairTag
     /**
      * Goes through all inserted objects and if their names match the data keys, sets up a value.
      *
-     * @param array                 $data asociative data field
+     * @param array                 $data associative data field
      * @param \Ease\Container|mixed $form form to be filled
      */
-    public static function fillMeUp($data, &$form): void
+    public static function fillMeUp(array $data, &$form): void
     {
         if (!empty($form->pageParts)) {
             foreach ($form->pageParts as $partName => $part) {
