@@ -64,10 +64,8 @@ class SelectTag extends PairTag implements Input
 
     /**
      * Bulk insert items.
-     *
-     * @param array $items selection items
      */
-    public function addItems($items): void
+    public function addItems(array $items): void
     {
         foreach ($items as $itemName => $itemValue) {
             $newItem = $this->addItem(new OptionTag($itemValue, $itemName));
@@ -93,7 +91,7 @@ class SelectTag extends PairTag implements Input
      *
      * @param string $value the set value
      */
-    public function setValue($value): void
+    public function setValue(string $value): void
     {
         if (empty(trim($value)) === false) {
             foreach ($this->pageParts as $option) {
@@ -117,7 +115,7 @@ class SelectTag extends PairTag implements Input
     }
 
     /**
-     * Inserta loaded items.
+     * Insert loaded items.
      */
     public function finalize(): void
     {

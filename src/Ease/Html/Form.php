@@ -56,14 +56,14 @@ class Form extends PairTag
     }
 
     /**
-     * Tryes to find tag of the given name in inserted objects.
+     * Try to find tag of the given name in inserted objects.
      *
      * @param string          $searchFor searched elements name
      * @param \Ease\Container $where     object in where the search happens
      *
      * @return null|\Ease\Container
      */
-    public function &objectContentSearch($searchFor, $where = null)
+    public function &objectContentSearch(string $searchFor, $where = null)
     {
         if (null === $where) {
             $where = &$this;
@@ -131,7 +131,7 @@ class Form extends PairTag
                         $tagName = $part->getTagName();
 
                         if (isset($data[$tagName])) {
-                            $part->setValue($data[$tagName], true);
+                            $part->setValue((string)$data[$tagName], true);
                         }
                     }
 
