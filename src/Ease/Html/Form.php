@@ -131,7 +131,7 @@ class Form extends PairTag
                         $tagName = $part->getTagName();
 
                         if (isset($data[$tagName])) {
-                            $part->setValue((string)$data[$tagName], true);
+                            $part->setValue((string) $data[$tagName], true);
                         }
                     }
 
