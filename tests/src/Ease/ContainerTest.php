@@ -26,7 +26,7 @@ class ContainerTest extends SandTest
      * What we want to get ?
      */
     public string $rendered = '';
-    protected Container $object;
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

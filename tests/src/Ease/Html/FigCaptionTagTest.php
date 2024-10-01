@@ -22,8 +22,8 @@ use Ease\Html\FigCaptionTag;
  */
 class FigCaptionTagTest extends PairTagTest
 {
-    public $rendered = '<figcaption></figcaption>';
-    protected FigCaptionTag $object;
+    public string $rendered = '<figcaption></figcaption>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

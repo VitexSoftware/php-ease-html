@@ -26,7 +26,7 @@ class TagTest extends DocumentTest
      * What we want to get ?
      */
     public string $rendered = '< />';
-    protected Tag $object;
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -81,7 +81,7 @@ class TagTest extends DocumentTest
             $type = 'type';
         }
 
-        $this->object->setTagName(null);
+        $this->object->setTagName('');
         $this->object->setTagType($type);
         $this->assertEquals(
             \get_class($this->object).'@'.$type,
@@ -110,7 +110,7 @@ class TagTest extends DocumentTest
      */
     public function testGetTagName(): void
     {
-        $this->assertNull($this->object->getTagName());
+        $this->assertEmpty($this->object->getTagName());
         $this->object->setName = true;
         $this->object->setTagName('Test');
         $this->assertEquals('Test', $this->object->getTagName());

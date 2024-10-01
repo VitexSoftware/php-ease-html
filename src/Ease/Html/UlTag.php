@@ -38,7 +38,8 @@ class UlTag extends PairTag
      *
      * @param array $itemsArray field of values or EaseObjektů with draw() method
      */
-    public function addItems($itemsArray)
+    #[\Override]
+    public function addItems($itemsArray): array
     {
         $itemsAdded = [];
 

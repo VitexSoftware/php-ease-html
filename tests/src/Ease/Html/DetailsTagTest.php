@@ -22,8 +22,8 @@ use Ease\Html\DetailsTag;
  */
 class DetailsTagTest extends PairTagTest
 {
-    public $rendered = '<details></details>';
-    protected ArticleTag $object;
+    public string $rendered = '<details></details>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

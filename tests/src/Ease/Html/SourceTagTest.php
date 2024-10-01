@@ -22,8 +22,8 @@ use Ease\Html\SourceTag;
  */
 class SourceTagTest extends PairTagTest
 {
-    public $rendered = '<source></source>';
-    protected SourceTag $object;
+    public string $rendered = '<source></source>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class StrongTagTest extends PairTagTest
 {
-    public $rendered = '<strong></strong>';
-    protected StrongTag $object;
+    public string $rendered = '<strong></strong>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

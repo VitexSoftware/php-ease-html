@@ -22,8 +22,8 @@ use Ease\Html\SvgTag;
  */
 class SvgTagTest extends PairTagTest
 {
-    public $rendered = '<svg></svg>';
-    protected SvgTag $object;
+    public string $rendered = '<svg></svg>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

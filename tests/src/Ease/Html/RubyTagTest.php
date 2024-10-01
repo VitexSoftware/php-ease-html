@@ -22,8 +22,8 @@ use Ease\Html\RubyTag;
  */
 class RubyTagTest extends PairTagTest
 {
-    public $rendered = '<ruby></ruby>';
-    protected RubyTag $object;
+    public string $rendered = '<ruby></ruby>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

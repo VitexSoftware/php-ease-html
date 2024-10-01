@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class OlTagTest extends PairTagTest
 {
-    public $rendered = '<ol></ol>';
-    protected OlTag $object;
+    public string $rendered = '<ol></ol>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

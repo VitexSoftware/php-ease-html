@@ -18,7 +18,7 @@ namespace Ease\Html;
 /**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * Html Fieldset.
+ * Html FieldSet.
  */
 class FieldSet extends PairTag
 {
@@ -30,7 +30,7 @@ class FieldSet extends PairTag
     /**
      * Object with legend tag.
      */
-    public PairTag $legendTag = null;
+    public PairTag $legendTag;
 
     /**
      * Frame content.

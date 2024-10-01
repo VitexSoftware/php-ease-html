@@ -31,7 +31,7 @@ class Tag extends Document
     /**
      * Tag name - is also used as an object name.
      */
-    public string $tagName = null;
+    public string $tagName = '';
 
     /**
      * Tag property fields.
@@ -41,7 +41,7 @@ class Tag extends Document
     /**
      * the field from which the contents of the STYLE tag are rendered.
      */
-    public array $cssProperties = null;
+    public array $cssProperties = [];
 
     /**
      * Do not log HTML object events.
@@ -56,12 +56,12 @@ class Tag extends Document
     /**
      * Should the object automatically fulfill the name property?
      */
-    public $setName = false;
+    public bool $setName = false;
 
     /**
      * Tag type - e.g. A or STRONG.
      */
-    private string $tagType = null;
+    private string $tagType = '';
 
     /**
      * Object for rendering a general unpaired html tag.

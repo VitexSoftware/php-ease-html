@@ -22,8 +22,8 @@ use Ease\Html\MarkTag;
  */
 class MarkTagTest extends PairTagTest
 {
-    public $rendered = '<mark></mark>';
-    protected MarkTag $object;
+    public string $rendered = '<mark></mark>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

@@ -22,8 +22,8 @@ use Ease\Html\TrackTag;
  */
 class TrackTagTest extends PairTagTest
 {
-    public $rendered = '<track></track>';
-    protected TrackTag $object;
+    public string $rendered = '<track></track>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

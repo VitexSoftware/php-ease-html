@@ -22,8 +22,8 @@ use Ease\Html\BodyTag;
  */
 class BodyTagTest extends PairTagTest
 {
-    public $rendered = '<body></body>';
-    protected BodyTag $object;
+    public string $rendered = '<body></body>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

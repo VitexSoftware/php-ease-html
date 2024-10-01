@@ -22,8 +22,8 @@ use Ease\Html\FigureTag;
  */
 class FigureTagTest extends PairTagTest
 {
-    public $rendered = '<figure></figure>';
-    protected FigureTag $object;
+    public string $rendered = '<figure></figure>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

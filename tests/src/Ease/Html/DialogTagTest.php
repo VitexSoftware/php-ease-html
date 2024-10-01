@@ -22,8 +22,8 @@ use Ease\Html\DialogTag;
  */
 class DialogTagTest extends PairTagTest
 {
-    public $rendered = '<dialog></dialog>';
-    protected DialogTag $object;
+    public string $rendered = '<dialog></dialog>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

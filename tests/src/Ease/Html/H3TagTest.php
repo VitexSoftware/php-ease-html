@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class H3TagTest extends PairTagTest
 {
-    public $rendered = '<h3></h3>';
-    protected H3Tag $object;
+    public string $rendered = '<h3></h3>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

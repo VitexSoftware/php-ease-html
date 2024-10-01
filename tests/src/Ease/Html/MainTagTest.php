@@ -22,8 +22,8 @@ use Ease\Html\MainTag;
  */
 class MainTagTest extends PairTagTest
 {
-    public $rendered = '<main></main>';
-    protected MainTag $object;
+    public string $rendered = '<main></main>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

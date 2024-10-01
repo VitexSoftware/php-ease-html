@@ -22,8 +22,8 @@ use Ease\Html\BdiTag;
  */
 class BdiTagTest extends PairTagTest
 {
-    public $rendered = '<bdi></bdi>';
-    protected ArticleTag $object;
+    public string $rendered = '<bdi></bdi>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

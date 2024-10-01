@@ -22,8 +22,8 @@ use Ease\Html\FieldSet;
  */
 class FieldSetTest extends PairTagTest
 {
-    public $rendered = '<fieldset><legend>test</legend>content</fieldset>';
-    protected FieldSet $object;
+    public string $rendered = '<fieldset><legend>test</legend>content</fieldset>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

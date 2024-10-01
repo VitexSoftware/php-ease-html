@@ -22,8 +22,8 @@ use Ease\Html\Form;
  */
 class FormTest extends PairTagTest
 {
-    public $rendered = '<form name="test" action="test.php" method="POST"></form>';
-    protected Form $object;
+    public string $rendered = '<form name="test" action="test.php" method="POST"></form>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

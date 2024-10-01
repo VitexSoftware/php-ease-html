@@ -25,17 +25,17 @@ class TableTag extends PairTag
     /**
      * Table header.
      */
-    public Thead $tHead = null;
+    public Thead $tHead;
 
     /**
      * Table Body.
      */
-    public Tbody $tBody = null;
+    public Tbody $tBody;
 
     /**
      * Table Foot.
      */
-    public Tfoot $tFoot = null;
+    public Tfoot $tFoot;
 
     /**
      * Html Table.

@@ -22,8 +22,8 @@ use Ease\Html\InputSubmitTag;
  */
 class InputSubmitTagTest extends InputTagTest
 {
-    public $rendered = '<input name="test" type="submit" value="test" />';
-    protected InputSubmitTag $object;
+    public string $rendered = '<input name="test" type="submit" value="test" />';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

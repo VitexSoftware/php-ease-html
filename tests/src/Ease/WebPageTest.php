@@ -22,8 +22,8 @@ use Ease\WebPage;
  */
 class WebPageTest extends DocumentTest
 {
-    public $rendered = '<!DOCTYPE html><html lang="cs"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title></head><body></body></html>';
-    protected WebPage $object;
+    public string $rendered = '<!DOCTYPE html><html lang="cs"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title></head><body></body></html>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

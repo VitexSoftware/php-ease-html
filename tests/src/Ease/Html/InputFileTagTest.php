@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class InputFileTagTest extends InputTagTest
 {
-    public $rendered = '<input name="test" type="file" />';
-    protected InputFileTag $object;
+    public string $rendered = '<input name="test" type="file" />';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

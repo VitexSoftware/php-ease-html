@@ -22,8 +22,8 @@ use Ease\Html\HeaderTag;
  */
 class HeaderTagTest extends PairTagTest
 {
-    public $rendered = '<header></header>';
-    protected HeaderTag $object;
+    public string $rendered = '<header></header>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

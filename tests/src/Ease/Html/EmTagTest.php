@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class EmTagTest extends PairTagTest
 {
-    public $rendered = '<em></em>';
-    protected EmTag $object;
+    public string $rendered = '<em></em>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

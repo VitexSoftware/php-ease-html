@@ -22,8 +22,8 @@ use Ease\Html\InputDateTimeTag;
  */
 class InputDateTimeTagTest extends InputTagTest
 {
-    public $rendered = '<input name="when" type="datetime" value="DATE" />';
-    protected InputDateTimeTag $object;
+    public string $rendered = '<input name="when" type="datetime" value="DATE" />';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

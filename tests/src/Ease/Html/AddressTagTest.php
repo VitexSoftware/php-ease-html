@@ -22,8 +22,8 @@ use Ease\Html\AddressTag;
  */
 class AddressTagTest extends PairTagTest
 {
-    public $rendered = '<address></address>';
-    protected AddressTag $object;
+    public string $rendered = '<address></address>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

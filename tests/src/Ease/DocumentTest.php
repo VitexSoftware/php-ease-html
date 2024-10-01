@@ -25,7 +25,7 @@ use Ease\WebPage;
  */
 class DocumentTest extends ContainerTest
 {
-    protected Document $object;
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -70,7 +70,7 @@ class DocumentTest extends ContainerTest
         $this->assertEquals(0, $this->object->addJavaScript('alert("hallo");'));
         $this->assertEquals(
             0,
-            $this->object->addJavaScript('alert("Document");', false),
+            $this->object->addJavaScript('alert("Document");', null, false),
         );
     }
 

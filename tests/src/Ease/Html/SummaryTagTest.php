@@ -22,8 +22,8 @@ use Ease\Html\SummaryTag;
  */
 class SummaryTagTest extends PairTagTest
 {
-    public $rendered = '<summary></summary>';
-    protected SummaryTag $object;
+    public string $rendered = '<summary></summary>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

@@ -22,8 +22,8 @@ use Ease\Html\KeygenTag;
  */
 class KeygenTagTest extends PairTagTest
 {
-    public $rendered = '<keygen></keygen>';
-    protected KeygenTag $object;
+    public string $rendered = '<keygen></keygen>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class InputHiddenTagTest extends InputTagTest
 {
-    public $rendered = '<input name="test" value="value" type="hidden" />';
-    protected InputHiddenTag $object;
+    public string $rendered = '<input name="test" value="value" type="hidden" />';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

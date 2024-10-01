@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class SubmitButtonTest extends InputTagTest
 {
-    public $rendered = '<input type="submit" name="test" value="test" />';
-    protected SubmitButton $object;
+    public string $rendered = '<input type="submit" name="test" value="test" />';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

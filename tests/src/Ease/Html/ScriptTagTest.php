@@ -20,12 +20,12 @@ namespace Test\Ease\Html;
  */
 class ScriptTagTest extends PairTagTest
 {
-    public $rendered = <<<'EOD'
+    public string $rendered = <<<'EOD'
 <script>// <![CDATA[
 
 // ]]></script>
 EOD;
-    protected ScriptTag $object;
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class SimpleHeadTagTest extends PairTagTest
 {
-    public $rendered = '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>';
-    protected SimpleHeadTag $object;
+    public string $rendered = '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

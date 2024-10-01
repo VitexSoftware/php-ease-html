@@ -137,15 +137,15 @@ class Container extends Sand implements Embedable
     }
 
     /**
-     * Insert an array of elemnts.
+     * Insert an array of elements.
      *
-     * @param array $itemsArray value field or EaseObject with draw () method
+     * @param array $itemes value field or EaseObject with draw () method
      */
-    public function addItems($itemsArray)
+    public function addItems(array $itemes): array
     {
         $itemsAdded = [];
 
-        foreach ($itemsArray as $itemID => $item) {
+        foreach ($itemes as $itemID => $item) {
             $itemsAdded[$itemID] = $this->addItem($item);
         }
 

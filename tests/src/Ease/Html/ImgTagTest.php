@@ -22,8 +22,8 @@ use Ease\Html\ImgTag;
  */
 class ImgTagTest extends TagTest
 {
-    public $rendered = '<img src="http://localhost/favicon.png" />';
-    protected ImgTag $object;
+    public string $rendered = '<img src="http://localhost/favicon.png" />';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

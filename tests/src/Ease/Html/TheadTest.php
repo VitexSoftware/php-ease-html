@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class TheadTest extends PairTagTest
 {
-    public $rendered = '<thead></thead>';
-    protected Thead $object;
+    public string $rendered = '<thead></thead>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

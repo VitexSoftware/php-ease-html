@@ -22,8 +22,8 @@ use Ease\Html\MeterTag;
  */
 class MeterTagTest extends PairTagTest
 {
-    public $rendered = '<meter></meter>';
-    protected MeterTag $object;
+    public string $rendered = '<meter></meter>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

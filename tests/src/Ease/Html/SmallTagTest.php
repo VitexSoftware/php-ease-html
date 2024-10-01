@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class SmallTagTest extends PairTagTest
 {
-    public $rendered = '<small></small>';
-    protected SmallTag $object;
+    public string $rendered = '<small></small>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

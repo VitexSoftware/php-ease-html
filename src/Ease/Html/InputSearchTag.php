@@ -25,7 +25,7 @@ class InputSearchTag extends InputTag implements Input
     /**
      * URL data source for the hinter.
      */
-    public string $dataSourceURL = null;
+    public string $dataSourceURL = '';
 
     /**
      * Displays a tag for the search box.

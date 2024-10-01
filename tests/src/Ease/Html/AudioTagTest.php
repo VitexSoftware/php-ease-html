@@ -22,8 +22,8 @@ use Ease\Html\AudioTag;
  */
 class AudioTagTest extends PairTagTest
 {
-    public $rendered = '<audio></audio>';
-    protected AudioTag $object;
+    public string $rendered = '<audio></audio>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

@@ -25,7 +25,7 @@ interface Input
      *
      * @param string $value return value
      */
-    public function setValue($value);
+    public function setValue(string $value);
 
     /**
      * Returns the value of an input field.

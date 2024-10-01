@@ -23,7 +23,7 @@ class Document extends Container
     /**
      * A link to the base object of the page.
      */
-    public static WebPage $webPage = null;
+    public static WebPage $webPage;
 
     /**
      * Which objects to take over from the accepting object.
@@ -33,7 +33,7 @@ class Document extends Container
     /**
      * A link to the last element added.
      */
-    public object $lastItem = null;
+    public object $lastItem;
 
     /**
      * Is page closed for adding new contents?
@@ -43,17 +43,17 @@ class Document extends Container
     /**
      * Array of links to all embedded objects.
      *
-     * @var array pole odkazů
+     * @var array of pointers to all items to be rendered
      */
     public static array $allItems = [];
 
     /**
-     * Saves obejct instace (singleton...).
+     * Saves object instance (singleton...).
      */
     private static $instance;
 
     /**
-     * Inserts javascript into the page.
+     * Inserts JavaScript into the page.
      *
      * @param string $javaScript      JS code
      * @param string $position        final position: '+','-','0','--',...
@@ -62,9 +62,9 @@ class Document extends Container
      * @return int
      */
     public function addJavaScript(
-        $javaScript,
-        $position = null,
-        $inDocumentReady = true
+        string $javaScript,
+        ?int $position = null,
+        bool $inDocumentReady = true
     ) {
         return WebPage::singleton()->addJavaScript(
             $javaScript,

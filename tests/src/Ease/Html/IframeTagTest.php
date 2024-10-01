@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class IframeTagTest extends PairTagTest
 {
-    public $rendered = '<iframe src="http://v.s.cz/"></iframe>';
-    protected IframeTag $object;
+    public string $rendered = '<iframe src="http://v.s.cz/"></iframe>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

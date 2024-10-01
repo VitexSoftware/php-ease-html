@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class OptionTagTest extends \Test\Ease\Html\PairTagTest
 {
-    public $rendered = '<option value="">test</option>';
-    protected OptionTag $object;
+    public string $rendered = '<option value="">test</option>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

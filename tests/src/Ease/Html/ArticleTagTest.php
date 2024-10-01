@@ -22,8 +22,8 @@ use Ease\Html\ArticleTag;
  */
 class ArticleTagTest extends PairTagTest
 {
-    public $rendered = '<article></article>';
-    protected ArticleTag $object;
+    public string $rendered = '<article></article>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

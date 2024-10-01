@@ -22,8 +22,8 @@ use Ease\Html\DivTag;
  */
 class DivTagTest extends PairTagTest
 {
-    public $rendered = '<div></div>';
-    protected DivTag $object;
+    public string $rendered = '<div></div>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

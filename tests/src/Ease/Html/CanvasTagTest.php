@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class CanvasTagTest extends PairTagTest
 {
-    public $rendered = '<canvas></canvas>';
-    protected CanvasTag $object;
+    public string $rendered = '<canvas></canvas>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class SelectTagTest extends PairTagTest
 {
-    public $rendered = '<select name="test"><option value="a">A</option><option value="b">B</option></select>';
-    protected SelectTag $object;
+    public string $rendered = '<select name="test"><option value="a">A</option><option value="b">B</option></select>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

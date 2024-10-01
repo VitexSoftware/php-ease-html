@@ -22,8 +22,8 @@ use Ease\Html\ProgressTag;
  */
 class ProgressTagTest extends PairTagTest
 {
-    public $rendered = '<progress></progress>';
-    protected ProgressTag $object;
+    public string $rendered = '<progress></progress>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

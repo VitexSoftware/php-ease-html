@@ -22,8 +22,8 @@ use Ease\Html\CheckboxTag;
  */
 class CheckboxTagTest extends InputTagTest
 {
-    public $rendered = '<input type="checkbox" checked name="test" />';
-    protected CheckboxTag $object;
+    public string $rendered = '<input type="checkbox" checked name="test" />';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

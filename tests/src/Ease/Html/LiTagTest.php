@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class LiTagTest extends PairTagTest
 {
-    public $rendered = '<li></li>';
-    protected LiTag $object;
+    public string $rendered = '<li></li>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

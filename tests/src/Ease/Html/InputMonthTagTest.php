@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class InputMonthTagTest extends InputTagTest
 {
-    public $rendered = '<input name="test" type="month" value="06" />';
-    protected InputMonthTag $object;
+    public string $rendered = '<input name="test" type="month" value="06" />';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

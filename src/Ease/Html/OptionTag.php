@@ -25,15 +25,12 @@ class OptionTag extends PairTag
     /**
      * Value.
      */
-    public string $value = null;
+    public string $value = '';
 
     /**
      * Drop-down menu item tag.
-     *
-     * @param mixed|string $content text volby
-     * @param int|string   $value   return value
      */
-    public function __construct($content, $value = null)
+    public function __construct(string $content = '', string $value = '')
     {
         parent::__construct('option', ['value' => $value], $content);
         $this->setObjectName($this->getObjectName().'@'.$value);

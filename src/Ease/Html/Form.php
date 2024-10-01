@@ -25,14 +25,14 @@ class Form extends PairTag
      *
      * @var string URL form goal
      */
-    public string $formTarget = null;
+    public string $formTarget = '';
 
     /**
      * sending method.
      *
      * @var string GET|POST
      */
-    public string $formMethod = null;
+    public string $formMethod = '';
 
     /**
      * Sets up form name.

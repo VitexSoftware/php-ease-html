@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class WbrTagTest extends PairTagTest
 {
-    public $rendered = '<wbr></wbr>';
-    protected WbrTag $object;
+    public string $rendered = '<wbr></wbr>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

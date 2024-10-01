@@ -26,7 +26,7 @@ class ATagTest extends PairTagTest
      * What we want to get ?
      */
     public string $rendered = '<a href="http://v.s.cz/">Vitex Software</a>';
-    protected ATag $object;
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

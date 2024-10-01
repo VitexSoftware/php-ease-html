@@ -22,8 +22,8 @@ use Ease\Html\VideoTag;
  */
 class VideoTagTest extends PairTagTest
 {
-    public $rendered = '<video></video>';
-    protected VideoTag $object;
+    public string $rendered = '<video></video>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

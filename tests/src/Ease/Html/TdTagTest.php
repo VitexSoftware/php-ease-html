@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class TdTagTest extends PairTagTest
 {
-    public $rendered = '<td></td>';
-    protected TdTag $object;
+    public string $rendered = '<td></td>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

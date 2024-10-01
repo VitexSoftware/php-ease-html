@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class TbodyTest extends PairTagTest
 {
-    public $rendered = '<tbody></tbody>';
-    protected Tbody $object;
+    public string $rendered = '<tbody></tbody>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

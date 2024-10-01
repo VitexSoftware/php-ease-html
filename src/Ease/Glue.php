@@ -42,7 +42,7 @@ trait Glue
      * @param Embedable|string $pageItem value or EaseObject with draw () method
      * @param Embedable        $context  Object into which elements / items are inserted
      *
-     * @return mixed Odkaz na vložený objekt
+     * @return mixed Pointer to embed object
      */
     public static function &addItemCustom($pageItem, Embedable $context)
     {
@@ -55,7 +55,7 @@ trait Glue
                 $pageItemName = key(\array_slice($context->pageParts, -1, 1, true));
 
                 $context->pageParts[$pageItemName]->parentObject = &$context;
-                $context->pageParts[$pageItemName]->setEmbedName($pageItemName);
+                $context->pageParts[$pageItemName]->setEmbedName((string)$pageItemName);
                 $context->pageParts[$pageItemName]->afterAdd();
 
                 $itemPointer = &$context->pageParts[$pageItemName];

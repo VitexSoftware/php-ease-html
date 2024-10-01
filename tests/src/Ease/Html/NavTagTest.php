@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class NavTagTest extends PairTagTest
 {
-    public $rendered = '<nav></nav>';
-    protected NavTag $object;
+    public string $rendered = '<nav></nav>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

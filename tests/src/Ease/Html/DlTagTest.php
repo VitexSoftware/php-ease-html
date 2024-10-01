@@ -22,8 +22,8 @@ use Ease\Html\DlTag;
  */
 class DlTagTest extends PairTagTest
 {
-    public $rendered = '<dl></dl>';
-    protected DlTag $object;
+    public string $rendered = '<dl></dl>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

@@ -22,8 +22,8 @@ use Ease\Html\InputSearchTag;
  */
 class InputSearchTagTest extends InputTagTest
 {
-    public $rendered = '<input name="test" type="search" value="query" />';
-    protected InputSearchTag $object;
+    public string $rendered = '<input name="test" type="search" value="query" />';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

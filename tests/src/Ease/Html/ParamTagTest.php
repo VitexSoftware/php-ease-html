@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class ParamTagTest extends TagTest
 {
-    public $rendered = '<param name="test" value="value" />';
-    protected ParamTag $object;
+    public string $rendered = '<param name="test" value="value" />';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

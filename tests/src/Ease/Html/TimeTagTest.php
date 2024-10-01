@@ -22,8 +22,8 @@ use Ease\Html\TimeTag;
  */
 class TimeTagTest extends PairTagTest
 {
-    public $rendered = '<time></time>';
-    protected TimeTag $object;
+    public string $rendered = '<time></time>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

@@ -22,8 +22,8 @@ use Ease\Html\ButtonTag;
  */
 class ButtonTagTest extends PairTagTest
 {
-    public $rendered = '<button>Test</button>';
-    protected ButtonTag $object;
+    public string $rendered = '<button>Test</button>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

@@ -22,8 +22,8 @@ use Ease\Html\DatalistTag;
  */
 class DatalistTagTest extends PairTagTest
 {
-    public $rendered = '<datalist></datalist>';
-    protected ArticleTag $object;
+    public string $rendered = '<datalist></datalist>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

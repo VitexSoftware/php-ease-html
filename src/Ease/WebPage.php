@@ -36,42 +36,42 @@ class WebPage extends Document
     /**
      * JavaScripts to be in page.
      */
-    public array $javaScripts = null;
+    public array $javaScripts = [];
 
     /**
      * CSS fields to render.
      */
-    public array $cascadeStyles = null;
+    public array $cascadeStyles = [];
 
     /**
      * Page title.
      */
-    public string $pageTitle = null;
+    public string $pageTitle = '';
 
     /**
      * Page head.
      */
-    public HeadTag $head = null;
+    public HeadTag $head;
 
     /**
      * The object of the page body itself.
      */
-    public BodyTag $body = null;
+    public BodyTag $body;
 
     /**
      * Do not connect to the DB.
      *
      * @var bool|string
      */
-    public $myTable = false;
+    public string $myTable = '';
 
     /**
-     * Default javascripts location in Debian.
+     * Default JavaScripts location in Debian.
      */
     public string $jsPrefix = '/javascript/';
 
     /**
-     * Default CSS locaton in Debian.
+     * Default CSS location in Debian.
      */
     public string $cssPrefix = '/javascript/';
 
@@ -82,11 +82,8 @@ class WebPage extends Document
 
     /**
      * Content to place inside of body.
-     *
-     * @param $pageTitle string
-     * @param $toBody    mixed
      */
-    public function __construct($pageTitle = null, $toBody = [])
+    public function __construct(string $pageTitle = '', array $toBody = [])
     {
         $this->setPageTitle($pageTitle);
         parent::__construct();

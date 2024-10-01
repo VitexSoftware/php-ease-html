@@ -27,7 +27,7 @@ class InputTag extends Tag implements Input
      *
      * @author Vítězslav Dvořák <vitex@hippy.cz>
      */
-    public $setName = true;
+    public bool $setName = true;
 
     /**
      * General input TAG.

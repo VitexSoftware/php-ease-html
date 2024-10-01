@@ -25,7 +25,7 @@ class InputRadioTag extends InputTag implements Input
     /**
      * Return value.
      */
-    public string $value = null;
+    public string $value = '';
 
     /**
      * Radio button.

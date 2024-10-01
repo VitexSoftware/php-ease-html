@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class InputPasswordTagTest extends InputTagTest
 {
-    public $rendered = '<input type="password" value="secret" name="test" />';
-    protected InputPasswordTag $object;
+    public string $rendered = '<input type="password" value="secret" name="test" />';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

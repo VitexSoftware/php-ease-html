@@ -22,8 +22,8 @@ use Ease\Html\InputRadioTag;
  */
 class InputRadioTagTest extends InputTagTest
 {
-    public $rendered = '<input name="choose" value="test" type="radio" />';
-    protected InputRadioTag $object;
+    public string $rendered = '<input name="choose" value="test" type="radio" />';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

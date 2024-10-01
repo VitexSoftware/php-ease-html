@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class LabelTagTest extends PairTagTest
 {
-    public $rendered = '<label for="test"></label>';
-    protected LabelTag $object;
+    public string $rendered = '<label for="test"></label>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

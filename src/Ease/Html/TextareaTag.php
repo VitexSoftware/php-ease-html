@@ -26,7 +26,7 @@ class TextareaTag extends PairTag implements Input
      * Link to content.
      */
     public $content;
-    public $setName = true;
+    public bool $setName = true;
 
     /**
      * Text area.

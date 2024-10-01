@@ -22,8 +22,8 @@ use Ease\Html\EmbedTag;
  */
 class EmbedTagTest extends PairTagTest
 {
-    public $rendered = '<embed></embed>';
-    protected EmbedTag $object;
+    public string $rendered = '<embed></embed>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

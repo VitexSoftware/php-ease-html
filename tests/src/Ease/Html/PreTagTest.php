@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class PreTagTest extends PairTagTest
 {
-    public $rendered = '<pre></pre>';
-    protected PreTag $object;
+    public string $rendered = '<pre></pre>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

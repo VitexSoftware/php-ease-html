@@ -20,12 +20,12 @@ namespace Test\Ease\Html;
  */
 class JavaScriptTest extends ScriptTagTest
 {
-    public $rendered = <<<'EOD'
+    public string $rendered = <<<'EOD'
 <script type="text/javascript">// <![CDATA[
 alert("hallo")
 // ]]></script>
 EOD;
-    protected JavaScript $object;
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

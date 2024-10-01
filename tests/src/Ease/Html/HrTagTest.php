@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class HrTagTest extends TagTest
 {
-    public $rendered = '<hr />';
-    protected HrTag $object;
+    public string $rendered = '<hr />';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

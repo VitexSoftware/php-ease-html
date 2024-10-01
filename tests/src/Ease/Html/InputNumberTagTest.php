@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class InputNumberTagTest extends InputTagTest
 {
-    public $rendered = '<input name="test" type="number" value="12" />';
-    protected InputNumberTag $object;
+    public string $rendered = '<input name="test" type="number" value="12" />';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

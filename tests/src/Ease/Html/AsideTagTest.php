@@ -22,8 +22,8 @@ use Ease\Html\AsideTag;
  */
 class AsideTagTest extends PairTagTest
 {
-    public $rendered = '<aside></aside>';
-    protected AsideTag $object;
+    public string $rendered = '<aside></aside>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

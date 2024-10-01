@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class TextareaTagTest extends PairTagTest
 {
-    public $rendered = '<textarea name="textarea"></textarea>';
-    protected TextareaTag $object;
+    public string $rendered = '<textarea name="textarea"></textarea>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

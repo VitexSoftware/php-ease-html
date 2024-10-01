@@ -64,16 +64,20 @@ class SelectTag extends PairTag implements Input
 
     /**
      * Bulk insert items.
+     * 
+     * @param array $items Select Items to add
      */
-    public function addItems(array $items): void
+    public function addItems(array $items): array
     {
+        $added = [];
         foreach ($items as $itemName => $itemValue) {
-            $newItem = $this->addItem(new OptionTag($itemValue, $itemName));
+            $added[$itemName] = $this->addItem(new OptionTag((string)$itemValue, (string)$itemName));
 
             if ($this->defaultValue === $itemName) {
                 $this->lastItem()->setDefault();
             }
         }
+        return $added;
     }
 
     /**

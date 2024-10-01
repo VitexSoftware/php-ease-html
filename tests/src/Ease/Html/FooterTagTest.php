@@ -22,8 +22,8 @@ use Ease\Html\FooterTag;
  */
 class FooterTagTest extends PairTagTest
 {
-    public $rendered = '<footer></footer>';
-    protected FooterTag $object;
+    public string $rendered = '<footer></footer>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

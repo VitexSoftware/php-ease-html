@@ -22,8 +22,8 @@ use Ease\Html\HtmlTag;
  */
 class HtmlTagTest extends PairTagTest
 {
-    public $rendered = '<html lang="cs"></html>';
-    protected HtmlTag $object;
+    public string $rendered = '<html lang="cs"></html>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

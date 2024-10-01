@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class SpanTest extends PairTagTest
 {
-    public $rendered = '<span></span>';
-    protected Span $object;
+    public string $rendered = '<span></span>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

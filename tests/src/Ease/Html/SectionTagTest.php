@@ -22,8 +22,8 @@ use Ease\Html\SectionTag;
  */
 class SectionTagTest extends PairTagTest
 {
-    public $rendered = '<section></section>';
-    protected SectionTag $object;
+    public string $rendered = '<section></section>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

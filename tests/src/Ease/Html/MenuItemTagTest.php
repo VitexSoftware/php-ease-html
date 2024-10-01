@@ -22,8 +22,8 @@ use Ease\Html\MenuItemTag;
  */
 class MenuItemTagTest extends PairTagTest
 {
-    public $rendered = '<menuitem></menuitem>';
-    protected MenuItemTag $object;
+    public string $rendered = '<menuitem></menuitem>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.

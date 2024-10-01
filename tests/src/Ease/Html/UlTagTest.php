@@ -20,8 +20,8 @@ namespace Test\Ease\Html;
  */
 class UlTagTest extends PairTagTest
 {
-    public $rendered = '<ul>http://v.s.cz/</ul>';
-    protected UlTag $object;
+    public string $rendered = '<ul>http://v.s.cz/</ul>';
+    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.
