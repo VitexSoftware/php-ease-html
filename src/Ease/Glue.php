@@ -2,84 +2,86 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease;
 
 /**
- *
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  */
 trait Glue
 {
     /**
-     * Array of objects and fragments to draw
-     *
-     * @var array
+     * Array of objects and fragments to draw.
      */
-    public $pageParts = [];
+    public array $pageParts = [];
 
     /**
      * Has the page already been rendered ?
-     *
-     * @var bool
      */
-    public $drawStatus = false;
+    public bool $drawStatus = false;
 
     /**
      * Is class finalized ?
-     *
-     * @var bool
      */
-    protected $finalized = false;
-
-    /**
-     *
-     * @var string|null
-     */
-    private $embedName = null;
+    protected bool $finalized = false;
+    private ?string $embedName = null;
 
     /**
      * Inserts another element into the object.
      *
-     * @param Embedable|string $pageItem     value or EaseObject with draw () method
-     * @param Embedable        $context      Object into which elements / items are inserted
+     * @param Embedable|string $pageItem value or EaseObject with draw () method
+     * @param Embedable        $context  Object into which elements / items are inserted
      *
-     * @return mixed Odkaz na vložený objekt
+     * @return mixed Pointer to embed object
      */
     public static function &addItemCustom($pageItem, Embedable $context)
     {
         $itemPointer = null;
-        if (!is_null($pageItem)) {
-            if (is_object($pageItem)) {
+
+        if (null !== $pageItem) {
+            if (\is_object($pageItem)) {
                 $context->pageParts[] = $pageItem;
 
-                $pageItemName = key(array_slice($context->pageParts, -1, 1, true));
+                $pageItemName = key(\array_slice($context->pageParts, -1, 1, true));
 
                 $context->pageParts[$pageItemName]->parentObject = &$context;
-                $context->pageParts[$pageItemName]->setEmbedName($pageItemName);
+                $context->pageParts[$pageItemName]->setEmbedName((string) $pageItemName);
                 $context->pageParts[$pageItemName]->afterAdd();
 
                 $itemPointer = &$context->pageParts[$pageItemName];
             } else {
-                if (is_array($pageItem)) {
+                if (\is_array($pageItem)) {
                     $addedItemPointer = $context->addItems($pageItem);
                     $itemPointer = &$addedItemPointer;
                 } else {
-                    if (!is_null($pageItem)) {
+                    if (null !== $pageItem) {
                         $context->pageParts[] = $pageItem;
                         $endPointer = end($context->pageParts);
                         $itemPointer = &$endPointer;
                     }
                 }
             }
+
             Document::singleton()->registerItem($itemPointer);
         }
+
         return $itemPointer;
     }
 
     /**
      * Include next element into current object.
      *
-     * @param Embedable|string  $pageItem     value or EaseClass with draw() method
+     * @param Embedable|string $pageItem value or EaseClass with draw() method
      *
      * @return mixed Pointer to included object
      */
@@ -89,42 +91,43 @@ trait Glue
     }
 
     /**
-     * Notify component about its embed name
+     * Notify component about its embed name.
      *
-     * @param string  $embedName parent::$pageParts[$embedName] == self
+     * @param string $embedName parent::$pageParts[$embedName] == self
      *
-     * @return boolean success
+     * @return bool success
      */
     public function setEmbedName($embedName)
     {
         $this->embedName = $embedName;
+
         return true;
     }
 
     /**
-     * Method executed after adding object into new one
+     * Method executed after adding object into new one.
      */
-    public function afterAdd()
+    public function afterAdd(): void
     {
     }
 
     /**
-     * Method executed before rendering
+     * Method executed before rendering.
      */
-    public function finalize()
+    public function finalize(): void
     {
         $this->finalized = true;
     }
 
     /**
-     * Recursive draw object and its contents
+     * Recursive draw object and its contents.
      *
      * @return string Empty string
      */
     public function draw()
     {
         foreach ($this->pageParts as $part) {
-            if (is_object($part)) {
+            if (\is_object($part)) {
                 if (method_exists($part, 'drawIfNotDrawn')) {
                     $part->drawIfNotDrawn();
                 } else {
@@ -134,7 +137,9 @@ trait Glue
                 echo $part;
             }
         }
+
         $this->drawStatus = true;
+
         return '';
     }
 }

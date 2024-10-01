@@ -2,54 +2,60 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
  * HTML webPage head class.
- *
  */
 class HeadTag extends PairTag
 {
     /**
      * Javascripts to render in page.
-     *
-     * @var array
      */
-    public $javaScripts = [];
+    public array $javaScripts = [];
 
     /**
      * Css definitions.
      *
      * @var array of strings
      */
-    public $cascadeStyles = [];
+    public array $cascadeStyles = [];
 
     /**
-     * Content Charset
-     *
-     * @var string
+     * Content Charset.
      */
-    public $charSet = 'utf-8';
+    public string $charSet = 'utf-8';
 
     /**
      * Html HEAD tag with basic contents and skin support.
      *
-     * @param mixed $content        inserted content
+     * @param mixed $content inserted content
      */
     public function __construct($content = null)
     {
         parent::__construct('head', null, $content);
-        $this->addItem('<meta http-equiv="Content-Type" content="text/html; charset=' . $this->charSet . '" />');
+        $this->addItem('<meta http-equiv="Content-Type" content="text/html; charset='.$this->charSet.'" />');
     }
 
     /**
      * Change name directly to head.
      *
-     * @param string $objectName    object name
+     * @param string $objectName object name
      *
-     * @return string               final object name
+     * @return string final object name
      */
     public function setObjectName($objectName = null)
     {
@@ -59,32 +65,34 @@ class HeadTag extends PairTag
     /**
      * Render a script block.
      *
-     * @param string $javaScript    inserted script
+     * @param string $javaScript inserted script
      *
      * @return string
      */
     public static function jsEnclosure($javaScript)
     {
-        return '
+        return <<<'EOD'
+
 <script>
 // <![CDATA[
-' . $javaScript . '
+
+EOD.$javaScript.<<<'EOD'
+
 // ]]>
 </script>
-';
+
+EOD;
     }
 
     /**
      * Hadle page title.
      */
-    public function finalize()
+    public function finalize(): void
     {
-        $this->addItem('<title>' . \Ease\WebPage::singleton()->getPageTitle() . '</title>');
+        $this->addItem('<title>'.\Ease\WebPage::singleton()->getPageTitle().'</title>');
     }
 
     /**
-     *
-     * @param array $scriptsArray
      * @param string $divider use '' for optimized output
      *
      * @return string
@@ -94,53 +102,58 @@ class HeadTag extends PairTag
         $divider = "\n"
     ) {
         $scriptsRendered = '';
-        ksort($scriptsArray, SORT_NUMERIC);
+        ksort($scriptsArray, \SORT_NUMERIC);
         $scriptsInline = [];
         $scriptsIncluded = [];
         $ODRStack = [];
+
         foreach ($scriptsArray as $script) {
             $scriptType = $script[0];
             $scriptBody = substr($script, 1);
+
             switch ($scriptType) {
                 case '#':
-                    $scriptsIncluded[] = '<script src="' . $scriptBody . '"></script>';
+                    $scriptsIncluded[] = '<script src="'.$scriptBody.'"></script>';
+
                     break;
                 case '@':
                     $scriptsInline[] = $scriptBody;
+
                     break;
                 case '$':
                     $ODRStack[] = $scriptBody;
+
                     break;
             }
         }
 
         if (!empty($scriptsIncluded)) {
-            $scriptsRendered .= $divider . implode($divider, $scriptsIncluded);
+            $scriptsRendered .= $divider.implode($divider, $scriptsIncluded);
         }
 
         if (!empty($scriptsInline)) {
-            $scriptsRendered .= $divider . self::jsEnclosure(implode(
+            $scriptsRendered .= $divider.self::jsEnclosure(implode(
                 $divider,
-                $scriptsInline
+                $scriptsInline,
             ));
         }
 
         if (!empty($ODRStack)) {
-            $scriptsRendered .= $divider .
+            $scriptsRendered .= $divider.
                     self::jsEnclosure(
-                        '$(document).ready(function () { ' . implode(
+                        '$(document).ready(function () { '.implode(
                             $divider,
-                            $ODRStack
-                        ) . ' });'
+                            $ODRStack,
+                        ).' });',
                     );
         }
+
         return $scriptsRendered;
     }
 
     /**
-     * Get included and inline Syles Fragment rendered
+     * Get included and inline Syles Fragment rendered.
      *
-     * @param array  $stylesArray
      * @param string $media
      * @param string $divider use '' for optimized output
      *
@@ -153,17 +166,19 @@ class HeadTag extends PairTag
     ) {
         $cascadeStyles = [];
         $cascadeStylesIncludes = [];
+
         foreach ($stylesArray as $styleRes => $style) {
-            if ($styleRes == $style) {
-                $cascadeStylesIncludes[] = '<link href="' . $style . '" rel="stylesheet" type="text/css" media="' . $media . '" />';
+            if ($styleRes === $style) {
+                $cascadeStylesIncludes[] = '<link href="'.$style.'" rel="stylesheet" type="text/css" media="'.$media.'" />';
             } else {
                 $cascadeStyles[] = $style;
             }
         }
-        return empty($stylesArray) ? '' : implode($divider, $cascadeStylesIncludes) . $divider . '<style>' . implode(
+
+        return empty($stylesArray) ? '' : implode($divider, $cascadeStylesIncludes).$divider.'<style>'.implode(
             $divider,
-            $cascadeStyles
-        ) . '</style>';
+            $cascadeStyles,
+        ).'</style>';
     }
 
     /**
@@ -172,6 +187,7 @@ class HeadTag extends PairTag
     public function draw()
     {
         $this->addItem(self::getStylesRendered(\Ease\WebPage::singleton()->cascadeStyles));
+
         return parent::draw();
     }
 }

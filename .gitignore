@@ -29,3 +29,4 @@
 /.phpunit.cache/
 /debian/debhelper-build-stamp
 
+/.build/

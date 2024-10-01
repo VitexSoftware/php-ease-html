@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
@@ -16,7 +27,7 @@ class InputDateTimeLocalTag extends InputTag implements Input
      * date and time with no time zone.
      *
      * @param string           $name       name
-     * @param string|\DateTime $value      initial value as string or DateTime
+     * @param \DateTime|string $value      initial value as string or DateTime
      * @param array            $properties additional input date time local properties
      */
     public function __construct(
@@ -27,6 +38,6 @@ class InputDateTimeLocalTag extends InputTag implements Input
     ) {
         $properties['type'] = 'datetime-local';
         $properties['name'] = $name;
-        parent::__construct($name, is_object($value) ? $value->format('Y-m-dTH:i:s') : $value, $properties);
+        parent::__construct($name, \is_object($value) ? $value->format('Y-m-dTH:i:s') : $value, $properties);
     }
 }

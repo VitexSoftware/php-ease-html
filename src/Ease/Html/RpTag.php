@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
@@ -12,10 +23,10 @@ namespace Ease\Html;
 class RpTag extends PairTag
 {
     /**
-     * Defines what to show in browsers that do not support ruby annotations
+     * Defines what to show in browsers that do not support ruby annotations.
      *
-     * @param mixed  $content    items included
-     * @param array  $properties rp tag properties
+     * @param mixed $content    items included
+     * @param array $properties rp tag properties
      */
     public function __construct($content = null, $properties = [])
     {

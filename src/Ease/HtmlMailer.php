@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease;
 
 /**
@@ -16,96 +27,71 @@ use Ease\Html\HtmlTag;
 use Ease\Html\SimpleHeadTag;
 use Ease\Html\TitleTag;
 use Mail;
-use Mail_mime;
 
 /**
- * Build & Send email
- *
- *
+ * Build & Send email.
  */
 class HtmlMailer extends Document
 {
     /**
      * Object for sending mail.
-     *
-     * @var $mailer
      */
-    public $mailer = null;
-    public $mimer = null;
-    public $textBody = null;
+    public $mailer;
+    public $mimer;
+    public $textBody;
     public $mailHeaders = [];
-    public $mailHeadersDone = null;
+    public $mailHeadersDone;
     public $crLf = "\n";
-    public $mailBody = null;
+    public $mailBody;
     public $finalized = false;
 
     /**
      * Already rendered HTML.
-     *
-     * @var string
      */
-    public $htmlBodyRendered = null;
+    public string $htmlBodyRendered = null;
 
     /**
      * Sender's email address.
-     *
-     * @var string
      */
-    public $emailAddress = '';
+    public string $emailAddress = '';
 
     /**
-     * Subject of email
-     * @var string
+     * Subject of email.
      */
-    public $emailSubject = null;
+    public string $emailSubject = null;
 
     /**
      * Sender's email address.
-     *
-     * @var string
      */
-    public $fromEmailAddress = null;
+    public string $fromEmailAddress = null;
 
     /**
      * Show user information about sending a message?
-     *
-     * @var bool
      */
-    public $notify = true;
+    public bool $notify = true;
 
     /**
      * Has the message already been sent?
-     *
-     * @var bool
      */
-    public $sendResult = false;
+    public bool $sendResult = false;
 
     /**
      * Page object for rendering to email.
-     *
-     * @var HtmlTag
      */
-    public $htmlDocument = null;
-
-    /**
-     *
-     * @var Html\SimpleHeadTag|null
-     */
-    public $htmlHead = null;
+    public HtmlTag $htmlDocument = null;
+    public ?Html\SimpleHeadTag $htmlHead = null;
 
     /**
      * Pointer to the BODY html document.
      *
-     * @var BodyTag|Embedable|null
+     * @var null|BodyTag|Embedable
      */
-    public $htmlBody = null;
+    public $htmlBody;
 
     /**
      * Outgoing mail parameters.
-     *
-     * @var array
      */
-    public $parameters = [];
+    public array $parameters = [];
 
     /**
      * Ease Mail - compiles and sends.
@@ -125,29 +111,29 @@ class HtmlMailer extends Document
             $this->parameters = (array) json_decode(\Ease\Functions::cfg('EASE_SMTP'));
         }
 
-        if (is_array($emailAddress)) {
-            $emailAddress = current($emailAddress) . ' <' . key($emailAddress) . '>';
+        if (\is_array($emailAddress)) {
+            $emailAddress = current($emailAddress).' <'.key($emailAddress).'>';
         }
 
         $this->setMailHeaders(
             array_merge([
-                    'To' => $emailAddress,
-                    'From' => $this->fromEmailAddress,
-                    'Reply-To' => $this->fromEmailAddress,
-                    'Subject' => $mailSubject,
-                    'Content-Type' => 'text/html; charset=utf-8',
-                    'Content-Transfer-Encoding' => '8bit',
-                ], $headers)
+                'To' => $emailAddress,
+                'From' => $this->fromEmailAddress,
+                'Reply-To' => $this->fromEmailAddress,
+                'Subject' => $mailSubject,
+                'Content-Type' => 'text/html; charset=utf-8',
+                'Content-Transfer-Encoding' => '8bit',
+            ], $headers),
         );
 
-        $mimer_params = array(
+        $mimer_params = [
             'html_charset' => 'utf-8',
             'text_charset' => 'utf-8',
             'head_charset' => 'utf-8',
             'eol' => $this->crLf,
-        );
+        ];
 
-        $this->mimer = new Mail_mime($mimer_params);
+        $this->mimer = new \Mail_mime($mimer_params);
 
         parent::__construct();
 
@@ -165,32 +151,37 @@ class HtmlMailer extends Document
      */
     public function getMailHeader(string $headername)
     {
-        return array_key_exists($this->mailHeaders, $headername) ? $this->mailHeaders[$headername] : '';
+        return \array_key_exists($this->mailHeaders, $headername) ? $this->mailHeaders[$headername] : '';
     }
 
     /**
      * Sets mail headers.
      *
-     * @param mixed $mailHeaders    associative array of headers
+     * @param mixed $mailHeaders associative array of headers
      *
      * @return bool true            if the headers have been set
      */
     public function setMailHeaders(array $mailHeaders)
     {
         $this->mailHeaders = array_merge($this->mailHeaders, $mailHeaders);
+
         if (isset($this->mailHeaders['To'])) {
             $this->emailAddress = $this->mailHeaders['To'];
         }
+
         if (isset($this->mailHeaders['From'])) {
             $this->fromEmailAddress = $this->mailHeaders['From'];
         }
+
         if (isset($this->mailHeaders['Subject'])) {
             if (!strstr($this->mailHeaders['Subject'], '=?UTF-8?B?')) {
                 $this->emailSubject = $this->mailHeaders['Subject'];
-                $this->mailHeaders['Subject'] = '=?UTF-8?B?' . base64_encode($this->mailHeaders['Subject']) . '?=';
+                $this->mailHeaders['Subject'] = '=?UTF-8?B?'.base64_encode($this->mailHeaders['Subject']).'?=';
             }
         }
+
         $this->finalized = false;
+
         return true;
     }
 
@@ -204,11 +195,12 @@ class HtmlMailer extends Document
     public function &addItem($item)
     {
         $added = $this->htmlBody->addItem($item);
+
         return $added;
     }
 
     /**
-     * Gives you current Body
+     * Gives you current Body.
      *
      * @return BodyTag
      */
@@ -218,7 +210,7 @@ class HtmlMailer extends Document
     }
 
     /**
-     * Obtain item count
+     * Obtain item count.
      *
      * @return int
      */
@@ -230,7 +222,7 @@ class HtmlMailer extends Document
     /**
      * Is object empty ?
      *
-     * @return boolean
+     * @return bool
      */
     public function isEmpty()
     {
@@ -238,9 +230,9 @@ class HtmlMailer extends Document
     }
 
     /**
-     * Empty container contents
+     * Empty container contents.
      */
-    public function emptyContents()
+    public function emptyContents(): void
     {
         $this->htmlBody->emptyContents();
     }
@@ -250,8 +242,8 @@ class HtmlMailer extends Document
      *
      * @param string $filename path / file name to attach
      * @param string $mimeType MIME attachement type
-     * 
-     * @return boolean file attachment successful
+     *
+     * @return bool file attachment successful
      */
     public function addFile($filename, $mimeType = 'text/plain')
     {
@@ -259,15 +251,16 @@ class HtmlMailer extends Document
     }
 
     /**
-     * Builds the body of the mail
+     * Builds the body of the mail.
      */
-    public function finalize()
+    public function finalize(): void
     {
         if (method_exists($this->htmlDocument, 'GetRendered')) {
             $this->htmlBodyRendered = $this->htmlDocument->getRendered();
         } else {
             $this->htmlBodyRendered = $this->htmlDocument;
         }
+
         $this->mimer->setHTMLBody($this->htmlBodyRendered);
 
         if (isset($this->fromEmailAddress)) {
@@ -281,7 +274,7 @@ class HtmlMailer extends Document
     }
 
     /**
-     * Do not draw mail included in page
+     * Do not draw mail included in page.
      */
     public function draw()
     {
@@ -296,34 +289,40 @@ class HtmlMailer extends Document
         if (!$this->finalized) {
             $this->finalize();
         }
-        $oMail = new Mail();
-        if (count($this->parameters)) {
+
+        $oMail = new \Mail();
+
+        if (\count($this->parameters)) {
             $this->mailer = $oMail->factory('smtp', $this->parameters);
         } else {
             $this->mailer = $oMail->factory('mail');
         }
+
         $this->sendResult = $this->mailer->send(
             $this->emailAddress,
             $this->mailHeadersDone,
-            $this->mailBody
+            $this->mailBody,
         );
-        if (is_object($this->sendResult) && get_class($this->sendResult) == 'PEAR_Error') {
+
+        if (\is_object($this->sendResult) && \get_class($this->sendResult) === 'PEAR_Error') {
             throw new \Ease\Exception($this->sendResult->getMessage());
         }
+
         if ($this->notify === true) {
             $mailStripped = str_replace(['<', '>'], '', $this->emailAddress);
+
             if ($this->sendResult === true) {
                 $this->addStatusMessage(sprintf(
                     _('Message %s was sent to %s'),
                     $this->emailSubject,
-                    $mailStripped
+                    $mailStripped,
                 ), 'success');
             } else {
                 $this->addStatusMessage(sprintf(
                     _('Message %s, for %s was not sent because of %s'),
                     $this->emailSubject,
                     $mailStripped,
-                    $this->sendResult->message
+                    $this->sendResult->message,
                 ), 'warning');
             }
         }
@@ -336,7 +335,7 @@ class HtmlMailer extends Document
      *
      * @param bool $notify required notification status
      */
-    public function setUserNotification($notify)
+    public function setUserNotification($notify): void
     {
         $this->notify = (bool) $notify;
     }

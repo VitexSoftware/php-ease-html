@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
@@ -12,10 +23,10 @@ namespace Ease\Html;
 class DdTag extends PairTag
 {
     /**
-     * Definition content
+     * Definition content.
      *
-     * @param string|mixed $content     content included
-     * @param array        $properties  Dd tag properties
+     * @param mixed|string $content    content included
+     * @param array        $properties Dd tag properties
      */
     public function __construct($content = null, $properties = null)
     {

@@ -2,12 +2,22 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  * Displays checkbox tag.
- *
  * @author Vítězslav Dvořák <vitex@hippy.cz>
  */
 class CheckboxTag extends InputTag
@@ -23,19 +33,23 @@ class CheckboxTag extends InputTag
     public function __construct(
         string $name,
         bool $checked = false,
-        string $value = null,
+        ?string $value = null,
         $properties = []
     ) {
         $properties['type'] = 'checkbox';
+
         if ($checked === true) {
             $properties[] = 'checked';
         }
-        if (!is_null($value)) {
+
+        if (null !== $value) {
             $properties['value'] = $value;
         }
-        if (strlen($name)) {
+
+        if (\strlen($name)) {
             $properties['name'] = $name;
         }
+
         $this->setTagProperties($properties);
         parent::__construct($name);
     }
@@ -45,9 +59,10 @@ class CheckboxTag extends InputTag
      *
      * @param bool $value sets tag parameter to "checked"
      */
-    public function setValue($value = true)
+    #[\Override]
+    public function setValue($value = true): void
     {
-        if (boolval($value)) {
+        if ((bool) $value) {
             $this->setTagProperties(['checked' => 'true']);
         } else {
             unset($this->tagProperties['checked']);
@@ -55,12 +70,12 @@ class CheckboxTag extends InputTag
     }
 
     /**
-     * Obtains curent checkbox state
+     * Obtains curent checkbox state.
      *
-     * @return boolean $value
+     * @return bool $value
      */
     public function getValue()
     {
-        return $this->getTagProperty('checked') == 'true';
+        return $this->getTagProperty('checked') === 'true';
     }
 }

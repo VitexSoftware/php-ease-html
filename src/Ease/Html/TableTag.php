@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
@@ -13,21 +24,18 @@ class TableTag extends PairTag
 {
     /**
      * Table header.
-     * @var Thead
      */
-    public $tHead = null;
+    public Thead $tHead;
 
     /**
-     * Table Body
-     * @var Tbody
+     * Table Body.
      */
-    public $tBody = null;
+    public Tbody $tBody;
 
     /**
-     * Table Foot
-     * @var Tfoot
+     * Table Foot.
      */
-    public $tFoot = null;
+    public Tfoot $tFoot;
 
     /**
      * Html Table.
@@ -46,7 +54,7 @@ class TableTag extends PairTag
     /**
      * @param array $headerColumns table header items
      */
-    public function setHeader(array $headerColumns)
+    public function setHeader(array $headerColumns): void
     {
         $this->tHead->emptyContents();
         $this->addRowHeaderColumns($headerColumns);
@@ -63,10 +71,11 @@ class TableTag extends PairTag
     public function &addRowColumns($columns = null, $properties = [])
     {
         $tableRow = $this->tBody->addItem(new TrTag());
-        if (is_array($columns)) {
+
+        if (\is_array($columns)) {
             foreach ($columns as $column) {
                 if (
-                        is_object($column) && method_exists($column, 'getTagType') && $column->getTagType() == 'td'
+                    \is_object($column) && method_exists($column, 'getTagType') && $column->getTagType() === 'td'
                 ) {
                     $tableRow->addItem($column);
                 } else {
@@ -89,10 +98,11 @@ class TableTag extends PairTag
     public function &addRowHeaderColumns($columns = null, $properties = [])
     {
         $tableRow = $this->tHead->addItem(new TrTag());
-        if (is_array($columns)) {
+
+        if (\is_array($columns)) {
             foreach ($columns as $column) {
                 if (
-                        is_object($column) && method_exists($column, 'getTagType') && $column->getTagType() == 'th'
+                    \is_object($column) && method_exists($column, 'getTagType') && $column->getTagType() === 'th'
                 ) {
                     $tableRow->addItem($column);
                 } else {
@@ -105,7 +115,7 @@ class TableTag extends PairTag
     }
 
     /**
-     * Insert columns into table foot
+     * Insert columns into table foot.
      *
      * @param array $columns    values
      * @param array $properties options to add
@@ -115,10 +125,11 @@ class TableTag extends PairTag
     public function &addRowFooterColumns($columns = null, $properties = [])
     {
         $tableRow = $this->tFoot->addItem(new TrTag());
-        if (is_array($columns)) {
+
+        if (\is_array($columns)) {
             foreach ($columns as $column) {
                 if (
-                        is_object($column) && method_exists($column, 'getTagType') && $column->getTagType() == 'th'
+                    \is_object($column) && method_exists($column, 'getTagType') && $column->getTagType() === 'th'
                 ) {
                     $tableRow->addItem($column);
                 } else {
@@ -133,7 +144,7 @@ class TableTag extends PairTag
     /**
      * Is Table Empty?
      *
-     * @return boolean
+     * @return bool
      */
     public function isEmpty()
     {
@@ -143,7 +154,7 @@ class TableTag extends PairTag
     /**
      * Empties container contents.
      */
-    public function emptyContents()
+    public function emptyContents(): void
     {
         $this->tBody->emptyContents();
     }
@@ -180,20 +191,23 @@ class TableTag extends PairTag
         foreach ($contents as $cRow) {
             $this->addRowColumns($cRow);
         }
+
         return $this;
     }
 
     /**
      * Remove empty tHead and tFoot.
      */
-    public function finalize()
+    public function finalize(): void
     {
         if ($this->tHead->isEmpty()) {
             $this->tHead->suicide();
         }
+
         if ($this->tFoot->isEmpty()) {
             $this->tFoot->suicide();
         }
+
         $this->finalized = true;
     }
 }

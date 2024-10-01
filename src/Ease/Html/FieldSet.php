@@ -2,41 +2,46 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * Html Fieldset.
+ * Html FieldSet.
  */
 class FieldSet extends PairTag
 {
     /**
      * Frame legend.
-     *
-     * @var mixed
      */
-    public $legend = null;
+    public mixed $legend = null;
 
     /**
      * Object with legend tag.
-     *
-     * @var PairTag
      */
-    public $legendTag = null;
+    public PairTag $legendTag;
 
     /**
      * Frame content.
-     *
-     * @var mixed
      */
-    public $content = null;
+    public mixed $content = null;
 
     /**
      * Displays the frame.
      *
-     * @param string|mixed $legend      frame title in text format or ease framework object
-     * @param mixed        $content     elements inserted into the frame
+     * @param mixed|string $legend  frame title in text format or ease framework object
+     * @param mixed        $content elements inserted into the frame
      */
     public function __construct($legend, $content = null)
     {
@@ -45,11 +50,13 @@ class FieldSet extends PairTag
         $this->legendTag = $this->addItem(new PairTag(
             'legend',
             null,
-            $this->legend
+            $this->legend,
         ));
+
         if ($content) {
             $this->content = $this->addItem($content);
         }
+
         parent::__construct('fieldset');
     }
 
@@ -58,7 +65,7 @@ class FieldSet extends PairTag
      *
      * @param string $legend description
      */
-    public function setLegend($legend)
+    public function setLegend($legend): void
     {
         $this->legend = $legend;
     }
@@ -66,10 +73,10 @@ class FieldSet extends PairTag
     /**
      * Inserts the legend.
      */
-    public function finalize()
+    public function finalize(): void
     {
         if ($this->legend) {
-            if (is_object(reset($this->pageParts))) {
+            if (\is_object(reset($this->pageParts))) {
                 reset($this->pageParts)->pageParts = [$this->legend];
             } else {
                 array_unshift($this->pageParts, $this->legendTag);

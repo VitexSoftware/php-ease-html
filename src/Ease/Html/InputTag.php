@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
@@ -12,25 +23,26 @@ namespace Ease\Html;
 class InputTag extends Tag implements Input
 {
     /**
-     * Sets tag name automatically
+     * Sets tag name automatically.
      *
      * @author Vítězslav Dvořák <vitex@hippy.cz>
      */
-    public $setName = true;
+    public bool $setName = true;
 
     /**
      * General input TAG.
      *
-     * @param string            $name       tag name
-     * @param string            $value      return value
-     * @param array             $properties additional input tag properties
+     * @param string $name       tag name
+     * @param string $value      return value
+     * @param array  $properties additional input tag properties
      */
     public function __construct($name, $value = null, $properties = [])
     {
         parent::__construct('input');
         $this->setTagName($name);
         $this->setTagProperties($properties);
-        if (!is_null($value)) {
+
+        if (null !== $value) {
             $this->setValue($value);
         }
     }
@@ -40,7 +52,7 @@ class InputTag extends Tag implements Input
      *
      * @param string $value return value
      */
-    public function setValue($value)
+    public function setValue($value): void
     {
         $this->setTagProperties(['value' => $value]);
     }

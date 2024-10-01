@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
@@ -13,24 +24,24 @@ class InputRadioTag extends InputTag implements Input
 {
     /**
      * Return value.
-     *
-     * @var string
      */
-    public $value = null;
+    public string $value = '';
 
     /**
      * Radio button.
      *
-     * @param string $name          tag name
-     * @param string $value         return value
-     * @param array  $properties    input radio tag properties
+     * @param string $name       tag name
+     * @param string $value      return value
+     * @param array  $properties input radio tag properties
      */
     public function __construct($name, $value = null, $properties = null)
     {
         parent::__construct($name, $value);
+
         if ($properties) {
             $this->setTagProperties($properties);
         }
+
         $this->setTagProperties(['type' => 'radio']);
         $this->value = $value;
     }
@@ -40,11 +51,12 @@ class InputRadioTag extends InputTag implements Input
      *
      * @param string $value return value
      */
-    public function setValue($value)
+    public function setValue($value): void
     {
         $currentValue = $this->getTagProperty('value');
+
         if ($currentValue) {
-            if ($currentValue == $value) {
+            if ($currentValue === $value) {
                 $this->setTagProperties(['checked']);
             }
         } else {

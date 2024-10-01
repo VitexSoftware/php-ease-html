@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
@@ -13,17 +24,15 @@ class PairTag extends Tag
 {
     /**
      * Character to close tag.
-     *
-     * @var string
      */
-    public $trail = '';
+    public string $trail = '';
 
     /**
      * Common pair tag.
      *
-     * @param string       $tagType         tag type
-     * @param array|string $properties      pair tag properties
-     * @param mixed        $content         Content to insert into tag
+     * @param string       $tagType    tag type
+     * @param array|string $properties pair tag properties
+     * @param mixed        $content    Content to insert into tag
      */
     public function __construct(
         $tagType = null,
@@ -31,6 +40,7 @@ class PairTag extends Tag
         $content = null
     ) {
         parent::__construct($tagType, $properties);
+
         if (empty($content) === false) {
             $this->addItem($content);
         }
@@ -44,13 +54,14 @@ class PairTag extends Tag
         $this->tagBegin();
         $this->drawAllContents();
         $this->tagEnclousure();
+
         return '';
     }
 
     /**
      * Show pair tag begin.
      */
-    public function tagBegin()
+    public function tagBegin(): void
     {
         parent::draw();
     }
@@ -58,8 +69,8 @@ class PairTag extends Tag
     /**
      * Show pair tag ending.
      */
-    public function tagEnclousure()
+    public function tagEnclousure(): void
     {
-        echo '</' . $this->getTagType() . '>';
+        echo '</'.$this->getTagType().'>';
     }
 }

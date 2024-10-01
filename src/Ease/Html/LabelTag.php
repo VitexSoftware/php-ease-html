@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
@@ -13,10 +24,8 @@ class LabelTag extends PairTag
 {
     /**
      * Link to content.
-     *
-     * @var mixed
      */
-    public $contents = null;
+    public mixed $contents = null;
 
     /**
      * Displays tag label.
@@ -41,8 +50,8 @@ class LabelTag extends PairTag
      */
     public function setObjectName($objectName = null)
     {
-        if (is_null($objectName)) {
-            $objectName = get_class($this) . '@' . $this->getTagProperty('for');
+        if (null === $objectName) {
+            $objectName = \get_class($this).'@'.$this->getTagProperty('for');
         }
 
         return parent::setObjectName($objectName);

@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of the EaseHtml package
+ *
+ * https://github.com/VitexSoftware/php-ease-html
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\Html;
 
 /**
@@ -15,13 +26,13 @@ class InputDateTag extends InputTag implements Input
      * The <input type="date"> is used for input fields that should contain a date.
      *
      * @param string       $name       input name
-     * @param string|\Date $value      initial value as string or DateTime
+     * @param \Date|string $value      initial value as string or DateTime
      * @param array        $properties input date tag additional properties
      */
     public function __construct($name, $value = null, $properties = [])
     {
         $properties['type'] = 'date';
-        $properties['value'] = is_object($value) ? $value->format('Y-m-d') : $value;
+        $properties['value'] = \is_object($value) ? $value->format('Y-m-d') : $value;
         $properties['name'] = $name;
         parent::__construct($name, $properties['value'], $properties);
     }
