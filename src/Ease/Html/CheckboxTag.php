@@ -59,6 +59,7 @@ class CheckboxTag extends InputTag
      *
      * @param bool $value sets tag parameter to "checked"
      */
+    #[\Override]
     public function setValue($value = true): void
     {
         if ((bool) $value) {
