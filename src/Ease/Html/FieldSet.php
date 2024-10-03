@@ -25,7 +25,7 @@ class FieldSet extends PairTag
     /**
      * Frame legend.
      */
-    public mixed $legend = null;
+    public string $legend;
 
     /**
      * Object with legend tag.
@@ -35,15 +35,15 @@ class FieldSet extends PairTag
     /**
      * Frame content.
      */
-    public mixed $content = null;
+    public mixed $content;
 
     /**
      * Displays the frame.
      *
-     * @param mixed|string $legend  frame title in text format or ease framework object
-     * @param mixed        $content elements inserted into the frame
+     * @param string $legend  frame title in text format or ease framework object
+     * @param mixed  $content elements inserted into the frame
      */
-    public function __construct($legend, $content = null)
+    public function __construct(string $legend, $content = null)
     {
         $this->setTagName($legend);
         $this->legend = $legend;
