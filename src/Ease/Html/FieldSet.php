@@ -35,7 +35,7 @@ class FieldSet extends PairTag
     /**
      * Frame content.
      */
-    public mixed $content;
+    public $content;
 
     /**
      * Displays the frame.
