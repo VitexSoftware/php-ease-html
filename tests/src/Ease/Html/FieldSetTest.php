@@ -55,15 +55,10 @@ class FieldSetTest extends PairTagTest
 
     /**
      * @covers \Ease\Html\FieldSet::finalize
-     *
-     * @todo   Implement testFinalize().
      */
     public function testFinalize(): void
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->assertNull($this->object->finalize());
     }
 
     /**
