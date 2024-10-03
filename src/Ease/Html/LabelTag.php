@@ -25,7 +25,7 @@ class LabelTag extends PairTag
     /**
      * Link to content.
      */
-    public mixed $contents;
+    public $contents;
 
     /**
      * Displays tag label.
