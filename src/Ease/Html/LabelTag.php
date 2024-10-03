@@ -25,16 +25,16 @@ class LabelTag extends PairTag
     /**
      * Link to content.
      */
-    public mixed $contents = null;
+    public $contents;
 
     /**
      * Displays tag label.
      *
      * @param string $for        reference element
      * @param mixed  $contents   labeled content
-     * @param array  $properties labe tag properties
+     * @param array  $properties label tag properties
      */
-    public function __construct($for, $contents = null, $properties = [])
+    public function __construct(string $for, mixed $contents = null, $properties = [])
     {
         $this->setTagProperties(['for' => $for]);
         parent::__construct('label', $properties);
