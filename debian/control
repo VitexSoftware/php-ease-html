@@ -8,7 +8,7 @@ Priority: optional
 Homepage: https://github.com/VitexSoftware/php-ease-html
 
 Package: php-vitexsoftware-ease-html
-Depends: ${misc:Depends},libjs-jquery (>= 1.4), php-vitexsoftware-ease-core (>= 1.40)
+Depends: ${misc:Depends},libjs-jquery (>= 1.4), php-vitexsoftware-ease-core (>= 1.44)
 Architecture: all
 Replaces: php-ease-html
 Section: web
