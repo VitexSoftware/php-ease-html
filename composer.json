@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "vitexsoftware/ease-core": ">= 1.41"
+        "vitexsoftware/ease-core": ">= 1.44"
     },
     "autoload": {
         "psr-4": {
