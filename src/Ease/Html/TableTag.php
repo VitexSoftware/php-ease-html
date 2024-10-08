@@ -25,17 +25,17 @@ class TableTag extends PairTag
     /**
      * Table header.
      */
-    public ?Thead $tHead;
+    public Thead $tHead;
 
     /**
      * Table Body.
      */
-    public ?Tbody $tBody;
+    public Tbody $tBody;
 
     /**
      * Table Foot.
      */
-    public ?Tfoot $tFoot;
+    public Tfoot $tFoot;
 
     /**
      * Html Table.
@@ -46,9 +46,9 @@ class TableTag extends PairTag
     public function __construct($content = null, $properties = [])
     {
         parent::__construct('table', $properties);
-        $this->tHead = $this->addItem(new Thead());
-        $this->tBody = $this->addItem(new Tbody($content));
-        $this->tFoot = $this->addItem(new Tfoot());
+        $this->tHead = new Thead();
+        $this->tBody = new Tbody($content);
+        $this->tFoot = new Tfoot();
     }
 
     /**
@@ -200,12 +200,14 @@ class TableTag extends PairTag
      */
     public function finalize(): void
     {
-        if ($this->tHead->isEmpty()) {
-            $this->tHead->suicide();
+        if ($this->tHead->isEmpty() === false) {
+            $this->addItem($this->tHead);
         }
 
-        if ($this->tFoot->isEmpty()) {
-            $this->tFoot->suicide();
+        $this->addItem($this->tBody);
+        
+        if ($this->tFoot->isEmpty() === false) {
+            $this->addItem($this->tFoot);
         }
 
         $this->finalized = true;
