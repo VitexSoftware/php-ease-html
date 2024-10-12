@@ -276,9 +276,10 @@ class HtmlMailer extends Document
     /**
      * Do not draw mail included in page.
      */
-    public function draw()
+    #[\Override]
+    public function draw(): void
     {
-        return '';
+        $this->drawStatus = true;
     }
 
     /**

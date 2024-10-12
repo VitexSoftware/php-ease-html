@@ -49,13 +49,16 @@ class PairTag extends Tag
     /**
      * Render tag and its contents.
      */
-    public function draw()
+    public function draw(): void
     {
+        if ($this->finalized === false) {
+            $this->finalize();
+        }
+
         $this->tagBegin();
         $this->drawAllContents();
         $this->tagEnclousure();
-
-        return '';
+        $this->drawStatus = true;
     }
 
     /**

@@ -325,12 +325,10 @@ class Tag extends Document
     /**
      * Renders tag.
      */
-    public function draw()
+    public function draw(): void
     {
         echo '<'.trim($this->tagType.' '.$this->tagPropertiesToString());
         echo $this->trail.'>';
         $this->drawStatus = true;
-
-        return '';
     }
 }

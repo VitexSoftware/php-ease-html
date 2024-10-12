@@ -51,5 +51,5 @@ interface Embedable
     /**
      * Recursive draw object and its contents.
      */
-    public function draw();
+    public function draw(): void;
 }

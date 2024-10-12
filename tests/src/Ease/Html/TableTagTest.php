@@ -20,13 +20,14 @@ namespace Test\Ease\Html;
  */
 class TableTagTest extends PairTagTest
 {
-    public string $rendered = '<table><thead></thead><tbody></tbody><tfoot></tfoot></table>';
+    public string $rendered = '<table><tbody></tbody></table>';
     protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
+    #[\Override]
     protected function setUp(): void
     {
         $this->object = new \Ease\Html\TableTag();
@@ -36,6 +37,7 @@ class TableTagTest extends PairTagTest
      * Tears down the fixture, for example, closes a network connection.
      * This method is called after a test is executed.
      */
+    #[\Override]
     protected function tearDown(): void
     {
     }
@@ -47,7 +49,7 @@ class TableTagTest extends PairTagTest
     {
         $this->object->setHeader(['a', 'b']);
         $this->assertEquals(
-            '<table><thead><tr><th>a</th><th>b</th></tr></thead><tbody></tbody><tfoot></tfoot></table>',
+            '<table><thead><tr><th>a</th><th>b</th></tr></thead><tbody></tbody></table>',
             $this->object->getRendered(),
         );
     }
@@ -58,10 +60,7 @@ class TableTagTest extends PairTagTest
     public function testAddRowColumns(): void
     {
         $this->object->addRowColumns(['x', 'y', 'z']);
-        $this->assertEquals(
-            '<table><thead></thead><tbody><tr><td>x</td><td>y</td><td>z</td></tr></tbody><tfoot></tfoot></table>',
-            $this->object->getRendered(),
-        );
+        $this->assertEquals('<table><tbody><tr><td>x</td><td>y</td><td>z</td></tr></tbody></table>', $this->object->getRendered());
     }
 
     /**
@@ -71,7 +70,7 @@ class TableTagTest extends PairTagTest
     {
         $this->object->addRowHeaderColumns(['a', 'b', 'c']);
         $this->assertEquals(
-            '<table><thead><tr><th>a</th><th>b</th><th>c</th></tr></thead><tbody></tbody><tfoot></tfoot></table>',
+            '<table><thead><tr><th>a</th><th>b</th><th>c</th></tr></thead><tbody></tbody></table>',
             $this->object->getRendered(),
         );
     }
@@ -79,6 +78,7 @@ class TableTagTest extends PairTagTest
     /**
      * @covers \Ease\Html\TableTag::isEmpty
      */
+    #[\Override]
     public function testIsEmpty(): void
     {
         $this->object->addRowColumns(['a' => 'A', 'b' => 'B']);
@@ -94,7 +94,7 @@ class TableTagTest extends PairTagTest
     {
         $this->object->populate([['a', 'b'], ['c', 'd']]);
         $this->assertEquals(
-            '<table><thead></thead><tbody><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></tbody><tfoot></tfoot></table>',
+            '<table><tbody><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></tbody></table>',
             $this->object->getRendered(),
         );
     }
@@ -102,13 +102,14 @@ class TableTagTest extends PairTagTest
     /**
      * @covers \Ease\Html\TableTag::addToLastItem
      */
+    #[\Override]
     public function testAddToLastItem(): void
     {
         $this->object->emptyContents();
         $this->object->addItem(new \Ease\Html\DivTag());
         $this->object->addToLastItem(new \Ease\Html\PreTag());
         $this->assertEquals(
-            '<table><thead></thead><tbody></tbody><tfoot></tfoot><div></div></table>',
+            '<table><div></div><tbody></tbody></table>',
             $this->object->getRendered(),
         );
     }
@@ -116,27 +117,26 @@ class TableTagTest extends PairTagTest
     /**
      * @covers \Ease\Html\TableTag::getFirstPart
      */
+    #[\Override]
     public function testGetFirstPart(): void
     {
         $this->object->emptyContents();
         $this->assertNull($this->object->getFirstPart());
         $this->object->addRowColumns(['a' => 'A', 'b' => 'B']);
-        $this->assertEquals(
-            '<thead></thead>',
-            $this->object->getFirstPart()->getRendered(),
-        );
+        $this->assertEquals('<tr><td>A</td><td>B</td></tr>', $this->object->getFirstPart()->getRendered());
     }
 
     /**
      * @covers \Ease\Html\TableTag::addAsFirst
      */
+    #[\Override]
     public function testAddAsFirst(): void
     {
         $this->object->emptyContents();
         $this->object->addItem(new \Ease\Html\DivTag());
         $this->object->addAsFirst(new \Ease\Html\SpanTag());
         $this->assertEquals(
-            '<table><thead></thead><tbody></tbody><tfoot></tfoot><div></div><span></span><thead></thead><tbody></tbody><tfoot></tfoot><div></div></table>',
+            '<table><div></div><span></span><div></div><tbody></tbody></table>',
             $this->object->getRendered(),
         );
     }
@@ -144,6 +144,7 @@ class TableTagTest extends PairTagTest
     /**
      * @covers \Ease\Html\TableTag::getItemsCount
      */
+    #[\Override]
     public function testGetItemsCount(): void
     {
         $this->object->emptyContents();
@@ -155,12 +156,13 @@ class TableTagTest extends PairTagTest
     /**
      * @covers \Ease\Html\TableTag::addItems
      */
+    #[\Override]
     public function testAddItems(): void
     {
         $this->object->emptyContents();
         $this->object->addItems([new \Ease\Html\DivTag(), new \Ease\Html\SpanTag()]);
         $this->assertEquals(
-            '<table><thead></thead><tbody></tbody><tfoot></tfoot><div></div><span></span></table>',
+            '<table><div></div><span></span><tbody></tbody></table>',
             $this->object->getRendered(),
         );
     }

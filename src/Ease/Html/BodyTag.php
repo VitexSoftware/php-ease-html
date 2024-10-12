@@ -47,10 +47,10 @@ class BodyTag extends PairTag
     /**
      * Renders the head of the HTML page.
      */
-    public function draw()
+    public function draw(): void
     {
         $this->addItem(HeadTag::getScriptsRendered(\Ease\WebPage::singleton()->javaScripts));
-
-        return parent::draw();
+        parent::draw();
+        $this->drawStatus = true;
     }
 }

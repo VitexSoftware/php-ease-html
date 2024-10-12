@@ -124,7 +124,7 @@ trait Glue
      *
      * @return string Empty string
      */
-    public function draw()
+    public function draw(): void
     {
         foreach ($this->pageParts as $part) {
             if (\is_object($part)) {
@@ -139,7 +139,5 @@ trait Glue
         }
 
         $this->drawStatus = true;
-
-        return '';
     }
 }

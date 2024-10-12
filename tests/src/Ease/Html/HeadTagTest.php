@@ -22,7 +22,7 @@ use Ease\Html\HeadTag;
  */
 class HeadTagTest extends PairTagTest
 {
-    public string $rendered = '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>';
+    public string $rendered = '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title></head>';
     protected $object;
 
     /**

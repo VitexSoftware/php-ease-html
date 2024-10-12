@@ -90,6 +90,7 @@ EOD;
     public function finalize(): void
     {
         $this->addItem('<title>'.\Ease\WebPage::singleton()->getPageTitle().'</title>');
+        $this->finalized = true;
     }
 
     /**
@@ -184,10 +185,11 @@ EOD;
     /**
      * Renders the header of the HTML page.
      */
-    public function draw()
+    public function draw(): void
     {
         $this->addItem(self::getStylesRendered(\Ease\WebPage::singleton()->cascadeStyles));
 
-        return parent::draw();
+        parent::draw();
+        $this->drawStatus = true;
     }
 }

@@ -303,12 +303,11 @@ class WebPage extends Document
      *
      * @return string Empty string
      */
-    public function draw()
+    public function draw(): void
     {
         $this->finalizeRegistred();
         $this->drawAllContents();
-
-        return '';
+        $this->drawStatus = true;
     }
 
     /**

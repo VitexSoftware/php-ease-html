@@ -154,25 +154,30 @@ class TableTag extends PairTag
     /**
      * Empties container contents.
      */
+    #[\Override]
     public function emptyContents(): void
     {
         $this->tBody->emptyContents();
     }
 
     /**
-     * Contentets.
-     *
-     * @return mixed
+     * Contents.
      */
+    #[\Override]
     public function getContents()
     {
         return $this->tBody->getContents();
     }
 
+    public function getFirstPart()
+    {
+        return $this->tBody->getFirstPart();
+    }
+
     /**
      * Returns number of enclosed items in current or given object.
      *
-     * @return int nuber of parts enclosed
+     * @return int number of parts enclosed
      */
     public function getItemsCount()
     {
@@ -205,7 +210,7 @@ class TableTag extends PairTag
         }
 
         $this->addItem($this->tBody);
-        
+
         if ($this->tFoot->isEmpty() === false) {
             $this->addItem($this->tFoot);
         }
