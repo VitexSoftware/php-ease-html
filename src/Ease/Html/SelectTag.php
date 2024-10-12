@@ -24,10 +24,8 @@ class SelectTag extends PairTag implements Input
 {
     /**
      * Default item #.
-     *
-     * @var int|string
      */
-    public $defaultValue;
+    public string $defaultValue;
 
     /**
      * Automatic setting of the element name.
@@ -47,12 +45,7 @@ class SelectTag extends PairTag implements Input
      * @param string $defaultValue default item id
      * @param array  $properties   select tag properties
      */
-    public function __construct(
-        $name,
-        $items = null,
-        $defaultValue = null,
-        $properties = []
-    ) {
+    public function __construct( string $name, array  $items = [], string $defaultValue = '', array  $properties = [] ) {
         parent::__construct('select', $properties);
         $this->defaultValue = $defaultValue;
         $this->setTagName($name);
