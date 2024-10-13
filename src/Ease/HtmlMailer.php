@@ -48,7 +48,7 @@ class HtmlMailer extends Document
     /**
      * Already rendered HTML.
      */
-    public string $htmlBodyRendered = null;
+    public string $htmlBodyRendered = '';
 
     /**
      * Sender's email address.
@@ -58,12 +58,12 @@ class HtmlMailer extends Document
     /**
      * Subject of email.
      */
-    public string $emailSubject = null;
+    public string $emailSubject = '';
 
     /**
      * Sender's email address.
      */
-    public string $fromEmailAddress = null;
+    public string $fromEmailAddress = '';
 
     /**
      * Show user information about sending a message?
@@ -78,7 +78,7 @@ class HtmlMailer extends Document
     /**
      * Page object for rendering to email.
      */
-    public HtmlTag $htmlDocument = null;
+    public HtmlTag $htmlDocument;
     public ?Html\SimpleHeadTag $htmlHead = null;
 
     /**
@@ -97,9 +97,9 @@ class HtmlMailer extends Document
      * Ease Mail - compiles and sends.
      *
      * @param string $emailAddress  address
-     * @param string $mailSubject   suject
+     * @param string $mailSubject   subject
      * @param mixed  $emailContents body - any mix of text and EaseObjects
-     * @param array  $headers       overide Mail Headers
+     * @param array  $headers       override Mail Headers
      */
     public function __construct(
         $emailAddress,
