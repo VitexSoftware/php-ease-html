@@ -43,7 +43,7 @@ class HtmlMailer extends Document
     public $mailHeadersDone;
     public $crLf = "\n";
     public $mailBody;
-    public $finalized = false;
+    public bool $finalized = false;
 
     /**
      * Already rendered HTML.
