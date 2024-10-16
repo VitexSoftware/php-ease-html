@@ -73,6 +73,7 @@ class FieldSet extends PairTag
     /**
      * Inserts the legend.
      */
+    #[\Override]
     public function finalize(): void
     {
         if ($this->legend) {
@@ -83,5 +84,7 @@ class FieldSet extends PairTag
                 reset($this->pageParts)->pageParts = [$this->legend];
             }
         }
+
+        parent::finalize();
     }
 }

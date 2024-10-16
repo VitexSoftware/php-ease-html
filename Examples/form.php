@@ -17,7 +17,7 @@ namespace Example\Ease\HTML;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-$form = new \Ease\Html\Form('h');
+$form = new \Ease\Html\Form(['name' => 'h']);
 
 $form->addItem(new \Ease\Html\InputTag('simple'));
 $form->addItem(new \Ease\Html\InputColorTag('color'));

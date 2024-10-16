@@ -34,7 +34,7 @@ class InputRadioTag extends InputTag implements Input
      * @param string $value      return value
      * @param array  $properties input radio tag properties
      */
-    public function __construct($name, $value = null, $properties = null)
+    public function __construct($name, $value = '', $properties = [])
     {
         parent::__construct($name, $value);
 

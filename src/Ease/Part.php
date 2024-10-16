@@ -73,6 +73,8 @@ class Part extends Document
         if ($javaScript) {
             WebPage::singleton()->addJavaScript($javaScript, null, true);
         }
+
+        $this->finalized = true;
     }
 
     /**

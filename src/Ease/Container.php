@@ -161,7 +161,7 @@ class Container extends Sand implements Embedable
     }
 
     /**
-     * Contentets.
+     * Contents.
      *
      * @return mixed
      */
@@ -190,10 +190,8 @@ class Container extends Sand implements Embedable
 
     /**
      * Returns the rendered contents of objects.
-     *
-     * @return string
      */
-    public function getRendered()
+    public function getRendered(): string
     {
         $retVal = '';
         ob_start();
@@ -216,10 +214,8 @@ class Container extends Sand implements Embedable
 
     /**
      * Returns the status of the part finalization of the flag.
-     *
-     * @return bool
      */
-    public function isFinalized()
+    public function isFinalized(): bool
     {
         return $this->finalized;
     }
@@ -239,7 +235,7 @@ class Container extends Sand implements Embedable
      *
      * @return bool emptiness
      */
-    public function isEmpty()
+    public function isEmpty(): bool
     {
         return empty($this->pageParts);
     }

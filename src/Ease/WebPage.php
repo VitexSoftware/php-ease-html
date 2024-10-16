@@ -165,7 +165,7 @@ class WebPage extends Document
     }
 
     /**
-     * Inserts javascript into the Page.
+     * Inserts JavaScript into the Page.
      *
      * @param string $javaScript      JS code
      * @param string $position        final position: '+','-','0','--',...
@@ -175,7 +175,7 @@ class WebPage extends Document
      */
     public function addJavaScript(
         $javaScript,
-        $position = null,
+        $position = 0,
         $inDocumentReady = true
     ) {
         return $this->addToScriptsStack(($inDocumentReady ? '$' : '@').$javaScript, $position);
@@ -193,21 +193,7 @@ class WebPage extends Document
     {
         $javaScripts = &self::singleton()->javaScripts;
 
-        if ($position === 0) {
-            if (!empty($javaScripts)) {
-                $scriptFound = array_search($code, $javaScripts, true);
-
-                if (!$scriptFound && ($javaScripts[0] !== $code)) {
-                    $javaScripts[] = $code;
-
-                    return key($javaScripts);
-                }
-
-                return $scriptFound;
-            }
-
-            $javaScripts[] = $code;
-        } else { // Force Position
+        if ($position) {  // Force Position
             if (isset($javaScripts[$position])) { // Already taken
                 if ($javaScripts[$position] === $code) {
                     return $position;
@@ -233,7 +219,17 @@ class WebPage extends Document
             // position still free
             $javaScripts[] = $code;
 
-            return key($javaScripts);
+            $position = key($javaScripts);
+        } else {
+            $scriptFound = array_search($code, $javaScripts, true);
+
+            if ($scriptFound === false) {
+                $javaScripts[] = $code;
+
+                $position = key($javaScripts);
+            } else {
+                $position = $scriptFound;
+            }
         }
 
         return $position;
@@ -356,10 +352,8 @@ class WebPage extends Document
 
     /**
      * Is body element empty ?
-     *
-     * @return bool emptyness
      */
-    public function isEmpty()
+    public function isEmpty(): bool
     {
         return empty($this->body->pageParts);
     }
@@ -425,11 +419,9 @@ class WebPage extends Document
     }
 
     /**
-     * Clears Cache of Javascripts to be rendered into page.
-     *
-     * @return bool
+     * Clears Cache of JavaScripts to be rendered into page.
      */
-    public static function clearJavaScriptsCache()
+    public static function clearJavaScriptsCache(): bool
     {
         self::singleton()->javaScripts = [];
 
@@ -437,11 +429,9 @@ class WebPage extends Document
     }
 
     /**
-     * Clears Cache of Javascripts to be rendered into page.
-     *
-     * @return bool
+     * Clears Cache of JavaScripts to be rendered into page.
      */
-    public static function clearCascadeStylesCache()
+    public static function clearCascadeStylesCache(): bool
     {
         self::singleton()->cascadeStyles = [];
 

@@ -313,6 +313,7 @@ class Tag extends Document
     /**
      * Add Css to tag properties.
      */
+    #[\Override]
     public function finalize(): void
     {
         if (!empty($this->cssProperties)) {
@@ -325,6 +326,7 @@ class Tag extends Document
     /**
      * Renders tag.
      */
+    #[\Override]
     public function draw(): void
     {
         echo '<'.trim($this->tagType.' '.$this->tagPropertiesToString());

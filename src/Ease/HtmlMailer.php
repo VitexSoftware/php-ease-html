@@ -253,6 +253,7 @@ class HtmlMailer extends Document
     /**
      * Builds the body of the mail.
      */
+    #[\Override]
     public function finalize(): void
     {
         if (method_exists($this->htmlDocument, 'GetRendered')) {
@@ -270,7 +271,7 @@ class HtmlMailer extends Document
         $this->setMailHeaders(['Date' => date('r')]);
         $this->mailBody = $this->mimer->get();
         $this->mailHeadersDone = $this->mimer->headers($this->mailHeaders);
-        $this->finalized = true;
+        parent::finalize();
     }
 
     /**

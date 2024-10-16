@@ -97,7 +97,7 @@ trait Glue
      *
      * @return bool success
      */
-    public function setEmbedName($embedName)
+    public function setEmbedName($embedName): bool
     {
         $this->embedName = $embedName;
 

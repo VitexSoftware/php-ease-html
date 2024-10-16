@@ -117,12 +117,15 @@ class SelectTag extends PairTag implements Input
     /**
      * Insert loaded items.
      */
+    #[\Override]
     public function finalize(): void
     {
         if (!\count($this->pageParts)) {
             // Uninitialised Select - so we load items
             $this->addItems($this->loadItems());
         }
+
+        parent::finalize();
     }
 
     /**

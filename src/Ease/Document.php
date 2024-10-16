@@ -239,7 +239,7 @@ class Document extends Container
     /**
      * Open Previously closed Web Page.
      */
-    public function makePagePublic()
+    public function makePagePublic(): bool
     {
         self::$pageClosed = false;
 

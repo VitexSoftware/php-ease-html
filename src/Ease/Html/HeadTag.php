@@ -85,12 +85,12 @@ EOD;
     }
 
     /**
-     * Hadle page title.
+     * Handle page title.
      */
     public function finalize(): void
     {
         $this->addItem('<title>'.\Ease\WebPage::singleton()->getPageTitle().'</title>');
-        $this->finalized = true;
+        parent::finalize();
     }
 
     /**

@@ -203,6 +203,7 @@ class TableTag extends PairTag
     /**
      * Remove empty tHead and tFoot.
      */
+    #[\Override]
     public function finalize(): void
     {
         if ($this->tHead->isEmpty() === false) {
@@ -215,6 +216,6 @@ class TableTag extends PairTag
             $this->addItem($this->tFoot);
         }
 
-        $this->finalized = true;
+        parent::finalize();
     }
 }
