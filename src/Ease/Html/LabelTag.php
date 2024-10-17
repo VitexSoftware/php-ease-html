@@ -51,7 +51,7 @@ class LabelTag extends PairTag
     public function setObjectName($objectName = null)
     {
         if (null === $objectName) {
-            $objectName = \get_class($this).'@'.$this->getTagProperty('for');
+            $objectName = \get_class($this) . '@' . $this->getTagProperty('for');
         }
 
         return parent::setObjectName($objectName);

@@ -161,7 +161,7 @@ class WebPage extends Document
      */
     public function includeJavaScript($javaScriptFile, $position = null)
     {
-        return $this->addToScriptsStack('#'.$javaScriptFile, $position);
+        return $this->addToScriptsStack('#' . $javaScriptFile, $position);
     }
 
     /**
@@ -178,7 +178,7 @@ class WebPage extends Document
         $position = 0,
         $inDocumentReady = true
     ) {
-        return $this->addToScriptsStack(($inDocumentReady ? '$' : '@').$javaScript, $position);
+        return $this->addToScriptsStack(($inDocumentReady ? '$' : '@') . $javaScript, $position);
     }
 
     /**
@@ -245,7 +245,7 @@ class WebPage extends Document
     public function addCSS($css)
     {
         if (\is_array($css)) {
-            $css = key($css).'{'.current($css).'}';
+            $css = key($css) . '{' . current($css) . '}';
         }
 
         $this->cascadeStyles[md5($css)] = $css;
@@ -265,7 +265,7 @@ class WebPage extends Document
     public function includeCss($cssFile, $fwPrefix = false, $media = 'screen')
     {
         if ($fwPrefix) {
-            $this->cascadeStyles[$this->cssPrefix.$cssFile] = $this->cssPrefix.$cssFile;
+            $this->cascadeStyles[$this->cssPrefix . $cssFile] = $this->cssPrefix . $cssFile;
         } else {
             $this->cascadeStyles[$cssFile] = $cssFile;
         }
@@ -286,7 +286,7 @@ class WebPage extends Document
 
         foreach (\Ease\Shared::logger()->getMessages() as $message) {
             $htmlFargment->addItem(new Html\DivTag(
-                \Ease\Logger\Message::getTypeUnicodeSymbol($message->type).'&nbsp;'.$message->body,
+                \Ease\Logger\Message::getTypeUnicodeSymbol($message->type) . '&nbsp;' . $message->body,
                 ['style' => Logger\Regent::singleton()->logStyles[$message->type], 'data-caller' => \is_object($message->caller) ? \get_class($message->caller) : $message->caller],
             ));
         }

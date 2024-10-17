@@ -143,10 +143,8 @@ class TableTag extends PairTag
 
     /**
      * Is Table Empty?
-     *
-     * @return bool
      */
-    public function isEmpty()
+    public function isEmpty(): bool
     {
         return $this->tBody->isEmpty();
     }

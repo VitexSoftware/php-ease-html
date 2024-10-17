@@ -129,9 +129,9 @@ class Document extends Container
         }
 
         if (headers_sent()) {
-            $this->addJavaScript('window.location = "'.$url.'"', 0, false);
+            $this->addJavaScript('window.location = "' . $url . '"', 0, false);
         } else {
-            header('Location: '.$url);
+            header('Location: ' . $url);
         }
 
         session_write_close();
@@ -425,10 +425,10 @@ class Document extends Container
     public static function arrayToUrlParams($params, $baseUrl = '')
     {
         if (strstr($baseUrl, '?')) {
-            return $baseUrl.'&'.http_build_query($params);
+            return $baseUrl . '&' . http_build_query($params);
         }
 
-        return $baseUrl.'?'.http_build_query($params);
+        return $baseUrl . '?' . http_build_query($params);
     }
 
     /**

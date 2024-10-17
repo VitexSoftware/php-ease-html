@@ -62,6 +62,6 @@ class ImgTag extends Tag
      */
     public static function base64src($imgRawData, $contentType)
     {
-        return 'data: '.$contentType.';base64,'.base64_encode($imgRawData);
+        return 'data: ' . $contentType . ';base64,' . base64_encode($imgRawData);
     }
 }

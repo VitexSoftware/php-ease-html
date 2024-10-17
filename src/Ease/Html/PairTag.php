@@ -74,6 +74,6 @@ class PairTag extends Tag
      */
     public function tagEnclousure(): void
     {
-        echo '</'.$this->getTagType().'>';
+        echo '</' . $this->getTagType() . '>';
     }
 }
