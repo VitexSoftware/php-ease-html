@@ -46,7 +46,6 @@ class Form extends PairTag
      *                            ('enctype' => 'multipart/form-data')
      * @param mixed $formContents inside form elements
      */
-    #[\Override]
     public function __construct(array $properties = [], $formContents = [])
     {
         if (!\array_key_exists('method', $properties)) {
