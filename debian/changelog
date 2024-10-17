@@ -1,8 +1,15 @@
-php-vitexsoftware-ease-html (1.40.0) UNRELEASED; urgency=medium
+php-vitexsoftware-ease-html (1.40.1) UNRELEASED; urgency=medium
 
+  * Code up
+
+ --  <vitezslav.dvorak@spojenet.cz>  Thu, 17 Oct 2024 09:51:40 +0200
+
+php-vitexsoftware-ease-html (1.40.0) EXPERIMENTAL; urgency=medium
+
+  [ vitex ]
   * depends on current ease-core
 
- -- vitex <info@vitexsoftware.cz>  Fri, 04 Oct 2024 06:57:46 +0200
+ --  <vitezslav.dvorak@spojenet.cz>  Thu, 17 Oct 2024 09:51:24 +0200
 
 php-vitexsoftware-ease-html (1.39.0) EXPERIMENTAL; urgency=medium
 
