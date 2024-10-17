@@ -112,7 +112,7 @@ class HtmlMailer extends Document
         }
 
         if (\is_array($emailAddress)) {
-            $emailAddress = current($emailAddress) . ' <' . key($emailAddress) . '>';
+            $emailAddress = current($emailAddress).' <'.key($emailAddress).'>';
         }
 
         $this->setMailHeaders(
@@ -176,7 +176,7 @@ class HtmlMailer extends Document
         if (isset($this->mailHeaders['Subject'])) {
             if (!strstr($this->mailHeaders['Subject'], '=?UTF-8?B?')) {
                 $this->emailSubject = $this->mailHeaders['Subject'];
-                $this->mailHeaders['Subject'] = '=?UTF-8?B?' . base64_encode($this->mailHeaders['Subject']) . '?=';
+                $this->mailHeaders['Subject'] = '=?UTF-8?B?'.base64_encode($this->mailHeaders['Subject']).'?=';
             }
         }
 

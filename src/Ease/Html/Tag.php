@@ -94,10 +94,10 @@ class Tag extends Document
             $objName = parent::setObjectName($objectName);
         } else {
             if (empty($this->tagName) === false) {
-                $objName = parent::setObjectName(\get_class($this) . '@' . $this->tagName);
+                $objName = parent::setObjectName(\get_class($this).'@'.$this->tagName);
             } else {
                 if (empty($this->tagType) === false) {
-                    $objName = parent::setObjectName(\get_class($this) . '@' . $this->tagType);
+                    $objName = parent::setObjectName(\get_class($this).'@'.$this->tagType);
                 } else {
                     $objName = parent::setObjectName();
                 }
@@ -170,7 +170,7 @@ class Tag extends Document
      */
     public function addTagClass($className): void
     {
-        $this->setTagClass(trim($this->getTagClass() . ' ' . $className));
+        $this->setTagClass(trim($this->getTagClass().' '.$className));
     }
 
     /**
@@ -271,7 +271,7 @@ class Tag extends Document
         $props = [];
 
         foreach ($this->tagProperties as $propName => $propValue) {
-            $props[] = \is_string($propName) ? $propName . '="' . $propValue . '"' : $propValue;
+            $props[] = \is_string($propName) ? $propName.'="'.$propValue.'"' : $propValue;
         }
 
         return implode(' ', $props);
@@ -304,7 +304,7 @@ class Tag extends Document
         $cssPropertiesString = ' ';
 
         foreach ($cssProperties as $cssPropertyName => $cssPropertiesssPropertyValue) {
-            $cssPropertiesString .= $cssPropertyName . ':' . $cssPropertiesssPropertyValue . ';';
+            $cssPropertiesString .= $cssPropertyName.':'.$cssPropertiesssPropertyValue.';';
         }
 
         return trim($cssPropertiesString);
@@ -329,8 +329,8 @@ class Tag extends Document
     #[\Override]
     public function draw(): void
     {
-        echo '<' . trim($this->tagType . ' ' . $this->tagPropertiesToString());
-        echo $this->trail . '>';
+        echo '<'.trim($this->tagType.' '.$this->tagPropertiesToString());
+        echo $this->trail.'>';
         $this->drawStatus = true;
     }
 }

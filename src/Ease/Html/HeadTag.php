@@ -47,7 +47,7 @@ class HeadTag extends PairTag
     public function __construct($content = null)
     {
         parent::__construct('head', null, $content);
-        $this->addItem('<meta http-equiv="Content-Type" content="text/html; charset=' . $this->charSet . '" />');
+        $this->addItem('<meta http-equiv="Content-Type" content="text/html; charset='.$this->charSet.'" />');
     }
 
     /**
@@ -76,7 +76,7 @@ class HeadTag extends PairTag
 <script>
 // <![CDATA[
 
-EOD . $javaScript . <<<'EOD'
+EOD.$javaScript.<<<'EOD'
 
 // ]]>
 </script>
@@ -89,7 +89,7 @@ EOD;
      */
     public function finalize(): void
     {
-        $this->addItem('<title>' . \Ease\WebPage::singleton()->getPageTitle() . '</title>');
+        $this->addItem('<title>'.\Ease\WebPage::singleton()->getPageTitle().'</title>');
         parent::finalize();
     }
 
@@ -114,7 +114,7 @@ EOD;
 
             switch ($scriptType) {
                 case '#':
-                    $scriptsIncluded[] = '<script src="' . $scriptBody . '"></script>';
+                    $scriptsIncluded[] = '<script src="'.$scriptBody.'"></script>';
 
                     break;
                 case '@':
@@ -129,23 +129,23 @@ EOD;
         }
 
         if (!empty($scriptsIncluded)) {
-            $scriptsRendered .= $divider . implode($divider, $scriptsIncluded);
+            $scriptsRendered .= $divider.implode($divider, $scriptsIncluded);
         }
 
         if (!empty($scriptsInline)) {
-            $scriptsRendered .= $divider . self::jsEnclosure(implode(
+            $scriptsRendered .= $divider.self::jsEnclosure(implode(
                 $divider,
                 $scriptsInline,
             ));
         }
 
         if (!empty($ODRStack)) {
-            $scriptsRendered .= $divider .
+            $scriptsRendered .= $divider.
                     self::jsEnclosure(
-                        '$(document).ready(function () { ' . implode(
+                        '$(document).ready(function () { '.implode(
                             $divider,
                             $ODRStack,
-                        ) . ' });',
+                        ).' });',
                     );
         }
 
@@ -170,16 +170,16 @@ EOD;
 
         foreach ($stylesArray as $styleRes => $style) {
             if ($styleRes === $style) {
-                $cascadeStylesIncludes[] = '<link href="' . $style . '" rel="stylesheet" type="text/css" media="' . $media . '" />';
+                $cascadeStylesIncludes[] = '<link href="'.$style.'" rel="stylesheet" type="text/css" media="'.$media.'" />';
             } else {
                 $cascadeStyles[] = $style;
             }
         }
 
-        return empty($stylesArray) ? '' : implode($divider, $cascadeStylesIncludes) . $divider . '<style>' . implode(
+        return empty($stylesArray) ? '' : implode($divider, $cascadeStylesIncludes).$divider.'<style>'.implode(
             $divider,
             $cascadeStyles,
-        ) . '</style>';
+        ).'</style>';
     }
 
     /**

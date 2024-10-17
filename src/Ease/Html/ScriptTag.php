@@ -36,7 +36,7 @@ class ScriptTag extends PairTag
             <<<'EOD'
 // <![CDATA[
 
-EOD . $content . <<<'EOD'
+EOD.$content.<<<'EOD'
 
 // ]]>
 EOD

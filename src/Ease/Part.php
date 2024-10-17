@@ -107,7 +107,7 @@ class Part extends Document
             }
         } else {
             $propBuff = $partProperties;
-            $this->partProperties = ' ' . $propBuff;
+            $this->partProperties = ' '.$propBuff;
         }
     }
 
@@ -146,47 +146,47 @@ class Part extends Document
                         if (
                             !strstr(
                                 $partPropertiesString,
-                                ' ' . $partPropertyValue . ' ',
+                                ' '.$partPropertyValue.' ',
                             )
                         ) {
-                            $partsArray[] = ' ' . $partPropertyValue . ' ';
+                            $partsArray[] = ' '.$partPropertyValue.' ';
                         }
                     } else {
                         if (\is_array($partPropertyValue)) {
                             if (Functions::isAssoc($partPropertyValue)) {
                                 if ($partPropertyName) {
-                                    $partsArray[] = $partPropertyName . ': { ' . self::partPropertiesToString($partPropertyValue) . ' } ';
+                                    $partsArray[] = $partPropertyName.': { '.self::partPropertiesToString($partPropertyValue).' } ';
                                 } else {
                                     $partsArray[] = self::partPropertiesToString($partPropertyValue);
                                 }
                             } else {
                                 foreach ($partPropertyValue as $key => $value) {
                                     if (\is_string($value)) {
-                                        $partPropertyValue[$key] = '"' . $value . '"';
+                                        $partPropertyValue[$key] = '"'.$value.'"';
                                     }
                                 }
 
                                 if (\is_array($partPropertyValue)) {
                                     foreach ($partPropertyValue as $pId => $piece) {
                                         if (\is_array($piece)) {
-                                            $partPropertyValue[$pId] = ' { ' . self::partPropertiesToString($piece) . ' } ';
+                                            $partPropertyValue[$pId] = ' { '.self::partPropertiesToString($piece).' } ';
                                         }
                                     }
 
-                                    $partsArray[] = $partPropertyName . ': [' . implode(
+                                    $partsArray[] = $partPropertyName.': ['.implode(
                                         ',',
                                         $partPropertyValue,
-                                    ) . '] ';
+                                    ).'] ';
                                 } else {
-                                    $partsArray[] = $partPropertyName . ':' . $partPropertyValue;
+                                    $partsArray[] = $partPropertyName.':'.$partPropertyValue;
                                 }
                             }
                         } elseif (\is_int($partPropertyValue)) {
-                            $partsArray[] = '"' . $partPropertyName . '": ' . $partPropertyValue . ' ';
+                            $partsArray[] = '"'.$partPropertyName.'": '.$partPropertyValue.' ';
                         } else {
                             if (\is_bool($partPropertyValue)) {
                                 $partPropertyValue = $partPropertyValue ? 'true' : 'false';
-                                $partsArray[] = $partPropertyName . ': ' . $partPropertyValue . ' ';
+                                $partsArray[] = $partPropertyName.': '.$partPropertyValue.' ';
                             } elseif (null !== $partPropertyValue && (\strlen($partPropertyValue) || $partPropertyValue === false)) {
                                 if (
                                     (\strlen($partPropertyValue) > 7) && !substr_compare(
@@ -204,9 +204,9 @@ class Part extends Document
                                         $partPropertyValue = 'false';
                                     }
 
-                                    $partsArray[] = $partPropertyName . ': ' . $partPropertyValue . ' ';
+                                    $partsArray[] = $partPropertyName.': '.$partPropertyValue.' ';
                                 } else {
-                                    $partsArray[] = $partPropertyName . ': "' . $partPropertyValue . '" ';
+                                    $partsArray[] = $partPropertyName.': "'.$partPropertyValue.'" ';
                                 }
                             }
                         }
