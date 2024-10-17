@@ -224,7 +224,7 @@ class HtmlMailer extends Document
      *
      * @return bool
      */
-    public function isEmpty()
+    public function isEmpty(): bool
     {
         return $this->htmlBody->isEmpty();
     }
