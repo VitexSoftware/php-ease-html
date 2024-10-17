@@ -221,8 +221,6 @@ class HtmlMailer extends Document
 
     /**
      * Is object empty ?
-     *
-     * @return bool
      */
     public function isEmpty(): bool
     {
