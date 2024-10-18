@@ -334,10 +334,8 @@ class WebPage extends Document
 
     /**
      * Return number of enclosed items in current page body or given object.
-     *
-     * @return int number of parts enclosed
      */
-    public function getItemsCount()
+    public function getItemsCount(): int
     {
         return $this->body->getItemsCount();
     }

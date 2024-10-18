@@ -211,10 +211,8 @@ class HtmlMailer extends Document
 
     /**
      * Obtain item count.
-     *
-     * @return int
      */
-    public function getItemsCount()
+    public function getItemsCount(): int
     {
         return $this->htmlBody->getItemsCount();
     }
@@ -239,7 +237,7 @@ class HtmlMailer extends Document
      * Attaches an attachment from a file to the mail.
      *
      * @param string $filename path / file name to attach
-     * @param string $mimeType MIME attachement type
+     * @param string $mimeType MIME attachment type
      *
      * @return bool file attachment successful
      */

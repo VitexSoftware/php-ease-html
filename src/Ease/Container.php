@@ -82,10 +82,8 @@ class Container extends Sand implements Embedable
 
     /**
      * Returns number of enclosed items in current or given object.
-     *
-     * @return int number of parts enclosed
      */
-    public function getItemsCount()
+    public function getItemsCount(): int
     {
         return \count($this->pageParts);
     }

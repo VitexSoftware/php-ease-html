@@ -177,7 +177,7 @@ class TableTag extends PairTag
      *
      * @return int number of parts enclosed
      */
-    public function getItemsCount()
+    public function getItemsCount(): int
     {
         return $this->tBody->getItemsCount();
     }
