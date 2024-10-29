@@ -78,7 +78,7 @@ class HtmlMailer extends Document
     /**
      * Page object for rendering to email.
      */
-    public HtmlTag $htmlDocument;
+    public Container $htmlDocument;
     public ?Html\SimpleHeadTag $htmlHead = null;
 
     /**
