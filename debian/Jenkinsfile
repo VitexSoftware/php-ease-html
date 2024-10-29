@@ -59,7 +59,7 @@ distributions.each {
 
             stage('Test ' + distribution) {
                 buildImage.inside {
-                    def debconf_debug = 0 //Set to "5" or "developer" to debug debconf
+                    def debconf_debug = 1 //Set to "5" or "developer" to debug debconf
                     sh 'cd $WORKSPACE/dist/debian/ ; dpkg-scanpackages . /dev/null | gzip -9c > Packages.gz; cd $WORKSPACE'
                     sh 'echo "deb [trusted=yes] file://///$WORKSPACE/dist/debian/ ./" | sudo tee /etc/apt/sources.list.d/local.list'
                     sh 'sudo apt-get update --allow-releaseinfo-change'

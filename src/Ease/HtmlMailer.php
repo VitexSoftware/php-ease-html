@@ -102,10 +102,10 @@ class HtmlMailer extends Document
      * @param array  $headers       override Mail Headers
      */
     public function __construct(
-            string $emailAddress,
-            string $mailSubject,
-            string $emailContents = '',
-            array $headers = []
+        string $emailAddress,
+        string $mailSubject,
+        string $emailContents = '',
+        array $headers = []
     ) {
         if (\Ease\Functions::cfg('EASE_SMTP')) {
             $this->parameters = (array) json_decode(\Ease\Functions::cfg('EASE_SMTP'));
@@ -296,14 +296,13 @@ class HtmlMailer extends Document
             $this->mailer = $oMail->factory('mail');
         }
 
-        
         $sendresult = $this->mailer->send(
             $this->emailAddress,
             $this->mailHeadersDone,
             $this->mailBody,
         );
 
-        $this->sendResult = is_bool($sendresult) ? $sendresult : null; 
+        $this->sendResult = \is_bool($sendresult) ? $sendresult : null;
 
         if (\is_object($this->sendResult) && \get_class($this->sendResult) === 'PEAR_Error') {
             throw new \Ease\Exception($this->sendResult->getMessage());
