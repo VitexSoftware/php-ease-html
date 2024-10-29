@@ -17,7 +17,7 @@ Description: EasePHP Framework HTML support
  HTML classes for Ease Framework. 
 
 Package: php-vitexsoftware-ease-html-dev
-Depends: ${misc:Depends}, php-vitexsoftware-ease-core-dev (>= 1.44)
+Depends: ${misc:Depends}, php-vitexsoftware-ease-html, php-vitexsoftware-ease-core-dev (>= 1.44)
 Architecture: all
 Section: devel
 Priority: optional
