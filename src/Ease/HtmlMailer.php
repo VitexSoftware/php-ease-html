@@ -26,7 +26,6 @@ use Ease\Html\BodyTag;
 use Ease\Html\HtmlTag;
 use Ease\Html\SimpleHeadTag;
 use Ease\Html\TitleTag;
-use Mail;
 
 /**
  * Build & Send email.
@@ -282,7 +281,7 @@ class HtmlMailer extends Document
     /**
      * Send mail.
      */
-    public function send()
+    public function send(): bool
     {
         if (!$this->finalized) {
             $this->finalize();
@@ -302,7 +301,7 @@ class HtmlMailer extends Document
             $this->mailBody,
         );
 
-        $this->sendResult = \is_bool($sendresult) ? $sendresult : null;
+        $this->sendResult = \is_bool($sendresult) ? $sendresult : false;
 
         if (\is_object($this->sendResult) && \get_class($this->sendResult) === 'PEAR_Error') {
             throw new \Ease\Exception($this->sendResult->getMessage());
@@ -312,17 +311,13 @@ class HtmlMailer extends Document
             $mailStripped = str_replace(['<', '>'], '', $this->emailAddress);
 
             if ($this->sendResult === true) {
-                $this->addStatusMessage(sprintf(
-                    _('Message %s was sent to %s'),
-                    $this->emailSubject,
-                    $mailStripped,
-                ), 'success');
+                $this->addStatusMessage(sprintf(_('Message %s was sent to %s'), $this->emailSubject, $mailStripped), 'success');
             } else {
                 $this->addStatusMessage(sprintf(
                     _('Message %s, for %s was not sent because of %s'),
                     $this->emailSubject,
                     $mailStripped,
-                    $this->sendResult->message,
+                    $sendresult->message,
                 ), 'warning');
             }
         }
