@@ -43,12 +43,27 @@ class TableTag extends PairTag
      * @param mixed $content    inserted value
      * @param array $properties table tag properties
      */
-    public function __construct($content = null, $properties = [])
+    public function __construct($content = null, array $properties = [])
     {
-        parent::__construct('table', $properties);
         $this->tHead = new Thead();
         $this->tBody = new Tbody($content);
         $this->tFoot = new Tfoot();
+        parent::__construct('table', $properties);
+    }
+
+    public function getHead(): Thead
+    {
+        return $this->tHead ?? $this->tHead = new Thead();
+    }
+
+    public function getBody(): Tbody
+    {
+        return $this->tBody ?? $this->tBody = new Tbody();
+    }
+
+    public function getFoot(): Tfoot
+    {
+        return $this->tFoot ?? $this->tFoot = new Tfoot();
     }
 
     /**
@@ -56,7 +71,7 @@ class TableTag extends PairTag
      */
     public function setHeader(array $headerColumns): void
     {
-        $this->tHead->emptyContents();
+        $this->getHead()->emptyContents();
         $this->addRowHeaderColumns($headerColumns);
     }
 
@@ -70,7 +85,7 @@ class TableTag extends PairTag
      */
     public function &addRowColumns($columns = null, $properties = [])
     {
-        $tableRow = $this->tBody->addItem(new TrTag());
+        $tableRow = $this->getBody()->addItem(new TrTag());
 
         if (\is_array($columns)) {
             foreach ($columns as $column) {
@@ -97,7 +112,7 @@ class TableTag extends PairTag
      */
     public function &addRowHeaderColumns($columns = null, $properties = [])
     {
-        $tableRow = $this->tHead->addItem(new TrTag());
+        $tableRow = $this->getHead()->addItem(new TrTag());
 
         if (\is_array($columns)) {
             foreach ($columns as $column) {
@@ -124,7 +139,7 @@ class TableTag extends PairTag
      */
     public function &addRowFooterColumns($columns = null, $properties = [])
     {
-        $tableRow = $this->tFoot->addItem(new TrTag());
+        $tableRow = $this->getFoot()->addItem(new TrTag());
 
         if (\is_array($columns)) {
             foreach ($columns as $column) {
@@ -146,7 +161,7 @@ class TableTag extends PairTag
      */
     public function isEmpty(): bool
     {
-        return $this->tBody->isEmpty();
+        return $this->getBody()->isEmpty();
     }
 
     /**
@@ -155,7 +170,7 @@ class TableTag extends PairTag
     #[\Override]
     public function emptyContents(): void
     {
-        $this->tBody->emptyContents();
+        $this->getBody()->emptyContents();
     }
 
     /**
@@ -164,12 +179,12 @@ class TableTag extends PairTag
     #[\Override]
     public function getContents()
     {
-        return $this->tBody->getContents();
+        return $this->getBody()->getContents();
     }
 
     public function getFirstPart()
     {
-        return $this->tBody->getFirstPart();
+        return $this->getBody()->getFirstPart();
     }
 
     /**
@@ -179,7 +194,7 @@ class TableTag extends PairTag
      */
     public function getItemsCount(): int
     {
-        return $this->tBody->getItemsCount();
+        return $this->getBody()->getItemsCount();
     }
 
     /**
@@ -204,13 +219,13 @@ class TableTag extends PairTag
     #[\Override]
     public function finalize(): void
     {
-        if ($this->tHead->isEmpty() === false) {
+        if ($this->getHead()->isEmpty() === false) {
             $this->addItem($this->tHead);
         }
 
         $this->addItem($this->tBody);
 
-        if ($this->tFoot->isEmpty() === false) {
+        if ($this->getFoot()->isEmpty() === false) {
             $this->addItem($this->tFoot);
         }
 
