@@ -137,7 +137,9 @@ class Container extends Sand implements Embedable
     /**
      * Insert an array of elements.
      *
-     * @param array $itemes value field or EaseObject with draw () method
+     * @param array<mixed> $itemes value field or EaseObject with draw () method
+     *
+     * @return array<mixed> inserted items
      */
     public function addItems(array $itemes): array
     {

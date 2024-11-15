@@ -15,7 +15,7 @@ declare(strict_types=1);
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-if ((\PHP_SAPI !== 'cli') && (session_status() === 'PHP_SESSION_NONE')) {
+if ((\PHP_SAPI !== 'cli') && (session_status() === \PHP_SESSION_NONE)) {
     session_start();
 } else {
     $_SESSION = [];
@@ -26,4 +26,4 @@ if ((\PHP_SAPI !== 'cli') && (session_status() === 'PHP_SESSION_NONE')) {
 
 \Ease\Locale::singleton('cs_CZ');
 // \Ease\Shared::webPage(new \Ease\WebPage());
-\Ease\Shared::user(\Ease\User::singleton(null, '\Ease\User'));
+\Ease\Shared::user(new \Ease\User);
