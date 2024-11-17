@@ -63,7 +63,7 @@ class Document extends Container
      */
     public function addJavaScript(
         string $javaScript,
-        ?int $position = null,
+        string $position = '0',
         bool $inDocumentReady = true
     ) {
         return WebPage::singleton()->addJavaScript(

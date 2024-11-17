@@ -19,7 +19,7 @@ namespace Ease;
  * HTML ✉Class.
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
- * @copyright 2009-2024 Vitex@hippy.cz (G)
+ * @copyright 2009-2024 vitex@hippy.cz (G)
  */
 
 use Ease\Html\BodyTag;
@@ -106,8 +106,8 @@ class HtmlMailer extends Document
         string $emailContents = '',
         array $headers = []
     ) {
-        if (\Ease\Functions::cfg('EASE_SMTP')) {
-            $this->parameters = (array) json_decode(\Ease\Functions::cfg('EASE_SMTP'));
+        if (\Ease\Shared::cfg('EASE_SMTP')) {
+            $this->parameters = (array) json_decode(\Ease\Shared::cfg('EASE_SMTP'));
         }
 
         if (\is_array($emailAddress)) {
