@@ -174,8 +174,8 @@ class WebPage extends Document
      * @return int
      */
     public function addJavaScript(
-        $javaScript,
-        $position = 0,
+        string $javaScript,
+        ?string $position = '0',
         $inDocumentReady = true
     ) {
         return $this->addToScriptsStack(($inDocumentReady ? '$' : '@').$javaScript, $position);
