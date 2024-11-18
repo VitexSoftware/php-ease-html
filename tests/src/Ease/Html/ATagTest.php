@@ -45,6 +45,9 @@ class ATagTest extends PairTagTest
     {
     }
 
+    /**
+     * @covers \Ease\Html\ATag::__construct
+     */
     public function testConstructor(): void
     {
         $classname = \get_class($this->object);

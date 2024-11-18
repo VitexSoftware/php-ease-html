@@ -46,6 +46,7 @@ class PairTagTest extends TagTest
     }
 
     /**
+     * @covers \Ease\Html\PairTag::__construct
      * Check Constructor.
      */
     public function testConstructor(): void

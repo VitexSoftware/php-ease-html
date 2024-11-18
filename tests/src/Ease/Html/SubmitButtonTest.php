@@ -39,7 +39,10 @@ class SubmitButtonTest extends InputTagTest
     protected function tearDown(): void
     {
     }
-
+    
+    /**
+     * @covers \Ease\Html\SubmitButton::__construct
+     */
     public function testConstructor(): void
     {
         $classname = \get_class($this->object);

@@ -20,7 +20,9 @@ namespace Test\Ease\Html;
  */
 class BodyTagTest extends PairTagTest
 {
-    public string $rendered = '<body>
+    public string $rendered = '<body></body>';
+    public string $renderedEmpty = '<body></body>';
+    public string $renderedWithJS = '<body>
 
 <script>
 // <![CDATA[
@@ -35,6 +37,7 @@ $(document).ready(function () { alert("hallo"); });
 // ]]>
 </script>
 </body>';
+    
     protected $object;
 
     /**
@@ -85,6 +88,10 @@ $(document).ready(function () { alert("hallo"); });
      */
     public function testDraw($whatWant = null): void
     {
+        $this->rendered = '<body></body>';
+        $this->object->emptyContents();
+        \Ease\WebPage::clearJavaScriptsCache();
+        \Ease\WebPage::clearCascadeStylesCache();
         parent::testDraw($whatWant);
     }
 
