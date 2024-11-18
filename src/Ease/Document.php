@@ -129,7 +129,7 @@ class Document extends Container
         }
 
         if (headers_sent()) {
-            $this->addJavaScript('window.location = "'.$url.'"', 0, false);
+            $this->addJavaScript('window.location = "'.$url.'"', '0', false);
         } else {
             header('Location: '.$url);
         }
