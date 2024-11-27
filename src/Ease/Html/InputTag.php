@@ -60,9 +60,9 @@ class InputTag extends Tag implements Input
     /**
      * Returns the value of an input field.
      *
-     * @return string $value
+     * @return null|string $value
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->getTagProperty('value');
     }

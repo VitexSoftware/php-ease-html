@@ -39,7 +39,7 @@ class SubmitButtonTest extends InputTagTest
     protected function tearDown(): void
     {
     }
-    
+
     /**
      * @covers \Ease\Html\SubmitButton::__construct
      */

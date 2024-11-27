@@ -32,5 +32,5 @@ interface Input
      *
      * @return string $value
      */
-    public function getValue();
+    public function getValue(): ?string;
 }

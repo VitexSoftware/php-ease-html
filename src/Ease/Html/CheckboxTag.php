@@ -70,12 +70,12 @@ class CheckboxTag extends InputTag
     }
 
     /**
-     * Obtains curent checkbox state.
+     * Obtains current checkbox state.
      *
-     * @return bool $value
+     * @return string $value '0' or '1'
      */
-    public function getValue()
+    public function getValue(): ?string
     {
-        return $this->getTagProperty('checked') === 'true';
+        return $this->getTagProperty('checked') ? '1' : '0';
     }
 }

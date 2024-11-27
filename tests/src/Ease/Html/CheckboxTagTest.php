@@ -46,9 +46,9 @@ class CheckboxTagTest extends InputTagTest
     public function testSetValue(): void
     {
         $this->object->setValue(true);
-        $this->assertTrue($this->object->getValue());
+        $this->assertEquals('1', $this->object->getValue());
         $this->object->setValue(false);
-        $this->assertFalse($this->object->getValue());
+        $this->assertEquals('0', $this->object->getValue());
     }
 
     /**
@@ -57,9 +57,9 @@ class CheckboxTagTest extends InputTagTest
     public function testGetValue(): void
     {
         $this->object->setValue(true);
-        $this->assertTrue($this->object->getValue());
+        $this->assertEquals('1', $this->object->getValue());
         $this->object->setValue(false);
-        $this->assertFalse($this->object->getValue());
+        $this->assertEquals('0', $this->object->getValue());
     }
 
     /**

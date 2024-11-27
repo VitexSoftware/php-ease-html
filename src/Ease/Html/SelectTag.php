@@ -40,10 +40,10 @@ class SelectTag extends PairTag implements Input
     /**
      * Html select box.
      *
-     * @param string $name         name
-     * @param array  $items        items
-     * @param string $defaultValue default item id
-     * @param array  $properties   select tag properties
+     * @param string                $name         name
+     * @param array<string, string> $items        items
+     * @param string                $defaultValue default item id
+     * @param array<string, string> $properties   select tag properties
      */
     public function __construct(string $name, array $items = [], string $defaultValue = '', array $properties = [])
     {
@@ -51,7 +51,7 @@ class SelectTag extends PairTag implements Input
         $this->defaultValue = $defaultValue;
         $this->setTagName($name);
 
-        if (\is_array($items)) {
+        if ($items) {
             $this->addItems($items);
         }
     }
@@ -68,7 +68,7 @@ class SelectTag extends PairTag implements Input
         foreach ($items as $itemName => $itemValue) {
             $added[$itemName] = $this->addItem(new OptionTag((string) $itemValue, (string) $itemName));
 
-            if ($this->defaultValue === $itemName) {
+            if ($this->defaultValue === (string) $itemName) {
                 $this->lastItem()->setDefault();
             }
         }
@@ -160,14 +160,18 @@ class SelectTag extends PairTag implements Input
      * Get value of selected item.
      */
     #[\Override]
-    public function getValue(): string
+    public function getValue(): ?string
     {
+        $value = null;
+
         foreach ($this->pageParts as $option) {
             $pos = array_search('selected', $option->tagProperties, true);
 
             if (($pos !== false) && is_numeric($pos)) {
-                return $option->getValue();
+                $value = $option->getValue();
             }
         }
+
+        return $value;
     }
 }

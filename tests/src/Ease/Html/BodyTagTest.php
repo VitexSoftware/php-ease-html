@@ -22,7 +22,8 @@ class BodyTagTest extends PairTagTest
 {
     public string $rendered = '<body></body>';
     public string $renderedEmpty = '<body></body>';
-    public string $renderedWithJS = '<body>
+    public string $renderedWithJS = <<<'EOD'
+<body>
 
 <script>
 // <![CDATA[
@@ -36,8 +37,8 @@ alert("Document");
 $(document).ready(function () { alert("hallo"); });
 // ]]>
 </script>
-</body>';
-    
+</body>
+EOD;
     protected $object;
 
     /**
