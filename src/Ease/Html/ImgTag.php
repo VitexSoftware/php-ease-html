@@ -26,14 +26,14 @@ class ImgTag extends Tag
      * Html Image.
      *
      * @param string $image      image URL
-     * @param string $alt        alternat name for text only browsers
+     * @param string $alt        alternate name for text only browsers
      * @param array  $properties IMG tag properties
      */
-    public function __construct($image, $alt = null, $properties = [])
+    public function __construct(string $image, string $alt = '', array $properties = [])
     {
         $properties['src'] = $image;
 
-        if (isset($alt)) {
+        if (empty($alt) === false) {
             $properties['alt'] = $alt;
         }
 
@@ -47,7 +47,7 @@ class ImgTag extends Tag
      *
      * @return string
      */
-    public static function fileBase64src($imgFileName)
+    public static function fileBase64src(string $imgFileName): string
     {
         return self::base64src(file_get_contents($imgFileName), mime_content_type($imgFileName));
     }
@@ -60,7 +60,7 @@ class ImgTag extends Tag
      *
      * @return string
      */
-    public static function base64src($imgRawData, $contentType)
+    public static function base64src(string $imgRawData, string $contentType): string
     {
         return 'data: '.$contentType.';base64,'.base64_encode($imgRawData);
     }
