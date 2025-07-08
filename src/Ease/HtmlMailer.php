@@ -240,7 +240,7 @@ class HtmlMailer extends Document
      *
      * @return bool file attachment successful
      */
-    public function addFile(string $filename, $mimeType = 'text/plain'): bool
+    public function addFile(string $filename, string $mimeType = 'text/plain'): bool
     {
         return $this->mimer->addAttachment($filename, $mimeType);
     }
