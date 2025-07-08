@@ -35,9 +35,9 @@ class PartTest extends \PHPUnit\Framework\TestCase {
      * @todo   Implement testsetPartName().
      */
     public function testsetPartName() {
-        $this->assertEquals('', $this->object->setPartName());
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete('This test has not been implemented yet.');
+        $testName = 'testDiv';
+        $this->object->setPartName($testName);
+        $this->assertEquals($testName, $this->object->partName);
     }
 
     /**
@@ -75,9 +75,9 @@ class PartTest extends \PHPUnit\Framework\TestCase {
      * @todo   Implement testsetPartProperties().
      */
     public function testsetPartProperties() {
-        $this->assertEquals('', $this->object->setPartProperties());
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete('This test has not been implemented yet.');
+        $testProps = ['class' => 'myClass', 'id' => 'myId'];
+        $this->object->setPartProperties($testProps);
+        $this->assertEquals($testProps, $this->object->partProperties);
     }
 
     /**
@@ -95,8 +95,11 @@ class PartTest extends \PHPUnit\Framework\TestCase {
      * @todo   Implement testpartPropertiesToString().
      */
     public function testpartPropertiesToString() {
-        $this->assertEquals('', $this->object->partPropertiesToString());
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete('This test has not been implemented yet.');
+        $testProps = ['class' => 'myClass', 'id' => 'myId'];
+        $expected = 'class: myClass, id: myId'; // Adjust this if the actual output format is different
+        $result = \Ease\Part::partPropertiesToString($testProps);
+        $this->assertIsString($result);
+        $this->assertStringContainsString('myClass', $result);
+        $this->assertStringContainsString('myId', $result);
     }
 }
