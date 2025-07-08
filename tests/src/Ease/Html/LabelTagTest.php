@@ -55,20 +55,7 @@ class LabelTagTest extends PairTagTest
 
     public function testConstructor(): void
     {
-        $classname = \get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-        $mock->__construct('for');
-
-        $mock->__construct(
-            'for',
-            'Iam label',
-            ['name' => 'Label', 'id' => 'testing'],
-        );
-
-        $this->assertEquals('<label for="for" name="Label" id="testing">Iam label</label>', $mock->getRendered());
+        $object = new \Ease\Html\LabelTag('for', 'Iam label', ['name' => 'Label', 'id' => 'testing']);
+        $this->assertEquals('<label for="for" name="Label" id="testing">Iam label</label>', $object->getRendered());
     }
 }

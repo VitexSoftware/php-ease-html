@@ -45,18 +45,10 @@ class InputHiddenTagTest extends InputTagTest
      */
     public function testConstructor(): void
     {
-        $classname = \get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-
-        $mock->__construct('Tag', 'info@vitexsoftware.cz', ['name' => 'Tag', 'id' => 'testing']);
-
+        $object = new \Ease\Html\InputHiddenTag('Tag', 'info@vitexsoftware.cz', ['name' => 'Tag', 'id' => 'testing']);
         $this->assertEquals(
             '<input name="Tag" value="info@vitexsoftware.cz" id="testing" type="hidden" />',
-            $mock->getRendered(),
+            $object->getRendered(),
         );
     }
 }

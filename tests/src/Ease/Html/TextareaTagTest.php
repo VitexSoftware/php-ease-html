@@ -42,15 +42,8 @@ class TextareaTagTest extends PairTagTest
 
     public function testConstructor(): void
     {
-        $classname = \get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-        $mock->__construct('Test');
-        $mock->__construct('Textarea', 'Text');
-        $this->assertEquals('<textarea name="Textarea">Text</textarea>', $mock->getRendered());
+        $object = new \Ease\Html\TextareaTag('Textarea', 'Text');
+        $this->assertEquals('<textarea name="Textarea">Text</textarea>', $object->getRendered());
     }
 
     /**

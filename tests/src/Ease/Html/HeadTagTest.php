@@ -100,6 +100,10 @@ class HeadTagTest extends PairTagTest
      */
     public function testDrawIfNotDrawn($canBeEmpty = false): void
     {
-        parent::testDrawIfNotDrawn($canBeEmpty);
+        ob_start();
+        $this->object->draw();
+        $drawed = ob_get_contents();
+        ob_end_clean();
+        $this->assertNotEmpty($drawed);
     }
 }

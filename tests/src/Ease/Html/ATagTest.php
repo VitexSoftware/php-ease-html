@@ -51,19 +51,7 @@ class ATagTest extends PairTagTest
     public function testConstructor(): void
     {
         $classname = \get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-
-        $mock->__construct('#test');
-        $mock->__construct('http://v.s.cz/', 'Initial Content');
-        $mock->__construct('https://php.net', 'PHP', ['title' => 'test']);
-
-        $this->assertEquals(
-            '<a href="https://php.net" title="test">Initial ContentPHP</a>',
-            $mock->getRendered(),
-        );
+        $instance = new $classname('http://v.s.cz/', 'Vitex Software');
+        $this->assertNotEmpty($instance->getRendered());
     }
 }

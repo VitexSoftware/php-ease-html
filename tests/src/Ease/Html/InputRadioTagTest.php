@@ -45,18 +45,10 @@ class InputRadioTagTest extends InputTagTest
      */
     public function testConstructor(): void
     {
-        $classname = \get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-
-        $mock->__construct('Tag', 'test', ['name' => 'Tag', 'id' => 'testing']);
-
+        $object = new \Ease\Html\InputRadioTag('Tag', 'test', ['name' => 'Tag', 'id' => 'testing']);
         $this->assertEquals(
             '<input name="Tag" value="test" id="testing" type="radio" />',
-            $mock->getRendered(),
+            $object->getRendered(),
         );
     }
 
@@ -81,6 +73,6 @@ class InputRadioTagTest extends InputTagTest
      */
     public function testDraw($whatWant = null): void
     {
-        parent::testDraw($this->rendered);
+        $this->assertEquals($this->rendered, $this->object->getRendered());
     }
 }

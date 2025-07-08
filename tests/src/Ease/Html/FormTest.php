@@ -43,12 +43,10 @@ class FormTest extends PairTagTest
     public function testConstructor(): void
     {
         $classname = \get_class($this->object);
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-        $mock->__construct(['name' => 'Tag', 'id' => 'testing']);
-        $mock->__construct(['name' => 'Tag', 'id' => 'testing'], 'Initial Content');
-        $this->assertNotEmpty($mock->getRendered());
+        $instance = new $classname(['name' => 'Tag', 'id' => 'testing']);
+        $this->assertNotEmpty($instance->getRendered());
+        $instance2 = new $classname(['name' => 'Tag', 'id' => 'testing'], 'Initial Content');
+        $this->assertNotEmpty($instance2->getRendered());
     }
 
     /**

@@ -45,32 +45,22 @@ class InputFileTagTest extends InputTagTest
      */
     public function testConstructor(): void
     {
-        $classname = \get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-        $mock->__construct('Test');
-
-        $mock->__construct('Tag', 'file.txt', ['name' => 'Tag', 'id' => 'testing']);
-
+        $input = new \Ease\Html\InputFileTag('Tag', 'file.txt', ['id' => 'testing']);
         $this->assertEquals(
-            '<input name="Tag" type="file" value="file.txt" id="testing" />',
-            $mock->getRendered(),
+            '<input name="Tag" value="file.txt" id="testing" type="file" />',
+            $input->getRendered(),
         );
     }
 
     /**
      * @covers \Ease\Html\InputFileTag::draw
-     *
-     * @param null|mixed $whatWant
      */
     public function testDraw($whatWant = null): void
     {
-        parent::testDraw(<<<'EOD'
-
-<input name="test" type="file" />
-EOD);
+        $input = new \Ease\Html\InputFileTag('test');
+        $this->assertEquals(
+            '<input name="test" type="file" />',
+            $input->getRendered(),
+        );
     }
 }

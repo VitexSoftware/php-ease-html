@@ -45,18 +45,10 @@ class InputSearchTagTest extends InputTagTest
      */
     public function testConstructor(): void
     {
-        $classname = \get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-
-        $mock->__construct('Tag', 'query', ['name' => 'Tag', 'id' => 'testing']);
-
+        $object = new \Ease\Html\InputSearchTag('Tag', 'query', ['name' => 'Tag', 'id' => 'testing']);
         $this->assertEquals(
             '<input name="Tag" id="testing" type="search" value="query" />',
-            $mock->getRendered(),
+            $object->getRendered(),
         );
     }
 
@@ -67,6 +59,6 @@ class InputSearchTagTest extends InputTagTest
      */
     public function testDraw($whatWant = null): void
     {
-        parent::testDraw($this->rendered);
+        $this->assertEquals($this->rendered, $this->object->getRendered());
     }
 }

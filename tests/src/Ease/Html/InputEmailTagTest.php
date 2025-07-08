@@ -45,19 +45,10 @@ class InputEmailTagTest extends InputTagTest
      */
     public function testConstructor(): void
     {
-        $classname = \get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-        $mock->__construct('Test');
-
-        $mock->__construct('Tag', 'info@vitexsoftware.cz', ['name' => 'Tag', 'id' => 'testing']);
-
+        $input = new \Ease\Html\InputEmailTag('Tag', 'info@vitexsoftware.cz', ['id' => 'testing']);
         $this->assertEquals(
-            '<input name="Tag" type="email" value="info@vitexsoftware.cz" id="testing" />',
-            $mock->getRendered(),
+            '<input name="Tag" id="testing" type="email" value="info@vitexsoftware.cz" />',
+            $input->getRendered(),
         );
     }
 }

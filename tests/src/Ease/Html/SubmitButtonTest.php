@@ -45,17 +45,11 @@ class SubmitButtonTest extends InputTagTest
      */
     public function testConstructor(): void
     {
-        $classname = \get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-        $mock->__construct('Test');
-
-        $mock->__construct('option', 'value');
-
-        $this->assertEquals('<input type="submit" name="value" value="option" />', $mock->getRendered());
+        $input = new \Ease\Html\SubmitButton('option', 'value');
+        $this->assertEquals(
+            '<input type="submit" value="option" name="value" />',
+            $input->getRendered(),
+        );
     }
 
     /**
@@ -65,7 +59,7 @@ class SubmitButtonTest extends InputTagTest
      */
     public function testDraw($whatWant = null): void
     {
-        parent::testDraw($this->rendered);
+        $this->assertEquals($this->rendered, $this->object->getRendered());
     }
 
     /**

@@ -79,7 +79,11 @@ EOD;
         $this->object->emptyContents();
         \Ease\WebPage::clearJavaScriptsCache();
         \Ease\WebPage::clearCascadeStylesCache();
-        parent::testDrawIfNotDrawn($canBeEmpty);
+        ob_start();
+        $this->object->drawIfNotDrawn();
+        $drawed = ob_get_contents();
+        ob_end_clean();
+        $this->assertEquals($this->rendered, $drawed);
     }
 
     /**

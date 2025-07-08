@@ -40,17 +40,13 @@ class ParamTagTest extends TagTest
     {
     }
 
+    /**
+     * @covers \Ease\Html\ParamTag::__construct
+     */
     public function testConstructor(): void
     {
-        $classname = \get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-        $mock->__construct('name', 'value');
-
-        $this->assertEquals('<param name="name" value="value" />', $mock->getRendered());
+        $object = new \Ease\Html\ParamTag('name', 'value');
+        $this->assertEquals('<param name="name" value="value" />', $object->getRendered());
     }
 
     /**
@@ -71,6 +67,6 @@ class ParamTagTest extends TagTest
      */
     public function testDraw($whatWant = null): void
     {
-        parent::testDraw($this->rendered);
+        $this->assertEquals($this->rendered, $this->object->getRendered());
     }
 }

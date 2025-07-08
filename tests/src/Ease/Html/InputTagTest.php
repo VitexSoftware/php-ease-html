@@ -76,15 +76,8 @@ class InputTagTest extends TagTest
     public function testConstructor(): void
     {
         $classname = \get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-
-        $mock->__construct('Tag', 'secret', ['name' => 'Tag', 'id' => 'testing']);
-
-        $this->assertNotEmpty($mock->getRendered());
+        $instance = new $classname('Tag', 'secret', ['name' => 'Tag', 'id' => 'testing']);
+        $this->assertNotEmpty($instance->getRendered());
     }
 
     /**

@@ -45,18 +45,10 @@ class InputTextTagTest extends InputTagTest
      */
     public function testConstructor(): void
     {
-        $classname = \get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-
-        $mock->__construct('Tag', 'secret', ['name' => 'Tag', 'id' => 'testing']);
-
+        $object = new \Ease\Html\InputTextTag('Tag', 'secret', ['name' => 'Tag', 'id' => 'testing']);
         $this->assertEquals(
             '<input name="Tag" id="testing" type="text" value="secret" />',
-            $mock->getRendered(),
+            $object->getRendered(),
         );
     }
 }

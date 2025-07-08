@@ -42,19 +42,10 @@ class OptionTagTest extends \Test\Ease\Html\PairTagTest
 
     public function testConstructor(): void
     {
-        $classname = \get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-        $mock->__construct('Test');
-
-        $mock->__construct('option', 'value');
-
+        $object = new \Ease\Html\OptionTag('Test', 'value');
         $this->assertEquals(
-            '<option value="value">Testoption</option>',
-            $mock->getRendered(),
+            '<option value="value">Test</option>',
+            $object->getRendered(),
         );
     }
 

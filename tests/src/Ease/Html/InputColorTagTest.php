@@ -41,23 +41,14 @@ class InputColorTagTest extends InputTagTest
     }
 
     /**
-     * @covers \Ease\Html\ImgTag::__construct
+     * @covers \Ease\Html\InputColorTag::__construct
      */
     public function testConstructor(): void
     {
-        $classname = \get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-        $mock->__construct('Test');
-
-        $mock->__construct('Tag', 'a1b2c3', ['name' => 'Tag', 'id' => 'testing']);
-
+        $input = new \Ease\Html\InputColorTag('Tag', 'a1b2c3', ['id' => 'testing']);
         $this->assertEquals(
-            '<input name="Tag" type="color" value="a1b2c3" id="testing" />',
-            $mock->getRendered(),
+            '<input name="Tag" id="testing" type="color" value="a1b2c3" />',
+            $input->getRendered(),
         );
     }
 
@@ -68,6 +59,6 @@ class InputColorTagTest extends InputTagTest
      */
     public function testDraw($whatWant = null): void
     {
-        parent::testDraw($this->rendered);
+        $this->assertEquals($this->rendered, $this->object->getRendered());
     }
 }

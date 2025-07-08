@@ -26,8 +26,9 @@ class TableTagTest extends PairTagTest
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
+     *
+     * @covers \Ease\Html\TableTag::__construct
      */
-    #[\Override]
     protected function setUp(): void
     {
         $this->object = new \Ease\Html\TableTag();
@@ -36,8 +37,9 @@ class TableTagTest extends PairTagTest
     /**
      * Tears down the fixture, for example, closes a network connection.
      * This method is called after a test is executed.
+     *
+     * @covers \Ease\Html\TableTag::__destruct
      */
-    #[\Override]
     protected function tearDown(): void
     {
     }
@@ -78,7 +80,6 @@ class TableTagTest extends PairTagTest
     /**
      * @covers \Ease\Html\TableTag::isEmpty
      */
-    #[\Override]
     public function testIsEmpty(): void
     {
         $this->object->addRowColumns(['a' => 'A', 'b' => 'B']);
@@ -102,7 +103,6 @@ class TableTagTest extends PairTagTest
     /**
      * @covers \Ease\Html\TableTag::addToLastItem
      */
-    #[\Override]
     public function testAddToLastItem(): void
     {
         $this->object->emptyContents();
@@ -117,7 +117,6 @@ class TableTagTest extends PairTagTest
     /**
      * @covers \Ease\Html\TableTag::getFirstPart
      */
-    #[\Override]
     public function testGetFirstPart(): void
     {
         $this->object->emptyContents();
@@ -129,7 +128,6 @@ class TableTagTest extends PairTagTest
     /**
      * @covers \Ease\Html\TableTag::addAsFirst
      */
-    #[\Override]
     public function testAddAsFirst(): void
     {
         $this->object->emptyContents();
@@ -144,7 +142,6 @@ class TableTagTest extends PairTagTest
     /**
      * @covers \Ease\Html\TableTag::getItemsCount
      */
-    #[\Override]
     public function testGetItemsCount(): void
     {
         $this->object->emptyContents();
@@ -156,7 +153,6 @@ class TableTagTest extends PairTagTest
     /**
      * @covers \Ease\Html\TableTag::addItems
      */
-    #[\Override]
     public function testAddItems(): void
     {
         $this->object->emptyContents();

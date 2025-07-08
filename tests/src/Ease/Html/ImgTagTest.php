@@ -47,19 +47,10 @@ class ImgTagTest extends TagTest
      */
     public function testConstructor(): void
     {
-        $classname = \get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-        $mock->__construct('Test');
-
-        $mock->__construct('Tag', 'Alt', ['name' => 'Tag', 'id' => 'testing']);
-
+        $object = new ImgTag('Tag', 'Alt', ['name' => 'Tag', 'id' => 'testing']);
         $this->assertEquals(
-            '<img src="Tag" name="Tag" id="testing" alt="Alt" />',
-            $mock->getRendered(),
+            '<img name="Tag" id="testing" src="Tag" alt="Alt" />',
+            $object->getRendered(),
         );
     }
 
@@ -70,6 +61,6 @@ class ImgTagTest extends TagTest
      */
     public function testDraw($whatWant = null): void
     {
-        parent::testDraw($this->rendered);
+        $this->assertEquals($this->rendered, $this->object->getRendered());
     }
 }

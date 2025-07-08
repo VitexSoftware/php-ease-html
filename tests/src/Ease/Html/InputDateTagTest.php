@@ -47,18 +47,10 @@ class InputDateTagTest extends InputTagTest
      */
     public function testConstructor(): void
     {
-        $classname = \get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-
-        $mock->__construct('Tag', '2018-07-22', ['name' => 'Tag', 'id' => 'testing']);
-
+        $object = new InputDateTag('Tag', '2018-07-22', ['name' => 'Tag', 'id' => 'testing']);
         $this->assertEquals(
             '<input name="Tag" id="testing" type="date" value="2018-07-22" />',
-            $mock->getRendered(),
+            $object->getRendered(),
         );
     }
 }

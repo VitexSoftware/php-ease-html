@@ -47,17 +47,10 @@ class CommentTest extends TagTest
      */
     public function testConstructor(): void
     {
-        $classname = \get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-        $mock->__construct('Test');
-
+        $object = new Comment('Test');
         $this->assertEquals(
             '<!-- Test -->',
-            $mock->getRendered(),
+            $object->getRendered(),
         );
     }
 

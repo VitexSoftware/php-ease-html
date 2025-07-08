@@ -114,7 +114,7 @@ class WebPageTest extends DocumentTest
     public function testIncludeCss(): void
     {
         $this->assertTrue($this->object->includeCss('WebPage.css'));
-        $this->assertTrue($this->object->includeCss('WebPage.css', '/js/'));
+        $this->assertTrue($this->object->includeCss('WebPage.css', true));
         \Ease\WebPage::singleton()->cascadeStyles = [];
     }
 
