@@ -32,7 +32,6 @@ class PartTest extends \PHPUnit\Framework\TestCase {
 
     /**
      * @covers Ease\Part::setPartName
-     * @todo   Implement testsetPartName().
      */
     public function testsetPartName() {
         $testName = 'testDiv';
@@ -42,37 +41,27 @@ class PartTest extends \PHPUnit\Framework\TestCase {
 
     /**
      * @covers Ease\Part::onDocumentReady
-     * @todo   Implement testonDocumentReady().
      */
     public function testonDocumentReady() {
         $this->assertEquals('', $this->object->onDocumentReady());
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
      * @covers Ease\Part::finalize
-     * @todo   Implement testfinalize().
      */
     public function testfinalize() {
         $this->assertEquals('', $this->object->finalize());
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
      * @covers Ease\Part::jQueryze
-     * @todo   Implement testjQueryze().
      */
     public function testjQueryze() {
         $this->assertEquals('', $this->object->jQueryze());
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
      * @covers Ease\Part::setPartProperties
-     * @todo   Implement testsetPartProperties().
      */
     public function testsetPartProperties() {
         $testProps = ['class' => 'myClass', 'id' => 'myId'];
@@ -82,21 +71,16 @@ class PartTest extends \PHPUnit\Framework\TestCase {
 
     /**
      * @covers Ease\Part::getPartPropertiesToString
-     * @todo   Implement testgetPartPropertiesToString().
      */
     public function testgetPartPropertiesToString() {
         $this->assertEquals('', $this->object->getPartPropertiesToString());
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
      * @covers Ease\Part::partPropertiesToString
-     * @todo   Implement testpartPropertiesToString().
      */
     public function testpartPropertiesToString() {
         $testProps = ['class' => 'myClass', 'id' => 'myId'];
-        $expected = 'class: myClass, id: myId'; // Adjust this if the actual output format is different
         $result = \Ease\Part::partPropertiesToString($testProps);
         $this->assertIsString($result);
         $this->assertStringContainsString('myClass', $result);
