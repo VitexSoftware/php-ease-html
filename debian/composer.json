@@ -1,7 +1,6 @@
 {
   "name": "deb/ease-html",
   "description": "An Core of PHP Framework for Ease of writing Applications (debianized)",
-  "version": "1.40.1",
   "authors": [
     {
       "name": "Vítězslav Dvořák",
