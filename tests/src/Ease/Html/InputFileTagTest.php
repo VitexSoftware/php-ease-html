@@ -54,6 +54,8 @@ class InputFileTagTest extends InputTagTest
 
     /**
      * @covers \Ease\Html\InputFileTag::draw
+     *
+     * @param null|mixed $whatWant
      */
     public function testDraw($whatWant = null): void
     {

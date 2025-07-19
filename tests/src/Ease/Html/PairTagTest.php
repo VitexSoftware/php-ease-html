@@ -58,14 +58,17 @@ class PairTagTest extends TestCase
         $constructor = $reflection->getConstructor();
         $params = $constructor ? $constructor->getParameters() : [];
         $args = [];
-        if (count($params) > 0) {
+
+        if (\count($params) > 0) {
             // Provide a default string for the first argument
             $args[] = 'Test';
         }
-        if (count($params) > 1) {
+
+        if (\count($params) > 1) {
             // Provide an empty array for the second argument if needed
             $args[] = [];
         }
+
         $instance = $reflection->newInstanceArgs($args);
         $this->assertNotEmpty($instance->getRendered());
     }

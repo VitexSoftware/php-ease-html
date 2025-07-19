@@ -34,7 +34,7 @@ class CheckboxTag extends InputTag
         string $name,
         bool $checked = false,
         ?string $value = null,
-        $properties = []
+        $properties = [],
     ) {
         $properties['type'] = 'checkbox';
 

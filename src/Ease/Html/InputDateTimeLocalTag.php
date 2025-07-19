@@ -34,7 +34,7 @@ class InputDateTimeLocalTag extends InputTag implements Input
         $name,
         /** @scrutinizer ignore-type */
         $value = null,
-        $properties = []
+        $properties = [],
     ) {
         $properties['type'] = 'datetime-local';
         $properties['name'] = $name;

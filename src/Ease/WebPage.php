@@ -176,7 +176,7 @@ class WebPage extends Document
     public function addJavaScript(
         string $javaScript,
         ?string $position = '0',
-        $inDocumentReady = true
+        $inDocumentReady = true,
     ) {
         return $this->addToScriptsStack(($inDocumentReady ? '$' : '@').$javaScript, $position);
     }
@@ -313,7 +313,7 @@ class WebPage extends Document
     {
         do {
             foreach (self::$allItems as $PartID => $part) {
-                if (\is_object($part)) {
+                if (\is_object($part) && ($part->finalized() === false)) {
                     $part->finalize();
                 }
 

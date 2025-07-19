@@ -100,7 +100,7 @@ EOD;
      */
     public static function getScriptsRendered(
         array $scriptsArray,
-        $divider = "\n"
+        $divider = "\n",
     ) {
         $scriptsRendered = '';
         ksort($scriptsArray, \SORT_NUMERIC);
@@ -163,7 +163,7 @@ EOD;
     public static function getStylesRendered(
         array $stylesArray,
         $media = 'screen',
-        $divider = "\n"
+        $divider = "\n",
     ) {
         $cascadeStyles = [];
         $cascadeStylesIncludes = [];

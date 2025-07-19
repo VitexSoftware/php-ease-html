@@ -44,8 +44,6 @@ class ImgTag extends Tag
      * Generate base64 for img src from file.
      *
      * @param string $imgFileName source image path
-     *
-     * @return string
      */
     public static function fileBase64src(string $imgFileName): string
     {
@@ -57,8 +55,6 @@ class ImgTag extends Tag
      *
      * @param string $imgRawData  raw image data
      * @param string $contentType mime type eg. image/gif
-     *
-     * @return string
      */
     public static function base64src(string $imgRawData, string $contentType): string
     {

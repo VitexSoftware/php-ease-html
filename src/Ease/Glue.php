@@ -116,7 +116,19 @@ trait Glue
      */
     public function finalize(): void
     {
-        $this->finalized = true;
+        $this->finalized(true);
+    }
+
+    /**
+     * Get/Set finalization flag.
+     */
+    public function finalized(?bool $state = null): bool
+    {
+        if ((null === $state) === false) {
+            $this->finalized = $state;
+        }
+
+        return $this->finalized;
     }
 
     /**

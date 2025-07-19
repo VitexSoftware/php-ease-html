@@ -264,6 +264,6 @@ class DocumentTest extends ContainerTest
     {
         $item = new ATag('#');
         Document::registerItem($item);
-        $this->assertInstanceOf(\get_class($item), end(Document::$allItems));
+        $this->assertInstanceOf($item::class, end(Document::$allItems));
     }
 }

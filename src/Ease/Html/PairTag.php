@@ -37,7 +37,7 @@ class PairTag extends Tag
     public function __construct(
         $tagType = null,
         $properties = null,
-        $content = null
+        $content = null,
     ) {
         parent::__construct($tagType, $properties);
 

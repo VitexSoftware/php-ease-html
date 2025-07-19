@@ -40,7 +40,7 @@ class SubmitButton extends InputTag
         $label,
         $value = null,
         $hint = null,
-        $classCss = null
+        $classCss = null,
     ) {
         $properties = ['type' => 'submit'];
 

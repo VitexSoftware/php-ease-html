@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "php": ">=8.1",
         "vitexsoftware/ease-core": "^1.47"
     },
     "autoload": {
@@ -31,7 +32,7 @@
         "phpstan/phpstan": "*",
         "friendsofphp/php-cs-fixer": "^3.65",
         "ergebnis/composer-normalize": "^2.45",
-        "ergebnis/php-cs-fixer-config": "^6.39"
+        "ergebnis/php-cs-fixer-config": "^6.44"
     },
     "config": {
         "allow-plugins": {

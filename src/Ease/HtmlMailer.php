@@ -82,10 +82,8 @@ class HtmlMailer extends Document
 
     /**
      * Pointer to the BODY html document.
-     *
-     * @var null|BodyTag|Embedable
      */
-    public $htmlBody;
+    public null|BodyTag|Embedable $htmlBody;
 
     /**
      * Outgoing mail parameters.
@@ -104,7 +102,7 @@ class HtmlMailer extends Document
         string $emailAddress,
         string $mailSubject,
         string $emailContents = '',
-        array $headers = []
+        array $headers = [],
     ) {
         if (\Ease\Shared::cfg('EASE_SMTP')) {
             $this->parameters = (array) json_decode(\Ease\Shared::cfg('EASE_SMTP'));
