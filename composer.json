@@ -30,8 +30,8 @@
     "require-dev": {
         "phpunit/phpunit": "*",
         "phpstan/phpstan": "*",
-        "friendsofphp/php-cs-fixer": "^3.65",
-        "ergebnis/php-cs-fixer-config": "^6.51"
+        "friendsofphp/php-cs-fixer": "^3.85",
+        "ergebnis/php-cs-fixer-config": "^6.51",
         "ergebnis/composer-normalize": "^2.47"
     },
     "config": {
