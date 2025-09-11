@@ -24,7 +24,30 @@ use Ease\Html\HtmlTag;
  *
  * @author Vítězslav Dvořák <vitex@hippy.cz>
  */
-class WebPage extends Document
+/**
+ * Class WebPage.
+ *
+ * @property \Ease\Html\BodyTag $body             The object of the page body itself
+ * @property array              $cascadeStyles    CSS fields to render
+ * @property string             $cssPrefix        Default CSS location in Debian
+ * @property \Ease\Html\HeadTag $head             Page head
+ * @property array              $javaScripts      JavaScripts to be in page
+ * @property string             $jqueryJavaScript Where to look for jQuery script
+ * @property string             $jsPrefix         Default JavaScripts location in Debian
+ * @property string             $myTable          Do not connect to the DB
+ * @property string             $pageTitle        Page title
+ *
+ * @method \Ease\Document addItem(mixed $item, string $pageItemName = null)                                   Add item into page body
+ * @method int            addJavaScript(string $javaScript, ?string $position = '0', $inDocumentReady = true) Inserts JavaScript into the Page
+ * @method int            addToScriptsStack(string $code, $position = 0)                                      Inserts javascript into the bin of the page script
+ *                                                                                                            {@inheritDoc}
+ * @method mixed          getContents()                                                                       Get body Contents
+ * @method string         getPageTitle()                                                                      Get the page title
+ * @method null|string    getTagID()                                                                          Get ID for page body
+ * @method string         includeJavaScript(string $javaScriptFile, ?string $position = null)                 Includes Javascript into the Page
+ * @method string         setTagID($tagID = null)                                                             Set ID for page body
+ */
+class WebPage extends \Ease\Document
 {
     /**
      * Where to look for jQuery script.

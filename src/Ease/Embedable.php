@@ -16,7 +16,15 @@ declare(strict_types=1);
 namespace Ease;
 
 /**
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ * Interface Embedable.
+ *
+ * @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ *
+ * @method mixed addItem(\Ease\Embedable|string $pageItem) Include next element into current object
+ * @method bool  setEmbedName(string $embedName)           Notify component about its embed name
+ * @method void  afterAdd()                                Method executed after adding object into new one
+ * @method void  finalize()                                Method executed before rendering
+ * @method void  draw()                                    Recursive draw object and its contents
  */
 interface Embedable
 {

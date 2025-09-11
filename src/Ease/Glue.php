@@ -16,7 +16,21 @@ declare(strict_types=1);
 namespace Ease;
 
 /**
- *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ * Trait Glue.
+ *
+ * @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ *
+ * @property array       $pageParts  Array of objects and fragments to draw
+ * @property bool        $drawStatus Has the page already been rendered?
+ * @property bool        $finalized  Is class finalized?
+ * @property null|string $embedName  Name of the embedded part
+ *
+ * @method mixed addItem(mixed $pageItem)        Include next element into current object
+ * @method bool  setEmbedName(string $embedName) Notify component about its embed name
+ * @method void  afterAdd()                      Method executed after adding object into new one
+ * @method void  finalize()                      Method executed before rendering
+ * @method bool  finalized(?bool $state = null)  Get/Set finalization flag
+ * @method void  draw()                          Recursive draw object and its contents
  */
 trait Glue
 {

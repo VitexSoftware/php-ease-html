@@ -30,6 +30,21 @@ class Part extends Document
     /**
      * Use minimized version of scripts ?
      */
+    /**
+     * Class Part.
+     *
+     * @property string $partName       Partname/Tag ID
+     * @property array  $partProperties Array of Part properties
+     * @property bool   $useMinimizedJS Use minimized version of scripts?
+     *
+     * @method void   finalize()                                                     Add Js/Css into page
+     * @method string getPartPropertiesToString(array|string $partProperties = null) Vyrendruje aktuální parametry části jako parametry pro jQuery
+     * @method string onDocumentReady() Returns OnDocumentReady()                    JS code
+     * @method string partPropertiesToString(array|string $partProperties)           vyrendruje pole parametrů jako řetězec v syntaxi javascriptu
+     *                                                                               {@inheritDoc}
+     * @method void   setPartName(string $partName)                                  Set part name - mainly div id
+     * @method void   setPartProperties(mixed $partProperties)                       Nastaví paramatry tagu
+     */
     public static bool $useMinimizedJS = false;
 
     /**
