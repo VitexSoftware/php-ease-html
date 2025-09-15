@@ -9,29 +9,29 @@ declare(strict_types=1);
  *
  * (c) Vítězslav Dvořák <http://vitexsoftware.com>
  *
-    /**
-     * Class Container
-     *
-     * @property array $pageParts Array of objects and fragments to draw
-     * @property bool $drawStatus Has the page already been rendered?
-     * @property bool $finalized Is class finalized?
-     * @property string|null $embedName Name of the embedded part
-     *
-     * @method mixed addItem(mixed $pageItem) Include next element into current object
-     * @method bool setEmbedName(string $embedName) Notify component about its embed name
-     * @method void afterAdd() Method executed after adding object into new one
-     * @method void finalize() Method executed before rendering
-     * @method bool finalized(?bool $state = null) Get/Set finalization flag
-     * @method void draw() Recursive draw object and its contents
-     *
-     * @inheritdoc
-     */
-    class Container extends \Ease\Sand implements \Ease\Embedable
+ * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
 namespace Ease;
 
+/**
+ * Class Container.
+ *
+ * @property bool        $drawStatus Has the page already been rendered?
+ * @property null|string $embedName  Name of the embedded part
+ * @property bool        $finalized  Is class finalized?
+ * @property array       $pageParts  Array of objects and fragments to draw
+ *
+ * @method mixed addItem(mixed $pageItem) Include next element into current object
+ * @method void  afterAdd()               Method executed after adding object into new one
+ * @method void  draw()                   Recursive draw object and its contents
+ *
+ * {@inheritDoc}
+ * @method void finalize()                      Method executed before rendering
+ * @method bool finalized(?bool $state = null)  Get/Set finalization flag
+ * @method bool setEmbedName(string $embedName) Notify component about its embed name
+ */
 class Container extends Sand implements Embedable
 {
     use Glue;

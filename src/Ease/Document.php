@@ -17,6 +17,14 @@ namespace Ease;
 
 /**
  * An object designed to "hold" content - not visible itself.
+ *
+ * Class Document
+ *
+ * @property array         $allItems   Array of links to all embedded objects
+ * @property object        $lastItem   A link to the last element added
+ * @property bool          $pageClosed Is page closed for adding new contents?
+ * @property array         $raiseItems Which objects to take over from the accepting object
+ * @property \Ease\WebPage $webPage    A link to the base object of the page
  */
 class Document extends Container
 {
@@ -133,25 +141,31 @@ class Document extends Container
         } else {
             header('Location: '.$url);
         }
-        /**
-         * Class Document
-         *
-         * @property \Ease\WebPage $webPage A link to the base object of the page
-         * @property array $raiseItems Which objects to take over from the accepting object
-         * @property object $lastItem A link to the last element added
-         * @property bool $pageClosed Is page closed for adding new contents?
-         * @property array $allItems Array of links to all embedded objects
-         *
-         * @method int addJavaScript(string $javaScript, ?string $position = '0', bool $inDocumentReady = true) Inserts JavaScript into the page
-         * @method string includeJavaScript(string $javaScriptFile, ?string $position = null) Includes Javascript into the page
-         * @method bool addCSS(string $css) Add another CSS definition to stack
-         * @method bool includeCss(string $cssFile, bool $fwPrefix = false, string $media = 'screen') Include an CSS file call into page
-         * @method void redirect(string $url) Perform http redirect
-         * @method string getUri() Returns the desired address
-         * @method string phpSelf(bool $dropqs = true) Returns the current URL
-         * @inheritdoc
-         */
-        class Document extends \Ease\Container
+
+        session_write_close();
+        WebPage::$pageClosed = true;
+    }
+
+    /**
+     * Returns the desired address.
+     *
+     * @method bool   addCSS(string $css)                                                                      Add another CSS definition to stack
+     * @method int    addJavaScript(string $javaScript, ?string $position = '0', bool $inDocumentReady = true) Inserts JavaScript into the page
+     * @method string getUri()                                                                                 Returns the desired address
+     * @method bool   includeCss(string $cssFile, bool $fwPrefix = false, string $media = 'screen')            Include an CSS file call into page
+     * @method string includeJavaScript(string $javaScriptFile, ?string $position = null)                      Includes Javascript into the page
+     * @method string phpSelf(bool $dropqs = true)                                                             Returns the current URL
+     *                                                                                                         {@inheritDoc}
+     * @method void   redirect(string $url)                                                                    Perform http redirect
+     */
+    public static function getUri()
+    {
+        return $_SERVER['REQUEST_URI'];
+    }
+
+    /**
+     * Returns the current URL. This is instead of PHP_SELF which is unsafe.
+     *
      * @param bool $dropqs whether to drop the querystring or not. Default true
      *
      * @return string the current URL or NULL for php-cli
