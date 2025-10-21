@@ -99,8 +99,7 @@ class Part extends Document
     {
         WebPage::singleton()->includeJavaScript(
             WebPage::singleton()->jqueryJavaScript,
-            0,
-            !strstr(WebPage::singleton()->jqueryJavaScript, '://'),
+            '0'
         );
     }
 

@@ -89,7 +89,7 @@ class Document extends Container
      *
      * @return string
      */
-    public function includeJavaScript($javaScriptFile, $position = null)
+    public function includeJavaScript(string $javaScriptFile, ?string $position = null)
     {
         return WebPage::singleton()->includeJavaScript(
             $javaScriptFile,

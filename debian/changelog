@@ -1,8 +1,15 @@
-php-vitexsoftware-ease-html (1.40.5) UNRELEASED; urgency=medium
+php-vitexsoftware-ease-html (2.0.0) UNRELEASED; urgency=medium
 
+  * Much more tags included
+
+ -- vitex <info@vitexsoftware.cz>  Tue, 21 Oct 2025 22:51:36 +0200
+
+php-vitexsoftware-ease-html (1.40.5) noble; urgency=medium
+
+  [ Vitex ]
   * Bad syntax fix
 
- -- Vitex <vitezslav.dvorak@spojenet.cz>  Mon, 15 Sep 2025 17:05:46 +0200
+ -- vitex <info@vitexsoftware.cz>  Tue, 21 Oct 2025 22:51:19 +0200
 
 php-vitexsoftware-ease-html (1.40.4) noble; urgency=medium
 
