@@ -9,7 +9,6 @@ docs/namespaces/*		usr/share/doc/php-vitexsoftware-ease-html/html/namespaces
 docs/packages/*		usr/share/doc/php-vitexsoftware-ease-html/html/packages
 docs/reports/*		usr/share/doc/php-vitexsoftware-ease-html/html/reports
 
-debian/php-vitexsoftware-ease-html-doc.conf	usr/share/doc/php-vitexsoftware-ease-html-doc/apache
+debian/php-vitexsoftware-ease-html-doc.conf	etc/apache2/conf-available/
 README.md			usr/share/doc/php-vitexsoftware-ease-html
-
 
