@@ -1,43 +1,63 @@
-<!-- Use this file to provide workspace-specific custom instructions to Copilot. For more details, visit https://code.visualstudio.com/docs/copilot/copilot-customization#_use-a-githubcopilotinstructionsmd-file -->
+---
+description: EaseHtml - PHP HTML generation library for VitexSoftware ecosystem
+applyTo: '**'
+---
 
-All code comments should be written in English.
+# EaseHtml - Copilot Instructions
 
-All messages, including error messages, should be written in English.
+## Project Overview
+EaseHtml is a **foundational PHP library** for HTML generation in the VitexSoftware ecosystem:
+- **Object-Oriented HTML**: Create HTML elements as PHP objects
+- **Type-Safe Generation**: Full PHP 8.4+ type system integration
+- **Framework Foundation**: Used by all VitexSoftware web applications
+- **Component Library**: Reusable HTML components and widgets
+- **Standards Compliance**: W3C valid HTML output
 
-All code should be written in PHP 8.4 or later.
+## 📋 Development Standards
 
-All code should follow the PSR-12 coding standard.
+### Core Coding Guidelines
+- **PHP 8.4+**: Use modern PHP features and strict types: `declare(strict_types=1);`
+- **PSR-12**: Follow PHP-FIG coding standards for consistency
+- **Type Safety**: Include type hints for all parameters and return types
+- **Documentation**: PHPDoc blocks for all public methods and classes
+- **Testing**: PHPUnit tests for all new functionality
+- **Internationalization**: Use `_()` functions for translatable strings
 
-When writing code, always include a docblock for functions and classes, describing their purpose, parameters, and return types.
+### Code Quality Requirements
+- **Syntax Validation**: After every PHP file edit, run `php -l filename.php` for syntax checking
+- **HTML Validation**: Ensure generated HTML is W3C compliant
+- **Error Handling**: Implement comprehensive try-catch blocks with meaningful error messages
+- **Testing**: Create/update PHPUnit test files for all new/modified classes
+- **Performance**: Optimize HTML generation for large documents
+- **Security**: Prevent XSS attacks through proper escaping
 
-When writing tests, use PHPUnit and follow the PSR-12 coding standard.
+### Development Best Practices
+- **Code Comments**: Write in English using complete sentences and proper grammar
+- **Variable Names**: Use meaningful names that describe their purpose
+- **Constants**: Avoid magic numbers/strings; define constants instead
+- **Exception Handling**: Always provide meaningful error messages
+- **Commit Messages**: Use imperative mood and keep them concise
+- **Security**: Ensure code is secure and doesn't expose sensitive information
+- **Compatibility**: Maintain compatibility with latest PHP and library versions
+- **Maintainability**: Follow best practices for maintainable code
 
-When writing documentation, use MarkDown format.
+### HTML Generation Guidelines
+- **Valid Output**: All generated HTML must be W3C compliant
+- **Escape User Data**: Always escape user input to prevent XSS attacks
+- **Semantic HTML**: Use proper HTML5 semantic elements
+- **Accessibility**: Include ARIA labels and proper accessibility features
+- **Performance**: Generate efficient HTML structure
+- **CSS Classes**: Use consistent CSS class naming conventions
 
-When writing commit messages, use the imperative mood and keep them concise.
+### Testing Requirements
+- **PHPUnit Integration**: All new classes require corresponding test files
+- **HTML Output Tests**: Validate generated HTML structure and content
+- **XSS Prevention Tests**: Test proper escaping of malicious input
+- **Performance Tests**: Ensure acceptable performance with large documents
 
-When writing code comments, use complete sentences and proper grammar.
-
-When writing code, always use meaningful variable names that describe their purpose.
-
-When writing code, avoid using magic numbers or strings; instead, define constants for them.
-
-When writing code, always handle exceptions properly and provide meaningful error messages.
-
-When writing code, always include type hints for function parameters and return types.
-
-We are using the i18n library for internationalization, so always use the _() functions for strings that need to be translated.
-
-When writing code, always ensure that it is secure and does not expose any sensitive information.
-
-When writing code, always consider performance and optimize where necessary.
-
-When writing code, always ensure that it is compatible with the latest version of PHP and the libraries we are using.
-
-When writing code, always ensure that it is well-tested and includes unit tests where applicable.
-
-When writing code, always ensure that it is maintainable and follows best practices.
-
-When create new class or update existing class, always create or update its phpunit test files.
-
-After every single edit to a PHP file, always run `php -l` on the edited file to lint it and ensure code sanity before proceeding further. This is mandatory for all PHP code changes.
+⚠️ **Important Notes for Copilot:**
+- This is a **core foundation library** used throughout the VitexSoftware ecosystem
+- **Backward compatibility** is critical - breaking changes affect all dependent projects
+- **Security is paramount** - any XSS vulnerabilities affect all applications
+- **Performance matters** - this library generates HTML for large applications
+- All changes must be thoroughly tested across the entire ecosystem
