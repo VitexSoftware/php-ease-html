@@ -1,11 +1,18 @@
 Source: php-vitexsoftware-ease-html
-Build-Depends: debhelper (>= 7.0.50~), php-vitexsoftware-ease-core, phpdocumentor, php-mbstring
-Section: web
-Standards-Version: 3.9.8
+Section: php
+Priority: optional
 Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
 Uploaders: Vitex <vitex@hippy.cz>
-Priority: optional
+Build-Depends:
+ debhelper-compat (= 13),
+ pkg-php-tools (>= 1.7~),
+ phpab,
+ php-vitexsoftware-ease-core,
+ phpdocumentor,
+ php-mbstring,
+Standards-Version: 4.7.0
 Homepage: https://github.com/VitexSoftware/php-ease-html
+Rules-Requires-Root: no
 
 Package: php-vitexsoftware-ease-html
 Depends: ${misc:Depends},libjs-jquery (>= 1.4), php-vitexsoftware-ease-core (>= 1.44)
