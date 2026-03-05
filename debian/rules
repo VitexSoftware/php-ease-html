@@ -29,9 +29,5 @@ override_dh_install:
 	echo "require_once 'Mail.php';"  >> debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml/HtmlMailer.php
 	echo "require_once 'Mail/mime.php';" >> debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml/HtmlMailer.php
 	jq '.version = "'`dpkg-parsechangelog | sed -n 's/^Version: //p'| sed 's/~.*//'`'"'  debian/composer.json |sponge debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml/composer.json
-	phpab --output debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml/autoload.php \
-		--basedir debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml \
-		--tolerant \
-		debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml
 	install -m0755 -d debian/php-vitexsoftware-ease-html/usr/share/pkg-php-tools/autoloaders
 	echo 'vitexsoftware ease-html EaseHtml/autoload.php' > debian/php-vitexsoftware-ease-html/usr/share/pkg-php-tools/autoloaders/php-vitexsoftware-ease-html

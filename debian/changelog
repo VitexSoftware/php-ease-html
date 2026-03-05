@@ -1,3 +1,13 @@
+php-vitexsoftware-ease-html (2.0.1) UNRELEASED; urgency=medium
+
+  * Migrace na Debian PHP autoloader systém  - Aktualizován
+    debian/README.Debian s instrukcemi pro Debian autoloader - Přechod z
+    vendor/autoload.php na /usr/share/php/*/autoload.php - Využití pkg-
+    php-tools a phpab pro generování autoloaderu - Dokumentace pro
+    migraci existujících aplikací
+
+ -- vitex <info@vitexsoftware.cz>  Thu, 05 Mar 2026 18:44:27 +0100
+
 php-vitexsoftware-ease-html (2.0.0) unstable; urgency=medium
 
   * Much more tags included
