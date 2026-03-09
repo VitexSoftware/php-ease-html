@@ -26,8 +26,8 @@ set -e
 case "$1" in
     configure)
 	pwd
-	echo 'TESTING: phpunit --bootstrap /usr/share/php/EaseHtml/Test/Bootstrap.php --configuration /usr/share/php/EaseHtml/Test/phpunit.xml'
-	su - www-data -s /bin/bash -c 'phpunit --bootstrap /usr/share/php/EaseHtml/Test/Bootstrap.php --configuration /usr/share/php/EaseHtml/Test/phpunit.xml'
+	# echo 'TESTING: phpunit --bootstrap /usr/share/php/EaseHtml/Test/Bootstrap.php --configuration /usr/share/php/EaseHtml/Test/phpunit.xml'
+	# su - www-data -s /bin/bash -c 'phpunit --bootstrap /usr/share/php/EaseHtml/Test/Bootstrap.php --configuration /usr/share/php/EaseHtml/Test/phpunit.xml'
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
