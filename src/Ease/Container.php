@@ -32,7 +32,7 @@ namespace Ease;
  * @method bool finalized(?bool $state = null)  Get/Set finalization flag
  * @method bool setEmbedName(string $embedName) Notify component about its embed name
  */
-class Container extends Sand implements Embedable
+class Container extends Sand implements \Stringable, Embedable
 {
     use Glue;
 

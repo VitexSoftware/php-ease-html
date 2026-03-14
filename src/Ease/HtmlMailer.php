@@ -93,6 +93,8 @@ class HtmlMailer extends Document
     /**
      * Ease Mail - compiles and sends.
      *
+     * @deprecated use https://symfony.com/doc/current/mailer.html instead
+     *
      * @param string $emailAddress  address
      * @param string $mailSubject   subject
      * @param mixed  $emailContents body - any mix of text and EaseObjects
