@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-require_once '/usr/share/php/EaseCore/autoload.php';
+require_once '/usr/share/php/Ease/autoload.php';
 
 // PSR-4 autoloader for EaseHtml classes
 spl_autoload_register(function (string $class): void {
