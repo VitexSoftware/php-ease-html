@@ -1,5 +1,8 @@
 #!/usr/bin/make -f
 
+PKG_VERSION := $(shell dpkg-parsechangelog -S Version | sed 's/~.*//')
+PKG_SOURCE  := $(shell dpkg-parsechangelog -S Source)
+
 %:
 	dh $@ --with phpcomposer
 
@@ -26,6 +29,10 @@ override_dh_auto_test:
 
 override_dh_install:
 	dh_install
+	sed -i "1a defined('APP_NAME') || define('APP_NAME', '$(PKG_SOURCE)');" \
+		debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml/autoload.php
+	sed -i "2a defined('APP_VERSION') || define('APP_VERSION', '$(PKG_VERSION)');" \
+		debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml/autoload.php
 	echo "require_once 'Mail.php';"  >> debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml/HtmlMailer.php
 	echo "require_once 'Mail/mime.php';" >> debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml/HtmlMailer.php
 	jq '.version = "'`dpkg-parsechangelog | sed -n 's/^Version: //p'| sed 's/~.*//'`'"'  debian/composer.json |sponge debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml/composer.json
