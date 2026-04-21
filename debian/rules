@@ -29,13 +29,9 @@ override_dh_auto_test:
 
 override_dh_install:
 	dh_install
-	sed -i "1a defined('APP_NAME') || define('APP_NAME', '$(PKG_SOURCE)');" \
-		debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml/autoload.php
 	sed -i "s|: 'unknown'|: '$(PKG_SOURCE)'|" \
 		debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml/autoload.php
 	sed -i "s|: '0.0.0'|: '$(PKG_VERSION)'|" \
-		debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml/autoload.php
-	sed -i "2a defined('APP_VERSION') || define('APP_VERSION', '$(PKG_VERSION)');" \
 		debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml/autoload.php
 	echo "require_once 'Mail.php';"  >> debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml/HtmlMailer.php
 	echo "require_once 'Mail/mime.php';" >> debian/php-vitexsoftware-ease-html/usr/share/php/EaseHtml/HtmlMailer.php
