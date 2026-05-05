@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>io.github.vitexsoftware.php_vitexsoftware_ease_html</id>
+  <icon type="stock">php-vitexsoftware-ease-html</icon>
   <metadata_license>MIT</metadata_license>
   <project_license>MIT</project_license>
   <name>php-vitexsoftware-ease-html</name>
