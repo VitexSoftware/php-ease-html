@@ -2,4 +2,4 @@ src/Ease/*		usr/share/php/EaseHtml/
 debian/autoload.php	usr/share/php/EaseHtml/
 debian/composer.json	usr/share/php/EaseHtml/
 php-vitexsoftware-ease-html.svg	usr/share/icons/hicolor/scalable/apps/
-io.github.vitexsoftware.php_vitexsoftware_ease_html.metainfo.xml	usr/share/metainfo/
+debian/io.github.vitexsoftware.php_vitexsoftware_ease_html.metainfo.xml	usr/share/metainfo/
