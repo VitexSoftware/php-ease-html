@@ -15,13 +15,7 @@ String vendor = 'vitexsoftware'
 //String distroFamily = ''
 
 properties([
-    copyArtifactPermission('*'),
-    buildBlocker(
-        useBuildBlocker: true,
-        blockLevel: 'GLOBAL',
-        scanQueueFor: 'ALL',
-        blockingJobs: 'RebulidDEBRepoByAnsible'
-    )
+    copyArtifactPermission('*')
 ])
 node() {
     ansiColor('xterm') {
@@ -83,48 +77,29 @@ distributions.each { distro ->
                     }
                 }
 
-                stage('Test ' + distroName) {
-                    buildImage.inside {
-                        def debconf_debug = 0 //Set to "5" or "developer" to debug debconf
-                        sh 'cd $WORKSPACE/dist/debian/ ; dpkg-scanpackages . /dev/null > Packages; gzip -9c Packages > Packages.gz; cd $WORKSPACE'
-                        sh 'echo "deb [trusted=yes] file://///$WORKSPACE/dist/debian/ ./" | sudo tee /etc/apt/sources.list.d/local.list'
-                        sh 'sudo apt-get update --allow-releaseinfo-change'
-                        sh 'echo "INSTALATION"'
-                      
-                        def installOrder = [
-//                        '',
-                        ]
-
-                    def sorted_artifacts = artifacts.toList()
-                    
-                    // If installOrder is empty, install all produced packages
-                    if (installOrder.isEmpty()) {
-                        sorted_artifacts.each { deb_file ->
+                stage("Test ${distro}") {
+                    waitUntil(initialRecurrencePeriod: 30000) {
+                        def color = sh(script: "curl -sf 'https://jenkins.proxy.spojenet.cz/job/RebulidDEBRepoByAnsible/api/json?tree=color' 2>/dev/null | grep -o '\"color\":\"[^\"]*\"' | cut -d'\"' -f4 || echo 'blue'", returnStdout: true).trim()
+                        return !color.endsWith('_anime')
+                    }
+                    buildImage.inside('--ipc=host') {
+                        def debconf_debug = 0
+                        sh """
+                            cd \$WORKSPACE/dist/debian/
+                            dpkg-scanpackages . /dev/null > Packages
+                            gzip -9c Packages > Packages.gz
+                            cd \$WORKSPACE
+                            echo "deb [trusted=yes] file://///\$WORKSPACE/dist/debian/ ./" | sudo tee /etc/apt/sources.list.d/local.list
+                            sudo apt-get update --allow-releaseinfo-change
+                        """
+                        artifacts.each { deb_file ->
                             if (deb_file.endsWith('.deb')) {
                                 def pkgName = deb_file.tokenize('/')[-1].replaceFirst(/_.*/, '')
                                 sh 'echo -e "${GREEN} installing ' + pkgName + ' on `lsb_release -sc` ${ENDCOLOR} "'
                                 sh 'sudo DEBIAN_FRONTEND=noninteractive DEBCONF_DEBUG=' + debconf_debug + ' apt-get -y install ' + pkgName
                             }
                         }
-                    } else {
-                        // Install packages in specified order
-                        installOrder.each { pkgPrefix ->
-                            def debFile = null
-                            for (item in sorted_artifacts) {
-                                def itemStr = item.toString()
-                                if (itemStr.startsWith(pkgPrefix) && itemStr.endsWith('.deb')) {
-                                    debFile = itemStr
-                                    break
-                                }
-                            }
-                            if (debFile) {
-                                def pkgName = debFile.tokenize('/')[-1].replaceFirst(/_.*/, '')
-                                sh 'echo -e "${GREEN} installing ' + pkgName + ' on `lsb_release -sc` ${ENDCOLOR} "'
-                                sh 'sudo DEBIAN_FRONTEND=noninteractive DEBCONF_DEBUG=' + debconf_debug + ' apt-get -y install ' + pkgName
-                            }
-                        }
                     }
-
                 }
                 stage('Archive artifacts ' + distroName ) {
                     // Only run if previous stages (Build and Test) succeeded
