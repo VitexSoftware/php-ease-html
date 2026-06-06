@@ -1,8 +1,14 @@
-php-vitexsoftware-ease-html (2.0.2) UNRELEASED; urgency=medium
+php-vitexsoftware-ease-html (2.1.0) UNRELEASED; urgency=medium
+
+  * H6 added
+
+ -- vitex <info@vitexsoftware.cz>  Sat, 06 Jun 2026 19:34:06 +0200
+
+php-vitexsoftware-ease-html (2.0.2) unstable; urgency=medium
 
   * HtmlMailer deprecation
 
- -- vitex <info@vitexsoftware.cz>  Sat, 14 Mar 2026 22:31:00 +0100
+ -- vitex <info@vitexsoftware.cz>  Sat, 06 Jun 2026 19:33:52 +0200
 
 php-vitexsoftware-ease-html (2.0.1) unstable; urgency=medium
 
