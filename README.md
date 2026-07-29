@@ -1,3 +1,6 @@
+![Packaging: deb](https://img.shields.io/badge/packaging-.deb-red?logo=debian&logoColor=white)
+
+
 ![EasePHP Framework HTML Logo](https://raw.githubusercontent.com/VitexSoftware/ease-html/master/project-logo.png "Project Logo")
 
 Ease Framework Html 
