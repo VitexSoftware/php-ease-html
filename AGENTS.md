@@ -1,4 +1,4 @@
-# WARP.md - Working AI Reference for php-vitexsoftware-ease-html
+# AGENTS.md - Working AI Reference for php-vitexsoftware-ease-html
 
 ## Project Overview
 **Type**: PHP Project/Debian Package
